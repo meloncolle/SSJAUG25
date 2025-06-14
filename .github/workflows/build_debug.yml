@@ -37,11 +37,12 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
+          EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
           godot --headless --verbose --export-debug "win_x86_64" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
       
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${EXPORT_NAME}
+          name: ${{ env.EXPORT_NAME }}
           path: build/windows
