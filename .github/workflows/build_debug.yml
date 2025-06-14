@@ -5,16 +5,41 @@ on:
       - 'develop'
 
 env:
+  # Enable/disable individual build templates
+  ENABLE_WIN64: true
+  ENABLE_WIN32: false
+
   GODOT_VERSION: 4.4.1
-  EXPORT_NAME: ${{ vars.BUILD_NAME }} (DEBUG)
+  EXPORT_NAME: ${{ vars.BUILD_NAME }} (DEBUG) # defined in repo settings
   PROJECT_PATH: ./
 
 jobs:
-  export-windows:
+  # stupit overhead bc you can't reference env variables in "if" condition :/
+  set-vars:
+    name: Set Outputs
+    runs-on: ubuntu-latest         
+    outputs:
+      enable-win64: ${{ steps.init.outputs.enable_win64 }}
+      enable-win32: ${{ steps.init.outputs.enable_win32 }}
+    
+    steps:        
+      - name: Environment variables to output 
+        id: init
+        run: |
+          echo "enable_win64=${{ env.ENABLE_WIN64 }}" >> $GITHUB_OUTPUT
+          echo "enable_win32=${{ env.ENABLE_WIN32 }}" >> $GITHUB_OUTPUT
+
+
+  export-win64:
     name: Windows Debug Export
+    needs: out
+    if: needs.set-vars.outputs.enable-win64 == 'true'
     runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.4.1
+    outputs:
+      artifact-url: ${{ steps.upload_artifact.outputs.artifact-url }}
+      template-name: Windows_x64 # Must match name in export_presets.cfg
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,10 +64,34 @@ jobs:
           mkdir -v -p build/windows
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-debug "win_x86_64" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
+          godot --headless --verbose --export-debug "${{ steps.export-win64.outputs.template-name }}" "$EXPORT_DIR/windows/$EXPORT_NAME.exe"
       
       - name: Upload Artifact
+        id: upload_artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.EXPORT_NAME }}
           path: build/windows
+
+  webhook-request:
+    name: Discord Webhook
+    needs: export-win64
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send a request to webhook
+      run: |
+        RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d '{
+        "content": "New push to branch ${{ github.head_ref || github.ref_name }} by ${{ github.actor }}:\n- melon:\n[mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm](https://github.com/actions/upload-artifact#environment-variables-and-tilde-expansion)\n- melon: \n[mmmmmmmm](https://github.com/actions/upload-artifact#environment-variables-and-tilde-expansion)\n- melon:\n[mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm](https://github.com/actions/upload-artifact#environment-variables-and-tilde-expansion)",
+        "embeds": [
+          {
+            "type": "rich",
+            "title": "Download Builds:",
+            "description": "- ${{needs.export-win64.outputs.template-name}}:\n[$EXPORT_NAME](${{needs.export-win64.outputs.artifact-url}})",
+            "color": 2123412,
+            "thumbnail": {
+              "url": "https://godotengine.org/assets/press/icon_color.png"
+            }
+          }
+        ]
+        }' ${{ secrets.DEBUG_WEBHOOK_URL }})
+        echo "Webhook server response: $RESPONSE"
