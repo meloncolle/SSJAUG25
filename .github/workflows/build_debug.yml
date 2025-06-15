@@ -1,8 +1,4 @@
 name: Godot Debug Build
-on:
-  push:
-    branches:    
-      - 'develop'
 
 env:
   # Enable/disable individual build templates
@@ -12,6 +8,11 @@ env:
   GODOT_VERSION: 4.4.1
   EXPORT_NAME: ${{ vars.BUILD_NAME }} (DEBUG) # defined in repo settings
   PROJECT_PATH: ./
+
+on:
+  push:
+    branches:    
+      - 'develop'
 
 jobs:
   # stupit overhead bc you can't reference env variables in "if" condition :/
@@ -32,7 +33,7 @@ jobs:
 
   export-win64:
     name: Windows Debug Export
-    needs: out
+    needs: set-vars
     if: needs.set-vars.outputs.enable-win64 == 'true'
     runs-on: ubuntu-22.04
     container:
