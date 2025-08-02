@@ -1,0 +1,166 @@
+name: Godot Build
+
+env:
+  # Enable/disable individual build templates
+  ENABLE_WIN64: true
+  ENABLE_WIN32: true
+  ENABLE_LINUX: true
+
+  GODOT_VERSION: 4.4.1
+  EXPORT_NAME: ${{ vars.BUILD_NAME }} # defined in repo settings
+  PROJECT_PATH: ./
+  WEBHOOK_URL: ${{ secrets.RELEASE_WEBHOOK_URL }}
+  DEBUG_FLAG: "--export-release"
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  godot-build:
+    name: Godot Build
+    runs-on: ubuntu-latest         
+    
+    steps:        
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Set Debug
+        if: ${{ (github.head_ref || github.ref_name) == 'develop' }}
+        run: |
+          echo "DEBUG_FLAG=--export-debug" >> $GITHUB_ENV
+          echo "WEBHOOK_URL=${{ secrets.DEBUG_WEBHOOK_URL }}" >> $GITHUB_ENV
+          echo "EXPORT_NAME=${EXPORT_NAME} (DEBUG)" >> $GITHUB_ENV
+
+      - name: Download Godot
+        run: |
+          curl -Lo godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip godot.zip
+      
+      - name: Download Export Templates
+        run: |
+          curl -Lo export_templates.tpz "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+          mv templates/* ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable/
+
+      - name: Windows x64 Build
+        id: wx64-build
+        if: ${{ env.ENABLE_WIN64 == 'true' }}
+        run: |
+          mkdir -v -p build/windows_x64
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          ./Godot_v${GODOT_VERSION}-stable_linux.x86_64 --headless --verbose ${DEBUG_FLAG} "Windows_x64" "$EXPORT_DIR/windows_x64/${EXPORT_NAME}.exe"
+
+      - name: Upload Artifact (Windows x64)
+        if: steps.wx64-build.outcome == 'success'
+        id: wx64-upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }} - Windows x64
+          path: build/windows_x64
+
+      - name: Windows x86 Build
+        id: wx86-build
+        if: ${{ env.ENABLE_WIN32 == 'true' }}
+        run: |
+          mkdir -v -p build/windows_x86
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          ./Godot_v${GODOT_VERSION}-stable_linux.x86_64 --headless --verbose ${DEBUG_FLAG} "Windows_x86" "$EXPORT_DIR/windows_x86/${EXPORT_NAME}.exe"
+
+      - name: Upload Artifact (Windows x86)
+        if: steps.wx86-build.outcome == 'success'
+        id: wx86-upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }} - Windows x86
+          path: build/windows_x86
+
+      - name: Linux Build
+        id: linux-build
+        if: ${{ env.ENABLE_LINUX == 'true' }}
+        run: |
+          mkdir -v -p build/linux
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          ./Godot_v${GODOT_VERSION}-stable_linux.x86_64 --headless --verbose ${DEBUG_FLAG} "Linux" "$EXPORT_DIR/linux/${EXPORT_NAME}.exe"
+
+      - name: Upload Artifact (Linux)
+        if: steps.linux-build.outcome == 'success'
+        id: linux-upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.EXPORT_NAME }} - Linux
+          path: build/linux
+
+      - name: Get Runtime
+        uses: octokit/request-action@v2.x
+        id: get-runtime
+        with:
+          route: GET /repos/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_API_TOKEN }}
+
+      - name: Webhook Request
+        env:
+          COMMITS: ${{ toJSON(github.event.commits) }}
+        run: |
+          TS_START=${{ fromJson(steps.get-runtime.outputs.data).run_started_at }}
+          TS_NOW=$(date --utc +%FT%TZ)
+          ELAPSED=$(($(date -d "$TS_NOW" +%s)-$(date -d "$TS_START" +%s)))
+          RUNTIME=$(printf '%02dm %02ds' $((ELAPSED%3600/60)) $((ELAPSED%60)))
+
+          CONTENT=$' commit(s) pushed to branch [`${{ github.head_ref || github.ref_name }}`](<${{ github.server_url }}/${{ github.repository }}/tree/${{ github.head_ref || github.ref_name }}>) by user [`${{ github.actor }}`](<${{ github.server_url }}/${{ github.actor }}>):'
+          
+          C=0
+          while read commit
+          do
+            let C=C+1
+            message=$(echo "$commit" | jq -r .message)
+            id=$(echo "$commit" | jq -r .id)
+            url=$(echo "$commit" | jq -r .url)
+
+            CONTENT=$CONTENT$'\n - [`'"$(echo $id | cut -c1-7)"'`'"]($url) - $message"
+          done < <(echo "$COMMITS" | jq -c '.[]')
+
+          CONTENT="### "$C$CONTENT
+
+          THUMBNAIL=$(jq -n -c --arg url "https://godotengine.org/assets/press/icon_color.png" \
+                               '$ARGS.named'
+          )
+
+          FOOTER=$(jq -n -c --arg text "Build(s) completed in $RUNTIME" \
+                               '$ARGS.named'
+          )
+
+          EMBED_DESC=""
+          if [ ${ENABLE_WIN64} == 'true' ];  then
+              EMBED_DESC=$EMBED_DESC$'\n- Windows x64 - [${{ env.EXPORT_NAME }}](${{steps.wx64-upload.outputs.artifact-url}})'
+          fi
+          if [ ${ENABLE_WIN32} == 'true' ];  then
+              EMBED_DESC=$EMBED_DESC$'\n- Windows x86 - [${{ env.EXPORT_NAME }}](${{steps.wx86-upload.outputs.artifact-url}})'
+          fi
+          if [ ${ENABLE_LINUX} == 'true' ];  then
+              EMBED_DESC=$EMBED_DESC$'\n- Linux - [${{ env.EXPORT_NAME }}](${{steps.linux-upload.outputs.artifact-url}})'
+          fi
+
+          EMBEDS=$(jq -n -c --arg type "rich" \
+                            --arg title "Download Builds:" \
+                            --arg description "$EMBED_DESC" \
+                            --argjson color 2123412 \
+                            --argjson thumbnail "$THUMBNAIL" \
+                            --argjson footer "$FOOTER" \
+                            '$ARGS.named'
+          )
+
+          JSON=$(jq -n -c --arg content "$CONTENT" \
+                          --argjson embeds ["$EMBEDS"] \
+                          '$ARGS.named'
+          )
+
+          RESPONSE=$(curl -H "Content-Type: application/json" -X POST -d "$JSON" ${{ env.WEBHOOK_URL }})
+          echo "Webhook server response: $RESPONSE"
