@@ -7,9 +7,14 @@ extends CharacterBody2D
 var move_direction: Vector2 = Vector2.ZERO
 
 func _ready():
-		move_direction = Vector2(
-		randf_range(-1,1),
-		randf_range(-1,1)
+	
+	# Should only exist in debug builds
+	if ResourceLoader.exists("res://_debug/debug_sprite.png"):
+		$Sprite2D.texture = load("res://_debug/debug_sprite.png")
+
+	move_direction = Vector2(
+	randf_range(-1,1),
+	randf_range(-1,1)
 	)
 	
 func _physics_process(_delta):
