@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 300
-
+@export var move_speed := 300.0
 @onready var body_size: Vector2 = $CollisionShape2D.shape.size
 
-var move_direction: Vector2 = Vector2.ZERO
+var move_direction:= Vector2.ZERO
 
 func _ready():
 	
@@ -12,10 +11,7 @@ func _ready():
 	if ResourceLoader.exists("res://_debug/debug_sprite.png"):
 		$Sprite2D.texture = load("res://_debug/debug_sprite.png")
 
-	move_direction = Vector2(
-	randf_range(-1,1),
-	randf_range(-1,1)
-	)
+	move_direction = Vector2(randf_range(-1,1), randf_range(-1,1))
 	
 func _physics_process(_delta):
 	if ((position.y - body_size.y * 0.5) <= 0 ||
