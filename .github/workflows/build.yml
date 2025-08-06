@@ -3,8 +3,8 @@ name: Godot Build
 env:
   # Enable/disable individual build templates
   ENABLE_WIN64: true
-  ENABLE_WIN32: true
-  ENABLE_LINUX: true
+  ENABLE_WIN32: false
+  ENABLE_LINUX: false
 
   GODOT_VERSION: 4.4.1
   EXPORT_NAME: ${{ vars.BUILD_NAME }} # defined in repo settings
