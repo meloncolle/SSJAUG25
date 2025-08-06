@@ -4,3 +4,5 @@
 *.so
 *.xcframework
 !libs/**
+# I think we want to ignore this temp file the editor creates...
+libs/*/~*
