@@ -13,6 +13,8 @@ var last_target_pos := Vector3.ZERO
 ## state variables
 @export var eject := false
 
+@export var eject_range := 5.0
+
 # debug stuff, remove later
 @export var use_overrides := false
 @export var override_velocity_vector := Vector3.FORWARD
@@ -45,9 +47,9 @@ func DoStartSequence():
 	var start_pos = global_position
 	
 	var random_offset = Vector3(
-			randf_range(-5.0, 5.0),
+			randf_range(-eject_range, eject_range),
 			0.0,
-			randf_range(-5.0, 5.0))
+			randf_range(-eject_range, eject_range))
 	var land_position = global_position + random_offset
 	look_at(global_position - random_offset, Vector3.UP)
 	
@@ -55,7 +57,7 @@ func DoStartSequence():
 	
 	var timer = 1.0
 	while timer > 0.0:
-		global_position = lerp(start_pos, land_position, 1.0 - timer)
+		global_position = lerp(start_pos, land_position, clamp(1.0 - timer, 0.0, 1.0))
 		
 		timer -= 0.0166667
 		await get_tree().physics_frame
@@ -65,12 +67,16 @@ func DoStartSequence():
 		current_node = state_machine.get_current_node()
 		await get_tree().process_frame
 	
-	var look_dir = land_position - target.global_position
-	look_at(global_position + look_dir, Vector3.UP)
+	var start_dir = -global_basis.z
+	start_pos = global_position
+	var state_time = state_machine.get_current_length()
+	timer = state_time
 	
-	timer = state_machine.get_current_length()
-	while current_node != "ball_idle":
-		global_position = lerp(land_position, target.global_position + (Vector3.UP * target_radius), 1.0 - timer)
+	while current_node == "jump":
+		global_position = lerp(start_pos, target.global_position + (Vector3.UP * target_radius), 1.0 - (timer / state_time))
+		
+		var look_dir = start_dir.slerp(start_pos - target.global_position, 1.0 - (timer / state_time))
+		look_at(global_position + look_dir, Vector3.UP)
 		
 		current_node = state_machine.get_current_node()
 		timer -= 0.0166667

@@ -110,6 +110,7 @@ graph_offset = Vector2(-238, -170)
 
 [node name="RacerBen" instance=ExtResource("1_oaqar")]
 script = ExtResource("2_ydrh6")
+max_vel = 10.0
 locomotion_mult_range = Vector2(0.5, 2)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
