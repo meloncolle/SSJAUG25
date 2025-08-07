@@ -61,10 +61,12 @@ advance_mode = 2
 advance_expression = "cur_vel < idle_thresh"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2p6nv"]
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "cur_vel >= max_vel"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smeun"]
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "cur_vel < max_vel"
 
@@ -104,29 +106,29 @@ states/jump/position = Vector2(327, 68)
 states/locomotion/node = SubResource("AnimationNodeBlendTree_76mit")
 states/locomotion/position = Vector2(486, -5)
 transitions = ["ball_idle", "locomotion", SubResource("AnimationNodeStateMachineTransition_76mit"), "locomotion", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hpo0m"), "locomotion", "ball_flat", SubResource("AnimationNodeStateMachineTransition_2p6nv"), "ball_flat", "locomotion", SubResource("AnimationNodeStateMachineTransition_smeun"), "Start", "car_idle", SubResource("AnimationNodeStateMachineTransition_2yqjx"), "car_idle", "car_eject", SubResource("AnimationNodeStateMachineTransition_12chk"), "car_eject", "get_up", SubResource("AnimationNodeStateMachineTransition_f0mpv"), "get_up", "jump", SubResource("AnimationNodeStateMachineTransition_cd3p5"), "jump", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hrww8")]
-graph_offset = Vector2(-305, -64)
+graph_offset = Vector2(-238, -170)
 
 [node name="RacerBen" instance=ExtResource("1_oaqar")]
 script = ExtResource("2_ydrh6")
 locomotion_mult_range = Vector2(0.5, 2)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0.214121, 0.804977, -0.194276)
-bones/0/rotation = Quaternion(-0.0760578, -0.0835669, -0.866904, 0.4855)
+bones/0/position = Vector3(0.160278, 0.668936, 0.0326442)
+bones/0/rotation = Quaternion(0.190479, -0.727986, -0.623064, 0.213411)
 bones/0/scale = Vector3(1, 1, 1)
-bones/1/position = Vector3(0.122772, 1.05558, 0.00119481)
-bones/1/rotation = Quaternion(0.244639, -0.0244595, -0.236095, 0.940113)
-bones/2/position = Vector3(0.0614855, 0.35338, 0.0289236)
-bones/2/rotation = Quaternion(0.0895585, -0.0448302, 0.994599, 0.0272349)
+bones/1/position = Vector3(-8.84876e-16, 0.896371, -0.12454)
+bones/1/rotation = Quaternion(0.0137056, 4.37073e-08, 5.99092e-10, 0.999906)
+bones/2/position = Vector3(0.111265, 0.378129, 0.19644)
+bones/2/rotation = Quaternion(0.0342794, 0.183765, 0.979263, 0.0781016)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(-0.208161, 1.0066, -0.0188212)
-bones/3/rotation = Quaternion(0.152895, 0.246928, 0.513094, 0.807703)
+bones/3/position = Vector3(-0.160278, 0.668936, 0.0326442)
+bones/3/rotation = Quaternion(0.190479, 0.727986, 0.623064, 0.213411)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/position = Vector3(-0.187441, 0.523661, 0.1448)
-bones/4/rotation = Quaternion(-0.0904054, -0.0396219, 0.995116, -0.00105594)
+bones/4/position = Vector3(-0.111747, 0.363149, 0.195196)
+bones/4/rotation = Quaternion(-0.0513599, 0.192186, 0.974482, -0.103973)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/position = Vector3(-0.0148296, 0.676571, -0.0749816)
-bones/5/rotation = Quaternion(0.0875319, 0.0752476, -0.155605, 0.981052)
+bones/5/position = Vector3(-4.44089e-16, 0.489119, -0.065202)
+bones/5/rotation = Quaternion(-0.0820683, 4.35639e-08, -3.58732e-09, 0.996627)
 
 [node name="Cube" parent="Armature/Skeleton3D" index="0"]
 material_override = ExtResource("2_nooa5")
