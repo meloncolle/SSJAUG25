@@ -73,7 +73,7 @@ func DoStartSequence():
 	timer = state_time
 	
 	while current_node == "jump":
-		global_position = lerp(start_pos, target.global_position + (Vector3.UP * target_radius), 1.0 - (timer / state_time))
+		global_position = lerp(start_pos, GetModelOffset(Vector3.UP), 1.0 - (timer / state_time))
 		
 		var look_dir = start_dir.slerp(start_pos - target.global_position, 1.0 - (timer / state_time))
 		look_at(global_position + look_dir, Vector3.UP)
@@ -101,7 +101,7 @@ func HandleGameplayAnimation(delta):
 	if cur_vel < max_vel: # rotate model to look at velocity direction
 		spin_dist_travelled = 0.0
 		var up_vec = global_basis.y.normalized().slerp(Vector3.UP, 5.0 * delta)
-		var offset_position = target.global_position + (up_vec * target_radius)
+		var offset_position = GetModelOffset(up_vec) #target.global_position + (up_vec * target_radius)
 		global_position = offset_position
 		var look_dir = global_basis.z if cur_vel < idle_thresh else vel_dir
 		look_at(global_position + look_dir, up_vec)
@@ -113,8 +113,24 @@ func HandleGameplayAnimation(delta):
 		
 		var look_dir = rotated_position - last_rotated_position
 		
-		global_position = target.global_position + rotated_position
+		global_position = GetModelOffset(rotated_position) #target.global_position + rotated_position
 		look_at(global_position - look_dir, rotated_position.normalized())
 		
 		spin_dist_travelled += cur_vel * delta
 		last_rotated_position = rotated_position
+
+func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
+	
+	var space_state = get_world_3d().direct_space_state
+	
+	var origin = target.global_position + up_vector * (target_radius * 2.0)
+	var end = target.global_position
+	var mask = 1<<7
+	var query = PhysicsRayQueryParameters3D.create(origin, end, mask)
+
+	var result = space_state.intersect_ray(query)
+	
+	if !result.is_empty():
+		return result["position"]
+	
+	return target.global_position + (Vector3.UP * target_radius)
