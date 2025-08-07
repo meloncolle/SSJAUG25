@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2chxchtnk1h0"]
+
+[sub_resource type="Curve3D" id="Curve3D_b5klm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.310517, 5.38826e-05, 5.8918, -0.310517, -5.38826e-05, -5.8918, 8.53406, -3.26544, -9.70913, 1.18102, 0, 7.38322, -1.18102, 0, -7.38322, -0.114672, -1.52721, -19.1117, 0, 0, 0, 0, 0, 0, 6.73964, -3.74423, -31.757),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[node name="Road" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_b5klm")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00548, -0.00886714, 0)
+use_collision = true
+polygon = PackedVector2Array(-0.0127444, -0.343449, 0.0270687, 0.086964, 3.95205, 0.0988531, 4.11523, -0.311847)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 2.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
