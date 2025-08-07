@@ -11,6 +11,7 @@ var last_target_pos := Vector3.ZERO
 @export var locomotion_mult_range := Vector2.ONE
 
 ## state variables
+@export var skip_start_squence := false
 @export var eject := false
 
 @export var eject_range := 5.0
@@ -39,7 +40,7 @@ func _process(delta):
 	if eject && !intro_complete:
 		DoStartSequence()
 	
-	if intro_complete : 
+	if intro_complete || skip_start_squence: 
 		HandleGameplayAnimation(delta)
 
 func DoStartSequence():
@@ -87,8 +88,8 @@ func DoStartSequence():
 func HandleGameplayAnimation(delta):
 	var pos_d = target.global_position - last_target_pos
 	
-	cur_vel = pos_d.length() / delta
-	vel_dir = pos_d.normalized()
+	cur_vel = pos_d.length()
+	vel_dir = -pos_d.normalized()
 	
 	if use_overrides:
 		cur_vel = override_velocity_length
@@ -103,7 +104,7 @@ func HandleGameplayAnimation(delta):
 		var up_vec = global_basis.y.normalized().slerp(Vector3.UP, 5.0 * delta)
 		var offset_position = GetModelOffset(up_vec) #target.global_position + (up_vec * target_radius)
 		global_position = offset_position
-		var look_dir = global_basis.z if cur_vel < idle_thresh else vel_dir
+		var look_dir = -global_basis.z if cur_vel < idle_thresh else vel_dir
 		look_at(global_position + look_dir, up_vec)
 
 	else: #make model spin
