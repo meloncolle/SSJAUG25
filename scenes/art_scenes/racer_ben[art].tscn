@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dag8rxu5kmtaq"]
+
+[ext_resource type="PackedScene" uid="uid://cvq606sbm61sv" path="res://assets/models/RacerBen.glb" id="1_oaqar"]
+[ext_resource type="Material" uid="uid://dj6iuongwl3st" path="res://resources/materials/racer_ben_body_mat.tres" id="2_nooa5"]
+[ext_resource type="Material" uid="uid://cxfetivdr5ldk" path="res://resources/materials/racer_ben_face_mat.tres" id="3_ydrh6"]
+
+[node name="RacerBen" instance=ExtResource("1_oaqar")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.175209, 0.986494, -0.185635)
+bones/0/rotation = Quaternion(0.126244, 0.0464737, -0.540025, 0.830828)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(-0.0368998, 1.07486, 0.0172764)
+bones/1/rotation = Quaternion(0.267534, 0.0143519, 0.146041, 0.952309)
+bones/2/position = Vector3(0.06486, 0.35443, 0.00515755)
+bones/2/rotation = Quaternion(0.0762126, -0.0109325, 0.996374, 0.0362154)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-0.261518, 0.826713, -0.0537822)
+bones/3/rotation = Quaternion(0.0831289, 0.292136, 0.817973, 0.488534)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.2297, 0.465134, 0.0985471)
+bones/4/rotation = Quaternion(-0.183499, 0.0864619, 0.971055, 0.126112)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.0250895, 0.675638, -0.0749816)
+bones/5/rotation = Quaternion(0.092491, 0.0855526, 0.00922406, 0.991989)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("2_nooa5")
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="1"]
+material_override = ExtResource("3_ydrh6")

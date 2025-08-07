@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cxfetivdr5ldk"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/visual_shaders/base_lit.tres" id="1_6byj7"]
+[ext_resource type="Texture2D" uid="uid://ci2m42co4tl7p" path="res://assets/textures/RacerBenFace-diff.png" id="2_aji1l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6byj7")
+shader_parameter/diffuse_tex = ExtResource("2_aji1l")
