@@ -7,6 +7,7 @@ var path : Path3D
 
 @export var instance_count := 0 : 
 	set(val):
+		val = clampi(val, 0, 250)
 		instance_count = val
 		PlaceInstances()
 @export var separation := 0.5: 
