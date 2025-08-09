@@ -101,7 +101,10 @@ func HandleGameplayAnimation(delta):
 	
 	if cur_vel < max_vel: # rotate model to look at velocity direction
 		spin_dist_travelled = 0.0
-		var up_vec = global_basis.y.normalized().slerp(Vector3.UP, 5.0 * delta)
+		var start_up = global_basis.y.normalized()
+		var up_vec = Vector3.UP
+		if start_up.dot(Vector3.UP) < 0.95:
+			up_vec = start_up.slerp(Vector3.UP, 5.0 * delta)
 		var offset_position = GetModelOffset(up_vec) #target.global_position + (up_vec * target_radius)
 		global_position = offset_position
 		var look_dir = -global_basis.z if cur_vel < idle_thresh else vel_dir
