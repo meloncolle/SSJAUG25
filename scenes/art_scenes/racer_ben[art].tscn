@@ -53,10 +53,12 @@ nodes/locomotion_speed/position = Vector2(80, 160)
 node_connections = [&"locomotion_speed", 0, &"locomotion_amt", &"output", 0, &"locomotion_speed"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_76mit"]
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "cur_vel >= idle_thresh"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hpo0m"]
+xfade_time = 0.2
 advance_mode = 2
 advance_expression = "cur_vel < idle_thresh"
 
@@ -106,7 +108,7 @@ states/jump/position = Vector2(327, 68)
 states/locomotion/node = SubResource("AnimationNodeBlendTree_76mit")
 states/locomotion/position = Vector2(486, -5)
 transitions = ["ball_idle", "locomotion", SubResource("AnimationNodeStateMachineTransition_76mit"), "locomotion", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hpo0m"), "locomotion", "ball_flat", SubResource("AnimationNodeStateMachineTransition_2p6nv"), "ball_flat", "locomotion", SubResource("AnimationNodeStateMachineTransition_smeun"), "Start", "car_idle", SubResource("AnimationNodeStateMachineTransition_2yqjx"), "car_idle", "car_eject", SubResource("AnimationNodeStateMachineTransition_12chk"), "car_eject", "get_up", SubResource("AnimationNodeStateMachineTransition_f0mpv"), "get_up", "jump", SubResource("AnimationNodeStateMachineTransition_cd3p5"), "jump", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hrww8")]
-graph_offset = Vector2(-238, -170)
+graph_offset = Vector2(-207, -131)
 
 [node name="RacerBen" instance=ExtResource("1_oaqar")]
 script = ExtResource("2_ydrh6")
