@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://lm0jto3ii37u"]
+
+[ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="1_ocu34"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jy2un"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_nhorq"]
+sky_material = SubResource("ProceduralSkyMaterial_jy2un")
+
+[sub_resource type="Environment" id="Environment_sn81s"]
+background_mode = 2
+sky = SubResource("Sky_nhorq")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_nhorq"]
+radius = 2.0
+height = 4.0
+
+[node name="ArtDev" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sn81s")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.988793, 0.0208473, -0.147831, 0, 0.990202, 0.13964, 0.149294, -0.138075, 0.979105, -1.10025, 3.90229, 6.21136)
+
+[node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_ocu34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0542631, -0.0148711, 2.26643)
+target = NodePath("../ben_target")
+target_radius = 2.0
+idle_thresh = 0.05
+locomotion_mult_range = Vector2(0.1, 3.25)
+eject = true
+use_overrides = true
+override_velocity_vector = Vector3(1, 0, 1)
+override_velocity_length = 2.5
+
+[node name="ben_target" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ben_target"]
+mesh = SubResource("SphereMesh_nhorq")
