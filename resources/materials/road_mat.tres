@@ -6,6 +6,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_u20m6")
-shader_parameter/UvScale = Vector2(1, 7.615)
-shader_parameter/UvOffset = Vector2(0, -0.925)
+shader_parameter/UvScale = Vector2(1, 7.5)
+shader_parameter/UvOffset = Vector2(0, -0.9)
 shader_parameter/diffuse_tex = ExtResource("2_7esfc")
