@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2chxchtnk1h0"]
+[gd_scene load_steps=3 format=3 uid="uid://d2chxchtnk1h0"]
+
+[ext_resource type="Material" uid="uid://bpm5byb13rwqh" path="res://resources/materials/road_mat.tres" id="1_c05wc"]
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
@@ -15,7 +17,7 @@ curve = SubResource("Curve3D_b5klm")
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00548, -0.00886714, 0)
 use_collision = true
-polygon = PackedVector2Array(-0.0127444, -0.343449, 0.0270687, 0.086964, 3.95205, 0.0988531, 4.11523, -0.311847)
+polygon = PackedVector2Array(0, -0.35, 0.2, 0, 3.8, 0, 4, -0.35)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -25,5 +27,6 @@ path_rotation = 2
 path_rotation_accurate = false
 path_local = false
 path_continuous_u = true
-path_u_distance = 1.0
+path_u_distance = 10.0
 path_joined = false
+material = ExtResource("1_c05wc")

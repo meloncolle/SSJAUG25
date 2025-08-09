@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://bvk41t5ip7prr"]
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bvk41t5ip7prr"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_02lhj"]
 source = 5
@@ -8,18 +8,52 @@ texture_type = 1
 parameter_name = "diffuse_tex"
 texture_type = 1
 
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_02lhj"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_ms0eg"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1), 2, Vector2(0, 0)]
+op_type = 1
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_7it3f"]
+parameter_name = "UvScale"
+default_value_enabled = true
+default_value = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_5fqip"]
+parameter_name = "UvOffset"
+default_value_enabled = true
+
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, shadows_disabled, vertex_lighting;
 
+uniform vec2 UvScale = vec2(1.000000, 1.000000);
+uniform vec2 UvOffset = vec2(0.000000, 0.000000);
 uniform sampler2D diffuse_tex : source_color;
 
 
 
 void fragment() {
+// Input:4
+	vec2 n_out4p0 = UV;
+
+
+// Vector2Parameter:6
+	vec2 n_out6p0 = UvScale;
+
+
+// Vector2Parameter:7
+	vec2 n_out7p0 = UvOffset;
+
+
+// MultiplyAdd:5
+	vec2 n_out5p0 = fma(n_out4p0, n_out6p0, n_out7p0);
+
+
 	vec4 n_out2p0;
 // Texture2D:2
-	n_out2p0 = texture(diffuse_tex, UV);
+	n_out2p0 = texture(diffuse_tex, n_out5p0);
 
 
 // Output:0
@@ -28,11 +62,20 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-754.391, -50.5219)
 modes/specular = 2
 flags/shadows_disabled = true
 flags/vertex_lighting = true
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_02lhj")
-nodes/fragment/2/position = Vector2(20, 220)
+nodes/fragment/2/position = Vector2(20, 120)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_ms0eg")
-nodes/fragment/3/position = Vector2(-380, 200)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+nodes/fragment/3/position = Vector2(-500, 280)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_02lhj")
+nodes/fragment/4/position = Vector2(-580, 20)
+nodes/fragment/5/node = SubResource("VisualShaderNodeMultiplyAdd_ms0eg")
+nodes/fragment/5/position = Vector2(-200, 20)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVec2Parameter_7it3f")
+nodes/fragment/6/position = Vector2(-860, -80)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVec2Parameter_5fqip")
+nodes/fragment/7/position = Vector2(-1120, 0)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2, 4, 0, 5, 0, 5, 0, 2, 0, 6, 0, 5, 1, 7, 0, 5, 2)
