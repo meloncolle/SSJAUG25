@@ -36,7 +36,7 @@ animation = &"ball_run"
 blend_point_0/node = SubResource("AnimationNodeAnimation_nooa5")
 blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_ydrh6")
-blend_point_1/pos = 0.5
+blend_point_1/pos = 0.2
 blend_point_2/node = SubResource("AnimationNodeAnimation_leixt")
 blend_point_2/pos = 1.0
 min_space = 0.0
@@ -45,7 +45,7 @@ sync = true
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_q5kn6"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76mit"]
-graph_offset = Vector2(-515, 3)
+graph_offset = Vector2(-405.15, 121.35)
 nodes/locomotion_amt/node = SubResource("AnimationNodeBlendSpace1D_qvvfl")
 nodes/locomotion_amt/position = Vector2(-140, 160)
 nodes/locomotion_speed/node = SubResource("AnimationNodeTimeScale_q5kn6")
@@ -144,5 +144,5 @@ tree_root = SubResource("AnimationNodeStateMachine_nooa5")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/eject = false
-parameters/locomotion/locomotion_amt/blend_position = 0.0
+parameters/locomotion/locomotion_amt/blend_position = 0.196958
 parameters/locomotion/locomotion_speed/scale = 1.0

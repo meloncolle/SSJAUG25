@@ -40,7 +40,7 @@ locomotion_mult_range = Vector2(0.1, 3.25)
 eject = true
 use_overrides = true
 override_velocity_vector = Vector3(1, 0, 1)
-override_velocity_length = 2.5
+override_velocity_length = 10.81
 
 [node name="ben_target" type="Node3D" parent="."]
 

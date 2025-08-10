@@ -88,8 +88,10 @@ func DoStartSequence():
 func HandleGameplayAnimation(delta):
 	var pos_d = target.global_position - last_target_pos
 	
-	cur_vel = pos_d.length()
+	cur_vel = pos_d.length() / delta
 	vel_dir = -pos_d.normalized()
+	
+	last_target_pos = target.global_position
 	
 	if use_overrides:
 		cur_vel = override_velocity_length
@@ -115,13 +117,16 @@ func HandleGameplayAnimation(delta):
 		var rotation_amount = spin_dist_travelled / target_radius
 		var rotated_position = Vector3.UP.rotated(rotation_axis.normalized(), rotation_amount) * target_radius
 		
-		var look_dir = rotated_position - last_rotated_position
+		var look_dir = -global_basis.z
+		if last_rotated_position != rotated_position && last_rotated_position != Vector3.ZERO:
+			look_dir = rotated_position - last_rotated_position
 		
 		global_position = GetModelOffset(rotated_position) #target.global_position + rotated_position
 		look_at(global_position - look_dir, rotated_position.normalized())
 		
 		spin_dist_travelled += cur_vel * delta
 		last_rotated_position = rotated_position
+		
 
 func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
 	
@@ -137,4 +142,4 @@ func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
 	if !result.is_empty():
 		return result["position"]
 	
-	return target.global_position + (Vector3.UP * target_radius)
+	return target.global_position + (up_vector.normalized() * target_radius)
