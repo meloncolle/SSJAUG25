@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
-sky_top_color = Color(0.219981, 0.550622, 0.895456, 1)
-sky_horizon_color = Color(1.249, 1.33774, 1.35144, 1)
-ground_bottom_color = Color(0.715007, 0.739313, 0.449288, 1)
-ground_horizon_color = Color(1.249, 1.33774, 1.35144, 1)
+sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
+sky_horizon_color = Color(0.570372, 0.896429, 0.952946, 1)
+ground_bottom_color = Color(0.598402, 0.779306, 0.31347, 1)
+ground_horizon_color = Color(0.710443, 0.877264, 0.834224, 1)
 
 [sub_resource type="Sky" id="Sky_v6fep"]
 sky_material = SubResource("ProceduralSkyMaterial_yfyfv")
