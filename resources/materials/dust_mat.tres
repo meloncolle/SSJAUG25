@@ -8,4 +8,4 @@ shader = ExtResource("1_rtts8")
 shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(0, 0)
 shader_parameter/VertexColorAmt = 1.0
-shader_parameter/Tint = Color(0.867444, 0.869576, 0.869048, 1)
+shader_parameter/Tint = Color(1, 1, 1, 1)
