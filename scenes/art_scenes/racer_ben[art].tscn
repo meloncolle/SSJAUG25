@@ -1,0 +1,148 @@
+[gd_scene load_steps=27 format=3 uid="uid://dag8rxu5kmtaq"]
+
+[ext_resource type="PackedScene" uid="uid://cvq606sbm61sv" path="res://assets/models/RacerBen.glb" id="1_oaqar"]
+[ext_resource type="Material" uid="uid://dj6iuongwl3st" path="res://resources/materials/racer_ben_body_mat.tres" id="2_nooa5"]
+[ext_resource type="Script" uid="uid://dlrjk7lor7ojd" path="res://scripts/art_controllers/racer_art_controller.gd" id="2_ydrh6"]
+[ext_resource type="Material" uid="uid://cxfetivdr5ldk" path="res://resources/materials/racer_ben_face_mat.tres" id="3_ydrh6"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvvfl"]
+animation = &"ball_flat"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5kn6"]
+animation = &"ball_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76mit"]
+animation = &"car_eject"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpo0m"]
+animation = &"car_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2p6nv"]
+animation = &"get_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smeun"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nooa5"]
+animation = &"ball_pd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ydrh6"]
+animation = &"ball_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_leixt"]
+animation = &"ball_run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_qvvfl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nooa5")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ydrh6")
+blend_point_1/pos = 0.5
+blend_point_2/node = SubResource("AnimationNodeAnimation_leixt")
+blend_point_2/pos = 1.0
+min_space = 0.0
+sync = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_q5kn6"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76mit"]
+graph_offset = Vector2(-515, 3)
+nodes/locomotion_amt/node = SubResource("AnimationNodeBlendSpace1D_qvvfl")
+nodes/locomotion_amt/position = Vector2(-140, 160)
+nodes/locomotion_speed/node = SubResource("AnimationNodeTimeScale_q5kn6")
+nodes/locomotion_speed/position = Vector2(80, 160)
+node_connections = [&"locomotion_speed", 0, &"locomotion_amt", &"output", 0, &"locomotion_speed"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_76mit"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel >= idle_thresh"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hpo0m"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel < idle_thresh"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2p6nv"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel >= max_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smeun"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel < max_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2yqjx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_12chk"]
+advance_mode = 2
+advance_condition = &"eject"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f0mpv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cd3p5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hrww8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nooa5"]
+states/Start/position = Vector2(88, 200)
+states/ball_flat/node = SubResource("AnimationNodeAnimation_qvvfl")
+states/ball_flat/position = Vector2(486, -83)
+states/ball_idle/node = SubResource("AnimationNodeAnimation_q5kn6")
+states/ball_idle/position = Vector2(327, -5)
+states/car_eject/node = SubResource("AnimationNodeAnimation_76mit")
+states/car_eject/position = Vector2(327, 200)
+states/car_idle/node = SubResource("AnimationNodeAnimation_hpo0m")
+states/car_idle/position = Vector2(204, 200)
+states/get_up/node = SubResource("AnimationNodeAnimation_2p6nv")
+states/get_up/position = Vector2(327, 135)
+states/jump/node = SubResource("AnimationNodeAnimation_smeun")
+states/jump/position = Vector2(327, 68)
+states/locomotion/node = SubResource("AnimationNodeBlendTree_76mit")
+states/locomotion/position = Vector2(486, -5)
+transitions = ["ball_idle", "locomotion", SubResource("AnimationNodeStateMachineTransition_76mit"), "locomotion", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hpo0m"), "locomotion", "ball_flat", SubResource("AnimationNodeStateMachineTransition_2p6nv"), "ball_flat", "locomotion", SubResource("AnimationNodeStateMachineTransition_smeun"), "Start", "car_idle", SubResource("AnimationNodeStateMachineTransition_2yqjx"), "car_idle", "car_eject", SubResource("AnimationNodeStateMachineTransition_12chk"), "car_eject", "get_up", SubResource("AnimationNodeStateMachineTransition_f0mpv"), "get_up", "jump", SubResource("AnimationNodeStateMachineTransition_cd3p5"), "jump", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hrww8")]
+graph_offset = Vector2(-207, -131)
+
+[node name="RacerBen" instance=ExtResource("1_oaqar")]
+script = ExtResource("2_ydrh6")
+max_vel = 10.0
+locomotion_mult_range = Vector2(0.5, 2)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.160278, 0.668936, 0.0326442)
+bones/0/rotation = Quaternion(0.190479, -0.727986, -0.623064, 0.213411)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(-8.84876e-16, 0.896371, -0.12454)
+bones/1/rotation = Quaternion(0.0137056, 4.37073e-08, 5.99092e-10, 0.999906)
+bones/2/position = Vector3(0.111265, 0.378129, 0.19644)
+bones/2/rotation = Quaternion(0.0342794, 0.183765, 0.979263, 0.0781016)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-0.160278, 0.668936, 0.0326442)
+bones/3/rotation = Quaternion(0.190479, 0.727986, 0.623064, 0.213411)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.111747, 0.363149, 0.195196)
+bones/4/rotation = Quaternion(-0.0513599, 0.192186, 0.974482, -0.103973)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-4.44089e-16, 0.489119, -0.065202)
+bones/5/rotation = Quaternion(-0.0820683, 4.35639e-08, -3.58732e-09, 0.996627)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("2_nooa5")
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="1"]
+material_override = ExtResource("3_ydrh6")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_nooa5")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/eject = false
+parameters/locomotion/locomotion_amt/blend_position = 0.0
+parameters/locomotion/locomotion_speed/scale = 1.0

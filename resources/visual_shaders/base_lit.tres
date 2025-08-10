@@ -1,0 +1,38 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://bvk41t5ip7prr"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_02lhj"]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ms0eg"]
+parameter_name = "diffuse_tex"
+texture_type = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_disabled, shadows_disabled, vertex_lighting;
+
+uniform sampler2D diffuse_tex : source_color;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(diffuse_tex, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/shadows_disabled = true
+flags/vertex_lighting = true
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_02lhj")
+nodes/fragment/2/position = Vector2(20, 220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_ms0eg")
+nodes/fragment/3/position = Vector2(-380, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
