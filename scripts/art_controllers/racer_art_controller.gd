@@ -143,8 +143,9 @@ func HandleGameplayAnimation(delta):
 		spin_dist_travelled += cur_vel * delta
 		last_rotated_position = rotated_position
 		
-	if acceleration > dust_thresh && dust_particles:
-		dust_object.global_position = target.global_position - Vector3.UP * target_radius
+	var particle_position = GetParticlePosition()
+	if acceleration > dust_thresh && dust_particles && particle_position!= Vector3.ZERO:
+		dust_object.global_position = particle_position
 		dust_particles.emitting = true
 	elif acceleration <= dust_thresh && dust_particles:
 		dust_particles.emitting = false
@@ -164,6 +165,22 @@ func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
 		return result["position"]
 	
 	return target.global_position + (up_vector.normalized() * target_radius)
+
+func GetParticlePosition() -> Vector3:
+	
+	var space_state = get_world_3d().direct_space_state
+	
+	var origin = target.global_position
+	var end = target.global_position - (Vector3.UP * (target_radius + 0.15))
+	var mask = 1
+	var query = PhysicsRayQueryParameters3D.create(origin, end, mask)
+
+	var result = space_state.intersect_ray(query)
+	
+	if !result.is_empty():
+		return result["position"]
+	
+	return Vector3.ZERO
 
 func FlattenV3(vec : Vector3) -> Vector3:
 	vec.y = 0.0
