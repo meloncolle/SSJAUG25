@@ -3,12 +3,15 @@ extends Node3D
 @export var target : Node3D
 @export var target_radius := 1.0
 
+@export var camera : Node3D
+
 var last_target_pos := Vector3.ZERO
 
 @export var idle_thresh := 0.1
 @export var max_vel:= 5.0
 
 @export var locomotion_mult_range := Vector2.ONE
+#@export var velocity_tilt_amt := 10.0
 
 ## state variables
 @export var skip_start_squence := false
@@ -76,7 +79,7 @@ func DoStartSequence():
 	while current_node == "jump":
 		global_position = lerp(start_pos, GetModelOffset(Vector3.UP), 1.0 - (timer / state_time))
 		
-		var look_dir = start_dir.slerp(start_pos - target.global_position, 1.0 - (timer / state_time))
+		var look_dir = start_pos - target.global_position #start_dir.slerp(start_pos - target.global_position, 1.0 - (timer / state_time))
 		look_at(global_position + look_dir, Vector3.UP)
 		
 		current_node = state_machine.get_current_node()
@@ -89,7 +92,7 @@ func HandleGameplayAnimation(delta):
 	var pos_d = target.global_position - last_target_pos
 	
 	cur_vel = pos_d.length() / delta
-	vel_dir = -pos_d.normalized()
+	vel_dir = -pos_d.normalized() if cur_vel > idle_thresh else Vector3.ZERO
 	
 	last_target_pos = target.global_position
 	
@@ -104,12 +107,15 @@ func HandleGameplayAnimation(delta):
 	if cur_vel < max_vel: # rotate model to look at velocity direction
 		spin_dist_travelled = 0.0
 		var start_up = global_basis.y.normalized()
-		var up_vec = Vector3.UP
-		if start_up.dot(Vector3.UP) < 0.95:
-			up_vec = start_up.slerp(Vector3.UP, 5.0 * delta)
+		var up_vec = Vector3.UP if !camera else camera.global_basis.y #+ ((-FlattenV3(vel_dir) * cur_vel) * velocity_tilt_amt)
+		up_vec = up_vec.normalized()
+		if start_up.dot(up_vec) < 0.95:
+			up_vec = start_up.slerp(up_vec, 10.0 * delta)
 		var offset_position = GetModelOffset(up_vec) #target.global_position + (up_vec * target_radius)
 		global_position = offset_position
-		var look_dir = -global_basis.z if cur_vel < idle_thresh else vel_dir
+		var default_look_dir = -global_basis.z if !camera else camera.basis.z
+		default_look_dir.y = 0.0
+		var look_dir = default_look_dir if cur_vel < idle_thresh else FlattenV3(vel_dir)
 		look_at(global_position + look_dir, up_vec)
 
 	else: #make model spin
@@ -143,3 +149,7 @@ func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
 		return result["position"]
 	
 	return target.global_position + (up_vector.normalized() * target_radius)
+
+func FlattenV3(vec : Vector3) -> Vector3:
+	vec.y = 0.0
+	return vec.normalized()
