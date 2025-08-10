@@ -27,7 +27,13 @@ var last_target_pos := Vector3.ZERO
 @onready var animation_tree := $AnimationTree
 @onready var state_machine := animation_tree.get("parameters/playback") as AnimationNodeStateMachinePlayback
 
+@export var dust_object : Node3D
+var dust_particles : CPUParticles3D
+
+@export var dust_thresh := 0.5
+
 var cur_vel := 0.0
+var last_vel := 0.0
 var vel_dir := Vector3.ZERO
 
 var spin_dist_travelled := 0.0
@@ -37,7 +43,8 @@ var intro_complete := false
 
 func _ready():
 	last_target_pos = target.global_position
-
+	if dust_object : dust_particles = dust_object.get_child(0)
+	dust_particles.emitting = false
 
 func _process(delta):
 	if eject && !intro_complete:
@@ -94,6 +101,9 @@ func HandleGameplayAnimation(delta):
 	cur_vel = pos_d.length() / delta
 	vel_dir = -pos_d.normalized() if cur_vel > idle_thresh else Vector3.ZERO
 	
+	var acceleration = abs(cur_vel - last_vel)
+	
+	last_vel = cur_vel
 	last_target_pos = target.global_position
 	
 	if use_overrides:
@@ -133,6 +143,11 @@ func HandleGameplayAnimation(delta):
 		spin_dist_travelled += cur_vel * delta
 		last_rotated_position = rotated_position
 		
+	if acceleration > dust_thresh && dust_particles:
+		dust_object.global_position = target.global_position - Vector3.UP * target_radius
+		dust_particles.emitting = true
+	elif acceleration <= dust_thresh && dust_particles:
+		dust_particles.emitting = false
 
 func GetModelOffset(up_vector := Vector3.UP) -> Vector3:
 	

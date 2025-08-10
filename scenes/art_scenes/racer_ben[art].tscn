@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dag8rxu5kmtaq"]
+[gd_scene load_steps=28 format=3 uid="uid://dag8rxu5kmtaq"]
 
 [ext_resource type="PackedScene" uid="uid://cvq606sbm61sv" path="res://assets/models/RacerBen.glb" id="1_oaqar"]
 [ext_resource type="Material" uid="uid://dj6iuongwl3st" path="res://resources/materials/racer_ben_body_mat.tres" id="2_nooa5"]
 [ext_resource type="Script" uid="uid://dlrjk7lor7ojd" path="res://scripts/art_controllers/racer_art_controller.gd" id="2_ydrh6"]
 [ext_resource type="Material" uid="uid://cxfetivdr5ldk" path="res://resources/materials/racer_ben_face_mat.tres" id="3_ydrh6"]
+[ext_resource type="PackedScene" uid="uid://deeat3oyd16mw" path="res://scenes/art_scenes/dust_particles[art].tscn" id="5_leixt"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvvfl"]
 animation = &"ball_flat"
@@ -110,10 +111,11 @@ states/locomotion/position = Vector2(486, -5)
 transitions = ["ball_idle", "locomotion", SubResource("AnimationNodeStateMachineTransition_76mit"), "locomotion", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hpo0m"), "locomotion", "ball_flat", SubResource("AnimationNodeStateMachineTransition_2p6nv"), "ball_flat", "locomotion", SubResource("AnimationNodeStateMachineTransition_smeun"), "Start", "car_idle", SubResource("AnimationNodeStateMachineTransition_2yqjx"), "car_idle", "car_eject", SubResource("AnimationNodeStateMachineTransition_12chk"), "car_eject", "get_up", SubResource("AnimationNodeStateMachineTransition_f0mpv"), "get_up", "jump", SubResource("AnimationNodeStateMachineTransition_cd3p5"), "jump", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hrww8")]
 graph_offset = Vector2(-207, -131)
 
-[node name="RacerBen" instance=ExtResource("1_oaqar")]
+[node name="RacerBen" node_paths=PackedStringArray("dust_object") instance=ExtResource("1_oaqar")]
 script = ExtResource("2_ydrh6")
 max_vel = 10.0
 locomotion_mult_range = Vector2(0.5, 2)
+dust_object = NodePath("DustParticles[art]")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0.160278, 0.668936, 0.0326442)
@@ -146,3 +148,5 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/eject = false
 parameters/locomotion/locomotion_amt/blend_position = 0.196958
 parameters/locomotion/locomotion_speed/scale = 1.0
+
+[node name="DustParticles[art]" parent="." index="3" instance=ExtResource("5_leixt")]

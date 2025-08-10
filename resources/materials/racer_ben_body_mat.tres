@@ -9,3 +9,5 @@ shader = ExtResource("1_rdgbm")
 shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(0, 0)
 shader_parameter/diffuse_tex = ExtResource("2_aqijg")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)

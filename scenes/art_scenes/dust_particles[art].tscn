@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://deeat3oyd16mw"]
+
+[ext_resource type="ArrayMesh" uid="uid://by64234fflba3" path="res://resources/meshes/dust_vfx_mesh.res" id="1_ah3jb"]
+[ext_resource type="Material" uid="uid://cpqbahsa514om" path="res://resources/materials/dust_mat.tres" id="1_esd27"]
+
+[sub_resource type="Curve" id="Curve_2tsxx"]
+_data = [Vector2(0, 0), 0.0, 5.1442, 0, 0, Vector2(0.547264, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.93659, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_n8dl8"]
+offsets = PackedFloat32Array(0, 0.845714)
+colors = PackedColorArray(0.757196, 0.780308, 0.721771, 1, 0.0433982, 0.0370561, 0.0338475, 1)
+
+[node name="DustParticles[art]" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+material_override = ExtResource("1_esd27")
+emitting = false
+amount = 30
+lifetime = 2.0
+lifetime_randomness = 0.5
+mesh = ExtResource("1_ah3jb")
+emission_shape = 1
+emission_sphere_radius = 0.65
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 1.35, 0)
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+radial_accel_max = 1.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_2tsxx")
+color_ramp = SubResource("Gradient_n8dl8")
