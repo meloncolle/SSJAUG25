@@ -1,10 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=21 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
 [ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="3_71i62"]
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
+sky_top_color = Color(0.219981, 0.550622, 0.895456, 1)
+sky_horizon_color = Color(1.249, 1.33774, 1.35144, 1)
+ground_bottom_color = Color(0.715007, 0.739313, 0.449288, 1)
+ground_horizon_color = Color(1.249, 1.33774, 1.35144, 1)
+
+[sub_resource type="Sky" id="Sky_v6fep"]
+sky_material = SubResource("ProceduralSkyMaterial_yfyfv")
+
+[sub_resource type="Environment" id="Environment_goep6"]
+background_mode = 2
+sky = SubResource("Sky_v6fep")
 
 [sub_resource type="SphereMesh" id="SphereMesh_71i62"]
 
@@ -55,6 +68,9 @@ texture_filter = 0
 script = ExtResource("1_biwvi")
 tilt_limit_x = 0.349066
 tilt_limit_z = 0.349066
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_goep6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
