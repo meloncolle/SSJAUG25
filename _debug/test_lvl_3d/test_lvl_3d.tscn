@@ -274,7 +274,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, 0.620629, 0)
 target = NodePath("../Player")
 target_radius = 0.5
 idle_thresh = 0.5
-locomotion_mult_range = Vector2(0.5, 3)
 eject = true
 override_velocity_length = 10.495
 dust_thresh = 0.1

@@ -113,9 +113,11 @@ graph_offset = Vector2(-207, -131)
 
 [node name="RacerBen" node_paths=PackedStringArray("dust_object") instance=ExtResource("1_oaqar")]
 script = ExtResource("2_ydrh6")
-max_vel = 10.0
-locomotion_mult_range = Vector2(0.5, 2)
+idle_thresh = 0.05
+max_vel = 12.5
+locomotion_mult_range = Vector2(0.5, 3)
 dust_object = NodePath("DustParticles[art]")
+dust_thresh = 0.1
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(0.160278, 0.668936, 0.0326442)
