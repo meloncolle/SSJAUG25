@@ -245,5 +245,4 @@ target = NodePath("../Player")
 target_radius = 0.5
 locomotion_mult_range = Vector2(0.5, 3)
 eject = true
-use_overrides = true
 override_velocity_length = 10.495
