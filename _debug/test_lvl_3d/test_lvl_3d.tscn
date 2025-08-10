@@ -93,6 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 3.418)
 
 [node name="Player" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29103, 0.0180929)
+mass = 200.0
 gravity_scale = 3.0
 can_sleep = false
 

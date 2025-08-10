@@ -3,7 +3,9 @@
 # todo: probably add check to set gravity to DOWN if we fall off da track
 
 # todo: something to make the ball "stick" to the ground better? u kind of lift off
-# from tilting back/forth quickly and float around... would probably be fixed by first todo
+# from tilting back/forth quickly and float around...
+
+# todo: when turning camera, it might feel better to change movement direction too?
 
 # NOTE THE GRAVITY SCALE ON PLAYER
 
@@ -21,13 +23,20 @@ var desired_gravity:= Vector3.DOWN
 
 func _physics_process(delta):
 	var input:= Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var cam_input:= Input.get_axis("cam_left", "cam_right")
+	
+	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
+		# todo: smooth this?
+		cam.yaw -= cam_input * cam.sensitivity
+	
 	if abs(input.x) > 0.0 || abs(input.y) > 0.0:
 		# if pressing direction input, set gravity to input dir
+		# scaled to tilt limit and rotated to match camera facing
 		desired_gravity = Vector3(
 			input.x * tilt_limit_x * ( 2.0 / PI),
 			0.0,
 			input.y * tilt_limit_z * ( 2.0 / PI)
-		)
+		).rotated(Vector3.UP, cam.yaw)
 	else:
 		# if not, go back to normal gravity
 		desired_gravity = Vector3.DOWN
@@ -62,8 +71,8 @@ func update_gravity(delta) -> void:
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR,
 			new_gravity)
 	
-	cam.pitch = -new_gravity.z * PI * 0.5
-	cam.roll = new_gravity.x * PI * 0.5
+	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
+	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
 	update_display(new_gravity)
 	
