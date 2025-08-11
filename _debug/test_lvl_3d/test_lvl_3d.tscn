@@ -276,4 +276,3 @@ target_radius = 0.5
 idle_thresh = 0.5
 eject = true
 override_velocity_length = 10.495
-dust_thresh = 0.1

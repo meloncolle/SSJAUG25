@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lm0jto3ii37u"]
+[gd_scene load_steps=9 format=3 uid="uid://lm0jto3ii37u"]
 
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="1_ocu34"]
+[ext_resource type="PackedScene" uid="uid://c2i3h2r28lfju" path="res://_debug/ElijahJunk/def_test_cube.tscn" id="2_yuomx"]
+[ext_resource type="Script" uid="uid://bdy03npmyn082" path="res://_debug/ElijahJunk/SquishClicker.gd" id="3_upjl5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jy2un"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,6 +21,9 @@ glow_enabled = true
 radius = 2.0
 height = 4.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_upjl5"]
+size = Vector3(32.7998, 1, 28.2119)
+
 [node name="ArtDev" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -32,10 +37,9 @@ environment = SubResource("Environment_sn81s")
 transform = Transform3D(0.988793, 0.0208473, -0.147831, 0, 0.990202, 0.13964, 0.149294, -0.138075, 0.979105, -1.10025, 3.90229, 6.21136)
 
 [node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_ocu34")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0542631, -0.0148711, 2.26643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0542631, -11.3961, 2.26643)
 target = NodePath("../ben_target")
 target_radius = 2.0
-idle_thresh = 0.05
 locomotion_mult_range = Vector2(0.1, 3.25)
 eject = true
 use_overrides = true
@@ -43,6 +47,28 @@ override_velocity_vector = Vector3(1, 0, 1)
 override_velocity_length = 10.81
 
 [node name="ben_target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.3813, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ben_target"]
 mesh = SubResource("SphereMesh_nhorq")
+
+[node name="DeformCube" parent="." instance=ExtResource("2_yuomx")]
+transform = Transform3D(0.806981, -0.429099, 0.405778, 0.590578, 0.586332, -0.554466, 0, 0.687088, 0.726575, 0, 3.26331, 0)
+wrinkle_amt = 0.15
+wrinkle_frequency = 17.5
+
+[node name="SquishObject" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05248, 4.27246, 0.0914474)
+
+[node name="ClickDestroyer" type="Node3D" parent="." node_paths=PackedStringArray("camera", "squishable")]
+script = ExtResource("3_upjl5")
+camera = NodePath("../Camera3D")
+squishable = NodePath("../DeformCube")
+squish_size = 1.25
+squish_amt = 0.5
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.33959, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_upjl5")
