@@ -21,30 +21,48 @@ var desired_gravity:= Vector3.DOWN
 @onready var player: RigidBody3D = $Player
 @onready var cam: Marker3D = $CamRig
 
+var Gyro=SDLGyro.new()
+
 func _physics_process(delta):
-	var input:= Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	# GYRO TESTING
+	if Config.GYRO_ENABLED:
+		var orientation = Gyro.gamepad_polling()
+		var euler = Quaternion(-orientation[3],orientation[2],orientation[1],orientation[0]).get_euler()
+		
+		desired_gravity = Vector3(
+			clamp(euler.x, -tilt_limit_x, tilt_limit_x),
+			0.0,
+			clamp(euler.z, -tilt_limit_z, tilt_limit_z),
+		).rotated(Vector3.UP, cam.yaw)
+	
+	else:
+		var input:= Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		
+		if abs(input.x) > 0.0 || abs(input.y) > 0.0:
+			# if pressing direction input, set gravity to input dir
+			# scaled to tilt limit and rotated to match camera facing
+			desired_gravity = Vector3(
+				input.x * tilt_limit_x * ( 2.0 / PI),
+				0.0,
+				input.y * tilt_limit_z * ( 2.0 / PI)
+			).rotated(Vector3.UP, cam.yaw)
+		else:
+			# if not, go back to normal gravity
+			desired_gravity = Vector3.DOWN
+
+	# rotate cam (yaw only)	
 	var cam_input:= Input.get_axis("cam_left", "cam_right")
 	
 	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
 		# todo: smooth this?
 		cam.yaw -= cam_input * cam.sensitivity
 	
-	if abs(input.x) > 0.0 || abs(input.y) > 0.0:
-		# if pressing direction input, set gravity to input dir
-		# scaled to tilt limit and rotated to match camera facing
-		desired_gravity = Vector3(
-			input.x * tilt_limit_x * ( 2.0 / PI),
-			0.0,
-			input.y * tilt_limit_z * ( 2.0 / PI)
-		).rotated(Vector3.UP, cam.yaw)
-	else:
-		# if not, go back to normal gravity
-		desired_gravity = Vector3.DOWN
-	
 	update_gravity(delta)
 	
 func _ready():
-	print(cam.rotation.z)
+	if Config.GYRO_ENABLED:
+		Gyro.sdl_init()
+		Gyro.controller_init()
 	
 func update_display(value: Vector3):
 	var txt = """Gravity:

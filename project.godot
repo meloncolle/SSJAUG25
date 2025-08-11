@@ -33,6 +33,10 @@ run/main_scene="res://scenes/game_scenes/main.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Config="*res://scripts/globals/config.gd"
+
 [dotnet]
 
 project/assembly_name="Base"
