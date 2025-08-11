@@ -41,6 +41,12 @@ func _physics_process(delta):
 		# if not, go back to normal gravity
 		desired_gravity = Vector3.DOWN
 	
+	# check if touching track
+	# this should prob use signals and actually check if its a track. but just testing rn
+	if player.get_contact_count() == 0:
+		# push it down so it sticks to track. Or helps us fall into void if we're off the track
+		desired_gravity.y = -9999
+	
 	update_gravity(delta)
 	
 func _ready():

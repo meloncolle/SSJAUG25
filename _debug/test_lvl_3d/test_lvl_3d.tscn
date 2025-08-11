@@ -115,6 +115,8 @@ collision_mask = 3
 mass = 200.0
 gravity_scale = 3.0
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("SphereMesh_71i62")
@@ -276,4 +278,3 @@ target_radius = 0.5
 idle_thresh = 0.5
 eject = true
 override_velocity_length = 10.495
-dust_thresh = 0.1
