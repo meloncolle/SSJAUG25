@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=23 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
 [ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://_debug/test_lvl_3d/ball.gd" id="3_v6fep"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
+[ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -72,6 +73,9 @@ tilt_limit_z = 0.349066
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_goep6")
+
+[node name="Keygen" parent="." instance=ExtResource("7_goep6")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

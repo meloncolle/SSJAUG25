@@ -17,6 +17,14 @@ var desired_gravity:= Vector3.DOWN
 @onready var gravity_label: RichTextLabel = $CanvasLayer/GravityLabel
 @onready var player: RigidBody3D = $Player
 @onready var cam: Marker3D = $CamRig
+@onready var keygen: Window = $Keygen
+
+func _ready():
+	keygen.connect("code_accepted", _on_code_accepted)
+
+func _input(event):
+	if event.is_action_pressed("toggle_console"):
+		keygen._on_open_requested() if !keygen.visible else keygen._on_close_requested()
 
 func _physics_process(delta):
 	var input:= Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -48,6 +56,7 @@ func _physics_process(delta):
 	update_gravity(delta)	
 	update_display({"speed": player.linear_velocity.length()})
 
+
 func update_display(vals: Dictionary):
 	var txt: String
 	if vals.has("gravity"):
@@ -60,6 +69,7 @@ func update_display(vals: Dictionary):
 	if vals.has("speed"):
 		txt = "Speed: %.5f"
 		speed_label.text = str(txt % [vals["speed"]])
+
 
 func update_gravity(delta) -> void:
 	var current_gravity: Vector3 = PhysicsServer3D.area_get_param(
@@ -83,3 +93,10 @@ func update_gravity(delta) -> void:
 	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
 	update_display({"gravity": new_gravity})
+
+func _on_code_accepted(code: String):
+	print("Code accepted: " + code)
+	# we can literally do whatever here i guess
+	match code:
+		"imscared":
+			player.speed_limit = 3
