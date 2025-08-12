@@ -1,13 +1,9 @@
-# todo: add some sort of logic to switch directions faster
-
-# todo: probably add check to set gravity to DOWN if we fall off da track
-
-# todo: something to make the ball "stick" to the ground better? u kind of lift off
-# from tilting back/forth quickly and float around...
-
-# todo: when turning camera, it might feel better to change movement direction too?
-
-# NOTE THE GRAVITY SCALE ON PLAYER
+# todo: add some sort of logic to switch directions faster. overcome inertia?
+# stuff that affects ball feel (these are all on Player node):
+# - speed limit
+# - mass
+# - gravity scale
+# - damping
 
 extends Node3D
 
@@ -16,7 +12,8 @@ extends Node3D
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
 
 var desired_gravity:= Vector3.DOWN
-		
+
+@onready var speed_label: RichTextLabel = $CanvasLayer/SpeedLabel
 @onready var gravity_label: RichTextLabel = $CanvasLayer/GravityLabel
 @onready var player: RigidBody3D = $Player
 @onready var cam: Marker3D = $CamRig
@@ -43,21 +40,27 @@ func _physics_process(delta):
 	
 	# check if touching track
 	# this should prob use signals and actually check if its a track. but just testing rn
+	# I think using groups might be a good idea. Dont include walls in group, so we can avoid "climbing" walls
 	if player.get_contact_count() == 0:
 		# push it down so it sticks to track. Or helps us fall into void if we're off the track
-		desired_gravity.y = -9999
-	
+		desired_gravity.y = -1
+		pass
 	update_gravity(delta)
 	
-func _ready():
-	print(cam.rotation.z)
-	
-func update_display(value: Vector3):
-	var txt = """Gravity:
+	update_display({"speed": player.linear_velocity.length()})
+
+func update_display(vals: Dictionary):
+	var txt: String
+	if vals.has("gravity"):
+		txt = """Gravity:
 [color=red]X: %.5f
 [color=green]Y: %.5f[/color]
 [color=blue]Z: %.5f[/color]"""
-	gravity_label.text = str(txt % [value.x, value.y, value.z])
+		gravity_label.text = str(txt % [vals["gravity"].x, vals["gravity"].y, vals["gravity"].z])
+		
+	if vals.has("speed"):
+		txt = "Speed: %.5f"
+		speed_label.text = str(txt % [vals["speed"]])
 
 func update_gravity(delta) -> void:
 	var current_gravity: Vector3 = PhysicsServer3D.area_get_param(
@@ -80,5 +83,4 @@ func update_gravity(delta) -> void:
 	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
 	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
-	update_display(new_gravity)
-	
+	update_display({"gravity": new_gravity})

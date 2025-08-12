@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=22 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
 [ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="3_71i62"]
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
+[ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://_debug/test_lvl_3d/ball.gd" id="3_v6fep"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
@@ -78,8 +79,8 @@ environment = SubResource("Environment_goep6")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -178.0
-offset_right = 184.0
+offset_top = -244.0
+offset_right = 381.0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.243137)
 
@@ -97,6 +98,19 @@ text = "Gravity:
 [color=green]Y: 0[/color]
 [color=blue]Z: 0[/color]"
 
+[node name="SpeedLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -236.0
+offset_right = 411.0
+offset_bottom = -143.0
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Speed:"
+
 [node name="OmniLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shadow_enabled = true
@@ -112,11 +126,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 3.418)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29103, 0.0180929)
 collision_layer = 2
 collision_mask = 3
-mass = 200.0
-gravity_scale = 3.0
+mass = 10.0
+gravity_scale = 10.0
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
+linear_damp = 0.07
+script = ExtResource("3_v6fep")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("SphereMesh_71i62")
@@ -179,7 +195,7 @@ mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart9" type="StaticBody3D" parent="Track"]
-transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -1.54121, -16.9833)
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -6.69666, -46.1308)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart9"]
@@ -191,7 +207,7 @@ mesh = SubResource("BoxMesh_yfyfv")
 surface_material_override/0 = SubResource("StandardMaterial3D_v6fep")
 
 [node name="TrackPart10" type="StaticBody3D" parent="Track"]
-transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -0.541208, -16.9452)
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -5.69666, -46.0927)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart10"]
@@ -202,7 +218,7 @@ mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart11" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -0.541208, -21.7291)
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -5.69666, -50.8766)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart11"]
@@ -213,7 +229,7 @@ mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart12" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -0.541208, -12.2294)
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -5.69666, -41.3769)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart12"]
@@ -235,8 +251,44 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
+[node name="TrackPart13" type="StaticBody3D" parent="Track"]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -2.80069, -19.562)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart13"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart13"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="TrackPart14" type="StaticBody3D" parent="Track"]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -4.54444, -29.1984)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart14"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart14"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="TrackPart15" type="StaticBody3D" parent="Track"]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -6.23489, -38.9474)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart15"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart15"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
 [node name="TrackPart6" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -1.80319, -17.1824)
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -6.95864, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart6"]
@@ -248,7 +300,7 @@ mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
 [node name="TrackPart7" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -1.66762, -17.1824)
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -6.82307, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart7"]
@@ -260,7 +312,7 @@ mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
 [node name="TrackPart8" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -1.55686, -17.1824)
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -6.71231, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart8"]
