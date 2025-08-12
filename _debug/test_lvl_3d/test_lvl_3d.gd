@@ -38,15 +38,14 @@ func _physics_process(delta):
 		# if not, go back to normal gravity
 		desired_gravity = Vector3.DOWN
 	
-	# check if touching track
-	# this should prob use signals and actually check if its a track. but just testing rn
-	# I think using groups might be a good idea. Dont include walls in group, so we can avoid "climbing" walls
+	# if not touching track, push player down. avoids 'climbing' walls, and helps fall if we get off course
+	# in this scene, track pieces (not walls) were manually added to groups. should be handled better in real lvls
 	if player.get_contact_count() == 0:
-		# push it down so it sticks to track. Or helps us fall into void if we're off the track
 		desired_gravity.y = -1
-		pass
-	update_gravity(delta)
-	
+	elif player.get_colliding_bodies().all(func(b): return !b.is_in_group("track")):
+		desired_gravity.y = -1
+
+	update_gravity(delta)	
 	update_display({"speed": player.linear_velocity.length()})
 
 func update_display(vals: Dictionary):
