@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb5lxd7ivfj8c"]
+
+[ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/keygen.gd" id="1_4fa5a"]
+
+[sub_resource type="Gradient" id="Gradient_v6fep"]
+offsets = PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.833333, 1, 0, 1, 0, 1, 0.166667, 1, 0, 1, 0.75, 1, 0.0999999, 0, 1, 1, 0.816667, 0, 1, 1, 1, 0, 0.683333, 1, 1, 0, 0.0166664, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 7
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_goep6"]
+gradient = SubResource("Gradient_v6fep")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6fep"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(1, 1, 1, 1)
+shadow_size = 3
+shadow_offset = Vector2(0.245, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goep6"]
+shadow_size = 4
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixj8b"]
+bg_color = Color(0.439049, 0.439049, 0.439049, 1)
+shadow_offset = Vector2(3, 3)
+
+[node name="Keygen" type="Window"]
+auto_translate_mode = 1
+title = "✧･ﾟ: *✧･ﾟ:* ＧＷ _ＵＮＩＶＥＲＳＡＬ_ＫＥＹＧＥＮ_２０２５✧･ﾟ: *✧･ﾟ:* "
+initial_position = 1
+size = Vector2i(725, 440)
+unresizable = true
+always_on_top = true
+script = ExtResource("1_4fa5a")
+
+[node name="BG" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_goep6")
+stretch_mode = 1
+flip_h = true
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.5
+offset_top = 52.0
+offset_right = 325.5
+offset_bottom = 199.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "GROUNDWATER UNIVERSAL KEYGEN 2025"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.5
+offset_top = 39.315
+offset_right = 179.5
+offset_bottom = 70.315
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6fep")
+max_length = 32
+caret_blink = true
+
+[node name="SubmitButton" type="Button" parent="."]
+offset_left = 306.0
+offset_top = 353.0
+offset_right = 428.0
+offset_bottom = 384.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_goep6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ixj8b")
+theme_override_styles/normal = SubResource("StyleBoxFlat_goep6")
+text = "GENERATE KEY"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 257.0
+offset_right = 174.0
+offset_bottom = 293.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Serial:"

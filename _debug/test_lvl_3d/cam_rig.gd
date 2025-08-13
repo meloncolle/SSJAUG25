@@ -1,6 +1,7 @@
 extends Marker3D
 
-@onready var cam: Camera3D = $Camera3D
+@onready var cam: Camera3D = $PlayerCam
+@export var bg_cam: Camera3D # mirror pitch + yaw (not roll) to bg
 
 @export_range(-180, 180, 0.1, "radians_as_degrees") var pitch = 0.0:
 	set(value):
@@ -18,6 +19,10 @@ extends Marker3D
 		rotation.y = yaw
 		
 @export var sensitivity:= 0.05
+
+func _process(_delta):
+	bg_cam.global_position = cam.global_position
+	bg_cam.global_rotation = Vector3(cam.global_rotation.x, cam.global_rotation.y, 0)
 
 var distance: float
 var starting_pitch: float
