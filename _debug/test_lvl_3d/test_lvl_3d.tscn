@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=24 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
@@ -66,10 +66,19 @@ albedo_texture = ExtResource("3_71i62")
 uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_goep6"]
+radius = 3.761
+height = 26.544
+
 [node name="TestLvl3d" type="Node3D"]
 script = ExtResource("1_biwvi")
 tilt_limit_x = 0.349066
 tilt_limit_z = 0.349066
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 3
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_goep6")
@@ -80,6 +89,7 @@ visible = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -88,7 +98,8 @@ offset_right = 381.0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.243137)
 
-[node name="GravityLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="GravityLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -102,7 +113,8 @@ text = "Gravity:
 [color=green]Y: 0[/color]
 [color=blue]Z: 0[/color]"
 
-[node name="SpeedLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="SpeedLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -115,16 +127,32 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Speed:"
 
-[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-shadow_enabled = true
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="CamRig" type="Marker3D" parent="."]
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="CamRig" type="Marker3D" parent="CanvasLayer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("bg_cam")]
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 2.29103, 0.0180929)
 script = ExtResource("3_c8rof")
+bg_cam = NodePath("../../../../BGCam")
 
-[node name="Camera3D" type="Camera3D" parent="CamRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 3.418)
+[node name="PlayerCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport/CamRig"]
+transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 0, -0.291565, 3.16561)
+cull_mask = 1048573
+
+[node name="BGCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952836, 0.303484, 0, -0.303484, 0.952836, 0, 3.68146, 2.41063)
+cull_mask = 1048574
 
 [node name="Player" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29103, 0.0180929)
@@ -148,9 +176,17 @@ shape = SubResource("SphereShape3D_s8dc5")
 debug_color = Color(0.852898, 0.239525, 0.705028, 0.42)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
-remote_path = NodePath("../../CamRig")
+remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/CamRig")
 update_rotation = false
 update_scale = false
+
+[node name="RacerBen" parent="Player" node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, -1.6704, -0.0180929)
+target = NodePath("..")
+target_radius = 0.5
+idle_thresh = 0.5
+eject = true
+override_velocity_length = 10.495
 
 [node name="Track" type="Node3D" parent="."]
 
@@ -327,10 +363,29 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
-[node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, 0.620629, 0)
-target = NodePath("../Player")
-target_radius = 0.5
-idle_thresh = 0.5
-eject = true
-override_velocity_length = 10.495
+[node name="BG" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8655, -8.20295, -0.807329)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6062, -8.20295, -11.5609)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.627, -8.20295, -30.8669)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3233, -8.20295, -96.2914)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4306, -8.20295, -43.2505)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")

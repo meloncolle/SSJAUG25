@@ -13,10 +13,11 @@ extends Node3D
 
 var desired_gravity:= Vector3.DOWN
 
-@onready var speed_label: RichTextLabel = $CanvasLayer/SpeedLabel
-@onready var gravity_label: RichTextLabel = $CanvasLayer/GravityLabel
+@onready var speed_label: RichTextLabel = $CanvasLayer/ColorRect/SpeedLabel
+@onready var gravity_label: RichTextLabel = $CanvasLayer/ColorRect/GravityLabel
 @onready var player: RigidBody3D = $Player
-@onready var cam: Marker3D = $CamRig
+# todo: make cam uniquely named in final ver
+@onready var cam: Marker3D = $CanvasLayer/SubViewportContainer/SubViewport/CamRig
 @onready var keygen: Window = $Keygen
 
 func _ready():
