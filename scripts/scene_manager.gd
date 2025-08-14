@@ -7,6 +7,7 @@ var scene_instance: Node = null
 
 @onready var start_menu: Control = $Menus/Start
 @onready var pause_menu: Control = $Menus/Pause
+@onready var settings_menu: Control = $Menus/Settings
 
 func _ready():
 	set_state(Enums.GameState.ON_START)
@@ -14,11 +15,13 @@ func _ready():
 	start_menu.get_node("Panel/VBoxContainer/ExitButton").pressed.connect(self._on_press_exit)
 	pause_menu.get_node("Panel/VBoxContainer/ResumeButton").pressed.connect(self._on_press_resume)
 	pause_menu.get_node("Panel/VBoxContainer/RestartButton").pressed.connect(self._on_press_restart)
+	pause_menu.get_node("Panel/VBoxContainer/SettingsButton").pressed.connect(self._on_open_settings)
 	pause_menu.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(self._on_press_quit)
+	
+	settings_menu.connect("settings_closed", _on_settings_closed)
 
 func _input (event: InputEvent):
 	if(game_state != Enums.GameState.ON_START && event.is_action_pressed("ui_cancel")):
-		
 		match game_state:
 			Enums.GameState.IN_GAME:
 				set_state(Enums.GameState.PAUSED)
@@ -61,6 +64,21 @@ func _on_press_restart():
 	scene_instance = load(starting_level.resource_path).instantiate()
 	self.add_child(scene_instance)
 	set_state(Enums.GameState.IN_GAME)
+
+func _on_open_settings():
+	pause_menu.visible = false
+	settings_menu.visible = true
+	
+func _on_settings_closed(settings: Dictionary):
+	if settings == {}:
+		print("saving settings cancelled")
+	else:
+		print("settings updated")
+		# if settings = Config.settings then write to config, and update actual ingame values
+		# else nothing changed
+	
+	settings_menu.visible = false
+	pause_menu.visible = true
 
 	
 func _on_press_quit():

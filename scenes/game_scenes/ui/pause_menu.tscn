@@ -19,9 +19,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -158.5
-offset_top = -91.09
+offset_top = -113.96
 offset_right = 158.5
-offset_bottom = 91.09
+offset_bottom = 113.96
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_b0yqk")
@@ -32,8 +32,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -44.0
-offset_bottom = 44.0
+offset_top = -109.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -50,6 +50,11 @@ text = "Resume
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Restart
+"
+
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Settings
 "
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
