@@ -13,6 +13,7 @@ func _ready():
 	start_menu.get_node("Panel/VBoxContainer/StartButton").pressed.connect(self._on_press_start)
 	start_menu.get_node("Panel/VBoxContainer/ExitButton").pressed.connect(self._on_press_exit)
 	pause_menu.get_node("Panel/VBoxContainer/ResumeButton").pressed.connect(self._on_press_resume)
+	pause_menu.get_node("Panel/VBoxContainer/RestartButton").pressed.connect(self._on_press_restart)
 	pause_menu.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(self._on_press_quit)
 
 func _input (event: InputEvent):
@@ -53,6 +54,14 @@ func _on_press_exit():
 func _on_press_resume():
 	get_tree().paused = false
 	set_state(Enums.GameState.IN_GAME)
+	
+func _on_press_restart():
+	#get_tree().paused = false # Need if we play fade anim later
+	scene_instance.queue_free()
+	scene_instance = load(starting_level.resource_path).instantiate()
+	self.add_child(scene_instance)
+	set_state(Enums.GameState.IN_GAME)
+
 	
 func _on_press_quit():
 	if (is_instance_valid(scene_instance)):

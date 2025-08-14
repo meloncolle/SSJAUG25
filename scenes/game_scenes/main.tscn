@@ -12,6 +12,7 @@ starting_level = ExtResource("2_ma3g5")
 
 [node name="Menus" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 2
 
 [node name="Start" parent="Menus" instance=ExtResource("3_v6yh4")]
 
