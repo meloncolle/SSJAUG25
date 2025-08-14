@@ -14,9 +14,12 @@ func _ready():
 
 func _input (event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
+		# Disable closing settings menu with esc, because we dont know if you wanna save settings or not
+		
 		# don't want it to propagate and close pause menu
 		# if this causes problems later, can always add another gamestate for settings
-		get_viewport().set_input_as_handled()
+		if visible:
+			get_viewport().set_input_as_handled()
 
 # Return dictionary of settings based on menu config
 func get_settings() -> Dictionary:
