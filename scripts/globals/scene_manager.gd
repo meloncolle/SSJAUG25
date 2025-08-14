@@ -69,17 +69,9 @@ func _on_open_settings():
 	pause_menu.visible = false
 	settings_menu.visible = true
 	
-func _on_settings_closed(settings: Dictionary):
-	if settings == {}:
-		print("saving settings cancelled")
-	else:
-		print("settings updated")
-		# if settings = Config.settings then write to config, and update actual ingame values
-		# else nothing changed
-	
+func _on_settings_closed():	
 	settings_menu.visible = false
 	pause_menu.visible = true
-
 	
 func _on_press_quit():
 	if (is_instance_valid(scene_instance)):

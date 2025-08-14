@@ -35,6 +35,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Config="*res://scripts/globals/config.gd"
 SceneManager="*res://scenes/game_scenes/scene_manager.tscn"
 
 [display]

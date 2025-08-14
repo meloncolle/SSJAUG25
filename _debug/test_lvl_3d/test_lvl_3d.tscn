@@ -145,6 +145,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 2.29103, 0.0180929)
 script = ExtResource("3_c8rof")
 bg_cam = NodePath("../../../../BGCam")
+sensitivity = 0.2
 
 [node name="PlayerCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport/CamRig"]
 transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 0, -0.291565, 3.16561)

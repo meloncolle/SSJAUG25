@@ -22,6 +22,9 @@ var desired_gravity:= Vector3.DOWN
 
 func _ready():
 	keygen.connect("code_accepted", _on_code_accepted)
+	SceneManager.settings_menu.connect("settings_changed", _on_settings_changed)
+	# sync settings with config
+	_on_settings_changed()
 
 func _input(event):
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
@@ -105,3 +108,8 @@ func _on_code_accepted(code: String):
 	match code:
 		"imscared":
 			player.speed_limit = 3
+
+# Read settings from config and update values in game
+func _on_settings_changed():
+# add to this for each addtl setting
+	cam.sensitivity = Config.data.get_value("settings", "cam_sensitivity", Config.DEFAULTS["cam_sensitivity"])
