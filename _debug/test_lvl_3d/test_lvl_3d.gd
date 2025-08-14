@@ -36,7 +36,7 @@ func _physics_process(delta):
 	if Config.GYRO_ENABLED:
 		var orientation = Gyro.gamepad_polling()
 		var euler = Quaternion(-orientation[3],orientation[2],orientation[1],orientation[0]).get_euler()
-		
+		euler *= 0.3 # make that shit less sensitive!!
 		desired_gravity = Vector3(
 			clamp(euler.x, -tilt_limit_x, tilt_limit_x),
 			0.0,
