@@ -30,6 +30,8 @@ var last_target_pos := Vector3.ZERO
 @export var dust_object : Node3D
 var dust_particles : CPUParticles3D
 
+var particle_position := Vector3.ZERO
+
 @export var dust_thresh := 0.5
 
 var cur_vel := 0.0
@@ -140,10 +142,12 @@ func HandleGameplayAnimation(delta):
 		global_position = GetModelOffset(rotated_position) #target.global_position + rotated_position
 		look_at(global_position - look_dir, rotated_position.normalized())
 		
-		spin_dist_travelled += cur_vel * delta
+		var spin_d = cur_vel if particle_position != Vector3.ZERO else FlattenV3(pos_d / delta).length()
+		
+		spin_dist_travelled += spin_d * delta
 		last_rotated_position = rotated_position
 		
-	var particle_position = GetParticlePosition()
+	particle_position = GetParticlePosition()
 	if acceleration > dust_thresh && dust_particles && particle_position!= Vector3.ZERO:
 		dust_object.global_position = particle_position
 		dust_particles.emitting = true
