@@ -18,6 +18,11 @@ func _ready():
 	pause_menu.get_node("Panel/VBoxContainer/SettingsButton").pressed.connect(self._on_open_settings)
 	pause_menu.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(self._on_press_quit)
 	
+	# set focus on button when menu becomes visible, so its compatible with kb/controller
+	start_menu.connect("visibility_changed", func(): if start_menu.visible: start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus())
+	pause_menu.connect("visibility_changed", func(): if pause_menu.visible: pause_menu.get_node("Panel/VBoxContainer/ResumeButton").grab_focus())
+	start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus()
+
 	settings_menu.connect("settings_closed", _on_settings_closed)
 
 func _input (event: InputEvent):

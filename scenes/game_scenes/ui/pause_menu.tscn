@@ -63,9 +63,9 @@ text = "Quit"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 752.0
+offset_left = 754.0
 offset_top = 14.0
-offset_right = 1143.0
+offset_right = 1145.0
 offset_bottom = 257.0
 color = Color(0, 0, 0, 0.486275)
 
@@ -81,4 +81,5 @@ text = "CONTROLS:
  Camera				| Q/E				| L/R
  Keygen Toggle	| SHIFT			| Down face button
  Cheat Input		| Arrow Keys | D-Pad
- Pause Toggle	| ESC				| START"
+ Pause Toggle	| ESC				| START
+ UI Accept			| ENTER			| Right face button"

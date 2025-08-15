@@ -10,9 +10,12 @@ signal settings_changed
 @onready var cam_sensitivity: HSlider = $Settings/CamSensitivity/HSlider
 
 func _ready():
-	sync_ui()	
+	sync_ui()
 	confirm_button.pressed.connect(self._on_press_confirm)
 	cancel_button.pressed.connect(self._on_press_cancel)
+	
+	# set focus on button when menu becomes visible, so its compatible with kb/controller
+	connect("visibility_changed", func(): if visible: confirm_button.grab_focus())
 
 func _input (event: InputEvent):
 	if event.is_action_pressed("ui_cancel"):
