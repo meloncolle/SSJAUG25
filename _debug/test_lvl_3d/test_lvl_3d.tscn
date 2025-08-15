@@ -1,13 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=22 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
-[ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
 [ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="3_71i62"]
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
+[ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://_debug/test_lvl_3d/ball.gd" id="3_v6fep"]
+[ext_resource type="PackedScene" uid="uid://big86m0q0fhvh" path="res://assets/models/car_scuffed.glb" id="5_ixj8b"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
-[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="6_v6fep"]
-[ext_resource type="PackedScene" uid="uid://bhbu8n8xxwgvo" path="res://scenes/art_scenes/instance_placer.tscn" id="7_ixj8b"]
-[ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier_placeholder[art].tscn" id="8_jikjp"]
+[ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -21,13 +20,6 @@ sky_material = SubResource("ProceduralSkyMaterial_yfyfv")
 [sub_resource type="Environment" id="Environment_goep6"]
 background_mode = 2
 sky = SubResource("Sky_v6fep")
-
-[sub_resource type="SphereMesh" id="SphereMesh_71i62"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8rof"]
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission_texture = ExtResource("2_s8dc5")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8dc5"]
 
@@ -67,33 +59,40 @@ albedo_texture = ExtResource("3_71i62")
 uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
-[sub_resource type="Curve3D" id="Curve3D_ixj8b"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -43.2555, -3.32183, 39.011, 0, 0, 0, 0, 0, 0, -25.1658, -1.90038, 8.84482, 7.86755, -0.0335388, 2.7409, -7.86755, 0.0335388, -2.7409, -24.3046, -1.20668, -2.54753, 0, 0, 0, 0, 0, 0, -46.2868, -2.08401, -1.6875),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_goep6"]
+radius = 3.761
+height = 26.544
 
 [node name="TestLvl3d" type="Node3D"]
 script = ExtResource("1_biwvi")
 tilt_limit_x = 0.349066
 tilt_limit_z = 0.349066
 
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 3
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_goep6")
+
+[node name="Keygen" parent="." instance=ExtResource("7_goep6")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -178.0
-offset_right = 184.0
+offset_top = -244.0
+offset_right = 381.0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.243137)
 
-[node name="GravityLabel" type="RichTextLabel" parent="CanvasLayer"]
+[node name="GravityLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -107,45 +106,84 @@ text = "Gravity:
 [color=green]Y: 0[/color]
 [color=blue]Z: 0[/color]"
 
-[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-shadow_enabled = true
+[node name="SpeedLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -236.0
+offset_right = 411.0
+offset_bottom = -143.0
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Speed:"
 
-[node name="CamRig" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, -42.2813, -2.77528, 38.2946)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="CamRig" type="Marker3D" parent="CanvasLayer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("bg_cam")]
+transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 2.29103, 0.0180929)
 script = ExtResource("3_c8rof")
+bg_cam = NodePath("../../../../BGCam")
+sensitivity = 0.2
 
-[node name="Camera3D" type="Camera3D" parent="CamRig"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 3.418)
+[node name="PlayerCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport/CamRig"]
+transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 0, -0.291565, 3.16561)
+cull_mask = 1048573
+
+[node name="BGCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952836, 0.303484, 0, -0.303484, 0.952836, 0, 3.68146, 2.41063)
+cull_mask = 1048574
 
 [node name="Player" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2813, -2.77528, 38.2946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29103, 0.0180929)
 collision_layer = 2
 collision_mask = 3
-mass = 200.0
-gravity_scale = 3.0
+mass = 10.0
+gravity_scale = 10.0
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
+linear_damp = 0.07
+script = ExtResource("3_v6fep")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("SphereMesh_71i62")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_c8rof")
+[node name="car_scuffed" parent="Player" instance=ExtResource("5_ixj8b")]
+transform = Transform3D(-1.07093e-08, 0, -0.245, 0, 0.245, 0, 0.245, 0, -1.07093e-08, -0.0193034, -0.106383, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_s8dc5")
 debug_color = Color(0.852898, 0.239525, 0.705028, 0.42)
+debug_fill = false
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
-remote_path = NodePath("../../CamRig")
+remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/CamRig")
 update_rotation = false
 update_scale = false
 
-[node name="Track" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.9136, 0, -27.4208)
+[node name="RacerBen" parent="Player" node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, -1.6704, -0.0180929)
+target = NodePath("..")
+target_radius = 0.5
+idle_thresh = 0.5
+eject = true
+override_velocity_length = 10.495
 
-[node name="TrackPart" type="StaticBody3D" parent="Track"]
+[node name="Track" type="Node3D" parent="."]
+
+[node name="TrackPart" type="StaticBody3D" parent="Track" groups=["track"]]
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart"]
@@ -189,8 +227,8 @@ shape = SubResource("BoxShape3D_goep6")
 mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
-[node name="TrackPart9" type="StaticBody3D" parent="Track"]
-transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -1.54121, -16.9833)
+[node name="TrackPart9" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -6.69666, -46.1308)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart9"]
@@ -202,7 +240,7 @@ mesh = SubResource("BoxMesh_yfyfv")
 surface_material_override/0 = SubResource("StandardMaterial3D_v6fep")
 
 [node name="TrackPart10" type="StaticBody3D" parent="Track"]
-transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -0.541208, -16.9452)
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -5.69666, -46.0927)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart10"]
@@ -213,7 +251,7 @@ mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart11" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -0.541208, -21.7291)
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -5.69666, -50.8766)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart11"]
@@ -224,7 +262,7 @@ mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart12" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -0.541208, -12.2294)
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -5.69666, -41.3769)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart12"]
@@ -234,7 +272,7 @@ shape = SubResource("BoxShape3D_goep6")
 mesh = SubResource("BoxMesh_ixj8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
-[node name="TrackPart5" type="StaticBody3D" parent="Track"]
+[node name="TrackPart5" type="StaticBody3D" parent="Track" groups=["track"]]
 transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -0.937813, -9.67513)
 collision_mask = 0
 
@@ -246,8 +284,44 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
-[node name="TrackPart6" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -1.80319, -17.1824)
+[node name="TrackPart13" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -2.80069, -19.562)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart13"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart13"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="TrackPart14" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -4.54444, -29.1984)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart14"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart14"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="TrackPart15" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -6.23489, -38.9474)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart15"]
+visible = false
+shape = SubResource("BoxShape3D_yfyfv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart15"]
+mesh = SubResource("BoxMesh_v6fep")
+surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="TrackPart6" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -6.95864, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart6"]
@@ -258,8 +332,8 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
-[node name="TrackPart7" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -1.66762, -17.1824)
+[node name="TrackPart7" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -6.82307, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart7"]
@@ -270,8 +344,8 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
-[node name="TrackPart8" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -1.55686, -17.1824)
+[node name="TrackPart8" type="StaticBody3D" parent="Track" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -6.71231, -46.3299)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart8"]
@@ -282,444 +356,29 @@ shape = SubResource("BoxShape3D_yfyfv")
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
-[node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -37.6259, -4.12342, 34.2489)
-target = NodePath("../Player")
-target_radius = 0.5
-idle_thresh = 0.5
-eject = true
-override_velocity_length = 10.495
-
-[node name="Road" parent="." instance=ExtResource("6_v6fep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38001, 0, 4.46972)
-
-[node name="Path3D" parent="Road" index="0"]
-curve = SubResource("Curve3D_ixj8b")
-
-[node name="InstancePlacer" parent="Road" node_paths=PackedStringArray("path_parent") instance=ExtResource("7_ixj8b")]
-original = ExtResource("8_jikjp")
-path_parent = NodePath("..")
-instance_count = 140
-separation = 2.915
-
-[node name="BarrierPlaceholder[art]" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -43.2555, -3.32183, 39.011)
-
-[node name="@Node3D@59955" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -41.7576, -3.20413, 36.5131)
-
-[node name="@Node3D@59956" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -40.2597, -3.08642, 34.0152)
-
-[node name="@Node3D@59957" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -38.7617, -2.96872, 31.5172)
-
-[node name="@Node3D@59958" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -37.2638, -2.85102, 29.0193)
-
-[node name="@Node3D@59959" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -35.7659, -2.73331, 26.5214)
-
-[node name="@Node3D@59960" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -34.268, -2.61561, 24.0235)
-
-[node name="@Node3D@59961" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -32.7701, -2.4979, 21.5256)
-
-[node name="@Node3D@59962" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458918, 0, 1, 0, 0.458918, 0, 0.888479, -31.2721, -2.3802, 19.0276)
-
-[node name="@Node3D@59963" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -29.7742, -2.2625, 16.5297)
-
-[node name="@Node3D@59964" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -28.2763, -2.14479, 14.0318)
-
-[node name="@Node3D@59965" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -26.7784, -2.02709, 11.5339)
-
-[node name="@Node3D@59966" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.888479, 0, -0.458917, 0, 1, 0, 0.458917, 0, 0.888479, -25.2804, -1.90939, 9.03596)
-
-[node name="@Node3D@59967" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.899949, 0, -0.435995, 0, 1, 0, 0.435995, 0, 0.899949, -23.419, -1.74984, 6.80455)
-
-[node name="@Node3D@59968" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.879583, 0, -0.475746, 0, 1, 0, 0.475746, 0, 0.879583, -21.8684, -1.57765, 4.34693)
-
-[node name="@Node3D@59969" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.832137, 0, -0.554569, 0, 1, 0, 0.554569, 0, 0.832137, -21.0284, -1.3988, 1.58083)
-
-[node name="@Node3D@59970" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.773805, 0, -0.633424, 0, 1, 0, 0.633424, 0, 0.773805, -21.9199, -1.25346, -1.10288)
-
-[node name="@Node3D@59971" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.780083, 0, -0.625676, 0, 1, 0, 0.625676, 0, 0.780083, -24.3973, -1.20637, -2.57907)
-
-[node name="@Node3D@59972" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.788291, 0, -0.615303, 0, 1, 0, 0.615303, 0, 0.788291, -27.2289, -1.22964, -3.25552)
-
-[node name="@Node3D@59973" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.794658, 0, -0.607058, 0, 1, 0, 0.607058, 0, 0.794658, -30.1278, -1.30012, -3.53881)
-
-[node name="@Node3D@59974" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.799533, 0, -0.600622, 0, 1, 0, 0.600622, 0, 0.799533, -33.0403, -1.40113, -3.55842)
-
-[node name="@Node3D@59975" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.803407, 0, -0.59543, 0, 1, 0, 0.59543, 0, 0.803407, -35.9473, -1.52367, -3.38749)
-
-[node name="@Node3D@59976" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.806637, 0, -0.591048, 0, 1, 0, 0.591048, 0, 0.806637, -38.8413, -1.66256, -3.06911)
-
-[node name="@Node3D@59977" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.809502, 0, -0.587117, 0, 1, 0, 0.587117, 0, 0.809502, -41.7186, -1.81475, -2.62887)
-
-[node name="@Node3D@59978" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.812368, 0, -0.583145, 0, 1, 0, 0.583145, 0, 0.812368, -44.5763, -1.97879, -2.07856)
-
-[node name="@Node3D@59979" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59980" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59981" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59982" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59983" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59984" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59985" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59986" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59987" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59988" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59989" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59990" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59991" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59992" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59993" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59994" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59995" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59996" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59997" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59998" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@59999" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60000" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60001" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60002" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60003" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60004" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60005" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60006" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60007" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60008" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60009" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60010" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60011" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60012" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60013" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60014" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60015" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60016" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60017" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60018" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60019" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60020" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60021" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60022" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60023" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60024" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60025" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60026" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60027" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60028" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60029" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60030" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60031" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60032" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60033" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60034" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60035" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60036" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60037" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60038" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60039" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60040" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60041" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60042" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60043" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60044" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60045" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60046" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60047" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60048" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60049" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60050" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60051" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60052" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60053" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60054" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60055" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60056" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60057" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60058" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60059" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60060" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60061" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60062" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60063" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60064" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60065" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60066" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60067" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60068" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60069" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60070" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60071" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60072" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60073" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60074" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60075" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60076" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60077" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60078" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60079" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60080" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60081" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60082" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60083" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60084" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60085" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60086" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60087" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60088" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60089" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60090" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60091" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60092" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[node name="@Node3D@60093" type="Node3D" parent="Road/InstancePlacer" instance=ExtResource("8_jikjp")]
-transform = Transform3D(0.800201, 0, -0.599731, 0, 1, 0, 0.599731, 0, 0.800201, -46.2868, -2.08401, -1.6875)
-
-[editable path="Road"]
+[node name="BG" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8655, -8.20295, -0.807329)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6062, -8.20295, -11.5609)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.627, -8.20295, -30.8669)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3233, -8.20295, -96.2914)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4306, -8.20295, -43.2505)
+layers = 2
+mesh = SubResource("CapsuleMesh_goep6")
