@@ -21,7 +21,7 @@ func _ready():
 	settings_menu.connect("settings_closed", _on_settings_closed)
 
 func _input (event: InputEvent):
-	if(game_state != Enums.GameState.ON_START && event.is_action_pressed("ui_cancel")):
+	if(game_state != Enums.GameState.ON_START && event.is_action_pressed("pause")):
 		match game_state:
 			Enums.GameState.IN_GAME:
 				set_state(Enums.GameState.PAUSED)
