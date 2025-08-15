@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2rigyxrviyqi"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/visual_shaders/base_lit.tres" id="1_dj3oc"]
+[ext_resource type="Texture2D" uid="uid://chfufwh375e5d" path="res://assets/textures/car_scuffed_CAR TEXTURE_SCUFFED.png" id="2_dj3oc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dj3oc")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("2_dj3oc")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)

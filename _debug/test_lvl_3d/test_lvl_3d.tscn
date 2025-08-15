@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=22 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
 [ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="3_71i62"]
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
+[ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="6_v6fep"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -119,6 +120,7 @@ contact_monitor = true
 max_contacts_reported = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+visible = false
 mesh = SubResource("SphereMesh_71i62")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c8rof")
@@ -272,9 +274,14 @@ mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
 
 [node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, 0.620629, 0)
+transform = Transform3D(-0.433013, 0, -0.25, 0, 0.5, 0, 0.25, 0, -0.433013, 0.05888, 0.620629, 0.112301)
 target = NodePath("../Player")
 target_radius = 0.5
 idle_thresh = 0.5
 eject = true
 override_velocity_length = 10.495
+
+[node name="PlayerCar[art]" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_v6fep")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.0699809, 0.492108, 0.154483)
+target = NodePath("../Player")
+set_tracking_on_ready = true
