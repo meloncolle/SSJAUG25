@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb5lxd7ivfj8c"]
 
-[ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/keygen.gd" id="1_4fa5a"]
+[ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/ui/keygen.gd" id="1_4fa5a"]
 [ext_resource type="Texture2D" uid="uid://dfjtnyayj6uo7" path="res://assets/textures/arrow_l.svg" id="2_rq7q1"]
 
 [sub_resource type="Gradient" id="Gradient_v6fep"]

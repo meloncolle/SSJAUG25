@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c82tul4b1lqlu"]
 
-[ext_resource type="Script" uid="uid://jeycota2uk8n" path="res://scripts/settings_menu.gd" id="1_8ykqg"]
+[ext_resource type="Script" uid="uid://jeycota2uk8n" path="res://scripts/ui/settings_menu.gd" id="1_8ykqg"]
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_0701v"]
 
 [node name="SettingsMenu" type="Control"]

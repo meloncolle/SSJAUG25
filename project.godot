@@ -36,7 +36,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Config="*res://scripts/globals/config.gd"
-SceneManager="*res://scenes/game_scenes/scene_manager.tscn"
+SceneManager="*res://scenes/global_scenes/scene_manager.tscn"
+CheatLib="*res://scenes/global_scenes/cheat_lib.tscn"
 
 [display]
 
