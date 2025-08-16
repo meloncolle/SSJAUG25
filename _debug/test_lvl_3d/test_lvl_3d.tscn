@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=25 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_c8rof"]
 [ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://_debug/test_lvl_3d/ball.gd" id="3_v6fep"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
+[ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="6_v6fep"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
@@ -168,6 +169,7 @@ linear_damp = 0.07
 script = ExtResource("3_v6fep")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+visible = false
 mesh = SubResource("SphereMesh_71i62")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c8rof")
@@ -180,14 +182,6 @@ debug_color = Color(0.852898, 0.239525, 0.705028, 0.42)
 remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/CamRig")
 update_rotation = false
 update_scale = false
-
-[node name="RacerBen" parent="Player" node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.25346, -1.6704, -0.0180929)
-target = NodePath("..")
-target_radius = 0.5
-idle_thresh = 0.5
-eject = true
-override_velocity_length = 10.495
 
 [node name="Track" type="Node3D" parent="."]
 
@@ -363,6 +357,19 @@ shape = SubResource("BoxShape3D_yfyfv")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart8"]
 mesh = SubResource("BoxMesh_v6fep")
 surface_material_override/0 = SubResource("StandardMaterial3D_goep6")
+
+[node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_yfyfv")]
+transform = Transform3D(-0.433013, 0, -0.25, 0, 0.5, 0, 0.25, 0, -0.433013, 0.05888, 0.620629, 0.112301)
+target = NodePath("../Player")
+target_radius = 0.5
+idle_thresh = 0.5
+eject = true
+override_velocity_length = 10.495
+
+[node name="PlayerCar[art]" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_v6fep")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.0699809, 0.492108, 0.154483)
+target = NodePath("../Player")
+set_tracking_on_ready = true
 
 [node name="BG" type="Node3D" parent="."]
 

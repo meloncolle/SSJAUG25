@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://13tw3g2yqp2w"]
+
+[ext_resource type="Script" uid="uid://hgll5tdl6io7" path="res://scripts/art_controllers/car_art_controller.gd" id="1_ssd4o"]
+[ext_resource type="PackedScene" uid="uid://bjnq03hmtrkaj" path="res://scenes/art_scenes/car_scuffed[art].tscn" id="1_wiw4p"]
+[ext_resource type="PackedScene" uid="uid://clxmyq2gganal" path="res://scenes/art_scenes/car_solo[art].tscn" id="2_ssd4o"]
+[ext_resource type="PackedScene" uid="uid://bm0mfsts6rcyl" path="res://scenes/art_scenes/explode_particles[art].tscn" id="4_ik243"]
+
+[node name="PlayerCar[art]" type="Node3D" node_paths=PackedStringArray("car_default", "car_crushed", "particles")]
+script = ExtResource("1_ssd4o")
+car_default = NodePath("car_solo[art]")
+car_crushed = NodePath("car_scuffed[art]")
+particles = NodePath("ExplodeParticles[art]")
+
+[node name="car_scuffed[art]" parent="." instance=ExtResource("1_wiw4p")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+visible = false
+
+[node name="car_solo[art]" parent="." instance=ExtResource("2_ssd4o")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0.287248, 0)
+
+[node name="ExplodeParticles[art]" parent="." instance=ExtResource("4_ik243")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.165338, 0)
