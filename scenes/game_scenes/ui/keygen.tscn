@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb5lxd7ivfj8c"]
+[gd_scene load_steps=8 format=3 uid="uid://cb5lxd7ivfj8c"]
 
 [ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/keygen.gd" id="1_4fa5a"]
+[ext_resource type="Texture2D" uid="uid://dfjtnyayj6uo7" path="res://assets/textures/arrow_l.svg" id="2_rq7q1"]
 
 [sub_resource type="Gradient" id="Gradient_v6fep"]
 offsets = PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1)
@@ -45,6 +46,13 @@ texture = SubResource("GradientTexture1D_goep6")
 stretch_mode = 1
 flip_h = true
 
+[node name="ColorRect" type="ColorRect" parent="BG"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 242.0
+offset_right = 618.0
+offset_bottom = 309.0
+
 [node name="Title" type="RichTextLabel" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -62,6 +70,7 @@ bbcode_enabled = true
 text = "GROUNDWATER UNIVERSAL KEYGEN 2025"
 
 [node name="LineEdit" type="LineEdit" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -92,10 +101,52 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_goep6")
 text = "GENERATE KEY"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 97.0
-offset_top = 257.0
-offset_right = 174.0
-offset_bottom = 293.0
+offset_left = 96.0
+offset_top = 210.0
+offset_right = 173.0
+offset_bottom = 246.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "Serial:"
+
+[node name="Arrows" type="Node2D" parent="."]
+position = Vector2(132, 276)
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrows"]
+visible = false
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(64, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(128, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(192, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(256, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(320, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(384, 0)
+texture = ExtResource("2_rq7q1")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Arrows"]
+visible = false
+position = Vector2(448, 0)
+texture = ExtResource("2_rq7q1")

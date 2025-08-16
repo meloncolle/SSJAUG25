@@ -153,7 +153,7 @@ transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 
 cull_mask = 1048573
 
 [node name="BGCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.952836, 0.303484, 0, -0.303484, 0.952836, 0, 3.68146, 2.41063)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
 cull_mask = 1048574
 
 [node name="Player" type="RigidBody3D" parent="."]
