@@ -1,5 +1,5 @@
 extends RigidBody3D
-@export var speed_limit:= 150.0
+@export var speed_limit:= 15.0
 
 func _integrate_forces(_state):
 	if linear_velocity.length() > speed_limit:

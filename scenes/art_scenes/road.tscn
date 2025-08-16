@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.310517, 5.38826e-05, 5.8918, -0.310517, -5.38826e-05, -5.8918, 8.53406, -3.26544, -9.70913, 1.18102, 0, 7.38322, -1.18102, 0, -7.38322, -0.114672, -1.52721, -19.1117, 0, 0, 0, 0, 0, 0, 6.73964, -3.74423, -31.757),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -43.2555, -3.32183, 39.011, 0, 0, 0, 0, 0, 0, -25.1658, -1.90038, 8.84482, 7.86755, -0.0335388, 2.7409, -7.86755, 0.0335388, -2.7409, -24.3046, -1.20668, -2.54753, 0, 0, 0, 0, 0, 0, -39.0179, -2.08401, 11.3495),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -15,10 +15,9 @@ point_count = 4
 curve = SubResource("Curve3D_b5klm")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00548, -0.00886714, 0)
 calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(0, -0.35, 0.2, 0, 3.8, 0, 4, -0.35)
+polygon = PackedVector2Array(0, -0.35, 0.2, 0, 8.8, 0, 8, -0.35)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -26,7 +25,7 @@ path_interval = 2.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 4.0
 path_joined = false
