@@ -27,6 +27,14 @@ func _ready():
 	_on_settings_changed()
 
 func _input(event):
+	if event.is_action_pressed("pause"):
+		# if keygen was open while we paused, we want to reopen during unpause
+		if keygen.reopen_on_resume:
+			# not using _on_open_requested bc don't want to reset entry/etc
+			keygen.show()
+			keygen.text_entry.grab_focus()
+			keygen.reopen_on_resume = false
+
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
 
 	if event.is_action_pressed("toggle_console"):
