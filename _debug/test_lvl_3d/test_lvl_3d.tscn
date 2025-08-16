@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xu3puiwkcc2e"]
+[gd_scene load_steps=34 format=3 uid="uid://xu3puiwkcc2e"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_biwvi"]
 [ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_s8dc5"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
 [ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="6_v6fep"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
+[ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rail.tscn" id="9_hc0pj"]
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="10_3oeui"]
+[ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier[art].tscn" id="11_3oeui"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -70,6 +73,44 @@ texture_filter = 0
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_goep6"]
 radius = 3.761
 height = 26.544
+
+[sub_resource type="Curve3D" id="Curve3D_mb3ye"]
+
+[sub_resource type="Curve3D" id="Curve3D_d6p5x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.4081, 0, 2.27997, -1.51032, 0, -9.69599, 1.51032, 0, 9.69599, -37.3894, -3.0151, 8.61419, 0.191082, -5.34058e-05, -34.0419, -0.191082, 5.34058e-05, 34.0419, 43.7849, -7.31586, 15.8235, -0.433044, 2.28882e-05, -13.9841, 0.433044, -2.28882e-05, 13.9841, -33.2345, -16.3486, 24.0793, -2.53503, 2.67029e-05, -26.3598, 2.53503, -2.67029e-05, 26.3598, 36.2357, -25.2562, 35.9406, -0.12043, -1.14441e-05, -17.2159, 0.12043, 1.14441e-05, 17.2159, -25.4394, -35.0606, 41.6685, -1.73037, 1.64648, -21.7677, 1.73037, -1.64648, 21.7677, 28.5895, -46.9211, 51.8702, -0.218613, 3.8147e-06, -9.83202, 0.218613, -3.8147e-06, 9.83202, -11.3061, -59.5135, 59.4676, -0.510676, 0, -9.1997, 0.510676, 0, 9.1997, 6.11425, -74.0931, 70.4901, 0, 0, 0, 0, 0, 0, 5.71573, -88.0689, 154.517),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_14236"]
+_data = {
+"points": PackedVector3Array(1.23602, 0.575821, -0.0852222, -1.23602, -0.575821, 0.0852222, -37.2918, -16.8753, 17.2305, 1.45786, -1.29975, -8.1263, -1.45786, 1.29975, 8.1263, -58.4336, -19.72, 21.818, -1.74042, 0, -8.41979, 1.74042, 0, 8.41979, -47.8419, -40.2329, 55.2098, -6.13616, 0, 5.29942, 6.13616, 0, -5.29942, -1.81104, -44.3358, 66.4957, 13.4677, 4.95911e-05, -2.77431, -13.4677, -4.95911e-05, 2.77431, 4.64467, -59.971, 22.9379, 4.15538, 3.05176e-05, -13.9943, -4.15538, -3.05176e-05, 13.9943, 7.28971, -71.3254, 98.0133),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_3oeui"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.698128, 0, -4.072, 0, 0, 0, 0, 0, 0, 6.9351, -0.411732, 8.64799, 0, 0, 0, 0, 0, 0, 1.81164, -2.10837, 15.9565),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_6kg7k"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.43491, 0, -2.42774, 0, 0, 0, 0, 0, 0, -2.49026, -0.460075, 8.31015, 0, 0, 0, 0, 0, 0, 0.0819321, -1.88511, 15.7745),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_mm0ys"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.324448, 0, -0.258955, 0, 0, 0, 0, 0, 0, -9.89793, -19.6765, 15.3742, 0, 0, 0, 0, 0, 0, 3.37537, -30.3697, 32.4788),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="TestLvl3d" type="Node3D"]
 script = ExtResource("1_biwvi")
@@ -167,6 +208,7 @@ contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 0.07
 script = ExtResource("3_v6fep")
+speed_limit = 15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 visible = false
@@ -195,39 +237,6 @@ shape = SubResource("BoxShape3D_c8rof")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart"]
 mesh = SubResource("BoxMesh_yfyfv")
 surface_material_override/0 = SubResource("StandardMaterial3D_v6fep")
-
-[node name="TrackPart2" type="StaticBody3D" parent="Track"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.75)
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart2"]
-shape = SubResource("BoxShape3D_goep6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart2"]
-mesh = SubResource("BoxMesh_ixj8b")
-surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
-
-[node name="TrackPart3" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.75, 1, 0.5)
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart3"]
-shape = SubResource("BoxShape3D_goep6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart3"]
-mesh = SubResource("BoxMesh_ixj8b")
-surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
-
-[node name="TrackPart4" type="StaticBody3D" parent="Track"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.75, 1, 0.5)
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart4"]
-shape = SubResource("BoxShape3D_goep6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart4"]
-mesh = SubResource("BoxMesh_ixj8b")
-surface_material_override/0 = SubResource("StandardMaterial3D_jikjp")
 
 [node name="TrackPart9" type="StaticBody3D" parent="Track" groups=["track"]]
 transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -6.69666, -46.1308)
@@ -397,3 +406,66 @@ mesh = SubResource("CapsuleMesh_goep6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4306, -8.20295, -43.2505)
 layers = 2
 mesh = SubResource("CapsuleMesh_goep6")
+
+[node name="Road" parent="." instance=ExtResource("9_hc0pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09859, 0, -13.3517)
+
+[node name="Path3D" parent="Road" index="0"]
+curve = SubResource("Curve3D_mb3ye")
+
+[node name="Road2" parent="." instance=ExtResource("10_3oeui")]
+
+[node name="Path3D" parent="Road2" index="0"]
+curve = SubResource("Curve3D_d6p5x")
+
+[node name="Rail" parent="." instance=ExtResource("9_hc0pj")]
+
+[node name="Path3D" parent="Rail" index="0"]
+curve = SubResource("Curve3D_14236")
+
+[node name="Barriers" type="Node3D" parent="."]
+transform = Transform3D(0.969364, 0, -3.51441, 0, 5.31777, 0, 0.245629, 0, 13.8695, -41.6869, -3.47718, 8.36144)
+
+[node name="BarrierPlaceholder[art]" parent="Barriers" instance=ExtResource("11_3oeui")]
+transform = Transform3D(1, 0, 4.76837e-07, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="BarrierPlaceholder[art]2" parent="Barriers" instance=ExtResource("11_3oeui")]
+transform = Transform3D(0.86353, 0.00210592, 7.21539, 0.000104236, 0.999998, -0.00466668, -0.0352462, 0.000660565, 0.863529, 87.7123, -0.746847, -0.364545)
+
+[node name="BarrierPlaceholder[art]3" parent="Barriers" instance=ExtResource("11_3oeui")]
+transform = Transform3D(0.999414, -0.0153141, -0.488133, 0.000528492, 0.999994, -0.00560287, 0.00238487, 0.000737882, 0.999416, 8.0705, -2.31804, 1.04591)
+
+[node name="BarrierPlaceholder[art]4" parent="Barriers" instance=ExtResource("11_3oeui")]
+transform = Transform3D(0.770554, -0.00846843, 9.11942, -0.000169792, 0.999993, 0.00965935, -0.0445473, -0.00124206, 0.770547, 82.2424, -3.95496, 0.565005)
+
+[node name="Rail2" parent="." instance=ExtResource("9_hc0pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6132, -7.98907, 28.5481)
+
+[node name="Path3D" parent="Rail2" index="0"]
+curve = SubResource("Curve3D_3oeui")
+
+[node name="Rail5" parent="." instance=ExtResource("9_hc0pj")]
+transform = Transform3D(0.812867, 0, -0.582449, 0, 1, 0, 0.582449, 0, 0.812867, 40.2403, -22.8655, 62.7138)
+
+[node name="Path3D" parent="Rail5" index="0"]
+curve = SubResource("Curve3D_3oeui")
+
+[node name="Rail3" parent="." instance=ExtResource("9_hc0pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.706, -13.3694, 45.5056)
+
+[node name="Path3D" parent="Rail3" index="0"]
+curve = SubResource("Curve3D_6kg7k")
+
+[node name="Rail6" parent="." instance=ExtResource("9_hc0pj")]
+transform = Transform3D(0.590423, 0, -0.807094, 0, 1, 0, 0.807094, 0, 0.590423, 32.3268, -28.5167, 78.062)
+
+[node name="Path3D" parent="Rail6" index="0"]
+curve = SubResource("Curve3D_mm0ys")
+
+[editable path="Road"]
+[editable path="Road2"]
+[editable path="Rail"]
+[editable path="Rail2"]
+[editable path="Rail5"]
+[editable path="Rail3"]
+[editable path="Rail6"]
