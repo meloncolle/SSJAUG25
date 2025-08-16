@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cxm0jmm6hiiof"]
 
-[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/visual_shaders/base_lit.tres" id="1_1qfri"]
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_1qfri"]
 [ext_resource type="Texture2D" uid="uid://fl2w3sb6lban" path="res://assets/textures/car_solo_CAR TEXTURE_V3.png" id="2_1qfri"]
 
 [resource]

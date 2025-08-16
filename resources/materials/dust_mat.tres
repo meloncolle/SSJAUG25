@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpqbahsa514om"]
 
-[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/visual_shaders/base_lit.tres" id="1_rtts8"]
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_rtts8"]
 
 [resource]
 render_priority = 0
