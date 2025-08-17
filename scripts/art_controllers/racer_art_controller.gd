@@ -57,6 +57,11 @@ func _process(delta):
 	
 	if intro_complete || skip_start_squence: 
 		HandleGameplayAnimation(delta)
+		
+	#if Input.is_action_just_pressed("ui_right"):
+		#PlayFinishAnimation(true)
+	#if Input.is_action_just_pressed("ui_left"):
+		#PlayFinishAnimation(false)
 
 func DoStartSequence():
 	eject = false
