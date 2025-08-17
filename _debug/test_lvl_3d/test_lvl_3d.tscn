@@ -226,6 +226,29 @@ remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/CamRi
 update_rotation = false
 update_scale = false
 
+[node name="Audio" type="Node3D" parent="Player"]
+
+[node name="Events" type="Node3D" parent="Player/Audio"]
+
+[node name="FallOff" type="FmodEventEmitter3D" parent="Player/Audio/Events"]
+event_guid = "{00000000-0002-0000-0300-000026000000}"
+
+[node name="Skid" type="FmodEventEmitter3D" parent="Player/Audio/Events"]
+event_guid = "{00000000-0002-0000-0300-000026000000}"
+
+[node name="Respawn" type="FmodEventEmitter3D" parent="Player/Audio/Events"]
+event_name = "event:/Player SFX/Respawn"
+event_guid = "{f7261938-ddb0-4a0f-bd9b-c97f731c19de}"
+
+[node name="Rolling" type="FmodEventEmitter3D" parent="Player/Audio/Events"]
+event_name = "event:/Player SFX/Rolling"
+event_guid = "{930f0a10-8127-4039-9b01-b86420bd47ba}"
+fmod_parameters/speed/id = -3863908321610580022
+fmod_parameters/speed = 0.0
+fmod_parameters/speed/variant_type = 3
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Player/Audio"]
+
 [node name="Track" type="Node3D" parent="."]
 
 [node name="TrackPart" type="StaticBody3D" parent="Track" groups=["track"]]
@@ -408,57 +431,127 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4306, -8.20295, -43.2505)
 layers = 2
 mesh = SubResource("CapsuleMesh_goep6")
 
-[node name="Road" parent="." instance=ExtResource("9_hc0pj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09859, 0, -13.3517)
-
-[node name="Path3D" parent="Road" index="0"]
-curve = SubResource("Curve3D_mb3ye")
-
-[node name="Road2" parent="." instance=ExtResource("10_3oeui")]
-
-[node name="Path3D" parent="Road2" index="0"]
-curve = SubResource("Curve3D_d6p5x")
-
-[node name="Rail" parent="." instance=ExtResource("9_hc0pj")]
-
-[node name="Path3D" parent="Rail" index="0"]
-curve = SubResource("Curve3D_14236")
-
 [node name="Barriers" type="Node3D" parent="."]
 transform = Transform3D(0.969364, 0, -3.51441, 0, 5.31777, 0, 0.245629, 0, 13.8695, -41.6869, -3.47718, 8.36144)
 
-[node name="Rail2" parent="." instance=ExtResource("9_hc0pj")]
+[node name="Roads" type="Node3D" parent="."]
+
+[node name="Road" parent="Roads" instance=ExtResource("9_hc0pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09859, 0, -13.3517)
+
+[node name="Path3D" parent="Roads/Road" index="0"]
+curve = SubResource("Curve3D_mb3ye")
+
+[node name="Road2" parent="Roads" instance=ExtResource("10_3oeui")]
+
+[node name="Path3D" parent="Roads/Road2" index="0"]
+curve = SubResource("Curve3D_d6p5x")
+
+[node name="Rails" type="Node3D" parent="."]
+
+[node name="Rail" parent="Rails" instance=ExtResource("9_hc0pj")]
+
+[node name="Path3D" parent="Rails/Rail" index="0"]
+curve = SubResource("Curve3D_14236")
+
+[node name="Rail2" parent="Rails" instance=ExtResource("9_hc0pj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6132, -7.98907, 28.5481)
 
-[node name="Path3D" parent="Rail2" index="0"]
+[node name="Path3D" parent="Rails/Rail2" index="0"]
 curve = SubResource("Curve3D_3oeui")
 
-[node name="Rail5" parent="." instance=ExtResource("9_hc0pj")]
+[node name="Rail5" parent="Rails" instance=ExtResource("9_hc0pj")]
 transform = Transform3D(0.812867, 0, -0.582449, 0, 1, 0, 0.582449, 0, 0.812867, 40.2403, -22.8655, 62.7138)
 
-[node name="Path3D" parent="Rail5" index="0"]
+[node name="Path3D" parent="Rails/Rail5" index="0"]
 curve = SubResource("Curve3D_3oeui")
 
-[node name="Rail3" parent="." instance=ExtResource("9_hc0pj")]
+[node name="Rail3" parent="Rails" instance=ExtResource("9_hc0pj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.706, -13.3694, 45.5056)
 
-[node name="Path3D" parent="Rail3" index="0"]
+[node name="Path3D" parent="Rails/Rail3" index="0"]
 curve = SubResource("Curve3D_6kg7k")
 
-[node name="Rail6" parent="." instance=ExtResource("9_hc0pj")]
+[node name="Rail6" parent="Rails" instance=ExtResource("9_hc0pj")]
 transform = Transform3D(0.590423, 0, -0.807094, 0, 1, 0, 0.807094, 0, 0.590423, 32.3268, -28.5167, 78.062)
 
-[node name="Path3D" parent="Rail6" index="0"]
+[node name="Path3D" parent="Rails/Rail6" index="0"]
 curve = SubResource("Curve3D_mm0ys")
 
-[node name="Rail4" parent="." instance=ExtResource("11_3oeui")]
+[node name="Rail4" parent="Rails" instance=ExtResource("11_3oeui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93335, -5.65846, 20.4689)
 
-[editable path="Road"]
-[editable path="Road2"]
-[editable path="Rail"]
-[editable path="Rail2"]
-[editable path="Rail5"]
-[editable path="Rail3"]
-[editable path="Rail6"]
-[editable path="Rail4"]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]
+
+[node name="Global Audio" type="Node3D" parent="."]
+
+[node name="Music" type="FmodEventEmitter3D" parent="Global Audio"]
+event_name = "event:/Music"
+event_guid = "{cbdfa9a5-5292-4c83-8c27-d16fe3abe836}"
+autoplay = true
+allow_fadeout = false
+fmod_parameters/MusicState/id = 7915800245954832001
+fmod_parameters/MusicState = "Menu"
+fmod_parameters/MusicState/labels = PackedStringArray("Menu", "Level", "Keygen")
+fmod_parameters/MusicState/variant_type = 4
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="Level" type="Node3D" parent="Global Audio"]
+
+[node name="Checkpoint" type="FmodEventEmitter3D" parent="Global Audio/Level"]
+event_name = "event:/Level/Checkpoint----"
+event_guid = "{f56f546e-2669-4b74-aa8d-87070875423b}"
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="StartingCountDown" type="FmodEventEmitter3D" parent="Global Audio/Level"]
+event_name = "event:/Level/StartingCountDown"
+event_guid = "{34f8d974-4368-4686-b33c-573b8c2ab3e1}"
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="Finish" type="FmodEventEmitter3D" parent="Global Audio/Level"]
+event_name = "event:/Level/Finish"
+event_guid = "{cc01fb08-1f8d-48a6-8cd0-d9547e5a7b94}"
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="TimeOut" type="FmodEventEmitter3D" parent="Global Audio/Level"]
+event_name = "event:/Level/TimeOut"
+event_guid = "{45af17ce-0482-451b-8f50-d0fb69b83474}"
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="Menu" type="Node3D" parent="Global Audio"]
+
+[node name="UISelect" type="FmodEventEmitter3D" parent="Global Audio/Menu"]
+event_name = "event:/UI/UISelect"
+event_guid = "{2c0c909a-b114-4437-a3db-57aa107953ca}"
+fmod_parameters/GlobalMute/id = -7084401214001542851
+fmod_parameters/GlobalMute = "MuteOff"
+fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
+fmod_parameters/GlobalMute/variant_type = 4
+
+[node name="UINav" type="FmodEventEmitter3D" parent="Global Audio/Menu"]
+event_guid = "{00000000-0002-0000-0300-000026000000}"
+
+[editable path="Roads/Road"]
+[editable path="Roads/Road2"]
+[editable path="Rails/Rail"]
+[editable path="Rails/Rail2"]
+[editable path="Rails/Rail5"]
+[editable path="Rails/Rail3"]
+[editable path="Rails/Rail6"]
+[editable path="Rails/Rail4"]
