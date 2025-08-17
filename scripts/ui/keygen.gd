@@ -4,9 +4,6 @@ const MAX_INPUTS: int = 8
 
 @export var tries: int = 3
 
-@onready var text_entry: LineEdit = $LineEdit
-@onready var submit_button: Button = $SubmitButton
-
 signal code_accepted(code: CheatCode)
 signal code_rejected
 
@@ -14,7 +11,9 @@ var input_enabled := false
 var reopen_on_resume := false
 
 var inputs: Array[Enums.CheatInput] = []
-@onready var arrow_icons:= $Arrows.get_children()
+@onready var arrow_icons:= $Input/Arrows.get_children()
+@onready var input_field: ColorRect = $Input
+@onready var error_msg: Label = $Input/ErrorLabel
 
 func _ready():
 	connect("close_requested", _on_close_requested)
@@ -49,10 +48,13 @@ func _on_close_requested():
 	hide()
 
 func _on_open_requested():
-	$Title.text = "GROUNDWATER UNIVERSAL KEYGEN 2025"
 	inputs = []
 	input_enabled = true
-	for i in arrow_icons: i.hide()
+	error_msg.hide()
+	input_field.color = Color.WHITE
+	for i in arrow_icons: 
+		i.hide()
+		i.modulate = Color(Color.WHITE, 1.0)
 	show()
 		
 func add_input(input: Enums.CheatInput):
@@ -62,17 +64,20 @@ func add_input(input: Enums.CheatInput):
 	arrow_icons[inputs.size() -1 ].show()
 	
 	# Check if current input sequence contains any valid cheat code
-	var result: CheatCode = CheatLib.find_match(inputs)
-	if result != null:
-		$Title.text = "[color=green]CODE ACCEPTED :)[/color]"
+	var result = CheatLib.find_match(inputs)
+	if result[0] != null:
+		input_field.color = Color.LIGHT_GREEN
+		for i in range(result[1]):
+			arrow_icons[i].modulate = Color(Color.WHITE, 0.25)
 		await get_tree().create_timer(0.75).timeout
-		emit_signal("code_accepted", result)
+		emit_signal("code_accepted", result[0])
 		emit_signal("close_requested")
 
 	if inputs.size() >= MAX_INPUTS:
 		input_enabled = false
-		$Title.text = "[color=red]CODE REJECTED >:([/color]"
+		for i in arrow_icons: i.hide()
+		error_msg.show()
+		input_field.color = Color.RED
 		await get_tree().create_timer(0.75).timeout
-		#TODO: FIX STRING
 		emit_signal("code_rejected")
 		emit_signal("close_requested")
