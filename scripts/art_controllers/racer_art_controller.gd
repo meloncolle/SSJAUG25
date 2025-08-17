@@ -9,6 +9,7 @@ var last_target_pos := Vector3.ZERO
 
 @export var idle_thresh := 0.1
 @export var max_vel:= 5.0
+@export var min_y_vel := -0.15
 
 @export var locomotion_mult_range := Vector2.ONE
 #@export var velocity_tilt_amt := 10.0
@@ -31,12 +32,14 @@ var last_target_pos := Vector3.ZERO
 var dust_particles : CPUParticles3D
 
 var particle_position := Vector3.ZERO
+var ground_normal := Vector3.UP
 
 @export var dust_thresh := 0.5
 
 var cur_vel := 0.0
 var last_vel := 0.0
 var vel_dir := Vector3.ZERO
+var y_vel := 0.0
 
 var spin_dist_travelled := 0.0
 var last_rotated_position := Vector3.ZERO
@@ -100,6 +103,9 @@ func DoStartSequence():
 func HandleGameplayAnimation(delta):
 	var pos_d = target.global_position - last_target_pos
 	
+	y_vel = pos_d.y
+	pos_d = ProjectV3(pos_d, ground_normal)
+	
 	cur_vel = pos_d.length() / delta
 	vel_dir = -pos_d.normalized() if cur_vel > idle_thresh else Vector3.ZERO
 	
@@ -142,9 +148,8 @@ func HandleGameplayAnimation(delta):
 		global_position = GetModelOffset(rotated_position) #target.global_position + rotated_position
 		look_at(global_position - look_dir, rotated_position.normalized())
 		
-		var spin_d = cur_vel if particle_position != Vector3.ZERO else FlattenV3(pos_d / delta).length()
-		
-		spin_dist_travelled += spin_d * delta
+		#var spin_d = cur_vel if particle_position != Vector3.ZERO else FlattenV3(pos_d / delta).length()	
+		spin_dist_travelled += cur_vel * delta
 		last_rotated_position = rotated_position
 		
 	particle_position = GetParticlePosition()
@@ -181,7 +186,10 @@ func GetParticlePosition() -> Vector3:
 
 	var result = space_state.intersect_ray(query)
 	
+	ground_normal = Vector3.UP
+	
 	if !result.is_empty():
+		ground_normal = result["normal"]
 		return result["position"]
 	
 	return Vector3.ZERO
@@ -189,3 +197,12 @@ func GetParticlePosition() -> Vector3:
 func FlattenV3(vec : Vector3) -> Vector3:
 	vec.y = 0.0
 	return vec.normalized()
+
+func ProjectV3(vec, normal) -> Vector3:
+	return vec - (normal * normal.dot(vec))
+
+func PlayFinishAnimation(has_won : bool):
+	if has_won:
+		state_machine.travel("win-start")
+	else:
+		state_machine.travel("lose-start")
