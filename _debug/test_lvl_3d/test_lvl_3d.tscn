@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
 [ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rail.tscn" id="9_hc0pj"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="10_3oeui"]
-[ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier[art].tscn" id="11_3oeui"]
+[ext_resource type="PackedScene" uid="uid://c05kxb6umahmn" path="res://scenes/art_scenes/halfpipe.tscn" id="11_3oeui"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -127,6 +127,7 @@ environment = SubResource("Environment_goep6")
 
 [node name="Keygen" parent="." instance=ExtResource("7_goep6")]
 visible = false
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -426,18 +427,6 @@ curve = SubResource("Curve3D_14236")
 [node name="Barriers" type="Node3D" parent="."]
 transform = Transform3D(0.969364, 0, -3.51441, 0, 5.31777, 0, 0.245629, 0, 13.8695, -41.6869, -3.47718, 8.36144)
 
-[node name="BarrierPlaceholder[art]" parent="Barriers" instance=ExtResource("11_3oeui")]
-transform = Transform3D(1, 0, 4.76837e-07, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="BarrierPlaceholder[art]2" parent="Barriers" instance=ExtResource("11_3oeui")]
-transform = Transform3D(0.86353, 0.00210592, 7.21539, 0.000104236, 0.999998, -0.00466668, -0.0352462, 0.000660565, 0.863529, 87.7123, -0.746847, -0.364545)
-
-[node name="BarrierPlaceholder[art]3" parent="Barriers" instance=ExtResource("11_3oeui")]
-transform = Transform3D(0.999414, -0.0153141, -0.488133, 0.000528492, 0.999994, -0.00560287, 0.00238487, 0.000737882, 0.999416, 8.0705, -2.31804, 1.04591)
-
-[node name="BarrierPlaceholder[art]4" parent="Barriers" instance=ExtResource("11_3oeui")]
-transform = Transform3D(0.770554, -0.00846843, 9.11942, -0.000169792, 0.999993, 0.00965935, -0.0445473, -0.00124206, 0.770547, 82.2424, -3.95496, 0.565005)
-
 [node name="Rail2" parent="." instance=ExtResource("9_hc0pj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.6132, -7.98907, 28.5481)
 
@@ -462,6 +451,9 @@ transform = Transform3D(0.590423, 0, -0.807094, 0, 1, 0, 0.807094, 0, 0.590423, 
 [node name="Path3D" parent="Rail6" index="0"]
 curve = SubResource("Curve3D_mm0ys")
 
+[node name="Rail4" parent="." instance=ExtResource("11_3oeui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93335, -5.65846, 20.4689)
+
 [editable path="Road"]
 [editable path="Road2"]
 [editable path="Rail"]
@@ -469,3 +461,4 @@ curve = SubResource("Curve3D_mm0ys")
 [editable path="Rail5"]
 [editable path="Rail3"]
 [editable path="Rail6"]
+[editable path="Rail4"]

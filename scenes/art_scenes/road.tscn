@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2chxchtnk1h0"]
+[gd_scene load_steps=4 format=3 uid="uid://d2chxchtnk1h0"]
 
-[ext_resource type="Material" uid="uid://bpm5byb13rwqh" path="res://resources/materials/road_mat.tres" id="1_c05wc"]
+[ext_resource type="Texture2D" uid="uid://b41syod0tfwi" path="res://assets/textures/road_tile.png" id="1_vhows"]
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
@@ -8,6 +8,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e1rk"]
+albedo_texture = ExtResource("1_vhows")
 
 [node name="Road" type="Node3D"]
 
@@ -29,4 +32,4 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 4.0
 path_joined = false
-material = ExtResource("1_c05wc")
+material = SubResource("StandardMaterial3D_5e1rk")

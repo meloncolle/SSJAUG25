@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://c05kxb6umahmn"]
+
+[sub_resource type="Curve3D" id="Curve3D_b5klm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46826, 0.412635, -7.55006, 0, 0, 0, 0, 0, 0, 1.46099, -0.255261, 10.0456, -2.7581, 0, -0.906258, 2.7581, 0, 0.906258, 7.91232, -0.255234, 21.8349, -1.97318, 0, -2.0819, 1.97318, 0, 2.0819, 27.0407, -0.255234, 30.6529, -5.14248, 0, 0.831547, 5.14248, 0, -0.831547, 37.0118, -0.255234, 28.9571, -0.473949, 0, -9.62921, 0.473949, 0, 9.62921, 55.5542, -0.255234, 43.5051, 0, 0, 0, 0, 0, 0, 46.5326, -0.255234, 53.6119, 6.01, 0, -1.64461, -6.01, 0, 1.64461, 25.0667, -0.341537, 72.5484, 3.20085, 0, 0.315498, -3.20085, 0, -0.315498, 13.5598, -0.255234, 66.7133, 0, 0, 0, 0, 0, 0, 2.97813, -0.255234, 72.5467),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[node name="Rail" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0172777)
+curve = SubResource("Curve3D_b5klm")
+
+[node name="RailB" type="CSGPolygon3D" parent="Path3D"]
+physics_interpolation_mode = 2
+use_collision = true
+polygon = PackedVector2Array(5.46436, -0.829116, 5.97803, 0.148749, 6.12221, 1.46726, 5.47298, 1.35725, 5.03507, 0.458986, 4.65508, -0.231191, 3.75831, -0.765105, 2.87835, -0.913106, 1.75881, -0.951847, 1.09278, -0.688713, 0.701276, -0.264493, 0.409121, 0.349293, 0.161969, 1.29282, -0.120997, 1.38676, -0.0130311, 0.233061, 0.641284, -1.0817, 1.83372, -1.49379, 4.25291, -1.49767)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
