@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0aounw1bl5mv"
-path.s3tc="res://.godot/imported/car_solo_CAR TEXTURE_V3.png-44b15bdabea0874216def1e1ecc4d9c6.s3tc.ctex"
+uid="uid://cpmv4jk72gki1"
+path.s3tc="res://.godot/imported/checker.bmp-8bba4e36b04b397607c4e96d198a14fe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "c66fefbcf845418cbea6ba9b49c81d98"
-}
 
 [deps]
 
-source_file="res://assets/models/car_solo_CAR TEXTURE_V3.png"
-dest_files=["res://.godot/imported/car_solo_CAR TEXTURE_V3.png-44b15bdabea0874216def1e1ecc4d9c6.s3tc.ctex"]
+source_file="res://assets/textures/checker.bmp"
+dest_files=["res://.godot/imported/checker.bmp-8bba4e36b04b397607c4e96d198a14fe.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +22,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -35,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

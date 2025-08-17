@@ -110,12 +110,21 @@ func update_gravity(delta) -> void:
 	
 	update_display({"gravity": new_gravity})
 
-func _on_code_accepted(code: String):
-	print("Code accepted: " + code)
-	# we can literally do whatever here i guess
-	match code:
-		"imscared":
-			player.speed_limit = 3
+func _on_code_accepted(code: CheatCode):
+	code.times_used += 1
+	
+	print("CODE ACCEPTED")
+	print(code.get_string())
+	print("\n")
+
+	# i guess we have to define the effects here?
+	# itd be ideal to put them in the cheatcode resource but
+	# idk how to do that with scope TODO?
+	match code.name:
+		"Test Code 1":
+			print("this is the first cheat activating")
+		"Test code TWO":
+			print("thsi is the 2nd cheat activating")
 
 # Read settings from config and update values in game
 func _on_settings_changed():

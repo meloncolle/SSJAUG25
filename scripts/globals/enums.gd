@@ -5,3 +5,10 @@ enum GameState {
 	IN_GAME,
 	PAUSED,
 }
+
+enum CheatInput {
+	LEFT,
+	UP,
+	RIGHT,
+	DOWN,
+}

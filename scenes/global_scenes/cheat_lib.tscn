@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chj616bjx5s4f"]
+
+[ext_resource type="Script" uid="uid://beavwtt16eyt0" path="res://scripts/globals/cheat_lib.gd" id="1_obrj6"]
+[ext_resource type="Script" uid="uid://b5xooxphpdft2" path="res://scripts/custom_resources/cheat_code.gd" id="2_avy1l"]
+
+[sub_resource type="Resource" id="Resource_717j6"]
+script = ExtResource("2_avy1l")
+name = "Test Code 1"
+sequence = Array[int]([1, 1, 3])
+description = "This is the first test code"
+duration = 0.0
+cooldown = 0.0
+metadata/_custom_type_script = "uid://b5xooxphpdft2"
+
+[sub_resource type="Resource" id="Resource_avy1l"]
+script = ExtResource("2_avy1l")
+name = "Test code TWO"
+sequence = Array[int]([0, 1, 1, 1])
+description = "its the second test code."
+duration = 0.0
+cooldown = 0.0
+metadata/_custom_type_script = "uid://b5xooxphpdft2"
+
+[node name="CheatLib" type="Node"]
+script = ExtResource("1_obrj6")
+codes = Array[ExtResource("2_avy1l")]([SubResource("Resource_717j6"), SubResource("Resource_avy1l")])

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dj6iuongwl3st"]
 
-[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/visual_shaders/base_lit.tres" id="1_rdgbm"]
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_rdgbm"]
 [ext_resource type="Texture2D" uid="uid://54mampooklnu" path="res://assets/textures/RacerBenSuit-diff.png" id="2_aqijg"]
 
 [resource]
