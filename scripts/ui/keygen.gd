@@ -33,15 +33,17 @@ func _input(event):
 		if SceneManager.game_state == Enums.GameState.IN_GAME:
 			# pause failed so we must have used keyboard. need to manually pause from scenemanager
 			SceneManager.set_state(Enums.GameState.PAUSED)
-	
-	elif input_enabled:
-		if event.is_action_pressed("cheat_up"):
+
+func _process(_delta):
+	# Moved to _process() because it gets double input in _input()
+	if input_enabled:
+		if Input.is_action_just_pressed("cheat_up"):
 			add_input(Enums.CheatInput.UP)
-		elif event.is_action_pressed("cheat_right"):
+		elif Input.is_action_just_pressed("cheat_right"):
 			add_input(Enums.CheatInput.RIGHT)
-		elif event.is_action_pressed("cheat_down"):
+		elif Input.is_action_just_pressed("cheat_down"):
 			add_input(Enums.CheatInput.DOWN)
-		elif event.is_action_pressed("cheat_left"):
+		elif Input.is_action_just_pressed("cheat_left"):
 			add_input(Enums.CheatInput.LEFT)
 		
 func _on_close_requested():
