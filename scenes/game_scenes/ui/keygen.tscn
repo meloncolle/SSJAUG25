@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/ui/keygen.gd" id="1_4fa5a"]
 [ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_cwmyt"]
-[ext_resource type="Texture2D" uid="uid://dfjtnyayj6uo7" path="res://assets/textures/arrow_l.svg" id="2_rq7q1"]
+[ext_resource type="Texture2D" uid="uid://dfjtnyayj6uo7" path="res://assets/textures/ui/arrow_l.svg" id="2_rq7q1"]
 [ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_cwmyt"]
 [ext_resource type="Texture2D" uid="uid://cla04cojh83by" path="res://assets/textures/ui/9patch_input.png" id="4_m5an3"]
 [ext_resource type="FontFile" uid="uid://bwnvea5qn8ygl" path="res://assets/fonts/w95font.woff2" id="6_dcg0o"]
