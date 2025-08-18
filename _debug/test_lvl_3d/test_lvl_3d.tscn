@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
 [ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rail.tscn" id="9_hc0pj"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="10_3oeui"]
-[ext_resource type="PackedScene" uid="uid://b28ydk4kjtlfe" path="res://scripts/level_editing/level_components/split_halfpipe.tscn" id="10_mb3ye"]
+[ext_resource type="PackedScene" uid="uid://b28ydk4kjtlfe" path="res://scenes/art_scenes/level_components/split_halfpipe.tscn" id="10_mb3ye"]
 [ext_resource type="PackedScene" uid="uid://c05kxb6umahmn" path="res://scenes/art_scenes/halfpipe.tscn" id="11_3oeui"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]

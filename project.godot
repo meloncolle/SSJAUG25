@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="SSJAUG25"
-run/main_scene="uid://b0c6576vnl8pp"
+run/main_scene="uid://c2pnj083n28r6"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 

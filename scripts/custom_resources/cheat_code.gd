@@ -8,6 +8,10 @@ class_name CheatCode
 @export var cooldown := 0.0 # If 0, no cooldown
 var times_used := 0 # This session only. TODO: Find way to store if unlocked, persistently
 
+func _ready():
+	print(self.name)
+
+
 func get_string() -> String:
 	return """Name: %s
 	Description: %s

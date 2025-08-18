@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3jpj274s6lou"]
 
-[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_rt4hd"]
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_j1u1m"]
 
 [sub_resource type="Curve3D" id="Curve3D_rt4hd"]
 _data = {
@@ -22,25 +22,25 @@ point_count = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02074, -0.796875, -9.57706)
 size = Vector3(19.1301, 1.64648, 20.6175)
 
-[node name="Road" parent="." instance=ExtResource("1_rt4hd")]
+[node name="Road" parent="." instance=ExtResource("1_j1u1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.274372, -0.566746, 8.38689)
 
 [node name="Path3D" parent="Road" index="0"]
 curve = SubResource("Curve3D_rt4hd")
 
-[node name="Road4" parent="." instance=ExtResource("1_rt4hd")]
+[node name="Road4" parent="." instance=ExtResource("1_j1u1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28336, 2.01674, -30.3966)
 
 [node name="Path3D" parent="Road4" index="0"]
 curve = SubResource("Curve3D_rt4hd")
 
-[node name="Road2" parent="." instance=ExtResource("1_rt4hd")]
+[node name="Road2" parent="." instance=ExtResource("1_j1u1m")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.009, -0.566746, -13.4122)
 
 [node name="Path3D" parent="Road2" index="0"]
 curve = SubResource("Curve3D_a1sfx")
 
-[node name="Road3" parent="." instance=ExtResource("1_rt4hd")]
+[node name="Road3" parent="." instance=ExtResource("1_j1u1m")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.3184, -0.566746, -5.07386)
 
 [node name="Path3D" parent="Road3" index="0"]

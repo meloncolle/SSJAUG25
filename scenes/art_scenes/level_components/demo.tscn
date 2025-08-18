@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cajj4h7tgu3fj"]
 
-[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_wt2ig"]
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_qgdqi"]
 
 [node name="Demo" type="Node3D"]
 
@@ -12,7 +12,7 @@ size = Vector3(0.343262, 1.16797, 4.89948)
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 21.9005, 1.67969, 38.9948)
 size = Vector3(0.343262, 1.16797, 4.89948)
 
-[node name="Road" parent="." instance=ExtResource("1_wt2ig")]
+[node name="Road" parent="." instance=ExtResource("1_qgdqi")]
 transform = Transform3D(1, 0, 0, 0, 0.902976, 0.429692, 0, -0.429692, 0.902976, 18.1492, 11.2912, 22.9777)
 
 [node name="Path3D" parent="Road" index="0"]
