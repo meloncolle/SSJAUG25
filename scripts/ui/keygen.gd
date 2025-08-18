@@ -68,6 +68,7 @@ func add_input(input: Enums.CheatInput):
 	# Check if current input sequence contains any valid cheat code
 	var result = CheatLib.find_match(inputs)
 	if result[0] != null:
+		input_enabled = false
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
 			arrow_icons[i].modulate = Color(Color.WHITE, 0.25)
@@ -75,7 +76,7 @@ func add_input(input: Enums.CheatInput):
 		emit_signal("code_accepted", result[0])
 		emit_signal("close_requested")
 
-	if inputs.size() >= MAX_INPUTS:
+	elif inputs.size() >= MAX_INPUTS:
 		input_enabled = false
 		for i in arrow_icons: i.hide()
 		error_msg.show()
