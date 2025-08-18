@@ -3,5 +3,6 @@
 [node name="BarrierPlaceholder[art]" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.24234, 0, 0, 0)
 use_collision = true
 size = Vector3(0.239746, 0.560059, 1.16809)

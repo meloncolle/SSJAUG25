@@ -4,20 +4,27 @@
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -43.2555, -3.32183, 39.011, 0, 0, 0, 0, 0, 0, -25.1658, -1.90038, 8.84482, 7.86755, -0.0335388, 2.7409, -7.86755, 0.0335388, -2.7409, -24.3046, -1.20668, -2.54753, 0, 0, 0, 0, 0, 0, -39.0179, -2.08401, 11.3495),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.145895, -2.10779, -48.6966, 0, 0, 0, 0, 0, 0, 0.730562, -21.4797, 49.1402),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 4
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e1rk"]
 albedo_texture = ExtResource("1_vhows")
+uv1_scale = Vector3(-0.57, 7.4, 0.95)
+uv1_offset = Vector3(9.685, -0.88, 0)
+uv1_triplanar_sharpness = 0.554785
+uv1_world_triplanar = true
+texture_filter = 0
 
 [node name="Road" type="Node3D"]
 
 [node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24918, 0, 0)
 curve = SubResource("Curve3D_b5klm")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0575027, 0.0497799, -0.0585098)
 calculate_tangents = false
 use_collision = true
 polygon = PackedVector2Array(0, -0.35, 0.2, 0, 8.8, 0, 8, -0.35)

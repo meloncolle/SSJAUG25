@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://pc0xu1eiq7vq"]
+
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_qntam"]
+
+[sub_resource type="Curve3D" id="Curve3D_tv2kg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.311567, 0.552397, -7.80251, -49.699, -72.999, -8.39233e-05, 49.699, 72.999, 8.39233e-05, 225.548, -66.6838, 49.2094),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[node name="road_jump" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_qntam")]
+
+[node name="Path3D" parent="Road" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.335754, 0, 0)
+curve = SubResource("Curve3D_tv2kg")
+
+[editable path="Road"]

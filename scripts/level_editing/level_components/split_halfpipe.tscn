@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b28ydk4kjtlfe"]
+
+[ext_resource type="PackedScene" uid="uid://c05kxb6umahmn" path="res://scenes/art_scenes/halfpipe.tscn" id="1_pxkw0"]
+
+[sub_resource type="Curve3D" id="Curve3D_pxkw0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46826, 0.412635, -7.55006, 0, 0, 0, 0, 0, 0, 0.846548, -9.22588, 25.7663),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_5bq4n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.46826, 0.412635, -7.55006, -17.1579, 0, -7.73824, 17.1579, 0, 7.73824, 1.51441, -8.88166, 25.9354),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_og5ux"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.26008, 0.412635, -12.0956, 10.5214, 7.11044, 15.4565, -10.5214, -7.11044, -15.4565, -39.0477, -9.02403, -10.4676, 10.8969, 0.926567, 3.19649, -10.8969, -0.926567, -3.19649, -46.1428, -30.4374, -30.0146, 4.1996, -2.30229, 11.6647, -4.1996, 2.30229, -11.6647, -80.1605, -69.3733, -64.7651, 2.25531, -0.672684, 1.01589, -2.25531, 0.672684, -1.01589, -86.8459, -52.2833, -114.544, -0.715561, 6.0509, -3.09413, 0.715561, -6.0509, 3.09413, -88.5774, -52.2068, -106.423),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="SplitHalfpipe" type="Node3D"]
+
+[node name="Rail" parent="." instance=ExtResource("1_pxkw0")]
+
+[node name="Path3D" parent="Rail" index="0"]
+curve = SubResource("Curve3D_pxkw0")
+
+[node name="Rail2" parent="." instance=ExtResource("1_pxkw0")]
+transform = Transform3D(0.634177, 0, 0.773188, 0, 1, 0, -0.773188, 0, 0.634177, 0, -18.1183, 26.7342)
+
+[node name="Path3D" parent="Rail2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78066, 6.82443, 8.396)
+curve = SubResource("Curve3D_5bq4n")
+
+[node name="Rail3" parent="." instance=ExtResource("1_pxkw0")]
+transform = Transform3D(0.634177, 0, 0.773188, 0, 1, 0, -0.773188, 0, 0.634177, 0, -18.4578, 26.7342)
+
+[node name="Path3D" parent="Rail3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78066, 6.82443, 8.396)
+curve = SubResource("Curve3D_og5ux")
+
+[editable path="Rail"]
+[editable path="Rail2"]
+[editable path="Rail3"]
