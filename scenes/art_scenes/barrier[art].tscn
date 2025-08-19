@@ -1,7 +1,17 @@
-[gd_scene format=3 uid="uid://ccynrkwm7ix4s"]
+[gd_scene load_steps=3 format=3 uid="uid://ccynrkwm7ix4s"]
+
+[ext_resource type="PackedScene" uid="uid://drnnr7jhgtpbp" path="res://assets/models/concrete_divider.glb" id="1_t4ywt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8clr4"]
+size = Vector3(2.30751, 1.09862, 0.627472)
 
 [node name="BarrierPlaceholder[art]" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-use_collision = true
-size = Vector3(0.239746, 0.560059, 1.16809)
+[node name="concrete_divider" parent="." instance=ExtResource("1_t4ywt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="concrete_divider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="concrete_divider/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0444374, 0.559044, 0.0843737)
+shape = SubResource("BoxShape3D_8clr4")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://mthd8hfvu2ge"]
+
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_pir0w"]
+[ext_resource type="PackedScene" uid="uid://b132g3gl88ufv" path="res://scenes/prefab_scenes/blockouts_kye/germantown__start_1.tscn" id="2_1xrx5"]
+[ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/germantown_0path.tscn" id="3_2xgi6"]
+
+[node name="BaseLevel" instance=ExtResource("1_pir0w")]
+death_height = -500.0
+
+[node name="SpawnPoint" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27931, -1.33511, -6.82278)
+
+[node name="Germantown_start_1" parent="Track" index="0" instance=ExtResource("2_1xrx5")]
+transform = Transform3D(0.263385, 0, 0.964691, 0, 1, 0, -0.964691, 0, 0.263385, 4.61296, 0, 1.72994)
+
+[node name="Germantown0Path" parent="Track" index="1" instance=ExtResource("3_2xgi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, -27.7, -50)
