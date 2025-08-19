@@ -44,7 +44,8 @@ func _physics_process(delta):
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
 	
 	var input:= Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var cam_input:= Input.get_axis("cam_left", "cam_right")
+	# Disable cam while keygen input accepted
+	var cam_input:= Input.get_axis("cam_left", "cam_right") if !keygen.visible else 0.0
 	
 	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
 		# todo: smooth this?

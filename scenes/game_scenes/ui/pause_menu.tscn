@@ -63,23 +63,24 @@ text = "Quit"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 754.0
+offset_left = 546.0
 offset_top = 14.0
-offset_right = 1145.0
+offset_right = 1014.0
 offset_bottom = 257.0
 color = Color(0, 0, 0, 0.486275)
 
 [node name="Controls" type="RichTextLabel" parent="ColorRect"]
 layout_mode = 0
-offset_right = 409.0
+offset_left = 5.0
+offset_right = 479.0
 offset_bottom = 637.0
 text = "CONTROLS:
 
- Action 				| Keyboard	| Controller
+ Action 				| Keyboard		| Controller
 ----------------------------------------------------------------
- Movement		| WASD			| Left Stick
- Camera				| Q/E				| L/R
- Keygen Toggle	| SHIFT			| Down face button
- Cheat Input		| Arrow Keys | D-Pad
- Pause Toggle	| ESC				| START
- UI Accept			| ENTER			| Right face button"
+ Movement		| WASD				| Left Stick
+ Camera				| Right/Left		| Right Stick
+ Keygen Toggle	| SHIFT				| L/R
+ Cheat Input		| Arrow Keys 	| Right Stick OR Face buttons
+ Pause Toggle	| ESC					| START
+ UI Accept			| ENTER				| Right face button"

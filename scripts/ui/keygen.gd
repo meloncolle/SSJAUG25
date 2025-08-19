@@ -33,15 +33,17 @@ func _input(event):
 		if SceneManager.game_state == Enums.GameState.IN_GAME:
 			# pause failed so we must have used keyboard. need to manually pause from scenemanager
 			SceneManager.set_state(Enums.GameState.PAUSED)
-	
-	elif input_enabled:
-		if event.is_action_pressed("cheat_up"):
+
+func _process(_delta):
+	# Moved to _process() because it gets double input in _input()
+	if input_enabled:
+		if Input.is_action_just_pressed("cheat_up"):
 			add_input(Enums.CheatInput.UP)
-		elif event.is_action_pressed("cheat_right"):
+		elif Input.is_action_just_pressed("cheat_right"):
 			add_input(Enums.CheatInput.RIGHT)
-		elif event.is_action_pressed("cheat_down"):
+		elif Input.is_action_just_pressed("cheat_down"):
 			add_input(Enums.CheatInput.DOWN)
-		elif event.is_action_pressed("cheat_left"):
+		elif Input.is_action_just_pressed("cheat_left"):
 			add_input(Enums.CheatInput.LEFT)
 		
 func _on_close_requested():
@@ -66,6 +68,7 @@ func add_input(input: Enums.CheatInput):
 	# Check if current input sequence contains any valid cheat code
 	var result = CheatLib.find_match(inputs)
 	if result[0] != null:
+		input_enabled = false
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
 			arrow_icons[i].modulate = Color(Color.WHITE, 0.25)
@@ -73,7 +76,7 @@ func add_input(input: Enums.CheatInput):
 		emit_signal("code_accepted", result[0])
 		emit_signal("close_requested")
 
-	if inputs.size() >= MAX_INPUTS:
+	elif inputs.size() >= MAX_INPUTS:
 		input_enabled = false
 		for i in arrow_icons: i.hide()
 		error_msg.show()
