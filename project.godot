@@ -29,15 +29,16 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="SSJAUG25"
-run/main_scene="uid://c2pnj083n28r6"
+run/main_scene="uid://b0c6576vnl8pp"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Config="*res://scripts/globals/config.gd"
-SceneManager="*res://scenes/game_scenes/scene_manager.tscn"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+CheatLib="*res://scenes/global_scenes/cheat_lib.tscn"
+SceneManager="*res://scenes/global_scenes/scene_manager.tscn"
 
 [display]
 
