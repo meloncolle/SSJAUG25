@@ -8,6 +8,8 @@ var level_state: Enums.LevelState
 
 var desired_gravity:= Vector3.DOWN
 
+@export var death_height:= -1.0
+
 @onready var cam: Marker3D = $CanvasLayer/SubViewportContainer/SubViewport/CamRig
 @onready var keygen: Window = $Keygen
 
@@ -36,7 +38,6 @@ func spawn_player():
 		self.add_child(player)
 	
 	player.position = spawn_point.position
-	# todo: probably reset velocity and stuff if we're respawning
 
 # Handle pause and keygen toggle since we don't need to poll for them like movement
 func _input(event):
@@ -47,7 +48,6 @@ func _input(event):
 		if keygen.reopen_on_resume:
 			# not using _on_open_requested bc don't want to reset entry/etc
 			keygen.show()
-			keygen.text_entry.grab_focus()
 			keygen.reopen_on_resume = false
 
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
@@ -64,7 +64,12 @@ func _physics_process(delta):
 	if level_state == Enums.LevelState.RACING:
 		input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		# Disable cam while keygen input accepted
-		if !keygen.visible: cam_input = Input.get_axis("cam_left", "cam_right") 
+		if !keygen.visible: cam_input = Input.get_axis("cam_left", "cam_right")
+		
+		# Check for death
+		if player.global_position.y <= death_height:
+			set_state(Enums.LevelState.DYING)
+			 
 	
 	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
 		cam.yaw -= cam_input * cam.sensitivity
@@ -138,22 +143,24 @@ func _on_settings_changed():
 	cam.sensitivity = Config.data.get_value("settings", "cam_sensitivity", Config.DEFAULTS["cam_sensitivity"])
 
 func set_state(new_state: Enums.LevelState):
+	level_state = new_state
+	
 	match new_state:
 		Enums.LevelState.WAIT_START:
-			#disable input
 			pass
 			
 		Enums.LevelState.RACING:
-			#enable input
 			pass
 			
 		Enums.LevelState.DYING:
-			#hide keygen
-			pass
+			keygen._on_close_requested()
+			await get_tree().create_timer(0.5).timeout
+			player.respawn(spawn_point)
+			cam.yaw = spawn_point.rotation.y
+			await get_tree().create_timer(0.25).timeout
+			set_state(Enums.LevelState.RACING)
 			
 		Enums.LevelState.END:
-			#hide keygen
-			pass
-			
-	level_state = new_state
-	print(Enums.LevelState.keys()[new_state])
+			keygen._on_close_requested()
+
+	# print(Enums.LevelState.keys()[new_state])
