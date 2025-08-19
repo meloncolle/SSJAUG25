@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://n1ja8c6j8mff"]
+[gd_scene load_steps=25 format=3 uid="uid://n1ja8c6j8mff"]
 
 [ext_resource type="Script" uid="uid://dvvqn4yebxdbb" path="res://_debug/test_lvl_3d/test_lvl_3d.gd" id="1_npv2n"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="2_a3crt"]
-[ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://scripts/cam_rig.gd" id="3_28wc8"]
-[ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://scripts/player.gd" id="4_by1ef"]
+[ext_resource type="Script" uid="uid://cp3168u85uh2f" path="res://_debug/test_lvl_3d/cam_rig.gd" id="3_28wc8"]
+[ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://_debug/test_lvl_3d/ball.gd" id="4_by1ef"]
+[ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="5_aj7ww"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="6_mry85"]
 [ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="7_sfyoe"]
 [ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="8_x1n0j"]
@@ -14,12 +15,19 @@ sky_horizon_color = Color(0.570372, 0.896429, 0.952946, 1)
 ground_bottom_color = Color(0.598402, 0.779306, 0.31347, 1)
 ground_horizon_color = Color(0.710443, 0.877264, 0.834224, 1)
 
-[sub_resource type="Sky" id="Sky_npv2n"]
+[sub_resource type="Sky" id="Sky_v6fep"]
 sky_material = SubResource("ProceduralSkyMaterial_yfyfv")
 
 [sub_resource type="Environment" id="Environment_goep6"]
 background_mode = 2
-sky = SubResource("Sky_npv2n")
+sky = SubResource("Sky_v6fep")
+
+[sub_resource type="SphereMesh" id="SphereMesh_71i62"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8rof"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_texture = ExtResource("5_aj7ww")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8dc5"]
 
@@ -90,7 +98,6 @@ offset_top = -244.0
 offset_right = 381.0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.243137)
-metadata/_edit_use_anchors_ = true
 
 [node name="GravityLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
@@ -106,7 +113,6 @@ text = "Gravity:
 [color=red]X: 0
 [color=green]Y: 0[/color]
 [color=blue]Z: 0[/color]"
-metadata/_edit_use_anchors_ = true
 
 [node name="SpeedLabel" type="RichTextLabel" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
@@ -121,7 +127,6 @@ grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Speed:"
-metadata/_edit_use_anchors_ = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -130,7 +135,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
-metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 transparent_bg = true
@@ -165,6 +169,12 @@ linear_damp = 0.07
 script = ExtResource("4_by1ef")
 speed_limit = 15.0
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+visible = false
+mesh = SubResource("SphereMesh_71i62")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_c8rof")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("SphereShape3D_s8dc5")
 debug_color = Color(0.852898, 0.239525, 0.705028, 0.42)
@@ -174,18 +184,18 @@ remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/CamRi
 update_rotation = false
 update_scale = false
 
-[node name="Car" parent="Player" node_paths=PackedStringArray("target") instance=ExtResource("7_sfyoe")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.0699809, -1.79892, 0.13639)
-target = NodePath("..")
-set_tracking_on_ready = true
-
-[node name="RacerBen" parent="Player" node_paths=PackedStringArray("target") instance=ExtResource("6_mry85")]
-transform = Transform3D(-0.433013, 0, -0.25, 0, 0.5, 0, 0.25, 0, -0.433013, 0.05888, -1.6704, 0.0942081)
-target = NodePath("..")
+[node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_mry85")]
+transform = Transform3D(-0.433013, 0, -0.25, 0, 0.5, 0, 0.25, 0, -0.433013, 0.05888, 0.620629, 0.112301)
+target = NodePath("../Player")
 target_radius = 0.5
 idle_thresh = 0.5
 eject = true
 override_velocity_length = 10.495
+
+[node name="PlayerCar[art]" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_sfyoe")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.0699809, 0.492108, 0.154483)
+target = NodePath("../Player")
+set_tracking_on_ready = true
 
 [node name="Track" type="Node3D" parent="."]
 

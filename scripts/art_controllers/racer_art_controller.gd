@@ -15,7 +15,7 @@ var last_target_pos := Vector3.ZERO
 #@export var velocity_tilt_amt := 10.0
 
 ## state variables
-@export var skip_start_sequence := false
+@export var skip_start_squence := false
 @export var eject := false
 
 @export var eject_range := 5.0
@@ -45,7 +45,6 @@ var spin_dist_travelled := 0.0
 var last_rotated_position := Vector3.ZERO
 
 var intro_complete := false
-signal intro_completed
 
 func _ready():
 	last_target_pos = target.global_position
@@ -56,7 +55,7 @@ func _process(delta):
 	if eject && !intro_complete:
 		DoStartSequence()
 	
-	if intro_complete || skip_start_sequence: 
+	if intro_complete || skip_start_squence: 
 		HandleGameplayAnimation(delta)
 		
 	#if Input.is_action_just_pressed("ui_right"):
@@ -79,7 +78,6 @@ func DoStartSequence():
 	
 	var timer = 1.0
 	while timer > 0.0:
-		land_position.y = target.global_position.y - target_radius
 		global_position = lerp(start_pos, land_position, clamp(1.0 - timer, 0.0, 1.0))
 		
 		timer -= 0.0166667
@@ -106,7 +104,6 @@ func DoStartSequence():
 		await get_tree().physics_frame
 	
 	intro_complete = true
-	emit_signal("intro_completed")
 
 func HandleGameplayAnimation(delta):
 	var pos_d = target.global_position - last_target_pos
