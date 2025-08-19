@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://clxmyq2gganal"]
+
+[ext_resource type="PackedScene" uid="uid://d05td8ck17wye" path="res://assets/models/car_solo.glb" id="1_fqede"]
+[ext_resource type="Material" uid="uid://cxm0jmm6hiiof" path="res://resources/materials/car_default_mat.tres" id="2_rjpfy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rjpfy"]
+points = PackedVector3Array(-1.14239, -0.30004, -0.700293, -1.30065, -0.30004, -0.529882, -1.14239, -0.0925125, -0.700293, -0.786539, -0.502908, -0.700293, -1.30065, -0.0933999, -0.529882, -1.30065, -0.30004, 0.52974, -0.941203, 0.189662, -0.647099, -0.238141, 0.630228, -0.571422, 0.551005, -0.0925125, -0.700293, -0.786539, -0.502908, 0.700151, 0.754346, -0.502908, -0.700293, -1.30065, -0.0933999, 0.52974, -1.14239, 0.0824048, -0.394841, -1.14239, -0.30004, 0.700151, -0.238141, 0.630228, 0.571143, 0.372841, 0.630228, -0.571422, 0.73876, -0.0926235, -0.700293, -0.598784, -0.0925125, 0.700288, 0.754346, -0.502908, 0.700151, 0.73876, -0.0926235, 0.700288, 1.14904, -0.30004, -0.700293, -1.14239, -0.0925125, 0.700151, -0.941203, 0.189662, 0.646957, -1.14239, 0.0824048, 0.394699, 0.372841, 0.630228, 0.571143, 0.72677, 0.5121, -0.58993, 1.02315, 0.150508, -0.655874, 1.14904, -0.0929562, -0.700293, 0.551005, -0.0925125, 0.700288, 1.14904, -0.30004, 0.700151, 1.14904, -0.0929562, 0.700151, 1.02315, 0.150508, 0.655731, 0.72677, 0.5121, 0.589788)
+
+[node name="car_solo[art]" instance=ExtResource("1_fqede")]
+
+[node name="Cube_002" parent="." index="1"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.276758, 0.114448, 2.27837e-06)
+material_override = ExtResource("2_rjpfy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.276758, 0.114448, 2.27837e-06)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_rjpfy")
+disabled = true

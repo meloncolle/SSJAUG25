@@ -5,3 +5,17 @@ enum GameState {
 	IN_GAME,
 	PAUSED,
 }
+
+enum LevelState {
+	WAIT_START, # Start sequence before u gain control of player
+	RACING,
+	DYING, # Fell off track and respawning
+	END,
+}
+
+enum CheatInput {
+	LEFT,
+	UP,
+	RIGHT,
+	DOWN,
+}

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhbu8n8xxwgvo"]
+
+[ext_resource type="Script" uid="uid://j6a35mshjd4b" path="res://scripts/level_editing/place_instances_along_path.gd" id="1_m5wds"]
+
+[node name="InstancePlacer" type="Node3D"]
+script = ExtResource("1_m5wds")

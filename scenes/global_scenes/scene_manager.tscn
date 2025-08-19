@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2pnj083n28r6"]
+
+[ext_resource type="Script" uid="uid://dlq4powwfiw1t" path="res://scripts/globals/scene_manager.gd" id="1_2xs7l"]
+[ext_resource type="PackedScene" uid="uid://sltc862m5v18" path="res://scenes/game_scenes/test_inherited_level.tscn" id="2_mbryp"]
+[ext_resource type="PackedScene" uid="uid://cccvsiorwsaq2" path="res://scenes/game_scenes/ui/start_menu.tscn" id="3_yanm7"]
+[ext_resource type="PackedScene" uid="uid://bmlhgvnxyd87" path="res://scenes/game_scenes/ui/pause_menu.tscn" id="4_73kk8"]
+[ext_resource type="PackedScene" uid="uid://c82tul4b1lqlu" path="res://scenes/game_scenes/ui/settings_menu.tscn" id="5_7u8k4"]
+
+[node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_2xs7l")
+starting_level = ExtResource("2_mbryp")
+
+[node name="Menus" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="Start" parent="Menus" instance=ExtResource("3_yanm7")]
+
+[node name="Pause" parent="Menus" instance=ExtResource("4_73kk8")]
+process_mode = 0
+visible = false
+
+[node name="Settings" parent="Menus" instance=ExtResource("5_7u8k4")]
+visible = false

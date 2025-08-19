@@ -1,0 +1,205 @@
+[gd_scene load_steps=40 format=3 uid="uid://dag8rxu5kmtaq"]
+
+[ext_resource type="PackedScene" uid="uid://cvq606sbm61sv" path="res://assets/models/RacerBen.glb" id="1_oaqar"]
+[ext_resource type="Material" uid="uid://dj6iuongwl3st" path="res://resources/materials/racer_ben_body_mat.tres" id="2_nooa5"]
+[ext_resource type="Script" uid="uid://dlrjk7lor7ojd" path="res://scripts/art_controllers/racer_art_controller.gd" id="2_ydrh6"]
+[ext_resource type="Material" uid="uid://cxfetivdr5ldk" path="res://resources/materials/racer_ben_face_mat.tres" id="3_ydrh6"]
+[ext_resource type="PackedScene" uid="uid://deeat3oyd16mw" path="res://scenes/art_scenes/dust_particles[art].tscn" id="5_leixt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2yqjx"]
+animation = &"ball_falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvvfl"]
+animation = &"ball_flat"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5kn6"]
+animation = &"ball_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76mit"]
+animation = &"car_eject"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpo0m"]
+animation = &"car_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2p6nv"]
+animation = &"get_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smeun"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nooa5"]
+animation = &"ball_pd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ydrh6"]
+animation = &"ball_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_leixt"]
+animation = &"ball_run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_qvvfl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nooa5")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_ydrh6")
+blend_point_1/pos = 0.2
+blend_point_2/node = SubResource("AnimationNodeAnimation_leixt")
+blend_point_2/pos = 1.0
+min_space = 0.0
+sync = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_q5kn6"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_76mit"]
+graph_offset = Vector2(-405.15, 121.35)
+nodes/locomotion_amt/node = SubResource("AnimationNodeBlendSpace1D_qvvfl")
+nodes/locomotion_amt/position = Vector2(-140, 160)
+nodes/locomotion_speed/node = SubResource("AnimationNodeTimeScale_q5kn6")
+nodes/locomotion_speed/position = Vector2(80, 160)
+node_connections = [&"locomotion_speed", 0, &"locomotion_amt", &"output", 0, &"locomotion_speed"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12chk"]
+animation = &"lose-start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f0mpv"]
+animation = &"lose"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cd3p5"]
+animation = &"win-start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hrww8"]
+animation = &"win"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_76mit"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel >= idle_thresh"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hpo0m"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel < idle_thresh"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2p6nv"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel >= max_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smeun"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "cur_vel < max_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2yqjx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_12chk"]
+advance_mode = 2
+advance_condition = &"eject"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f0mpv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cd3p5"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hrww8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sbbcp"]
+advance_mode = 2
+advance_expression = "y_vel <= min_y_vel && cur_vel < max_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gqvtu"]
+advance_mode = 2
+advance_expression = "cur_vel >= max_vel || y_vel > min_y_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ymkr"]
+advance_mode = 2
+advance_expression = "y_vel <= min_y_vel"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y56si"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ok1nm"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mgoxm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n83i0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nooa5"]
+states/Start/position = Vector2(88, 200)
+states/ball_falling/node = SubResource("AnimationNodeAnimation_2yqjx")
+states/ball_falling/position = Vector2(642, -58)
+states/ball_flat/node = SubResource("AnimationNodeAnimation_qvvfl")
+states/ball_flat/position = Vector2(486, -118)
+states/ball_idle/node = SubResource("AnimationNodeAnimation_q5kn6")
+states/ball_idle/position = Vector2(327, -5)
+states/car_eject/node = SubResource("AnimationNodeAnimation_76mit")
+states/car_eject/position = Vector2(327, 200)
+states/car_idle/node = SubResource("AnimationNodeAnimation_hpo0m")
+states/car_idle/position = Vector2(204, 200)
+states/get_up/node = SubResource("AnimationNodeAnimation_2p6nv")
+states/get_up/position = Vector2(327, 135)
+states/jump/node = SubResource("AnimationNodeAnimation_smeun")
+states/jump/position = Vector2(327, 68)
+states/locomotion/node = SubResource("AnimationNodeBlendTree_76mit")
+states/locomotion/position = Vector2(486, -5)
+states/lose/node = SubResource("AnimationNodeAnimation_f0mpv")
+states/lose/position = Vector2(599, 176)
+states/lose-start/node = SubResource("AnimationNodeAnimation_12chk")
+states/lose-start/position = Vector2(599, 100)
+states/win/node = SubResource("AnimationNodeAnimation_hrww8")
+states/win/position = Vector2(486, 176)
+states/win-start/node = SubResource("AnimationNodeAnimation_cd3p5")
+states/win-start/position = Vector2(486, 100)
+transitions = ["ball_idle", "locomotion", SubResource("AnimationNodeStateMachineTransition_76mit"), "locomotion", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hpo0m"), "locomotion", "ball_flat", SubResource("AnimationNodeStateMachineTransition_2p6nv"), "ball_flat", "locomotion", SubResource("AnimationNodeStateMachineTransition_smeun"), "Start", "car_idle", SubResource("AnimationNodeStateMachineTransition_2yqjx"), "car_idle", "car_eject", SubResource("AnimationNodeStateMachineTransition_12chk"), "car_eject", "get_up", SubResource("AnimationNodeStateMachineTransition_f0mpv"), "get_up", "jump", SubResource("AnimationNodeStateMachineTransition_cd3p5"), "jump", "ball_idle", SubResource("AnimationNodeStateMachineTransition_hrww8"), "ball_flat", "ball_falling", SubResource("AnimationNodeStateMachineTransition_sbbcp"), "ball_falling", "ball_flat", SubResource("AnimationNodeStateMachineTransition_gqvtu"), "locomotion", "ball_falling", SubResource("AnimationNodeStateMachineTransition_3ymkr"), "locomotion", "win-start", SubResource("AnimationNodeStateMachineTransition_y56si"), "locomotion", "lose-start", SubResource("AnimationNodeStateMachineTransition_ok1nm"), "win-start", "win", SubResource("AnimationNodeStateMachineTransition_mgoxm"), "lose-start", "lose", SubResource("AnimationNodeStateMachineTransition_n83i0")]
+graph_offset = Vector2(-120, -17)
+
+[node name="RacerBen" node_paths=PackedStringArray("dust_object") instance=ExtResource("1_oaqar")]
+script = ExtResource("2_ydrh6")
+idle_thresh = 0.05
+max_vel = 12.5
+locomotion_mult_range = Vector2(0.5, 3)
+dust_object = NodePath("DustParticles[art]")
+dust_thresh = 0.1
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.22608, 1.00582, -0.166366)
+bones/0/rotation = Quaternion(0.0411429, -0.374564, -0.44404, 0.812919)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/position = Vector3(-0.0575409, 1.15755, -0.0947706)
+bones/1/rotation = Quaternion(0.177753, -0.0610887, 0.0172197, 0.982026)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(0.0845179, 0.436967, -0.0143167)
+bones/2/rotation = Quaternion(0.105464, -0.180936, 0.97722, 0.0343516)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-0.330678, 1.051, -0.14099)
+bones/3/rotation = Quaternion(0.086954, 0.388143, 0.381432, 0.834442)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-0.189936, 0.538306, 0.0793383)
+bones/4/rotation = Quaternion(-0.0963271, 0.32358, 0.93697, 0.0900171)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.0396699, 0.748871, -0.123982)
+bones/5/rotation = Quaternion(0.0283583, -0.0141626, 0.0149842, 0.999385)
+bones/5/scale = Vector3(1, 1, 1)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("2_nooa5")
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="1"]
+material_override = ExtResource("3_ydrh6")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_nooa5")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/eject = false
+parameters/locomotion/locomotion_amt/blend_position = 0.196958
+parameters/locomotion/locomotion_speed/scale = 1.0
+
+[node name="DustParticles[art]" parent="." index="3" instance=ExtResource("5_leixt")]

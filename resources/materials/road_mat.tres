@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bpm5byb13rwqh"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_u20m6"]
+[ext_resource type="Texture2D" uid="uid://b41syod0tfwi" path="res://assets/textures/road_tile.png" id="2_7esfc"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_u20m6")
+shader_parameter/UvScale = Vector2(1, 7.5)
+shader_parameter/UvOffset = Vector2(0, -0.9)
+shader_parameter/diffuse_tex = ExtResource("2_7esfc")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)

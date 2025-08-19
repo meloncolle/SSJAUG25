@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1c3fcvu80t6x"
-path.s3tc="res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"
+uid="uid://54mampooklnu"
+path.s3tc="res://.godot/imported/RacerBenSuit-diff.png-500bc677abf4515ba7bc045b46372753.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://_debug/debug_sprite.png"
-dest_files=["res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"]
+source_file="res://assets/textures/RacerBenSuit-diff.png"
+dest_files=["res://.godot/imported/RacerBenSuit-diff.png-500bc677abf4515ba7bc045b46372753.s3tc.ctex"]
 
 [params]
 

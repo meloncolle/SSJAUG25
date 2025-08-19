@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpqbahsa514om"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_rtts8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rtts8")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/VertexColorAmt = 1.0
+shader_parameter/Tint = Color(1, 1, 1, 1)

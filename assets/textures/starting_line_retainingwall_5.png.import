@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1c3fcvu80t6x"
-path.s3tc="res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"
+uid="uid://7mdmw6jicqt2"
+path.s3tc="res://.godot/imported/starting_line_retainingwall_5.png-311d56ba1db55c6f03f5cce211066588.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "27f1bfbe2035af767b222877fd45a037"
+}
 
 [deps]
 
-source_file="res://_debug/debug_sprite.png"
-dest_files=["res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"]
+source_file="res://assets/textures/starting_line_retainingwall_5.png"
+dest_files=["res://.godot/imported/starting_line_retainingwall_5.png-311d56ba1db55c6f03f5cce211066588.s3tc.ctex"]
 
 [params]
 

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1c3fcvu80t6x"
-path.s3tc="res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"
+uid="uid://bfx11up0wxway"
+path.s3tc="res://.godot/imported/starting_line_dirt_9.png-fc80c0c818a43b9f866c3389d2a9c4d4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "0c5d905470392bc0899788e3ea6785fc"
+}
 
 [deps]
 
-source_file="res://_debug/debug_sprite.png"
-dest_files=["res://.godot/imported/debug_sprite.png-25b9031e29cc63e0faf684358acf1dcd.s3tc.ctex"]
+source_file="res://assets/textures/starting_line_dirt_9.png"
+dest_files=["res://.godot/imported/starting_line_dirt_9.png-fc80c0c818a43b9f866c3389d2a9c4d4.s3tc.ctex"]
 
 [params]
 

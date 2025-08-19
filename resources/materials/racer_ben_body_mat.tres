@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dj6iuongwl3st"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_rdgbm"]
+[ext_resource type="Texture2D" uid="uid://54mampooklnu" path="res://assets/textures/RacerBenSuit-diff.png" id="2_aqijg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rdgbm")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("2_aqijg")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)
