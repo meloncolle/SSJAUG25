@@ -154,10 +154,13 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.DYING:
 			keygen._on_close_requested()
-			await get_tree().create_timer(0.5).timeout
+			var tween: Tween = Overlay.fade_to_black(1.0)
+			await tween.finished
 			player.respawn(spawn_point)
 			cam.yaw = spawn_point.rotation.y
-			await get_tree().create_timer(0.25).timeout
+			tween = Overlay.fade_from_black(0.5)
+			await tween.finished
+			Overlay.hide()
 			set_state(Enums.LevelState.RACING)
 			
 		Enums.LevelState.END:
