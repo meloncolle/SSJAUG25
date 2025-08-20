@@ -1,6 +1,7 @@
 extends Node3D
 
 var level_state: Enums.LevelState
+signal state_changed
 
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
@@ -16,28 +17,67 @@ var desired_gravity:= Vector3.DOWN
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
 
+var debug_panel = null
+
+# HUD stuff
+#------------------
+
+signal timer_changed
+var timer:= 0.0:
+	set(value):
+		timer = value
+		emit_signal("timer_changed", timer)
+
+# For debug panel
+signal speed_changed
+signal gravity_changed
+signal velocity_changed
+
 func _ready():
+	spawn_player()
+	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
+	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	
+	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
+	# Update game values when settings changed in menu
 	SceneManager.settings_menu.connect("settings_changed", _on_settings_changed)
 	# sync settings with config
 	_on_settings_changed()
 	
+	# Hookup update signals for HUD stuff
+	connect("timer_changed", %Timer._on_timer_changed)
+	connect("speed_changed", %Speedometer._on_speed_changed)
+	player.connect("max_speed_changed", %Speedometer._on_max_speed_changed)
+	player.emit_signal("max_speed_changed", player.max_speed)
+	
 	cam.position = spawn_point.position
 	
-	spawn_player()
-	print(get_path_to(cam))
-	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
-	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	# Load debug panel and hookup signals only on debug build
+	if OS.is_debug_build():
+		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
+		$CanvasLayer.add_child(debug_panel)
+		
+		connect("state_changed", debug_panel._on_state_changed)
+		connect("speed_changed", debug_panel._on_speed_changed)
+		connect("gravity_changed", debug_panel._on_grav_changed)
+		connect("velocity_changed", debug_panel._on_vel_changed)
+		
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point
 func spawn_player():
-	print_debug("Spawning player at: " + str(spawn_point.position))
 	if player == null:
 		player = load("res://scenes/prefab_scenes/player.tscn").instantiate()
 		self.add_child(player)
 	
 	player.position = spawn_point.position
+	player.respawn_target = spawn_point
+
+func _process(delta):
+	if (SceneManager.game_state == Enums.GameState.IN_GAME 
+	&& level_state in [Enums.LevelState.RACING, Enums.LevelState.DYING]):
+		timer += delta
 
 # Handle pause and keygen toggle since we don't need to poll for them like movement
 func _input(event):
@@ -69,7 +109,6 @@ func _physics_process(delta):
 		# Check for death
 		if player.global_position.y <= death_height:
 			set_state(Enums.LevelState.DYING)
-			 
 	
 	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
 		cam.yaw -= cam_input * cam.sensitivity
@@ -93,8 +132,10 @@ func _physics_process(delta):
 	elif player.get_colliding_bodies().all(func(b): return !b.is_in_group("track")):
 		desired_gravity.y = -1
 
-	update_gravity(delta)	
-	#update_display({"speed": player.linear_velocity.length()})
+	update_gravity(delta)
+	if OS.is_debug_build():
+		emit_signal("speed_changed", player.linear_velocity.length())
+		emit_signal("velocity_changed", player.linear_velocity)
 
 # lerp current gravity towards desired gravity @ tilt_speed. Update camera rotation to match
 func update_gravity(delta) -> void:
@@ -118,7 +159,8 @@ func update_gravity(delta) -> void:
 	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
 	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
-	#update_display({"gravity": new_gravity})
+	if OS.is_debug_build():
+		emit_signal("gravity_changed", new_gravity)
 
 # triggered when valid code entered in keygen
 func _on_code_accepted(code: CheatCode):
@@ -144,6 +186,7 @@ func _on_settings_changed():
 
 func set_state(new_state: Enums.LevelState):
 	level_state = new_state
+	emit_signal("state_changed", new_state)
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
@@ -156,8 +199,8 @@ func set_state(new_state: Enums.LevelState):
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
-			player.respawn(spawn_point)
-			cam.yaw = spawn_point.rotation.y
+			player.respawn()
+			cam.yaw = player.rotation.y
 			tween = Overlay.fade_from_black(0.5)
 			await tween.finished
 			Overlay.hide()
@@ -165,5 +208,3 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
-
-	# print(Enums.LevelState.keys()[new_state])
