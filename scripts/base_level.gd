@@ -16,11 +16,24 @@ var desired_gravity:= Vector3.DOWN
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
 
+# HUD stuff
+#------------------
+signal timer_changed
+var timer:= 0.0:
+	set(value):
+		timer = value
+		emit_signal("timer_changed", timer)
+
 func _ready():
+	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
+	# Update game values when settings changed in menu
 	SceneManager.settings_menu.connect("settings_changed", _on_settings_changed)
 	# sync settings with config
 	_on_settings_changed()
+	
+	# Hookup update signals for HUD stuff
+	connect("timer_changed", %Timer._on_timer_changed)
 	
 	cam.position = spawn_point.position
 	
@@ -38,6 +51,11 @@ func spawn_player():
 		self.add_child(player)
 	
 	player.position = spawn_point.position
+
+func _process(delta):
+	if (SceneManager.game_state == Enums.GameState.IN_GAME 
+	&& level_state in [Enums.LevelState.RACING, Enums.LevelState.DYING]):
+		timer += delta
 
 # Handle pause and keygen toggle since we don't need to poll for them like movement
 func _input(event):
