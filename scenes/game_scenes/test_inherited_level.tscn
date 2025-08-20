@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://sltc862m5v18"]
+[gd_scene load_steps=19 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_m3dci"]
 [ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="2_djqot"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="3_k3dio"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3dio"]
 size = Vector3(10, 1, 10)
@@ -27,10 +28,58 @@ albedo_texture = ExtResource("2_djqot")
 uv1_scale = Vector3(15, 1, 1)
 texture_filter = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_djqot"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k3dio"]
+resource_local_to_scene = true
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh2hr"]
+albedo_texture = ExtResource("2_djqot")
+uv1_scale = Vector3(15, 10, 1)
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4x3k"]
+size = Vector3(9, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1lg6"]
+resource_local_to_scene = true
+size = Vector3(9, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_400uf"]
+albedo_texture = ExtResource("2_djqot")
+uv1_scale = Vector3(15, 1, 1)
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wtlrr"]
+size = Vector3(5, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cccyf"]
+resource_local_to_scene = true
+size = Vector3(5, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhrr"]
+albedo_texture = ExtResource("2_djqot")
+uv1_scale = Vector3(7.5, 10, 1)
+texture_filter = 0
+
 [node name="BaseLevel" instance=ExtResource("1_m3dci")]
 
+[node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
+
+[node name="SpawnPoint" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
+
+[node name="BGCam" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
+[node name="Track" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
 [node name="TrackPart" type="StaticBody3D" parent="Track" index="0" groups=["track"]]
-transform = Transform3D(-0.999999, 0, 0.00136143, 0, 1, 0, -0.00136143, 0, -0.999999, -0.00195706, 0, 2.875)
+transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, 0.0116931, 0, 4.62532e-05)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart" index="0"]
@@ -42,7 +91,7 @@ mesh = SubResource("BoxMesh_vh2hr")
 surface_material_override/0 = SubResource("StandardMaterial3D_x4x3k")
 
 [node name="TrackPart2" type="StaticBody3D" parent="Track" index="1"]
-transform = Transform3D(-0.999999, 0, 0.00136143, 0, 1, 0, -0.00136143, 0, -0.999999, 0.00450976, 1, -1.875)
+transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, -0.0269401, 1, 4.74989)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart2" index="0"]
@@ -53,7 +102,7 @@ mesh = SubResource("BoxMesh_400uf")
 surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
 
 [node name="TrackPart3" type="StaticBody3D" parent="Track" index="2"]
-transform = Transform3D(-0.00136139, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.00136139, -4.75127, 1, 2.36853)
+transform = Transform3D(0.00813325, 0, 0.999967, 0, 1, 0, -0.999967, 0, 0.00813325, 4.75747, 1, 0.538666)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart3" index="0"]
@@ -64,7 +113,7 @@ mesh = SubResource("BoxMesh_400uf")
 surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
 
 [node name="TrackPart4" type="StaticBody3D" parent="Track" index="3"]
-transform = Transform3D(-0.00136139, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.00136139, 4.74872, 1, 2.38147)
+transform = Transform3D(0.00813325, 0, 0.999967, 0, 1, 0, -0.999967, 0, 0.00813325, -4.74222, 1, 0.461394)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart4" index="0"]
@@ -73,3 +122,144 @@ shape = SubResource("BoxShape3D_i1lg6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart4" index="1"]
 mesh = SubResource("BoxMesh_400uf")
 surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
+
+[node name="TrackPart9" type="StaticBody3D" parent="Track" index="4" groups=["track"]]
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 32.4296, -6.69666, -46.1308)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart9" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_djqot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart9" index="1"]
+mesh = SubResource("BoxMesh_k3dio")
+surface_material_override/0 = SubResource("StandardMaterial3D_vh2hr")
+
+[node name="TrackPart10" type="StaticBody3D" parent="Track" index="5"]
+transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -5.69666, -46.0927)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart10" index="0"]
+shape = SubResource("BoxShape3D_x4x3k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart10" index="1"]
+mesh = SubResource("BoxMesh_i1lg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+
+[node name="TrackPart11" type="StaticBody3D" parent="Track" index="6"]
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -5.69666, -50.8766)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart11" index="0"]
+shape = SubResource("BoxShape3D_x4x3k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart11" index="1"]
+mesh = SubResource("BoxMesh_i1lg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+
+[node name="TrackPart12" type="StaticBody3D" parent="Track" index="7"]
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -5.69666, -41.3769)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart12" index="0"]
+shape = SubResource("BoxShape3D_x4x3k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart12" index="1"]
+mesh = SubResource("BoxMesh_i1lg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+
+[node name="TrackPart5" type="StaticBody3D" parent="Track" index="8" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -0.937813, -9.67513)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart5" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart5" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart13" type="StaticBody3D" parent="Track" index="9" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -2.80069, -19.562)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart13" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart13" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart14" type="StaticBody3D" parent="Track" index="10" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -4.54444, -29.1984)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart14" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart14" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart15" type="StaticBody3D" parent="Track" index="11" groups=["track"]]
+transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -6.23489, -38.9474)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart15" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart15" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart6" type="StaticBody3D" parent="Track" index="12" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -6.95864, -46.3299)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart6" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart6" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart7" type="StaticBody3D" parent="Track" index="13" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -6.82307, -46.3299)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart7" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart7" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="TrackPart8" type="StaticBody3D" parent="Track" index="14" groups=["track"]]
+transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -6.71231, -46.3299)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart8" index="0"]
+visible = false
+shape = SubResource("BoxShape3D_wtlrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart8" index="1"]
+mesh = SubResource("BoxMesh_cccyf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
+
+[node name="Checkpoint" parent="Track" index="15" instance=ExtResource("3_k3dio")]
+transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -5.47082, -46.2769)
+
+[node name="Checkpoint2" parent="Track" index="16" instance=ExtResource("3_k3dio")]
+transform = Transform3D(0.450628, 0, 0.892712, 0, 1, 0, -0.892712, 0, 0.450628, 27.0802, -5.47082, -46.2769)
+
+[node name="Checkpoint3" parent="Track" index="17" instance=ExtResource("3_k3dio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -5.47082, -49.1032)
+
+[node name="Checkpoint4" parent="Track" index="18" instance=ExtResource("3_k3dio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -5.47082, -44.1212)
