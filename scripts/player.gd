@@ -1,4 +1,6 @@
 extends RigidBody3D
+class_name Player
+
 @export var max_speed:= 15.0:
 	set(value):
 		max_speed = value
@@ -9,8 +11,7 @@ signal max_speed_changed
 var awaiting_respawn:= false
 var respawn_target: Node3D = null
 
-func respawn(target: Node3D):
-	respawn_target = target
+func respawn():
 	awaiting_respawn = true
 
 func _integrate_forces(_state):
@@ -18,8 +19,8 @@ func _integrate_forces(_state):
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
 		global_position = respawn_target.global_position
+		global_rotation = respawn_target.global_rotation
 		awaiting_respawn = false
-		respawn_target = null
 	
 	else:
 		if linear_velocity.length() > max_speed:

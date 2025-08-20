@@ -72,6 +72,7 @@ func spawn_player():
 		self.add_child(player)
 	
 	player.position = spawn_point.position
+	player.respawn_target = spawn_point
 
 func _process(delta):
 	if (SceneManager.game_state == Enums.GameState.IN_GAME 
@@ -198,8 +199,8 @@ func set_state(new_state: Enums.LevelState):
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
-			player.respawn(spawn_point)
-			cam.yaw = spawn_point.rotation.y
+			player.respawn()
+			cam.yaw = player.rotation.y
 			tween = Overlay.fade_from_black(0.5)
 			await tween.finished
 			Overlay.hide()
