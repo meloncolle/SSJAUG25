@@ -34,6 +34,10 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
+	spawn_player()
+	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
+	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	
 	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
 	# Update game values when settings changed in menu
@@ -43,6 +47,9 @@ func _ready():
 	
 	# Hookup update signals for HUD stuff
 	connect("timer_changed", %Timer._on_timer_changed)
+	connect("speed_changed", %Speedometer._on_speed_changed)
+	player.connect("max_speed_changed", %Speedometer._on_max_speed_changed)
+	player.emit_signal("max_speed_changed", player.max_speed)
 	
 	cam.position = spawn_point.position
 	
@@ -55,10 +62,7 @@ func _ready():
 		connect("speed_changed", debug_panel._on_speed_changed)
 		connect("gravity_changed", debug_panel._on_grav_changed)
 		connect("velocity_changed", debug_panel._on_vel_changed)
-			
-	spawn_player()
-	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
-	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+		
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point

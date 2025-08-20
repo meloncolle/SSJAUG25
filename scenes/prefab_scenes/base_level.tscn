@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://df1sc6rf2vba3"]
+[gd_scene load_steps=17 format=3 uid="uid://df1sc6rf2vba3"]
 
 [ext_resource type="Script" uid="uid://dcmtsco3sf04m" path="res://scripts/base_level.gd" id="1_glll8"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="2_x882p"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://t6uqp4r4ascv" path="res://scripts/ui/HUD/timer.gd" id="4_02dr1"]
 [ext_resource type="FontFile" uid="uid://co3ndkw1mqlec" path="res://assets/fonts/7segment.woff" id="4_qlic1"]
 [ext_resource type="Texture2D" uid="uid://de2sui6ftspyl" path="res://assets/textures/ui/speedometer_scuffed.png" id="6_c3qqn"]
+[ext_resource type="Texture2D" uid="uid://cb0df7oqui5mu" path="res://assets/textures/ui/speedometer_needle.png" id="7_b6fb3"]
+[ext_resource type="Script" uid="uid://dyd0wvfgk6teb" path="res://scripts/ui/HUD/speedometer.gd" id="7_nl1de"]
 [ext_resource type="Texture2D" uid="uid://dp3ux3a06r5nu" path="res://assets/textures/ui/speedometer_glass.png" id="7_ntve1"]
 [ext_resource type="Texture2D" uid="uid://ca6mcg0crqd2k" path="res://assets/textures/ui/speedometer_brokenglass.png" id="8_b6fb3"]
 
@@ -125,11 +127,21 @@ text = "ELAPSED:"
 label_settings = SubResource("LabelSettings_qlic1")
 
 [node name="Speedometer" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(131.5, 634.5)
+unique_name_in_owner = true
+position = Vector2(128.5, 638.5)
 scale = Vector2(0.393312, 0.393312)
 texture = ExtResource("6_c3qqn")
+script = ExtResource("7_nl1de")
+
+[node name="Needle" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+position = Vector2(-1.27124, -3.81396)
+rotation = -0.872665
+scale = Vector2(1, 1)
+texture = ExtResource("7_b6fb3")
+offset = Vector2(-101.7, 0)
 
 [node name="Glass" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+visible = false
 position = Vector2(0, -21)
 texture = ExtResource("7_ntve1")
 
