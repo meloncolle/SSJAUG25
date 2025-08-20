@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://37mk8isaf56w"]
+[gd_scene load_steps=6 format=3 uid="uid://37mk8isaf56w"]
 
-[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_61mo2"]
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
 
 [sub_resource type="Curve3D" id="Curve3D_ofuue"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -107.546, 15.8139, -155.083, 28.5614, -2.28882e-05, -3.26181, -28.5614, 2.28882e-05, 3.26181, -175.323, 5.74828, -146.932, 46.6885, 0, -0.370544, -46.6885, 0, 0.370544, -181.963, -8.20422, -94.9827, 57.6039, 0, -20.3752, -57.6039, 0, 20.3752, -226.982, -14.4545, -50.2963, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -302.888, -29.0203, -118.455, -14.1853, 0, -28.9055, 14.1853, 0, 28.9055, -162.593, -46.6975, -83.1619, 8.35762, 1.64511, -12.7989, -8.35762, -1.64511, 12.7989, -178.558, -47.0723, -39.7584, -11.7845, 1.87159, -6.74893, 11.7845, -1.87159, 6.74893, -182.017, -57.7602, 0.634094),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -302.888, -29.0203, -118.455, -14.1853, 0, -28.9055, 14.1853, 0, 28.9055, -162.593, -46.6975, -83.1619, 8.35762, 1.64511, -12.7989, -8.35762, -1.64511, 12.7989, -178.558, -47.0723, -39.7584, -11.7845, 1.87159, -6.74893, 11.7845, -1.87159, 6.74893, -182.017, -57.7602, 0.634094),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 8
+point_count = 5
 up_vector_enabled = false
 
 [sub_resource type="Curve3D" id="Curve3D_61mo2"]
@@ -25,25 +25,32 @@ _data = {
 }
 point_count = 2
 
-[node name="Germantown0Path" type="Node3D"]
+[sub_resource type="Curve3D" id="Curve3D_jpx15"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.1423, 16.9475, -56.7863, 33.8345, 0.830275, 12.1383, -33.8345, -0.830275, -12.1383, -18.328, -4.59184, 28.6511, 4.28964, -0.0237312, -13.2579, -4.28964, 0.0237312, 13.2579, -100.693, -34.6474, 18.8653),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
-[node name="Road_A" parent="." instance=ExtResource("1_61mo2")]
+[node name="Germantown_Intsec_Path" type="Node3D"]
+
+[node name="Road_to_canyon" parent="." instance=ExtResource("1_mhubp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.759, 3.05176e-05, 135.307)
 
-[node name="Path3D" parent="Road_A" index="0"]
+[node name="Path3D" parent="Road_to_canyon" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2032, 0, 0)
 curve = SubResource("Curve3D_ofuue")
 
-[node name="Road" parent="." instance=ExtResource("1_61mo2")]
+[node name="Road_Intersection" parent="." instance=ExtResource("1_mhubp")]
 transform = Transform3D(-0.261883, 0.141541, -0.954664, 0.037444, 0.989932, 0.136498, 0.964373, 0, -0.264546, -1.96172, -51.11, 60.587)
 
-[node name="Path3D" parent="Road" index="0"]
+[node name="Path3D" parent="Road_Intersection" index="0"]
 curve = SubResource("Curve3D_61mo2")
 
-[node name="Road2" parent="." instance=ExtResource("1_61mo2")]
+[node name="Road_to_sb" parent="." instance=ExtResource("1_mhubp")]
 transform = Transform3D(0.989932, 0.141541, 0, -0.141541, 0.989932, 0, 0, 0, 1, 56.6794, -67.9323, 64.2427)
 
-[node name="Path3D" parent="Road2" index="0"]
+[node name="Path3D" parent="Road_to_sb" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.423599, -0.0605659, 0.106972)
 curve = SubResource("Curve3D_6rd0g")
 
@@ -55,6 +62,13 @@ size = Vector3(1.29644, 0.654556, 10.4874)
 transform = Transform3D(-1.21844, -18.6269, 0.292021, -2.57737, 5.77287, 0.949034, 23.6318, -0.330778, 0.118562, -14.0876, -53.4377, 67.9254)
 polygon = PackedVector2Array(-0.744253, 0.66039, 0.806441, 0.687965, 0.479767, -1.87392, -0.121907, -2.75246, -0.680675, -1.80236)
 
-[editable path="Road_A"]
-[editable path="Road"]
-[editable path="Road2"]
+[node name="Road_to_intsec" parent="." instance=ExtResource("1_mhubp")]
+transform = Transform3D(0.982682, -0.0134386, 0.18481, 0.0132071, 0.99991, 0.00248381, -0.184826, 0, 0.982771, 2.62017, 23.1617, 5.01011)
+
+[node name="Path3D" parent="Road_to_intsec" index="0"]
+curve = SubResource("Curve3D_jpx15")
+
+[editable path="Road_to_canyon"]
+[editable path="Road_Intersection"]
+[editable path="Road_to_sb"]
+[editable path="Road_to_intsec"]

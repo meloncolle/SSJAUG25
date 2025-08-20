@@ -47,6 +47,21 @@ transform = Transform3D(0.0151814, 0.265929, 0.963872, 0.99331, -0.114387, 0.015
 [node name="_Node3D_58077" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
 transform = Transform3D(-0.00648248, -0.00365071, 0.999972, 9.75601e-11, 0.999993, 0.00365078, -0.999979, 2.36667e-05, -0.00648263, 23.4806, -12.1319, -21.472)
 
+[node name="_Node3D_58079" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
+transform = Transform3D(0.0851661, -0.00363752, 0.99636, 9.9379e-11, 0.999993, 0.00365078, -0.996367, -0.000310923, 0.0851652, 12.4181, -12.1319, -32.0537)
+
+[node name="_Node3D_58080" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
+transform = Transform3D(0.202968, -0.0035748, 0.979178, 5.05517e-11, 0.999993, 0.00365078, -0.979185, -0.000740993, 0.202966, 15.6239, -12.1319, -40.4579)
+
+[node name="_Node3D_58081" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
+transform = Transform3D(-0.403169, -0.00334093, 0.915119, 5.05517e-11, 0.999993, 0.00365078, -0.915126, 0.00147188, -0.403166, 18.458, -12.1319, -41.2353)
+
+[node name="_Node3D_58082" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
+transform = Transform3D(-0.176147, -0.0035937, 0.984357, 5.05517e-11, 0.999993, 0.00365078, -0.984364, 0.000643076, -0.176146, 21.3155, -12.1319, -41.2492)
+
+[node name="_Node3D_58083" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
+transform = Transform3D(-0.983276, 0.000664891, -0.182122, 5.05517e-11, 0.999993, 0.00365078, 0.182123, 0.00358973, -0.983269, 14.8879, -12.1319, -30.2424)
+
 [node name="_Node3D_58074" parent="Road/Path3D/InstancePlacer" instance=ExtResource("3_1kxbn")]
 transform = Transform3D(-0.396055, 0.112357, 0.911327, 0.917499, 0.00893322, 0.397636, 0.0365362, 0.993627, -0.106626, 24.8621, -11.5051, -24.7529)
 
