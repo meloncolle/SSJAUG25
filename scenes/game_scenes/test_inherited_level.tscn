@@ -253,13 +253,13 @@ mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
 [node name="Checkpoint" parent="Track" index="15" instance=ExtResource("3_k3dio")]
-transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -5.47082, -46.2769)
+transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -6.19997, -46.2769)
 
 [node name="Checkpoint2" parent="Track" index="16" instance=ExtResource("3_k3dio")]
-transform = Transform3D(0.450628, 0, 0.892712, 0, 1, 0, -0.892712, 0, 0.450628, 27.0802, -5.47082, -46.2769)
+transform = Transform3D(0.450628, 0, 0.892712, 0, 1, 0, -0.892712, 0, 0.450628, 27.0802, -6.19997, -46.2769)
 
 [node name="Checkpoint3" parent="Track" index="17" instance=ExtResource("3_k3dio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -5.47082, -49.1032)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -6.19997, -49.1032)
 
 [node name="Checkpoint4" parent="Track" index="18" instance=ExtResource("3_k3dio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -5.47082, -44.1212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -6.19997, -44.1212)

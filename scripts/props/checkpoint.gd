@@ -1,16 +1,15 @@
 extends Area3D
 
-@onready var pole: Sprite3D = $Pole
+@onready var flag_off: Sprite3D = $FlagOff
+@onready var flag_on: AnimatedSprite3D = $FlagOn
 
 signal checkpoint_activated
 
 var is_activated:= false:
 	set(value):
 		is_activated = value
-		if is_activated: 
-			pole.modulate = Color.GREEN
-		else:
-			pole.modulate = Color.WHITE
+		flag_on.visible = is_activated
+		flag_off.visible = !is_activated
 
 func _on_body_entered(body: Node3D) -> void:
 	if is_activated: return

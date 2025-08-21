@@ -1,10 +1,102 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7f88rigtygli"]
+[gd_scene load_steps=18 format=3 uid="uid://c7f88rigtygli"]
 
 [ext_resource type="Script" uid="uid://4kyq0411w8sk" path="res://scripts/props/checkpoint.gd" id="1_dyn5u"]
-[ext_resource type="Texture2D" uid="uid://b1c3fcvu80t6x" path="res://_debug/debug_sprite.png" id="2_ovbyd"]
+[ext_resource type="Texture2D" uid="uid://dsfvomqtpb2d7" path="res://assets/textures/Checkpoint_flag_spritesheet.png" id="2_ovbyd"]
+[ext_resource type="Texture2D" uid="uid://bxbjvo5ay5n7n" path="res://assets/textures/checkpoint_flag_still.png" id="3_vqccl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3dio"]
-height = 2.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_665q5"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ppo"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8prte"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njtak"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwbma"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(0, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6fky"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(64, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux7jd"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(128, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2tv3"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(192, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dfy5"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(0, 256, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m14ig"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(64, 256, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hruu"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(128, 256, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmpxi"]
+atlas = ExtResource("2_ovbyd")
+region = Rect2(192, 256, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8krq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_665q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ppo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8prte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njtak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwbma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6fky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux7jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2tv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dfy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m14ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hruu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmpxi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 22.0
+}]
 
 [node name="Checkpoint" type="Area3D" groups=["checkpoint"]]
 collision_layer = 2
@@ -12,11 +104,20 @@ collision_mask = 2
 script = ExtResource("1_dyn5u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_k3dio")
 
-[node name="Pole" type="Sprite3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="FlagOn" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000812292, 0.65, 0)
+visible = false
 billboard = 2
-texture = ExtResource("2_ovbyd")
+sprite_frames = SubResource("SpriteFrames_8krq5")
+autoplay = "default"
+frame_progress = 0.039887
+
+[node name="FlagOff" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000812292, 0.65, 0)
+billboard = 2
+texture = ExtResource("3_vqccl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
