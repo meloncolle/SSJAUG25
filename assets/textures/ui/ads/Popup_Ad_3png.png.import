@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n28g0oet5yf7"
-path="res://.godot/imported/Popup_Ad_BING_censored.png-6598fba319fa93015d94bdb22a531ca3.ctex"
+uid="uid://dddfa7k6ebdxt"
+path="res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Popup_Ad_BING_censored.png"
-dest_files=["res://.godot/imported/Popup_Ad_BING_censored.png-6598fba319fa93015d94bdb22a531ca3.ctex"]
+source_file="res://assets/textures/ui/ads/Popup_Ad_3png.png"
+dest_files=["res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.ctex"]
 
 [params]
 

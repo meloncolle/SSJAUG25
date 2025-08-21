@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyrbpendt81yf"
-path="res://.godot/imported/speedometer.png-75c2a244ecfe83f018768cd70aaff15a.ctex"
+uid="uid://d3wmrn0nxkhea"
+path="res://.godot/imported/countdown_2.png-45b3167f14f8e133ed2bcd308660cfdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/speedometer.png"
-dest_files=["res://.godot/imported/speedometer.png-75c2a244ecfe83f018768cd70aaff15a.ctex"]
+source_file="res://assets/textures/ui/countdown_2.png"
+dest_files=["res://.godot/imported/countdown_2.png-45b3167f14f8e133ed2bcd308660cfdf.ctex"]
 
 [params]
 
