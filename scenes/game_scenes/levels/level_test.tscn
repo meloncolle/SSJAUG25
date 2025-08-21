@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://mthd8hfvu2ge"]
+
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
+[ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
+[ext_resource type="PackedScene" uid="uid://b132g3gl88ufv" path="res://scenes/prefab_scenes/blockouts_kye/start_1_level.tscn" id="3_m1yo0"]
+[ext_resource type="PackedScene" uid="uid://jlhisr8heyuo" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_a.tscn" id="4_m1yo0"]
+[ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_b.tscn" id="5_ja7to"]
+
+[node name="BaseLevel" instance=ExtResource("1_g02b8")]
+death_height = -500.0
+
+[node name="SpawnPoint" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3123, 0.380081, -12.5183)
+
+[node name="RoadPieces" type="Node3D" parent="Track" index="0"]
+
+[node name="Germantown0Path" parent="Track/RoadPieces" index="0" instance=ExtResource("2_0prje")]
+transform = Transform3D(-0.642747, 0, 0.766078, 0, 1, 0, -0.766078, 0, -0.642747, 31.3917, -69.6438, -70.2164)
+
+[node name="Germantown_start_1" parent="Track/RoadPieces" index="1" instance=ExtResource("3_m1yo0")]
+
+[node name="Environment Pieces" type="Node3D" parent="Track" index="1"]
+
+[node name="Germantown0Path_a" parent="." index="8" instance=ExtResource("4_m1yo0")]
+transform = Transform3D(0.477051, 0, -0.878875, 0, 1, 0, 0.878875, 0, 0.477051, 70.217, -212.708, -223.675)
+
+[node name="Level0PathB" parent="." index="9" instance=ExtResource("5_ja7to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.4095, -242.838, -229.58)

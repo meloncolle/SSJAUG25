@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://vspk66fo0j8k"]
+
+[ext_resource type="PackedScene" uid="uid://clfjq5p4mfhfd" path="res://scenes/art_scenes/halfpipe_shallow.tscn" id="1_kkxmi"]
+
+[sub_resource type="Curve3D" id="Curve3D_kkxmi"]
+closed = true
+_data = {
+"points": PackedVector3Array(-19.3993, 3.49345, -3.42538, 19.3993, -3.49345, 3.42538, 10.3286, -10.4407, 5.12026, -19.0515, 15.6703, -44.5824, 19.0515, -15.6703, 44.5824, 72.9547, -17.9846, 3.00152, 6.81565, 0.531769, -2.06093, -6.81565, -0.531769, 2.06093, 11.0937, -37.0148, 23.0423, 11.3097, -17.2356, 44.3725, -11.3097, 17.2356, -44.3725, -46.6545, -18.4834, 44.2207),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+up_vector_enabled = false
+
+[node name="Level0PathB" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_kkxmi")]
+
+[node name="Path3D" parent="Road" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.335707, 0)
+curve = SubResource("Curve3D_kkxmi")
+
+[editable path="Road"]

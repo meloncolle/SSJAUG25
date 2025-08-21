@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlhisr8heyuo"]
+
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_od0kw"]
+
+[sub_resource type="Curve3D" id="Curve3D_ofuue"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -10.9721, 15.01, -20.3165, 10.9721, -15.01, 20.3165, -33.4823, 0, 43.13, -6.67157, 0, -20.0146, 6.67157, 0, 20.0146, -85.756, 0, 102.928, 19.2733, 0, 31.1339, -19.2733, 0, -31.1339, 169.245, 0, 66.6056, -37.9418, 28.0671, -33.321, 37.9418, -28.0671, 33.321, -139.87, -38.6878, 159.266),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Germantown0Path_a" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_od0kw")]
+
+[node name="Path3D" parent="Road" index="0"]
+curve = SubResource("Curve3D_ofuue")
+
+[editable path="Road"]
