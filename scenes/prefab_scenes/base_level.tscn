@@ -136,7 +136,6 @@ script = ExtResource("7_nl1de")
 [node name="Needle" type="Sprite2D" parent="CanvasLayer/Speedometer"]
 position = Vector2(-1.27124, -3.81396)
 rotation = -0.872665
-scale = Vector2(1, 1)
 texture = ExtResource("7_b6fb3")
 offset = Vector2(-101.7, 0)
 

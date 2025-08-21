@@ -8,10 +8,13 @@
 death_height = -500.0
 
 [node name="SpawnPoint" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27931, -1.33511, -6.82278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3123, 0.380081, -12.5183)
 
-[node name="Germantown_start_1" parent="Track" index="0" instance=ExtResource("2_6t3sy")]
-transform = Transform3D(0.263385, 0, 0.964691, 0, 1, 0, -0.964691, 0, 0.263385, 4.61296, 0, 1.72994)
+[node name="RoadPieces" type="Node3D" parent="Track" index="0"]
 
-[node name="Germantown0Path" parent="Track" index="1" instance=ExtResource("3_knyno")]
-transform = Transform3D(0.568289, 0, -0.822829, 0, 1, 0, 0.822829, 0, 0.568289, -65.668, -52, -40.321)
+[node name="Germantown0Path" parent="Track/RoadPieces" index="0" instance=ExtResource("3_knyno")]
+transform = Transform3D(-0.642747, 0, 0.766078, 0, 1, 0, -0.766078, 0, -0.642747, 31.3917, -69.6438, -70.2164)
+
+[node name="Germantown_start_1" parent="Track/RoadPieces" index="1" instance=ExtResource("2_6t3sy")]
+
+[node name="Environment Pieces" type="Node3D" parent="Track" index="1"]

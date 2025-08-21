@@ -4,10 +4,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 28.9373, -0.184345, 21.7288, 18, 1, 28, -18, -1, -28, 7.24594, -1.96925, -28.7998, 0, 0, 0, 0, 0, 0, -1.16672, -1.78621, 32.3185),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 3
+point_count = 2
 
 [node name="Road" type="Node3D"]
 

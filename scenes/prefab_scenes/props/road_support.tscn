@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuc7lily7bn6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ah3l5"]
+size = Vector3(1, 6.12012, 2.08057)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_152rl"]
+size = Vector3(7.06955, 1.29346, 1.99707)
+
+[node name="Road Support" type="Node3D"]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498926, 0, 0.959339)
+polygon = PackedVector2Array(0, 0, 0, 6, -3, 7, -3, 8, 4, 8, 4, 7, 1, 6, 1, 0)
+depth = 2.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGPolygon3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGPolygon3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521126, 2.91846, -0.994629)
+shape = SubResource("BoxShape3D_ah3l5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CSGPolygon3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.495163, 7.32526, -1.01361)
+shape = SubResource("BoxShape3D_152rl")
