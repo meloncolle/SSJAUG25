@@ -11,7 +11,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_8d7vd"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 30.2675, 5.15878, -198.949, -8.47415, -0.639923, -23.887, 8.47415, 0.639923, 23.887, 55.7041, 20.7687, -93.4918, 81.6047, -18.0955, -61.9184, -81.6047, 18.0955, 61.9184, -14.1508, -5.65039, 54.5651, -10.5966, 19.8998, -87.948, 10.5966, -19.8998, 87.948, -130.681, -16.9001, 371.026, 0, 0, 0, 0, 0, 0, -229.23, -21.2345, 473.513),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 57.7019, 13.895, -163.192, -8.47415, -0.639923, -23.887, 8.47415, 0.639923, 23.887, 68.2856, 25.5328, -112.001, 81.6047, -18.0955, -61.9184, -81.6047, 18.0955, 61.9184, -14.1508, -5.65039, 54.5651, -10.5966, 19.8998, -87.948, 10.5966, -19.8998, 87.948, -130.681, -16.9001, 371.026, 0, 0, 0, 0, 0, 0, -229.23, -21.2345, 473.513),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -21,7 +21,7 @@ up_vector_enabled = false
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="4"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 244.327, -246.433, -91.8061)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -32.2938, 18.2502, -68.7353)
 
 [node name="RoadPieces" type="Node3D" parent="Track" index="0"]
 
@@ -35,10 +35,13 @@ transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4675, -309.462, -210.187)
 
 [node name="0PathB2_level" parent="Track/RoadPieces/0path_Rings" index="0" instance=ExtResource("5_ja7to")]
-transform = Transform3D(-0.458495, 0, -0.888697, 0, 1, 0, 0.888697, 0, -0.458495, 79.918, 103.519, -5.42754)
+transform = Transform3D(-0.45356, 0.146325, -0.879132, 0.0670892, 0.989237, 0.130038, 0.888697, 0, -0.458495, 80.039, 101.652, -4.27391)
 
 [node name="0PathB3_level" parent="Track/RoadPieces/0path_Rings" index="1" instance=ExtResource("5_ja7to")]
 transform = Transform3D(-0.943784, -0.116708, 0.309275, -0.0916672, 0.99131, 0.0943491, -0.317598, 0.0606948, -0.946281, 35.217, 107.178, -38.4768)
+
+[node name="CSGPolygon3D" parent="Track/RoadPieces/0path_Rings/0PathB3_level/Road/Path3D" index="0"]
+transform = Transform3D(0.99969, -0.0229576, -0.00960851, 0.023582, 0.997204, 0.0709078, 0.00795382, -0.0711125, 0.997437, -23.7188, -2.91498, 7.95752)
 
 [node name="start_level" parent="Track/RoadPieces" index="3" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
@@ -53,6 +56,9 @@ transform = Transform3D(0.736617, 0, 0.67631, 0, 1, 0, -0.67631, 0, 0.736617, 21
 curve = SubResource("Curve3D_8d7vd")
 
 [node name="Environment Pieces" type="Node3D" parent="Track" index="1"]
+
+[node name="skybox" parent="Background" index="0"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
 
 [node name="Checkpoints" type="Node3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7635, -5.3142, -59.6102)
