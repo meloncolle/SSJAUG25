@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://df1sc6rf2vba3"]
+[gd_scene load_steps=18 format=3 uid="uid://df1sc6rf2vba3"]
 
 [ext_resource type="Script" uid="uid://dcmtsco3sf04m" path="res://scripts/base_level.gd" id="1_glll8"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="2_x882p"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dyd0wvfgk6teb" path="res://scripts/ui/HUD/speedometer.gd" id="7_nl1de"]
 [ext_resource type="Texture2D" uid="uid://dp3ux3a06r5nu" path="res://assets/textures/ui/speedometer_glass.png" id="7_ntve1"]
 [ext_resource type="Texture2D" uid="uid://ca6mcg0crqd2k" path="res://assets/textures/ui/speedometer_brokenglass.png" id="8_b6fb3"]
+[ext_resource type="PackedScene" uid="uid://dy26raadejapx" path="res://scenes/art_scenes/skybox[art].tscn" id="11_nl1de"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qlic1"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -158,3 +159,6 @@ cull_mask = 1048574
 [node name="Track" type="Node3D" parent="."]
 
 [node name="Background" type="Node3D" parent="."]
+
+[node name="skybox" parent="Background" instance=ExtResource("11_nl1de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -67.151, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxbjvo5ay5n7n"
-path="res://.godot/imported/checkpoint_flag_still.png-895833794afb38b43d8b84da6adb0e45.ctex"
+uid="uid://7nhojiug4my8"
+path="res://.godot/imported/Popup_Ad_BING.png-9cf6eab6e48bfc0ae8417ac4935900d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/checkpoint_flag_still.png"
-dest_files=["res://.godot/imported/checkpoint_flag_still.png-895833794afb38b43d8b84da6adb0e45.ctex"]
+source_file="res://assets/textures/ui/ads/Popup_Ad_BING.png"
+dest_files=["res://.godot/imported/Popup_Ad_BING.png-9cf6eab6e48bfc0ae8417ac4935900d3.ctex"]
 
 [params]
 

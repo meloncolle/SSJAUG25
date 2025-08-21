@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxbjvo5ay5n7n"
-path="res://.godot/imported/checkpoint_flag_still.png-895833794afb38b43d8b84da6adb0e45.ctex"
+uid="uid://dhvt4fq2jkrf2"
+path="res://.godot/imported/countdown_1.png-743c7b11b388ef20bc2d6a990fb012b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/checkpoint_flag_still.png"
-dest_files=["res://.godot/imported/checkpoint_flag_still.png-895833794afb38b43d8b84da6adb0e45.ctex"]
+source_file="res://assets/textures/ui/countdown_1.png"
+dest_files=["res://.godot/imported/countdown_1.png-743c7b11b388ef20bc2d6a990fb012b0.ctex"]
 
 [params]
 

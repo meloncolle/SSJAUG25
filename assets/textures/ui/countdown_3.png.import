@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nhojiug4my8"
-path="res://.godot/imported/Popup_Ad_BING.png-b61b87191557bc8dd62589262663518f.ctex"
+uid="uid://b7h2q7hyxlcqs"
+path="res://.godot/imported/countdown_3.png-05df282f671c86bb7f3db8ad62ca5aa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Popup_Ad_BING.png"
-dest_files=["res://.godot/imported/Popup_Ad_BING.png-b61b87191557bc8dd62589262663518f.ctex"]
+source_file="res://assets/textures/ui/countdown_3.png"
+dest_files=["res://.godot/imported/countdown_3.png-05df282f671c86bb7f3db8ad62ca5aa8.ctex"]
 
 [params]
 

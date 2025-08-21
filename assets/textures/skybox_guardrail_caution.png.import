@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cchw1ef0doetu"
-path.s3tc="res://.godot/imported/starting_line_retainingwall.png-41b1fab4127f43974c0c86c2d1a51dfc.s3tc.ctex"
+uid="uid://bqgty6oxnpw40"
+path.s3tc="res://.godot/imported/skybox_guardrail_caution.png-7ec6d087060c0bc395c1f87233f87785.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "27f1bfbe2035af767b222877fd45a037"
+"md5": "3c5f95363c1ea442188638c52b3c124f"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_retainingwall.png"
-dest_files=["res://.godot/imported/starting_line_retainingwall.png-41b1fab4127f43974c0c86c2d1a51dfc.s3tc.ctex"]
+source_file="res://assets/textures/skybox_guardrail_caution.png"
+dest_files=["res://.godot/imported/skybox_guardrail_caution.png-7ec6d087060c0bc395c1f87233f87785.s3tc.ctex"]
 
 [params]
 
