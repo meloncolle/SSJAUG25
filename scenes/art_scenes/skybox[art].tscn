@@ -1,0 +1,214 @@
+[gd_scene load_steps=9 format=3 uid="uid://dy26raadejapx"]
+
+[ext_resource type="PackedScene" uid="uid://jkdm70e0no1k" path="res://assets/models/skybox.glb" id="1_drite"]
+[ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="2_cao5t"]
+[ext_resource type="Texture2D" uid="uid://cjb7alpo6nns" path="res://assets/textures/skybox_treeline.png" id="3_cao5t"]
+[ext_resource type="Texture2D" uid="uid://3jp4fwj7a3ae" path="res://assets/textures/skybox_red maple.png" id="4_23x41"]
+[ext_resource type="Texture2D" uid="uid://qfmhrvjnqjq3" path="res://assets/textures/skybox_green maple.png" id="5_ygqqr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gji28"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_cao5t")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("3_cao5t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cao5t"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_cao5t")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("4_23x41")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pqbx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_cao5t")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("5_ygqqr")
+
+[node name="skybox" instance=ExtResource("1_drite")]
+
+[node name="Plane" parent="." index="0"]
+layers = 2
+
+[node name="Plane_001" parent="." index="1"]
+layers = 2
+
+[node name="ground" parent="." index="2"]
+layers = 2
+
+[node name="mountain 1" parent="." index="3"]
+layers = 2
+
+[node name="mountain 2" parent="." index="4"]
+layers = 2
+
+[node name="mountain 3" parent="." index="5"]
+layers = 2
+
+[node name="mountain 3_001" parent="." index="6"]
+layers = 2
+
+[node name="Cube" parent="." index="7"]
+layers = 2
+
+[node name="Cube_003" parent="." index="8"]
+layers = 2
+
+[node name="Cube_004" parent="." index="9"]
+layers = 2
+
+[node name="Cube_005" parent="." index="10"]
+layers = 2
+
+[node name="Cube_006" parent="." index="11"]
+layers = 2
+
+[node name="Cube_007" parent="." index="12"]
+layers = 2
+
+[node name="mountain 2_001" parent="." index="13"]
+layers = 2
+
+[node name="Cube_008" parent="." index="14"]
+layers = 2
+
+[node name="mountain 3_002" parent="." index="15"]
+layers = 2
+
+[node name="Cube_009" parent="." index="16"]
+layers = 2
+
+[node name="Cube_010" parent="." index="17"]
+layers = 2
+
+[node name="Cube_011" parent="." index="18"]
+layers = 2
+
+[node name="Cube_012" parent="." index="19"]
+layers = 2
+
+[node name="Plane_029" parent="." index="20"]
+layers = 2
+
+[node name="Plane_030" parent="." index="21"]
+layers = 2
+
+[node name="Plane_031" parent="." index="22"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_032" parent="." index="23"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_033" parent="." index="24"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_034" parent="." index="25"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_035" parent="." index="26"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Cylinder" parent="." index="27"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_036" parent="." index="28"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_037" parent="." index="29"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_038" parent="." index="30"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_039" parent="." index="31"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_040" parent="." index="32"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Cube_013" parent="." index="33"]
+layers = 2
+
+[node name="Plane_041" parent="." index="34"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gji28")
+
+[node name="Plane_042" parent="." index="35"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_043" parent="." index="36"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_044" parent="." index="37"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_045" parent="." index="38"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_046" parent="." index="39"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_047" parent="." index="40"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_048" parent="." index="41"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_049" parent="." index="42"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_cao5t")
+
+[node name="Plane_050" parent="." index="43"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_051" parent="." index="44"]
+layers = 2
+
+[node name="Plane_052" parent="." index="45"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_053" parent="." index="46"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_054" parent="." index="47"]
+transform = Transform3D(2.02413, -0.000246263, -4.24543, 0.000105983, 4.70327, -0.00022229, 4.24543, 0, 2.02413, -100.85, 58.0611, -204.314)
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_055" parent="." index="48"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_056" parent="." index="49"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
+
+[node name="Plane_057" parent="." index="50"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_3pqbx")
