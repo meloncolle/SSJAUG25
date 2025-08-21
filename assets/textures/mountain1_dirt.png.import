@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df1lqwwmry5rg"
-path.s3tc="res://.godot/imported/skybox_rockwall.png-932686423d256f6243df4a307f9d4b21.s3tc.ctex"
+uid="uid://dcf60tebfxgnf"
+path.s3tc="res://.godot/imported/mountain1_dirt.png-a1fe327c7719fdd9c7ec09da5a0b0787.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4813b90601d8c18b2da7e1e697780fb3"
+"md5": "0c5d905470392bc0899788e3ea6785fc"
 }
 
 [deps]
 
-source_file="res://assets/models/skybox_rockwall.png"
-dest_files=["res://.godot/imported/skybox_rockwall.png-932686423d256f6243df4a307f9d4b21.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_dirt.png"
+dest_files=["res://.godot/imported/mountain1_dirt.png-a1fe327c7719fdd9c7ec09da5a0b0787.s3tc.ctex"]
 
 [params]
 

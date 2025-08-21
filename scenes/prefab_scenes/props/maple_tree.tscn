@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl7mo2qaapmto"]
+[gd_scene load_steps=3 format=3 uid="uid://d2tvvwavqsl10"]
 
-[ext_resource type="Texture2D" uid="uid://uv12ao5kcawu" path="res://assets/models/mountain1_red maple.png" id="1_hioyi"]
+[ext_resource type="Texture2D" uid="uid://uv12ao5kcawu" path="res://assets/textures/mountain1_red maple.png" id="1_ee6dq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ee6dq"]
 radius = 0.326921
@@ -9,10 +9,10 @@ height = 3.94825
 [node name="maple_tree" type="Node3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(15.2407, 0, 0, 0, 21.8865, 0, 0, 0, 4.02, 0, 7.02728, 0)
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 4.02, 0, 3.4577, 0)
 billboard = 2
 texture_filter = 0
-texture = ExtResource("1_hioyi")
+texture = ExtResource("1_ee6dq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00322814, 0.485694, -0.000891112)

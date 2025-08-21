@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5e3f4vkm2ibt"
-path.s3tc="res://.godot/imported/skybox_grasstile.png-9ba10b251402a8b5388349ffc223e061.s3tc.ctex"
+uid="uid://grrdtvam31xl"
+path.s3tc="res://.godot/imported/mountain1_concrete tile_64x64.png-aa8758cb2eb78a7d7b275601ff2d68da.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "682e48a00add9446aa08b48a4dd5ca8c"
+"md5": "f6ba87b3045fca683a02a48cb1f9e943"
 }
 
 [deps]
 
-source_file="res://assets/models/skybox_grasstile.png"
-dest_files=["res://.godot/imported/skybox_grasstile.png-9ba10b251402a8b5388349ffc223e061.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_concrete tile_64x64.png"
+dest_files=["res://.godot/imported/mountain1_concrete tile_64x64.png-aa8758cb2eb78a7d7b275601ff2d68da.s3tc.ctex"]
 
 [params]
 

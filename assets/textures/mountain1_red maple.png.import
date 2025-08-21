@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjyblrjbuydxy"
-path.s3tc="res://.godot/imported/skybox_red maple.png-8c8b0360ce0d985e93ed05bfe9de13d8.s3tc.ctex"
+uid="uid://uv12ao5kcawu"
+path.s3tc="res://.godot/imported/mountain1_red maple.png-bc93c4f4f7b1832c1c524d7a9b36bcbf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/skybox_red maple.png"
-dest_files=["res://.godot/imported/skybox_red maple.png-8c8b0360ce0d985e93ed05bfe9de13d8.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_red maple.png"
+dest_files=["res://.godot/imported/mountain1_red maple.png-bc93c4f4f7b1832c1c524d7a9b36bcbf.s3tc.ctex"]
 
 [params]
 

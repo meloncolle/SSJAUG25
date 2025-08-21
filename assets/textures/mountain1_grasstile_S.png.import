@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duscx1m4ffu4y"
-path.s3tc="res://.godot/imported/mountain1_road tile.png-3729e0e41ffb89dc2312327df643264a.s3tc.ctex"
+uid="uid://biblbwbas4bvm"
+path.s3tc="res://.godot/imported/mountain1_grasstile_S.png-3aba384eb070e5dc4a084e9984ccf532.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "1c33e5ed3e90b5ae5dd7b4ce7c9e7181"
+"md5": "6e185639154b10674a94c0e58363407b"
 }
 
 [deps]
 
-source_file="res://assets/models/mountain1_road tile.png"
-dest_files=["res://.godot/imported/mountain1_road tile.png-3729e0e41ffb89dc2312327df643264a.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_grasstile_S.png"
+dest_files=["res://.godot/imported/mountain1_grasstile_S.png-3aba384eb070e5dc4a084e9984ccf532.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n8mhrktr4sng"
-path.s3tc="res://.godot/imported/concrete_divider_concrete_32x32.png-914108972f380204818bb143fadba824.s3tc.ctex"
+uid="uid://1vy8ep0yj5ow"
+path.s3tc="res://.godot/imported/mountain1_treeline.png-9a70d2c6cb8d70ee8de8a6a83960a81e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fdeffe9e4b44836600cc8f8f9a52fd4a"
+"md5": "cfd0609db72dbf811023c6deedae3974"
 }
 
 [deps]
 
-source_file="res://assets/models/concrete_divider_concrete_32x32.png"
-dest_files=["res://.godot/imported/concrete_divider_concrete_32x32.png-914108972f380204818bb143fadba824.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_treeline.png"
+dest_files=["res://.godot/imported/mountain1_treeline.png-9a70d2c6cb8d70ee8de8a6a83960a81e.s3tc.ctex"]
 
 [params]
 

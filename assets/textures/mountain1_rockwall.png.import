@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db2mj1thvnwfc"
-path.s3tc="res://.godot/imported/skybox_guardrail_caution.png-952d8d1f26b2a5ed12b0a7efa0d2f9b6.s3tc.ctex"
+uid="uid://c76w4on7ayd4g"
+path.s3tc="res://.godot/imported/mountain1_rockwall.png-322f76060ae0964c141b74cb85e837b9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3c5f95363c1ea442188638c52b3c124f"
+"md5": "4813b90601d8c18b2da7e1e697780fb3"
 }
 
 [deps]
 
-source_file="res://assets/models/skybox_guardrail_caution.png"
-dest_files=["res://.godot/imported/skybox_guardrail_caution.png-952d8d1f26b2a5ed12b0a7efa0d2f9b6.s3tc.ctex"]
+source_file="res://assets/textures/mountain1_rockwall.png"
+dest_files=["res://.godot/imported/mountain1_rockwall.png-322f76060ae0964c141b74cb85e837b9.s3tc.ctex"]
 
 [params]
 
