@@ -8,7 +8,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-up_vector_enabled = false
 
 [sub_resource type="Curve3D" id="Curve3D_61mo2"]
 _data = {
@@ -16,7 +15,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
-up_vector_enabled = false
 
 [sub_resource type="Curve3D" id="Curve3D_6rd0g"]
 _data = {

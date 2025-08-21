@@ -8,7 +8,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
-up_vector_enabled = false
 
 [node name="Germantown0Path_a" type="Node3D"]
 

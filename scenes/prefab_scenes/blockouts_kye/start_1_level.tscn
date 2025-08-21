@@ -20,7 +20,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
-up_vector_enabled = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_884g7"]
 size = Vector3(0.458008, 6.52638, 3.33921)

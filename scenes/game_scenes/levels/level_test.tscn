@@ -15,7 +15,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-up_vector_enabled = false
 
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
 death_height = -270.0

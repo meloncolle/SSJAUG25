@@ -8,7 +8,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-up_vector_enabled = false
 
 [node name="Level0PathB" type="Node3D"]
 
