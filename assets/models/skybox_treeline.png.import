@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://dypyvl6qm2dbb"
+path.s3tc="res://.godot/imported/skybox_treeline.png-85a60a1026a29313ebf7bf2dd9b5c761.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "cfd0609db72dbf811023c6deedae3974"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/skybox_treeline.png"
+dest_files=["res://.godot/imported/skybox_treeline.png-85a60a1026a29313ebf7bf2dd9b5c761.s3tc.ctex"]
 
 [params]
 

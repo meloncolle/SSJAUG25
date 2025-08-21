@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://dk7pkmxkuypda"
+path.s3tc="res://.godot/imported/starting_line_dirt.png-1e747ed81e1fe0dffd4ac9888fcc6b2d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "0c5d905470392bc0899788e3ea6785fc"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/starting_line_dirt.png"
+dest_files=["res://.godot/imported/starting_line_dirt.png-1e747ed81e1fe0dffd4ac9888fcc6b2d.s3tc.ctex"]
 
 [params]
 

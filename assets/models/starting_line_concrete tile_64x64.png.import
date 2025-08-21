@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://dx13p3g7vwrlt"
+path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-4095b2e8029048f050041f41f720426b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/starting_line_concrete tile_64x64.png"
+dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-4095b2e8029048f050041f41f720426b.s3tc.ctex"]
 
 [params]
 

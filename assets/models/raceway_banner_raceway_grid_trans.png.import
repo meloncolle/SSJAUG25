@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://b4e8uryu7s5om"
+path.s3tc="res://.godot/imported/raceway_banner_raceway_grid_trans.png-e024a3ca9d5e6148bbee0c0878fc1e97.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "7a18f0fc2bbded5ec5863cf537de2bfe"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/raceway_banner_raceway_grid_trans.png"
+dest_files=["res://.godot/imported/raceway_banner_raceway_grid_trans.png-e024a3ca9d5e6148bbee0c0878fc1e97.s3tc.ctex"]
 
 [params]
 

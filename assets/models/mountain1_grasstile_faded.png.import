@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://dhayta0nlldya"
+path.s3tc="res://.godot/imported/mountain1_grasstile_faded.png-5c97ffa61491db6b7260b72ecf06e30b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "c2ce480ca01d8605848560d42d189520"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/mountain1_grasstile_faded.png"
+dest_files=["res://.godot/imported/mountain1_grasstile_faded.png-5c97ffa61491db6b7260b72ecf06e30b.s3tc.ctex"]
 
 [params]
 

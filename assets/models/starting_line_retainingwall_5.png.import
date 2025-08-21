@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://cwnfdh8xa1nju"
+path.s3tc="res://.godot/imported/starting_line_retainingwall_5.png-69eee83e0a769b95ae432db3f085a7b5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "27f1bfbe2035af767b222877fd45a037"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/starting_line_retainingwall_5.png"
+dest_files=["res://.godot/imported/starting_line_retainingwall_5.png-69eee83e0a769b95ae432db3f085a7b5.s3tc.ctex"]
 
 [params]
 

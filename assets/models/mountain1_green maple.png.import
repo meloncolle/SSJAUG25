@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://odxtussulmb6"
+path.s3tc="res://.godot/imported/mountain1_green maple.png-8983919f4296c5a610d79fa3d87ff468.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "93932fb6e179cf24db4bf88e6b3aacb7"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/mountain1_green maple.png"
+dest_files=["res://.godot/imported/mountain1_green maple.png-8983919f4296c5a610d79fa3d87ff468.s3tc.ctex"]
 
 [params]
 

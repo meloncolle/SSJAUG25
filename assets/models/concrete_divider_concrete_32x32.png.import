@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://n8mhrktr4sng"
+path.s3tc="res://.godot/imported/concrete_divider_concrete_32x32.png-914108972f380204818bb143fadba824.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "fdeffe9e4b44836600cc8f8f9a52fd4a"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/concrete_divider_concrete_32x32.png"
+dest_files=["res://.godot/imported/concrete_divider_concrete_32x32.png-914108972f380204818bb143fadba824.s3tc.ctex"]
 
 [params]
 

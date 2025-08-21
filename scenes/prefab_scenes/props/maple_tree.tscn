@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2tvvwavqsl10"]
 
-[ext_resource type="Texture2D" uid="uid://uv12ao5kcawu" path="res://assets/textures/mountain1_red maple.png" id="1_ee6dq"]
+[ext_resource type="Texture2D" uid="uid://uv12ao5kcawu" path="res://assets/models/mountain1_red maple.png" id="1_ee6dq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ee6dq"]
 radius = 0.326921

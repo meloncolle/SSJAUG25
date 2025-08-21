@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkwdlibvcge02"
-path.s3tc="res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"
+uid="uid://dl2ojdc5da4do"
+path.s3tc="res://.godot/imported/construction_sign1_construct_sign_1.png-01815f94fbbf1d27f66e857096122363.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f6ba87b3045fca683a02a48cb1f9e943"
+"md5": "1508d694f69ab2319350efa2bb090eee"
 }
 
 [deps]
 
-source_file="res://assets/textures/starting_line_concrete tile_64x64.png"
-dest_files=["res://.godot/imported/starting_line_concrete tile_64x64.png-09678845a32e67af8bf1d563ac0eaab3.s3tc.ctex"]
+source_file="res://assets/models/construction_sign1_construct_sign_1.png"
+dest_files=["res://.godot/imported/construction_sign1_construct_sign_1.png-01815f94fbbf1d27f66e857096122363.s3tc.ctex"]
 
 [params]
 
