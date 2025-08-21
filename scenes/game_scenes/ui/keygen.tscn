@@ -201,19 +201,26 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Keygen" type="Window"]
+[node name="Keygen" type="Control"]
 auto_translate_mode = 1
-title = "DICK PEELER'S CRANKSHAFT v2.0.5 beta"
-initial_position = 1
-size = Vector2i(650, 420)
-unresizable = true
-always_on_top = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -210.0
+offset_right = 325.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_4fa5a")
 
 [node name="BG" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q66qf")
-anchors_preset = 15
+layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -247,7 +254,7 @@ texture = SubResource("GradientTexture1D_mpl1s")
 
 [node name="Input" type="ColorRect" parent="."]
 texture_filter = 1
-anchors_preset = 8
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -333,6 +340,7 @@ position = Vector2(448, 0)
 texture = ExtResource("2_rq7q1")
 
 [node name="CopyrightLabel" type="Label" parent="."]
+layout_mode = 2
 offset_left = 507.0
 offset_top = 399.0
 offset_right = 671.0
@@ -341,6 +349,7 @@ theme_override_fonts/font = ExtResource("6_dcg0o")
 text = "© 1997 Peeler & Sons"
 
 [node name="WarningLabel" type="Label" parent="."]
+layout_mode = 2
 offset_left = 5.0
 offset_top = 399.0
 offset_right = 210.0
@@ -351,7 +360,7 @@ text = "FOR INTERNAL USE ONLY"
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
-anchors_preset = 5
+layout_mode = 2
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -55.1675
@@ -365,6 +374,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_mpl1s")
 text = "Generate"
 
 [node name="SerialLabel" type="Label" parent="."]
+layout_mode = 2
 offset_left = 67.0
 offset_top = 260.0
 offset_right = 135.0

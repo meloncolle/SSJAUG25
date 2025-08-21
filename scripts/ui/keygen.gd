@@ -1,8 +1,6 @@
-extends Window
+extends Control
 
 const MAX_INPUTS: int = 8
-
-@export var tries: int = 3
 
 signal code_accepted(code: CheatCode)
 signal code_rejected
@@ -14,25 +12,6 @@ var inputs: Array[Enums.CheatInput] = []
 @onready var arrow_icons:= $Input/Arrows.get_children()
 @onready var input_field: ColorRect = $Input
 @onready var error_msg: Label = $Input/ErrorLabel
-
-func _ready():
-	connect("close_requested", _on_close_requested)
-	
-func _input(event):
-	if event.is_action_pressed("toggle_console"):
-		emit_signal("close_requested")
-	
-	# this is soo stupid but theres some weird issue where pause event isnt propagated
-	# when keygen window is open BUT only when pausing with keyboard. 
-	# i.e. u can only pause when it's open w/ controller
-	# handling it here but we should really test it on other platforms
-	elif event.is_action_pressed("pause"):
-		reopen_on_resume = visible
-		hide()
-		
-		if SceneManager.game_state == Enums.GameState.IN_GAME:
-			# pause failed so we must have used keyboard. need to manually pause from scenemanager
-			SceneManager.set_state(Enums.GameState.PAUSED)
 
 func _process(_delta):
 	# Moved to _process() because it gets double input in _input()
@@ -72,15 +51,15 @@ func add_input(input: Enums.CheatInput):
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
 			arrow_icons[i].modulate = Color(Color.WHITE, 0.25)
-		await get_tree().create_timer(0.75).timeout
+		await get_tree().create_timer(0.75, false).timeout
 		emit_signal("code_accepted", result[0])
-		emit_signal("close_requested")
+		_on_close_requested()
 
 	elif inputs.size() >= MAX_INPUTS:
 		input_enabled = false
 		for i in arrow_icons: i.hide()
 		error_msg.show()
 		input_field.color = Color.RED
-		await get_tree().create_timer(0.75).timeout
+		await get_tree().create_timer(0.75, false).timeout
 		emit_signal("code_rejected")
-		emit_signal("close_requested")
+		_on_close_requested()

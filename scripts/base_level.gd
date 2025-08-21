@@ -12,7 +12,7 @@ var desired_gravity:= Vector3.DOWN
 @export var death_height:= -1.0
 
 @onready var cam: Marker3D = $CanvasLayer/SubViewportContainer/SubViewport/CamRig
-@onready var keygen: Window = $Keygen
+@onready var keygen: Control = $CanvasLayer/Keygen
 
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
@@ -34,6 +34,8 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
+	SceneManager.connect("state_changed", _on_game_state_changed)
+	
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
 	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
@@ -82,15 +84,6 @@ func _process(delta):
 # Handle pause and keygen toggle since we don't need to poll for them like movement
 func _input(event):
 	if level_state != Enums.LevelState.RACING: return
-	
-	if event.is_action_pressed("pause"):
-		# if keygen was open while we paused, we want to reopen during unpause
-		if keygen.reopen_on_resume:
-			# not using _on_open_requested bc don't want to reset entry/etc
-			keygen.show()
-			keygen.reopen_on_resume = false
-
-	if SceneManager.game_state != Enums.GameState.IN_GAME: return
 
 	if event.is_action_pressed("toggle_console"):
 		keygen._on_open_requested() if !keygen.visible else keygen._on_close_requested()
@@ -209,3 +202,16 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
+			
+func _on_game_state_changed(new_state: Enums.GameState):
+	print(Enums.GameState.keys()[new_state])
+	match new_state:
+		Enums.GameState.IN_GAME:
+			if keygen.reopen_on_resume:
+				keygen.reopen_on_resume = false
+				keygen.show()
+			
+		Enums.GameState.PAUSED:
+			if keygen.visible:
+				keygen.reopen_on_resume = true
+				keygen.hide()			

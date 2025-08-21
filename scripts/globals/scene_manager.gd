@@ -5,6 +5,8 @@ extends Node
 var game_state: Enums.GameState
 var scene_instance: Node = null
 
+signal state_changed
+
 @onready var start_menu: Control = $Menus/Start
 @onready var pause_menu: Control = $Menus/Pause
 @onready var settings_menu: Control = $Menus/Settings
@@ -35,6 +37,7 @@ func _input (event: InputEvent):
 				set_state(Enums.GameState.IN_GAME)
 	
 func set_state(new_state: Enums.GameState):
+	emit_signal("state_changed", new_state)
 	match new_state:
 		Enums.GameState.ON_START:
 			get_tree().paused = false

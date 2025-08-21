@@ -3,8 +3,6 @@ extends Area3D
 @onready var flag_off: Sprite3D = $FlagOff
 @onready var flag_on: AnimatedSprite3D = $FlagOn
 
-signal checkpoint_activated
-
 var is_activated:= false:
 	set(value):
 		is_activated = value
