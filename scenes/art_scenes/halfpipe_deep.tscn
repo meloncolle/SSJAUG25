@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://crvnvhxyih5aa"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_mduqr"]
+[ext_resource type="Texture2D" uid="uid://b41syod0tfwi" path="res://assets/textures/road_tile.png" id="2_choar"]
+
+[sub_resource type="Curve3D" id="Curve3D_mduqr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choar"]
+render_priority = 0
+shader = ExtResource("1_mduqr")
+shader_parameter/UvScale = Vector2(1.03, 4.485)
+shader_parameter/UvOffset = Vector2(0, -0.62)
+shader_parameter/diffuse_tex = ExtResource("2_choar")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)
+
+[node name="Road" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_mduqr")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356271, 0)
+calculate_tangents = false
+use_collision = true
+polygon = PackedVector2Array(2.97312, -1.24056, 1.23197, -0.752643, 0.150751, 0.280566, -0.212, 1.93261, -0.689084, 4.3177, 0.627838, 3.62834, 0.869184, 1.97491, 1.77704, 0.401365, 3.22245, -0.257946, 5.45397, -0.105798, 6.51901, 0.502797, 7.27975, 1.97357, 7.81227, 3.79935, 8.62215, 4.0629, 8.46766, 1.91982, 7.53333, -0.105798, 5.78766, -1.1218)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 2.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 4.0
+path_joined = false
+material = SubResource("ShaderMaterial_choar")
