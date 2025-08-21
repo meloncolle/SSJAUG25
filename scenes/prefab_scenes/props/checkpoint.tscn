@@ -113,7 +113,7 @@ visible = false
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_8krq5")
 autoplay = "default"
-frame_progress = 0.039887
+frame_progress = 0.953335
 
 [node name="FlagOff" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000812292, 0.65, 0)

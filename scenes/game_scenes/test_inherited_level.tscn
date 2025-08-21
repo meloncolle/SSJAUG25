@@ -69,13 +69,13 @@ texture_filter = 0
 [node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
 
-[node name="SpawnPoint" parent="." index="4"]
+[node name="SpawnPoint" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
 
-[node name="BGCam" parent="." index="5"]
+[node name="BGCam" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
 
-[node name="Track" parent="." index="6"]
+[node name="Track" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
 
 [node name="TrackPart" type="StaticBody3D" parent="Track" index="0" groups=["track"]]

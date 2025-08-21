@@ -200,8 +200,9 @@ func set_state(new_state: Enums.LevelState):
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
 			player.respawn()
-			cam.yaw = player.rotation.y
 			tween = Overlay.fade_from_black(0.5)
+			await player.finished_respawn
+			cam.yaw = player.rotation.y
 			await tween.finished
 			Overlay.hide()
 			set_state(Enums.LevelState.RACING)

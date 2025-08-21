@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name Player
 
+signal finished_respawn
+
 @export var max_speed:= 15.0:
 	set(value):
 		max_speed = value
@@ -21,6 +23,7 @@ func _integrate_forces(_state):
 		global_position = respawn_target.global_position
 		global_rotation = respawn_target.global_rotation
 		awaiting_respawn = false
+		emit_signal("finished_respawn")
 	
 	else:
 		if linear_velocity.length() > max_speed:
