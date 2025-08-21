@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/ui/keygen.gd" id="1_4fa5a"]
 [ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_cwmyt"]
-[ext_resource type="Texture2D" uid="uid://dfjtnyayj6uo7" path="res://assets/textures/ui/arrow_l.svg" id="2_rq7q1"]
 [ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_cwmyt"]
 [ext_resource type="Texture2D" uid="uid://cla04cojh83by" path="res://assets/textures/ui/9patch_input.png" id="4_m5an3"]
+[ext_resource type="Texture2D" uid="uid://c2wrxduoyrkdg" path="res://assets/textures/ui/Arrow.png" id="5_m5an3"]
 [ext_resource type="FontFile" uid="uid://bwnvea5qn8ygl" path="res://assets/fonts/w95font.woff2" id="6_dcg0o"]
-[ext_resource type="Texture2D" uid="uid://dd0jbfgug0fh5" path="res://assets/textures/crankshaft_scuffed_spritesheet.png" id="6_q66qf"]
+[ext_resource type="Texture2D" uid="uid://dd0jbfgug0fh5" path="res://assets/textures/ui/crankshaft_scuffed_spritesheet.png" id="6_q66qf"]
 [ext_resource type="FontFile" uid="uid://ds1ulgfji8bei" path="res://assets/fonts/w95font-bold.woff2" id="7_mpl1s"]
 [ext_resource type="Texture2D" uid="uid://btrju8k4v2o7j" path="res://assets/textures/ui/9patch_unclicked.png" id="8_ff2n2"]
 
@@ -302,42 +302,58 @@ position = Vector2(34, 34)
 
 [node name="Sprite2D" type="Sprite2D" parent="Input/Arrows"]
 visible = false
-texture = ExtResource("2_rq7q1")
+texture_filter = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(64, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(128, -1)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(192, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(256, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(320, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(384, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Input/Arrows"]
 visible = false
+texture_filter = 2
 position = Vector2(448, 0)
-texture = ExtResource("2_rq7q1")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_m5an3")
 
 [node name="CopyrightLabel" type="Label" parent="."]
 layout_mode = 2
