@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dddfa7k6ebdxt"
-path.s3tc="res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.s3tc.ctex"
+uid="uid://tnl5i00fc22p"
+path.s3tc="res://.godot/imported/Billboard_1_spritesheet.png-64770eb83a824ab254f176d3f3e657c6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/ui/ads/Popup_Ad_3png.png"
-dest_files=["res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.s3tc.ctex"]
+source_file="res://assets/textures/ui/ads/Billboard_1_spritesheet.png"
+dest_files=["res://.godot/imported/Billboard_1_spritesheet.png-64770eb83a824ab254f176d3f3e657c6.s3tc.ctex"]
 
 [params]
 

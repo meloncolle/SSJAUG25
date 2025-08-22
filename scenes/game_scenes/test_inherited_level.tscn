@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_m3dci"]
-[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="2_djqot"]
+[ext_resource type="Texture2D" uid="uid://ci2m42co4tl7p" path="res://assets/textures/RacerBenFace-diff.png" id="2_k3dio"]
 [ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="3_k3dio"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3dio"]
@@ -12,7 +12,7 @@ resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4x3k"]
-albedo_texture = ExtResource("2_djqot")
+albedo_texture = ExtResource("2_k3dio")
 uv1_scale = Vector3(15, 10, 1)
 texture_filter = 0
 
@@ -24,7 +24,7 @@ resource_local_to_scene = true
 size = Vector3(9, 1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtlrr"]
-albedo_texture = ExtResource("2_djqot")
+albedo_texture = ExtResource("2_k3dio")
 uv1_scale = Vector3(15, 1, 1)
 texture_filter = 0
 
@@ -36,7 +36,7 @@ resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh2hr"]
-albedo_texture = ExtResource("2_djqot")
+albedo_texture = ExtResource("2_k3dio")
 uv1_scale = Vector3(15, 10, 1)
 texture_filter = 0
 
@@ -48,7 +48,7 @@ resource_local_to_scene = true
 size = Vector3(9, 1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_400uf"]
-albedo_texture = ExtResource("2_djqot")
+albedo_texture = ExtResource("2_k3dio")
 uv1_scale = Vector3(15, 1, 1)
 texture_filter = 0
 
@@ -60,7 +60,7 @@ resource_local_to_scene = true
 size = Vector3(5, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhrr"]
-albedo_texture = ExtResource("2_djqot")
+albedo_texture = ExtResource("2_k3dio")
 uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
@@ -255,11 +255,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 [node name="Checkpoint" parent="Track" index="15" instance=ExtResource("3_k3dio")]
 transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -6.19997, -46.2769)
 
-[node name="Checkpoint2" parent="Track" index="16" instance=ExtResource("3_k3dio")]
-transform = Transform3D(0.450628, 0, 0.892712, 0, 1, 0, -0.892712, 0, 0.450628, 27.0802, -6.19997, -46.2769)
-
-[node name="Checkpoint3" parent="Track" index="17" instance=ExtResource("3_k3dio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -6.19997, -49.1032)
-
-[node name="Checkpoint4" parent="Track" index="18" instance=ExtResource("3_k3dio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0815, -6.19997, -44.1212)
+[node name="Goal" parent="Track" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5411, -6.12648, -46.4222)

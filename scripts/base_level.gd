@@ -1,7 +1,7 @@
 extends Node3D
 
 var level_state: Enums.LevelState
-signal state_changed
+signal level_state_changed
 
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
@@ -16,6 +16,8 @@ var desired_gravity:= Vector3.DOWN
 
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
+
+@onready var goal: Node3D = $Track/Goal
 
 var debug_panel = null
 
@@ -34,11 +36,14 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
-	SceneManager.connect("state_changed", _on_game_state_changed)
+	SceneManager.connect("game_state_changed", _on_game_state_changed)
+	connect("level_state_changed", SceneManager._on_level_state_changed)
 	
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
-	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	player.get_node("RacerBen").connect("intro_completed", _on_intro_complete)
+	
+	goal.connect("goal_reached", _on_goal_reached)
 	
 	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
@@ -60,11 +65,17 @@ func _ready():
 		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
 		$CanvasLayer.add_child(debug_panel)
 		
-		connect("state_changed", debug_panel._on_state_changed)
+		connect("level_state_changed", debug_panel._on_level_state_changed)
 		connect("speed_changed", debug_panel._on_speed_changed)
 		connect("gravity_changed", debug_panel._on_grav_changed)
 		connect("velocity_changed", debug_panel._on_vel_changed)
 		
+	# Connect end screen buttons
+	%EndScreen.get_node("Panel/VBoxContainer/RetryButton").pressed.connect(SceneManager._on_press_restart)
+	%EndScreen.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(SceneManager._on_press_quit)
+	# set focus on button when menu becomes visible, so its compatible with kb/controller
+	%EndScreen.connect("visibility_changed", func(): if %EndScreen.visible: %EndScreen.get_node("Panel/VBoxContainer/RetryButton").grab_focus())
+	
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point
@@ -179,7 +190,7 @@ func _on_settings_changed():
 
 func set_state(new_state: Enums.LevelState):
 	level_state = new_state
-	emit_signal("state_changed", new_state)
+	emit_signal("level_state_changed", new_state)
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
@@ -204,7 +215,6 @@ func set_state(new_state: Enums.LevelState):
 			keygen._on_close_requested()
 			
 func _on_game_state_changed(new_state: Enums.GameState):
-	print(Enums.GameState.keys()[new_state])
 	match new_state:
 		Enums.GameState.IN_GAME:
 			if keygen.reopen_on_resume:
@@ -214,4 +224,15 @@ func _on_game_state_changed(new_state: Enums.GameState):
 		Enums.GameState.PAUSED:
 			if keygen.visible:
 				keygen.reopen_on_resume = true
-				keygen.hide()			
+				keygen.hide()
+
+func _on_intro_complete():
+	set_state(Enums.LevelState.RACING)
+	# Prevents player from rolling slightly before start
+	# We should be spawning player over pretty flat ground
+	player.can_sleep = false
+
+func _on_goal_reached():
+	print("DA END")
+	set_state(Enums.LevelState.END)
+	%EndScreen.show_results(timer)

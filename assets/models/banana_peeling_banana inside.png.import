@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dddfa7k6ebdxt"
-path.s3tc="res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.s3tc.ctex"
+uid="uid://djt5culwtc0c2"
+path.s3tc="res://.godot/imported/banana_peeling_banana inside.png-638c1f19204d3cab9a095d922d9e6516.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "aad362fdc364cf7b1b42b7ab4ce85420"
+}
 
 [deps]
 
-source_file="res://assets/textures/ui/ads/Popup_Ad_3png.png"
-dest_files=["res://.godot/imported/Popup_Ad_3png.png-91bf07c96f956748c05b618f4830bfea.s3tc.ctex"]
+source_file="res://assets/models/banana_peeling_banana inside.png"
+dest_files=["res://.godot/imported/banana_peeling_banana inside.png-638c1f19204d3cab9a095d922d9e6516.s3tc.ctex"]
 
 [params]
 

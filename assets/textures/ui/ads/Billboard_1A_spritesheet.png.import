@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de2sui6ftspyl"
-path="res://.godot/imported/speedometer_scuffed.png-e3dbfc5b2d1d1b1ec2b37fc37c138d45.ctex"
+uid="uid://d1j5np7vt2qdl"
+path="res://.godot/imported/Billboard_1A_spritesheet.png-da3d3a4ca0b3452c1e0ccca0b6e6f564.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/speedometer_scuffed.png"
-dest_files=["res://.godot/imported/speedometer_scuffed.png-e3dbfc5b2d1d1b1ec2b37fc37c138d45.ctex"]
+source_file="res://assets/textures/ui/ads/Billboard_1A_spritesheet.png"
+dest_files=["res://.godot/imported/Billboard_1A_spritesheet.png-da3d3a4ca0b3452c1e0ccca0b6e6f564.ctex"]
 
 [params]
 
