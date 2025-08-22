@@ -14,6 +14,7 @@ var awaiting_respawn:= false
 var respawn_target: Node3D = null
 
 func respawn():
+	# KYE PUT RESPAWN SOUND HERE
 	awaiting_respawn = true
 
 func _integrate_forces(_state):

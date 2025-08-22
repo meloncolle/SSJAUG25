@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cccvsiorwsaq2"]
+[gd_scene load_steps=3 format=3 uid="uid://cccvsiorwsaq2"]
 
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_peq1g"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="2_1n352"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -47,7 +48,11 @@ grow_vertical = 2
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Start"
+script = ExtResource("2_1n352")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+script = ExtResource("2_1n352")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"

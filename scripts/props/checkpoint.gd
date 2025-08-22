@@ -15,6 +15,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		is_activated = true
 		body.respawn_target = self
+		#KYE PUT PASSCHECKPOINT SOUND HERE
 		
 		# Turn off any other checkpoints
 		for cp in get_tree().get_nodes_in_group("checkpoint"):

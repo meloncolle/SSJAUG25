@@ -163,6 +163,7 @@ func HandleGameplayAnimation(delta):
 	particle_position = GetParticlePosition()
 	if acceleration > dust_thresh && dust_particles && particle_position!= Vector3.ZERO:
 		dust_object.global_position = particle_position
+		# KYE PUT SKID SOUND HERE (BUT CHECK W/ ELIJAH CUZ I'M NOT 100%)
 		dust_particles.emitting = true
 	elif acceleration <= dust_thresh && dust_particles:
 		dust_particles.emitting = false

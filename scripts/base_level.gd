@@ -36,14 +36,22 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
+	# Make sceneManager aware of level state changes
+	# And this level aware of game state changes
 	SceneManager.connect("game_state_changed", _on_game_state_changed)
 	connect("level_state_changed", SceneManager._on_level_state_changed)
 	
+	# Spawn player and hookup camera follow and listen for intro finished
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
 	player.get_node("RacerBen").connect("intro_completed", _on_intro_complete)
 	
+	# Listen for when passing through goalpost
 	goal.connect("goal_reached", _on_goal_reached)
+	
+	# Listen for nana pickups
+	for b in get_tree().get_nodes_in_group("banana"):
+		b.connect("banana_got", _on_banana_got)
 	
 	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
@@ -200,6 +208,7 @@ func set_state(new_state: Enums.LevelState):
 			pass
 			
 		Enums.LevelState.DYING:
+			# KYE PUT FALLOFF SOUND HERE
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
@@ -217,11 +226,13 @@ func set_state(new_state: Enums.LevelState):
 func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
 		Enums.GameState.IN_GAME:
+			# KYE PUT UNPAUSE SOUND HERE
 			if keygen.reopen_on_resume:
 				keygen.reopen_on_resume = false
 				keygen.show()
 			
 		Enums.GameState.PAUSED:
+			# KYE PUT PAUSE SOUND HERE
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
@@ -232,7 +243,21 @@ func _on_intro_complete():
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
 
+func _on_banana_got(time_restored: float):
+	# KYE PUT BANANA PICKUP SOUND HERE
+	timer -= time_restored
+	# KYE PUT BANANA EATING SOUND HERE
+	# we'll adjust that timer to wait for eating sound
+	await get_tree().create_timer(0.5).timeout
+	throw_banana()
+
+func throw_banana():
+	var banana: RigidBody3D = load("res://scenes/art_scenes/thrown_banana[art].tscn").instantiate()
+	self.add_child(banana)
+	banana.position = player.position
+	# KYE PUT BANANA THROWING SOUND HERE
+	
 func _on_goal_reached():
-	print("DA END")
+	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	set_state(Enums.LevelState.END)
 	%EndScreen.show_results(timer)
