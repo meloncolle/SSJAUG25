@@ -41,7 +41,7 @@ func _ready():
 	
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
-	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	player.get_node("RacerBen").connect("intro_completed", _on_intro_complete)
 	
 	goal.connect("goal_reached", _on_goal_reached)
 	
@@ -219,6 +219,12 @@ func _on_game_state_changed(new_state: Enums.GameState):
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
+
+func _on_intro_complete():
+	set_state(Enums.LevelState.RACING)
+	# Prevents player from rolling slightly before start
+	# We should be spawning player over pretty flat ground
+	player.can_sleep = false
 
 func _on_goal_reached():
 	print("DA END")
