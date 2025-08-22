@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://p75rv4p3cw5t"]
+
+[ext_resource type="Material" uid="uid://bixvnpfgr64q1" path="res://resources/materials/rail_mat.tres" id="1_067ig"]
+
+[sub_resource type="Curve3D" id="Curve3D_b5klm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.91398, 0, 0.395271, 0, 0, 0, 0, 0, 0, 15, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="rail" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_b5klm")
+
+[node name="rail1" type="CSGPolygon3D" parent="Path3D"]
+calculate_tangents = false
+use_collision = true
+polygon = PackedVector2Array(0.193188, -0.273774, 0.0480832, 0.0225095, 0.159547, 0.346722, 0.471378, 0.502536, 0.746962, 0.338417, 0.912276, 0.0271628, 0.777786, -0.262557, 0.519847, -0.404197)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 2.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 4.0
+path_joined = false
+material = ExtResource("1_067ig")
+
+[node name="rail2" type="CSGPolygon3D" parent="Path3D"]
+calculate_tangents = false
+use_collision = true
+polygon = PackedVector2Array(1.82037, -0.300964, 1.65642, 0.00157516, 1.80648, 0.366406, 2.20661, 0.510516, 2.55273, 0.356119, 2.75984, 0.065256, 2.56682, -0.292332, 2.20788, -0.475465)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 2.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 4.0
+path_joined = false
+material = ExtResource("1_067ig")

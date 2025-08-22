@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=10 format=3 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
@@ -7,11 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_b.tscn" id="5_ja7to"]
 [ext_resource type="PackedScene" uid="uid://b4kbw7ahq0y0m" path="res://scenes/prefab_scenes/blockouts_kye/level_finish.tscn" id="6_ja7to"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="7_nqr1n"]
-[ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/skybox_pieces/mountain_1.tscn" id="8_0p38a"]
-[ext_resource type="PackedScene" uid="uid://ky5jwwwtltli" path="res://scenes/art_scenes/skybox_pieces/mountain_2.tscn" id="9_b416b"]
-[ext_resource type="PackedScene" uid="uid://evt8nueqw3l1" path="res://scenes/art_scenes/skybox_pieces/mountain_3.tscn" id="10_fhw3t"]
-[ext_resource type="PackedScene" uid="uid://cjob1r12wrx2i" path="res://scenes/art_scenes/skybox_pieces/mountain_4.tscn" id="11_b416b"]
-[ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rails.tscn" id="12_fhw3t"]
 
 [sub_resource type="Curve3D" id="Curve3D_8d7vd"]
 _data = {
@@ -20,36 +15,30 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve3D" id="Curve3D_lhibs"]
+_data = {
+"points": PackedVector3Array(-9.45218, -0.952126, 0.601658, 9.45218, 0.952126, -0.601658, -2.97624, 11.1969, 3.56081, 28.475, 1.84412, 15.5674, -28.475, -1.84412, -15.5674, -2.74744, -5.91535, -55.6516, 20.9466, 10.1736, 21.8767, -20.9466, -10.1736, -21.8767, -70.2668, -22.4825, -69.1113, 0, 0, 0, 0, 0, 0, -72.081, -87.7258, -116.481),
+"tilts": PackedFloat32Array(-0.531539, -0.792776, 0.226699, 0.511567)
+}
+point_count = 4
+
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 99.3046, -74.7166, -58.1153)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 97.3928, 82.1092, -56.8354)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
 
-[node name="intersection_Path" parent="Track" index="1" instance=ExtResource("2_0prje")]
-transform = Transform3D(-0.0103496, 0, 0.999946, 0, 1, 0, -0.999946, 0, -0.0103496, 34.1038, -30.8957, -48.5204)
-
-[node name="Road Support" parent="Track/intersection_Path/Road_to_canyon/RoadSupports" index="0"]
-transform = Transform3D(-0.0222786, -0.0260147, -0.999413, -0.166914, 0.985727, -0.0219377, 0.98572, 0.166327, -0.0263028, 2.8794, -3.42467, -22.9202)
-
-[node name="Road Support2" parent="Track/intersection_Path/Road_to_canyon/RoadSupports" index="1"]
-transform = Transform3D(-0.0222663, -0.0260861, -0.999412, -0.17381, 0.984537, -0.0218255, 0.984528, 0.173221, -0.026456, 39.7124, -7.2863, -13.6874)
-
-[node name="Path3D" parent="Track/intersection_Path/Road_to_intsec" index="0"]
-transform = Transform3D(1, 0, 2.98023e-08, 0, 1, -2.32831e-10, -1.19209e-07, 1.62981e-09, 1, -0.637287, -1.66365, -1.85352)
-
-[node name="CSGPolygon3D" parent="Track/intersection_Path" index="3"]
-use_collision = true
-
-[node name="CSGPolygon3D2" parent="Track/intersection_Path" index="4"]
-use_collision = true
-polygon = PackedVector2Array(-11.6822, -20.8616, -11.9453, -3.09525, -9.55194, -0.504608, -12.0878, 1.76895, -11.8053, 20.1437, -1.89046, 21.8322, 7.75708, 22.7649, 8.23382, -26.1249, -3.59232, -24.1874)
+[node name="level_Intsec_Path" parent="Track" index="1" instance=ExtResource("2_0prje")]
+transform = Transform3D(-0.0844823, -0.026805, 0.996064, -0.00226537, 0.999641, 0.0267091, -0.996422, 0, -0.0845127, 31.8077, -32.4425, -47.6838)
 
 [node name="0Path_a_level" parent="Track" index="2" instance=ExtResource("4_m1yo0")]
 transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
+
+[node name="mountain 2" parent="Track/0Path_a_level/mountain_props" index="4"]
+transform = Transform3D(-0.586241, -0.0529842, -0.808402, -0.114026, 0.993322, 0.0175857, 0.802073, 0.102488, -0.588368, -15.7007, 172.151, -7.1904)
 
 [node name="0PathB2_level" parent="Track" index="3" instance=ExtResource("5_ja7to")]
 transform = Transform3D(-0.45356, 0.146325, -0.879132, 0.0670892, 0.989237, 0.130038, 0.888697, 4.36083e-09, -0.458495, 163.507, -207.81, -214.461)
@@ -66,45 +55,36 @@ curve = SubResource("Curve3D_8d7vd")
 [node name="LevelFinish" parent="Track" index="5" instance=ExtResource("6_ja7to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3513, -266.874, 309.746)
 
-[node name="Rail" parent="Track" index="6" instance=ExtResource("12_fhw3t")]
-transform = Transform3D(-0.0459034, 0, -0.998946, 0, 1, 0, 0.998946, 0, -0.0459034, 101.325, -89.15, -29.5127)
+[node name="Road" parent="Track" index="7" instance=ExtResource("7_nqr1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.334, -123.234, -48.0071)
 
-[node name="Path3D" parent="Track/Rail" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57341, 6.10352e-05, -5.18884)
+[node name="Path3D" parent="Track/Road" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.342026, 0.279861, 4.02523)
+curve = SubResource("Curve3D_lhibs")
 
-[node name="Env" type="Node3D" parent="Track" index="7"]
-
-[node name="peak_2" parent="Track/Env" index="0" instance=ExtResource("11_b416b")]
-transform = Transform3D(2.91315, 0, 0.716617, 0, 3, 0, -0.716617, 0, 2.91315, 8.26517, -431.484, 515.889)
-
-[node name="mountain_1" parent="Track/Env" index="1" instance=ExtResource("8_0p38a")]
-transform = Transform3D(-0.362275, 0, 0.932071, 0, 1, 0, -0.932071, 0, -0.362275, 281.152, -298.951, -220.33)
-
-[node name="mountain_2" parent="Track/Env" index="2" instance=ExtResource("9_b416b")]
-transform = Transform3D(0.837318, 0, 0.546716, 0, 1, 0, -0.546716, 0, 0.837318, 356.204, -292.005, -20.8314)
-
-[node name="mountain_4" parent="Track/Env" index="3" instance=ExtResource("9_b416b")]
-transform = Transform3D(-0.141368, 0, 0.989957, 0, 1, 0, -0.989957, 0, -0.141368, 37.9376, -103.409, 152.205)
-
-[node name="mountain_6" parent="Track/Env" index="4" instance=ExtResource("10_fhw3t")]
-transform = Transform3D(0.224968, 0, -0.974366, 0, 1, 0, 0.974366, 0, 0.224968, 260.448, -241.352, 27.8031)
-visible = false
-
-[node name="mountain_7" parent="Track/Env" index="5" instance=ExtResource("10_fhw3t")]
-transform = Transform3D(-0.591422, 0, 0.806362, 0, 1, 0, -0.806362, 0, -0.591422, 46.4296, -97.1065, 241.898)
-visible = false
+[node name="CSGPolygon3D" parent="Track/Road/Path3D" index="0"]
+polygon = PackedVector2Array(0, -0.35, 0.2, 0, 15, 0.007, 15, -0.35)
 
 [node name="skybox" parent="Background" index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
 
-[editable path="Track/intersection_Path"]
-[editable path="Track/intersection_Path/Road_to_canyon"]
-[editable path="Track/intersection_Path/Road_to_sb"]
-[editable path="Track/intersection_Path/Road_to_intsec"]
-[editable path="Track/intersection_Path/Halfpipe"]
+[editable path="Track/level_Intsec_Path"]
+[editable path="Track/level_Intsec_Path/Road_to_canyon"]
+[editable path="Track/level_Intsec_Path/Road_to_intsec"]
+[editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_1"]
+[editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_2"]
+[editable path="Track/level_Intsec_Path/Halfpipe"]
+[editable path="Track/level_Intsec_Path/rail/rail"]
+[editable path="Track/level_Intsec_Path/rail/rail2"]
+[editable path="Track/level_Intsec_Path/rail/rail3"]
+[editable path="Track/level_Intsec_Path/rail/rail4"]
+[editable path="Track/level_Intsec_Path/rail/rail5"]
+[editable path="Track/level_Intsec_Path/rail/rail6"]
+[editable path="Track/level_Intsec_Path/rail/rail7"]
 [editable path="Track/0Path_a_level"]
 [editable path="Track/0Path_a_level/Road"]
+[editable path="Track/0Path_a_level/mountain_props"]
 [editable path="Track/0PathB2_level"]
 [editable path="Track/0PathB2_level/Road"]
 [editable path="Track/0path_end_level"]
-[editable path="Track/Rail"]
+[editable path="Track/Road"]

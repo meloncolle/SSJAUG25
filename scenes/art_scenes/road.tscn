@@ -17,7 +17,7 @@ curve = SubResource("Curve3D_b5klm")
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
 calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(0, -0.35, 0.2, 0, 8.8, 0, 8, -0.35)
+polygon = PackedVector2Array(0, -0.35, 0.2, 0, 7.57843, 0.0069356, 8, -0.35)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
