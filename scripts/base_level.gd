@@ -17,6 +17,8 @@ var desired_gravity:= Vector3.DOWN
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
 
+@onready var goal: Node3D = $Track/Goal
+
 var debug_panel = null
 
 # HUD stuff
@@ -39,6 +41,8 @@ func _ready():
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
 	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	
+	goal.connect("goal_reached", _on_goal_reached)
 	
 	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
@@ -215,3 +219,7 @@ func _on_game_state_changed(new_state: Enums.GameState):
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()			
+
+func _on_goal_reached():
+	print("DA END")
+	set_state(Enums.LevelState.END)
