@@ -70,6 +70,12 @@ func _ready():
 		connect("gravity_changed", debug_panel._on_grav_changed)
 		connect("velocity_changed", debug_panel._on_vel_changed)
 		
+	# Connect end screen buttons
+	%EndScreen.get_node("Panel/VBoxContainer/RetryButton").pressed.connect(SceneManager._on_press_restart)
+	%EndScreen.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(SceneManager._on_press_quit)
+	# set focus on button when menu becomes visible, so its compatible with kb/controller
+	%EndScreen.connect("visibility_changed", func(): if %EndScreen.visible: %EndScreen.get_node("Panel/VBoxContainer/RetryButton").grab_focus())
+	
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point
@@ -229,3 +235,4 @@ func _on_intro_complete():
 func _on_goal_reached():
 	print("DA END")
 	set_state(Enums.LevelState.END)
+	%EndScreen.show_results(timer)
