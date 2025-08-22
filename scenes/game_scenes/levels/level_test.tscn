@@ -24,7 +24,7 @@ point_count = 6
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 80.2523, 38.569, -85.3827)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 99.3046, -74.7166, -58.1153)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
@@ -78,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57341, 6.10352e-05, -5.1888
 transform = Transform3D(2.91315, 0, 0.716617, 0, 3, 0, -0.716617, 0, 2.91315, 8.26517, -431.484, 515.889)
 
 [node name="mountain_1" parent="Track/Env" index="1" instance=ExtResource("8_0p38a")]
-transform = Transform3D(0.987439, 0, -0.158003, 0, 1, 0, 0.158003, 0, 0.987439, 164.626, -185.878, 328.936)
+transform = Transform3D(-0.362275, 0, 0.932071, 0, 1, 0, -0.932071, 0, -0.362275, 281.152, -298.951, -220.33)
 
 [node name="mountain_2" parent="Track/Env" index="2" instance=ExtResource("9_b416b")]
 transform = Transform3D(0.837318, 0, 0.546716, 0, 1, 0, -0.546716, 0, 0.837318, 356.204, -292.005, -20.8314)
