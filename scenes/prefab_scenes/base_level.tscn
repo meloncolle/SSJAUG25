@@ -86,7 +86,7 @@ cull_mask = 1048573
 
 [node name="Speedometer" type="Node2D" parent="CanvasLayer"]
 unique_name_in_owner = true
-position = Vector2(0, 18)
+position = Vector2(-9, 18)
 script = ExtResource("7_nl1de")
 
 [node name="Base" type="Sprite2D" parent="CanvasLayer/Speedometer"]
@@ -120,9 +120,9 @@ texture = ExtResource("7_ntve1")
 
 [node name="Timer" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 277.0
+offset_left = 268.0
 offset_top = 667.0
-offset_right = 452.0
+offset_right = 443.0
 offset_bottom = 750.0
 scale = Vector2(0.882918, 0.850231)
 size_flags_horizontal = 10
