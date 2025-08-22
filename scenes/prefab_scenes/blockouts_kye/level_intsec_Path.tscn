@@ -1,20 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://37mk8isaf56w"]
+[gd_scene load_steps=7 format=3 uid="uid://37mk8isaf56w"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
+[ext_resource type="PackedScene" uid="uid://cuc7lily7bn6r" path="res://scenes/prefab_scenes/props/road_support.tscn" id="2_lfvha"]
+[ext_resource type="PackedScene" uid="uid://crvnvhxyih5aa" path="res://scenes/art_scenes/halfpipe_deep.tscn" id="3_e0o6l"]
 
 [sub_resource type="Curve3D" id="Curve3D_ofuue"]
 _data = {
-"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -302.888, -29.0203, -118.455, -14.1853, 0, -28.9055, 14.1853, 0, 28.9055, -162.593, -46.6975, -83.1619, 8.35762, 1.64511, -12.7989, -8.35762, -1.64511, 12.7989, -178.558, -47.0723, -39.7584, 9.99155, -15.8136, -1.65031, -9.99155, 15.8136, 1.65031, -252.377, -80.5634, -29.1706),
+"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -299.351, -29.0203, -113.149, -10.2855, 4.19617e-05, -28.685, 10.2855, -4.19617e-05, 28.685, -118.174, -46.6975, -74.5585, 5.70828, 2, -1.1992, -5.70828, -2, 1.1992, -182.245, -47.0723, -44.8501, 9.99155, -15.8136, -1.65031, -9.99155, 15.8136, 1.65031, -252.377, -80.5634, -29.1706),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-
-[sub_resource type="Curve3D" id="Curve3D_61mo2"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.0645, 0.756538, 20.5933, 18, 1, 28, -18, -1, -28, 6.93782, -10.1153, -29.923, -9.83139, -2.44893, -7.54425, 9.83139, 2.44893, 7.54425, -1.34226, 0.200497, 25.2642),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_6rd0g"]
 _data = {
@@ -25,7 +20,7 @@ point_count = 2
 
 [sub_resource type="Curve3D" id="Curve3D_jpx15"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 15.7042, 16.9053, -5.55031, 33.8345, 0.830275, 12.1383, -33.8345, -0.830275, -12.1383, -18.328, -4.59184, 28.6511, 4.28964, -0.0237312, -13.2579, -4.28964, 0.0237312, 13.2579, -100.693, -34.6474, 18.8653),
+"points": PackedVector3Array(2.07619, 0.104706, -3.01558, -2.07619, -0.104706, 3.01558, 18.1632, 1.00211, -3.37138, 33.8345, 0.830275, 12.1383, -33.8345, -0.830275, -12.1383, -18.328, -4.59184, 28.6511, 4.28964, -0.0237312, -13.2579, -4.28964, 0.0237312, 13.2579, -100.693, -34.6474, 18.8653),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -39,11 +34,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.759, 3.05176e-05, 135.307
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2032, 0, 0)
 curve = SubResource("Curve3D_ofuue")
 
-[node name="Road_Intersection" parent="." instance=ExtResource("1_mhubp")]
-transform = Transform3D(-0.261883, 0.141541, -0.954664, 0.037444, 0.989932, 0.136498, 0.964373, 0, -0.264546, -1.96172, -51.11, 60.587)
+[node name="RoadSupports" type="Node3D" parent="Road_to_canyon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -233.458, -47.4425, -68.2904)
 
-[node name="Path3D" parent="Road_Intersection" index="0"]
-curve = SubResource("Curve3D_61mo2")
+[node name="Road Support" parent="Road_to_canyon/RoadSupports" instance=ExtResource("2_lfvha")]
+transform = Transform3D(-0.0223468, -0.0255475, -0.999424, -0.121759, 0.992301, -0.0226429, 0.992308, 0.121183, -0.0252854, 2.83976, -3.91489, -19.0903)
+
+[node name="Road Support2" parent="Road_to_canyon/RoadSupports" instance=ExtResource("2_lfvha")]
+transform = Transform3D(-0.0223468, -0.0255475, -0.999424, -0.121759, 0.992301, -0.0226429, 0.992308, 0.121183, -0.0252854, 39.7061, -6.86787, -13.0746)
 
 [node name="Road_to_sb" parent="." instance=ExtResource("1_mhubp")]
 transform = Transform3D(0.989932, 0.141541, 0, -0.141541, 0.989932, 0, 0, 0, 1, 56.6794, -67.9323, 64.2427)
@@ -53,21 +51,26 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.423599, -0.0605659, 0.106972)
 curve = SubResource("Curve3D_6rd0g")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(-1.8578, -19.3788, 0.0817087, 0.258104, 1.58191, 0.996646, 23.7291, -1.53442, -0.00444363, -19.0973, -52.8807, 66.0083)
-size = Vector3(1.29644, 0.654556, 10.4874)
-
-[node name="Triangle" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-1.21844, -18.6269, 0.292021, -2.57737, 5.77287, 0.949034, 23.6318, -0.330778, 0.118562, -14.0876, -53.4377, 67.9254)
-polygon = PackedVector2Array(-0.744253, 0.66039, 0.806441, 0.687965, 0.479767, -1.87392, -0.121907, -2.75246, -0.680675, -1.80236)
-
 [node name="Road_to_intsec" parent="." instance=ExtResource("1_mhubp")]
 transform = Transform3D(0.982682, -0.0134386, 0.18481, 0.0132071, 0.99991, 0.00248381, -0.184826, 0, 0.982771, 2.62017, 23.1617, 5.01011)
 
 [node name="Path3D" parent="Road_to_intsec" index="0"]
 curve = SubResource("Curve3D_jpx15")
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.64162, -47.6157, 67.1604)
+polygon = PackedVector2Array(-11.6822, -20.8616, -11.1195, -2.02223, -8.29748, 0.0539017, -11.1896, 2.99347, -11.6822, 20.6216, -1.85389, 18.8346, 6.9533, 17.1753, 17.0369, 14.2395, 22.9084, 10.4103, 25.9717, 7.21931, 27.3758, 2.24133, 26.8652, -2.22609, 25.4612, -6.18295, 22.2702, -9.62924, 14.3565, -14.8625, 5.54927, -17.6706, -4.4067, -19.9681)
+depth = 5.0
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.999822, -0.018866, -8.24658e-10, 0, -4.37114e-08, 1, -0.018866, 0.999822, 4.37036e-08, -25.7746, -47.6157, 67.1604)
+polygon = PackedVector2Array(-11.6822, -20.8616, -11.9453, -3.09525, -9.55194, -0.504608, -12.0878, 1.76895, -11.8053, 20.1437, -1.89046, 21.8322, 7.75708, 22.7649, 8.58117, -21.8754, -3.06456, -21.3445)
+depth = 5.0
+
+[node name="Halfpipe" parent="." instance=ExtResource("3_e0o6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0167, -63.051, 59.9662)
+
 [editable path="Road_to_canyon"]
-[editable path="Road_Intersection"]
 [editable path="Road_to_sb"]
 [editable path="Road_to_intsec"]
+[editable path="Halfpipe"]

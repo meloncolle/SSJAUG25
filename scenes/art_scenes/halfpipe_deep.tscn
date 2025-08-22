@@ -5,10 +5,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_mduqr"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64.0352, -25.2383, 0, -3.49832, 0, 10.9323, 3.49832, 0, -10.9323, 114.845, -32.6292, -0.652966, 6.99661, 0, -11.8069, -6.99661, 0, 11.8069, 67.4932, -36.8568, -3.03151, 4.57764e-05, 3.87089, 2.07878, -4.57764e-05, -3.87089, -2.07878, 129.998, -41.7494, 15.6786),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 2
+point_count = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choar"]
 render_priority = 0
