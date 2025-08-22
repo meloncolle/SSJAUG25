@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvypbeo7dcusu"]
+[gd_scene load_steps=5 format=3 uid="uid://bvypbeo7dcusu"]
 
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_f87g8"]
 [ext_resource type="Script" uid="uid://bo2ds5ssm834g" path="res://scripts/ui/end_screen.gd" id="1_n50rr"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="3_nwoug"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n50rr"]
 font_size = 36
@@ -42,10 +43,14 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Retry
 "
+script = ExtResource("3_nwoug")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Exit to title"
+script = ExtResource("3_nwoug")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="FinalTime" type="RichTextLabel" parent="."]
 layout_mode = 1

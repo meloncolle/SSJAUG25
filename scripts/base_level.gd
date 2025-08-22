@@ -208,6 +208,7 @@ func set_state(new_state: Enums.LevelState):
 			pass
 			
 		Enums.LevelState.DYING:
+			# KYE PUT FALLOFF SOUND HERE
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
@@ -225,11 +226,13 @@ func set_state(new_state: Enums.LevelState):
 func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
 		Enums.GameState.IN_GAME:
+			# KYE PUT UNPAUSE SOUND HERE
 			if keygen.reopen_on_resume:
 				keygen.reopen_on_resume = false
 				keygen.show()
 			
 		Enums.GameState.PAUSED:
+			# KYE PUT PAUSE SOUND HERE
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
@@ -241,16 +244,20 @@ func _on_intro_complete():
 	player.can_sleep = false
 
 func _on_banana_got(time_restored: float):
+	# KYE PUT BANANA PICKUP SOUND HERE
 	timer -= time_restored
+	# KYE PUT BANANA EATING SOUND HERE
+	# we'll adjust that timer to wait for eating sound
+	await get_tree().create_timer(0.5).timeout
 	throw_banana()
-	pass
 
 func throw_banana():
 	var banana: RigidBody3D = load("res://scenes/art_scenes/thrown_banana[art].tscn").instantiate()
-	await get_tree().create_timer(0.5).timeout
 	self.add_child(banana)
 	banana.position = player.position
+	# KYE PUT BANANA THROWING SOUND HERE
 	
 func _on_goal_reached():
+	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	set_state(Enums.LevelState.END)
 	%EndScreen.show_results(timer)
