@@ -1,7 +1,7 @@
 extends Node3D
 
 var level_state: Enums.LevelState
-signal state_changed
+signal level_state_changed
 
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
@@ -36,7 +36,8 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
-	SceneManager.connect("state_changed", _on_game_state_changed)
+	SceneManager.connect("game_state_changed", _on_game_state_changed)
+	connect("level_state_changed", SceneManager._on_level_state_changed)
 	
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
@@ -64,7 +65,7 @@ func _ready():
 		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
 		$CanvasLayer.add_child(debug_panel)
 		
-		connect("state_changed", debug_panel._on_state_changed)
+		connect("level_state_changed", debug_panel._on_level_state_changed)
 		connect("speed_changed", debug_panel._on_speed_changed)
 		connect("gravity_changed", debug_panel._on_grav_changed)
 		connect("velocity_changed", debug_panel._on_vel_changed)
@@ -183,7 +184,7 @@ func _on_settings_changed():
 
 func set_state(new_state: Enums.LevelState):
 	level_state = new_state
-	emit_signal("state_changed", new_state)
+	emit_signal("level_state_changed", new_state)
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
@@ -208,7 +209,6 @@ func set_state(new_state: Enums.LevelState):
 			keygen._on_close_requested()
 			
 func _on_game_state_changed(new_state: Enums.GameState):
-	print(Enums.GameState.keys()[new_state])
 	match new_state:
 		Enums.GameState.IN_GAME:
 			if keygen.reopen_on_resume:
@@ -218,7 +218,7 @@ func _on_game_state_changed(new_state: Enums.GameState):
 		Enums.GameState.PAUSED:
 			if keygen.visible:
 				keygen.reopen_on_resume = true
-				keygen.hide()			
+				keygen.hide()
 
 func _on_goal_reached():
 	print("DA END")
