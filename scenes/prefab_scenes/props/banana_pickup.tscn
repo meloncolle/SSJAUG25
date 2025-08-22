@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dca05ay0rrhlr"]
+
+[ext_resource type="PackedScene" uid="uid://bfirpsfpd34qh" path="res://assets/models/banana_whole.glb" id="1_5xa5c"]
+[ext_resource type="Script" uid="uid://b43ybfg6ajipg" path="res://scripts/props/banana_pickup.gd" id="2_wcuen"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wcuen"]
+radius = 0.6
+height = 2.4
+
+[node name="banana_whole" groups=["banana"] instance=ExtResource("1_5xa5c")]
+script = ExtResource("2_wcuen")
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(-9.85875e-09, 0.225542, 0.107847, -0.25, -1.09279e-08, -7.99361e-15, 4.71411e-09, -0.107847, 0.225542, 0, -0.0253061, -0.082)
+
+[node name="Area3D" type="Area3D" parent="Cylinder" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder/Area3D" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wcuen")
+
+[connection signal="body_entered" from="Cylinder/Area3D" to="." method="_on_area_3d_body_entered"]

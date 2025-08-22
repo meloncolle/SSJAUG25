@@ -36,14 +36,22 @@ signal gravity_changed
 signal velocity_changed
 
 func _ready():
+	# Make sceneManager aware of level state changes
+	# And this level aware of game state changes
 	SceneManager.connect("game_state_changed", _on_game_state_changed)
 	connect("level_state_changed", SceneManager._on_level_state_changed)
 	
+	# Spawn player and hookup camera follow and listen for intro finished
 	spawn_player()
 	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
 	player.get_node("RacerBen").connect("intro_completed", _on_intro_complete)
 	
+	# Listen for when passing through goalpost
 	goal.connect("goal_reached", _on_goal_reached)
+	
+	# Listen for nana pickups
+	for b in get_tree().get_nodes_in_group("banana"):
+		b.connect("banana_got", _on_banana_got)
 	
 	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
@@ -232,7 +240,17 @@ func _on_intro_complete():
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
 
+func _on_banana_got(time_restored: float):
+	timer -= time_restored
+	throw_banana()
+	pass
+
+func throw_banana():
+	var banana: RigidBody3D = load("res://scenes/art_scenes/thrown_banana[art].tscn").instantiate()
+	await get_tree().create_timer(0.5).timeout
+	self.add_child(banana)
+	banana.position = player.position
+	
 func _on_goal_reached():
-	print("DA END")
 	set_state(Enums.LevelState.END)
 	%EndScreen.show_results(timer)

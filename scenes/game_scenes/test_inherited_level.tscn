@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://sltc862m5v18"]
+[gd_scene load_steps=20 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_m3dci"]
 [ext_resource type="Texture2D" uid="uid://ci2m42co4tl7p" path="res://assets/textures/RacerBenFace-diff.png" id="2_k3dio"]
 [ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="3_k3dio"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="4_vh2hr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3dio"]
 size = Vector3(10, 1, 10)
@@ -257,3 +258,14 @@ transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699
 
 [node name="Goal" parent="Track" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5411, -6.12648, -46.4222)
+
+[node name="banana_whole" parent="." index="7" instance=ExtResource("4_vh2hr")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -46.5042)
+
+[node name="banana_whole2" parent="." index="8" instance=ExtResource("4_vh2hr")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -47.8788)
+anim_time_offset = 0.25
+
+[node name="banana_whole3" parent="." index="9" instance=ExtResource("4_vh2hr")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -45.0171)
+anim_time_offset = -0.25

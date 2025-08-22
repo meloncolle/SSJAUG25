@@ -103,7 +103,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-362.41, 106.874)
 modes/specular = 2
 flags/shadows_disabled = true
 flags/vertex_lighting = true

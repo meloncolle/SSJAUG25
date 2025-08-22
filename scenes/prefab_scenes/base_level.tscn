@@ -163,7 +163,6 @@ cull_mask = 1048574
 [node name="Track" type="Node3D" parent="."]
 
 [node name="Goal" parent="Track" instance=ExtResource("11_es0rj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8568, 0, 0.024178)
 
 [node name="Background" type="Node3D" parent="."]
 
