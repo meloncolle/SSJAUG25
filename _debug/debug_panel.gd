@@ -5,7 +5,7 @@ extends ColorRect
 @onready var grav_label: RichTextLabel = $GravityLabel
 @onready var vel_label: RichTextLabel = $VelocityLabel
 
-func _on_state_changed(new_state: Enums.LevelState):
+func _on_level_state_changed(new_state: Enums.LevelState):
 	var txt := "State: %s"
 	state_label.text = txt % Enums.LevelState.keys()[new_state]
 

@@ -4,8 +4,9 @@ extends Node
 
 var game_state: Enums.GameState
 var scene_instance: Node = null
+var can_pause:= false
 
-signal state_changed
+signal game_state_changed
 
 @onready var start_menu: Control = $Menus/Start
 @onready var pause_menu: Control = $Menus/Pause
@@ -28,7 +29,7 @@ func _ready():
 	settings_menu.connect("settings_closed", _on_settings_closed)
 
 func _input (event: InputEvent):
-	if(game_state != Enums.GameState.ON_START && event.is_action_pressed("pause")):
+	if(game_state != Enums.GameState.ON_START && can_pause && event.is_action_pressed("pause")):
 		match game_state:
 			Enums.GameState.IN_GAME:
 				set_state(Enums.GameState.PAUSED)
@@ -37,7 +38,8 @@ func _input (event: InputEvent):
 				set_state(Enums.GameState.IN_GAME)
 	
 func set_state(new_state: Enums.GameState):
-	emit_signal("state_changed", new_state)
+	emit_signal("game_state_changed", new_state)
+	game_state = new_state
 	match new_state:
 		Enums.GameState.ON_START:
 			get_tree().paused = false
@@ -51,10 +53,7 @@ func set_state(new_state: Enums.GameState):
 			
 		Enums.GameState.PAUSED:
 			get_tree().paused = true
-			pause_menu.visible = true
-			
-	game_state = new_state
-
+			pause_menu.visible = true	
 
 func _on_press_start():
 	scene_instance = load(starting_level.resource_path).instantiate()
@@ -87,3 +86,18 @@ func _on_press_quit():
 	scene_instance = null
 	get_tree().paused = false
 	set_state(Enums.GameState.ON_START)
+	
+func _on_level_state_changed(new_state: Enums.LevelState):
+	# We should only be able to pause during RACING... so it doesnt mess w/ fading
+	match new_state:
+		Enums.LevelState.WAIT_START:
+			can_pause = false
+			
+		Enums.LevelState.RACING:
+			can_pause = true
+			
+		Enums.LevelState.DYING:
+			can_pause = false
+			
+		Enums.LevelState.END:
+			can_pause = false

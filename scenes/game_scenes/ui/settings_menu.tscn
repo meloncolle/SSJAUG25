@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c82tul4b1lqlu"]
+[gd_scene load_steps=4 format=3 uid="uid://c82tul4b1lqlu"]
 
 [ext_resource type="Script" uid="uid://jeycota2uk8n" path="res://scripts/ui/settings_menu.gd" id="1_8ykqg"]
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_0701v"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="3_et38n"]
 
 [node name="SettingsMenu" type="Control"]
 process_mode = 2
@@ -54,10 +55,14 @@ horizontal_alignment = 1
 [node name="ConfirmButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Confirm"
+script = ExtResource("3_et38n")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="CancelButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Cancel"
+script = ExtResource("3_et38n")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="Settings" type="Control" parent="."]
 anchors_preset = 0

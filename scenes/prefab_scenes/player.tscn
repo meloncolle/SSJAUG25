@@ -11,7 +11,6 @@ collision_layer = 2
 collision_mask = 3
 mass = 10.0
 gravity_scale = 10.0
-can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
 linear_damp = 0.07

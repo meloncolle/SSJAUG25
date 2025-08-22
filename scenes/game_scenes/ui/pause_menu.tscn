@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmlhgvnxyd87"]
+[gd_scene load_steps=3 format=3 uid="uid://bmlhgvnxyd87"]
 
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_b0yqk"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="2_paxla"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -46,20 +47,28 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Resume
 "
+script = ExtResource("2_paxla")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Restart
 "
+script = ExtResource("2_paxla")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Settings
 "
+script = ExtResource("2_paxla")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+script = ExtResource("2_paxla")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

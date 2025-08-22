@@ -1,10 +1,14 @@
-extends Sprite2D
+extends Node2D
+
+#TODO: reveal broken sprites during title sequence
 
 const min_angle:= -50.0
 const max_angle:= 190.0
 const min_speed:= 0.0
 var max_speed: float
 
+@onready var base: Sprite2D = $Base
+@onready var base_broken: Sprite2D = $BaseBroken
 @onready var needle: Sprite2D = $Needle
 @onready var glass: Sprite2D = $Glass
 @onready var glass_broken: Sprite2D = $GlassBroken
