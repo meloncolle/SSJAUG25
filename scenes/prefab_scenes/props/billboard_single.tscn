@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://tkqwic1ysncl"]
+
+[ext_resource type="PackedScene" uid="uid://b4mn4uehhe0xx" path="res://assets/models/raceway_solo_bilboard.glb" id="1_vhn3p"]
+[ext_resource type="Script" uid="uid://bnhwhffo0prvg" path="res://scripts/props/billboard_single.gd" id="2_g53qb"]
+[ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="3_rnmdr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vm2ma"]
+render_priority = 0
+shader = ExtResource("3_rnmdr")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(0, 0)
+
+[node name="raceway_solo_bilboard" instance=ExtResource("1_vhn3p")]
+script = ExtResource("2_g53qb")
+
+[node name="Cube_002" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vm2ma")

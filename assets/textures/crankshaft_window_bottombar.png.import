@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://plf2k212eww2"
-path="res://.godot/imported/Peel Out Logo.png-744bf397d9d265127b21313c8eca1373.ctex"
+uid="uid://44xta3rwtg"
+path="res://.godot/imported/crankshaft_window_bottombar.png-14edf5a725bef3a6bc0ba051f085304f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/Peel Out Logo.png"
-dest_files=["res://.godot/imported/Peel Out Logo.png-744bf397d9d265127b21313c8eca1373.ctex"]
+source_file="res://assets/textures/crankshaft_window_bottombar.png"
+dest_files=["res://.godot/imported/crankshaft_window_bottombar.png-14edf5a725bef3a6bc0ba051f085304f.ctex"]
 
 [params]
 

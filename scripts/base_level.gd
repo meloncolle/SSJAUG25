@@ -65,6 +65,7 @@ func _ready():
 	connect("speed_changed", %Speedometer._on_speed_changed)
 	player.connect("max_speed_changed", %Speedometer._on_max_speed_changed)
 	player.emit_signal("max_speed_changed", player.max_speed)
+	CheatLib.connect("active_codes_changed", %ActiveCodes._on_active_codes_changed)
 	
 	cam.position = spawn_point.position
 	
@@ -177,19 +178,12 @@ func update_gravity(delta) -> void:
 # triggered when valid code entered in keygen
 func _on_code_accepted(code: CheatCode):
 	code.times_used += 1
-	
-	print("CODE ACCEPTED")
-	print(code.get_string())
-	print("\n")
 
-	# i guess we have to define the effects here?
-	# itd be ideal to put them in the cheatcode resource but
-	# idk how to do that with scope TODO?
 	match code.name:
-		"Test Code 1":
-			print("this is the first cheat activating")
-		"Test code TWO":
-			print("thsi is the 2nd cheat activating")
+		"tinymode":
+			player.size -= 1
+		"bigmode":
+			player.size += 1
 
 # Read settings from config and update values in game
 func _on_settings_changed():

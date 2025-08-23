@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_m3dci"]
-[ext_resource type="Texture2D" uid="uid://ci2m42co4tl7p" path="res://assets/textures/RacerBenFace-diff.png" id="2_k3dio"]
+[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="2_vh2hr"]
 [ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="3_k3dio"]
 [ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="4_vh2hr"]
 
@@ -13,7 +13,7 @@ resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4x3k"]
-albedo_texture = ExtResource("2_k3dio")
+albedo_texture = ExtResource("2_vh2hr")
 uv1_scale = Vector3(15, 10, 1)
 texture_filter = 0
 
@@ -25,8 +25,8 @@ resource_local_to_scene = true
 size = Vector3(9, 1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtlrr"]
-albedo_texture = ExtResource("2_k3dio")
-uv1_scale = Vector3(15, 1, 1)
+albedo_texture = ExtResource("2_vh2hr")
+uv1_scale = Vector3(4.375, 7.205, 0.885)
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_djqot"]
@@ -36,11 +36,6 @@ size = Vector3(10, 1, 10)
 resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh2hr"]
-albedo_texture = ExtResource("2_k3dio")
-uv1_scale = Vector3(15, 10, 1)
-texture_filter = 0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_x4x3k"]
 size = Vector3(9, 1, 0.5)
 
@@ -48,10 +43,12 @@ size = Vector3(9, 1, 0.5)
 resource_local_to_scene = true
 size = Vector3(9, 1, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_400uf"]
-albedo_texture = ExtResource("2_k3dio")
-uv1_scale = Vector3(15, 1, 1)
-texture_filter = 0
+[sub_resource type="BoxShape3D" id="BoxShape3D_vh2hr"]
+size = Vector3(4.365, 4, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x4x3k"]
+resource_local_to_scene = true
+size = Vector3(4, 4, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtlrr"]
 size = Vector3(5, 1, 10)
@@ -61,7 +58,7 @@ resource_local_to_scene = true
 size = Vector3(5, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhrr"]
-albedo_texture = ExtResource("2_k3dio")
+albedo_texture = ExtResource("2_vh2hr")
 uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
@@ -134,7 +131,7 @@ shape = SubResource("BoxShape3D_djqot")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart9" index="1"]
 mesh = SubResource("BoxMesh_k3dio")
-surface_material_override/0 = SubResource("StandardMaterial3D_vh2hr")
+surface_material_override/0 = SubResource("StandardMaterial3D_x4x3k")
 
 [node name="TrackPart10" type="StaticBody3D" parent="Track" index="5"]
 transform = Transform3D(0.008011, 0, 0.999968, 0, 1, 0, -0.999968, 0, 0.008011, 37.1795, -5.69666, -46.0927)
@@ -145,7 +142,7 @@ shape = SubResource("BoxShape3D_x4x3k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart10" index="1"]
 mesh = SubResource("BoxMesh_i1lg6")
-surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
 
 [node name="TrackPart11" type="StaticBody3D" parent="Track" index="6"]
 transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.9677, -5.69666, -50.8766)
@@ -156,9 +153,31 @@ shape = SubResource("BoxShape3D_x4x3k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart11" index="1"]
 mesh = SubResource("BoxMesh_i1lg6")
-surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
 
-[node name="TrackPart12" type="StaticBody3D" parent="Track" index="7"]
+[node name="TrackPart16" type="StaticBody3D" parent="Track" index="7"]
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 22.0974, -5.69666, -47.8871)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart16" index="0"]
+shape = SubResource("BoxShape3D_vh2hr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart16" index="1"]
+mesh = SubResource("BoxMesh_x4x3k")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
+
+[node name="TrackPart17" type="StaticBody3D" parent="Track" index="8"]
+transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 22.0974, -5.69666, -44.7627)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackPart17" index="0"]
+shape = SubResource("BoxShape3D_vh2hr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart17" index="1"]
+mesh = SubResource("BoxMesh_x4x3k")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
+
+[node name="TrackPart12" type="StaticBody3D" parent="Track" index="9"]
 transform = Transform3D(-0.999968, 0, 0.00801096, 0, 1, 0, -0.00801096, 0, -0.999968, 32.8915, -5.69666, -41.3769)
 collision_mask = 0
 
@@ -167,9 +186,9 @@ shape = SubResource("BoxShape3D_x4x3k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Track/TrackPart12" index="1"]
 mesh = SubResource("BoxMesh_i1lg6")
-surface_material_override/0 = SubResource("StandardMaterial3D_400uf")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
 
-[node name="TrackPart5" type="StaticBody3D" parent="Track" index="8" groups=["track"]]
+[node name="TrackPart5" type="StaticBody3D" parent="Track" index="10" groups=["track"]]
 transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -0.937813, -9.67513)
 collision_mask = 0
 
@@ -181,7 +200,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart13" type="StaticBody3D" parent="Track" index="9" groups=["track"]]
+[node name="TrackPart13" type="StaticBody3D" parent="Track" index="11" groups=["track"]]
 transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -2.80069, -19.562)
 collision_mask = 0
 
@@ -193,7 +212,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart14" type="StaticBody3D" parent="Track" index="10" groups=["track"]]
+[node name="TrackPart14" type="StaticBody3D" parent="Track" index="12" groups=["track"]]
 transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -4.54444, -29.1984)
 collision_mask = 0
 
@@ -205,7 +224,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart15" type="StaticBody3D" parent="Track" index="11" groups=["track"]]
+[node name="TrackPart15" type="StaticBody3D" parent="Track" index="13" groups=["track"]]
 transform = Transform3D(1, 0, 0, 0, 0.983876, 0.178854, 0, -0.178854, 0.983876, 0, -6.23489, -38.9474)
 collision_mask = 0
 
@@ -217,7 +236,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart6" type="StaticBody3D" parent="Track" index="12" groups=["track"]]
+[node name="TrackPart6" type="StaticBody3D" parent="Track" index="14" groups=["track"]]
 transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 2.42726, -6.95864, -46.3299)
 collision_mask = 0
 
@@ -229,7 +248,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart7" type="StaticBody3D" parent="Track" index="13" groups=["track"]]
+[node name="TrackPart7" type="StaticBody3D" parent="Track" index="15" groups=["track"]]
 transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 12.4524, -6.82307, -46.3299)
 collision_mask = 0
 
@@ -241,7 +260,7 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="TrackPart8" type="StaticBody3D" parent="Track" index="14" groups=["track"]]
+[node name="TrackPart8" type="StaticBody3D" parent="Track" index="16" groups=["track"]]
 transform = Transform3D(-0.00312951, -0.0118183, -0.999925, -0.00308901, 0.999925, -0.0118087, 0.99999, 0.00305182, -0.00316579, 22.4556, -6.71231, -46.3299)
 collision_mask = 0
 
@@ -253,10 +272,10 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="Checkpoint" parent="Track" index="15" instance=ExtResource("3_k3dio")]
+[node name="Checkpoint" parent="Track" index="17" instance=ExtResource("3_k3dio")]
 transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -6.19997, -46.2769)
 
-[node name="Goal" parent="Track" index="16"]
+[node name="Goal" parent="Track" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5411, -6.12648, -46.4222)
 
 [node name="banana_whole" parent="." index="7" instance=ExtResource("4_vh2hr")]

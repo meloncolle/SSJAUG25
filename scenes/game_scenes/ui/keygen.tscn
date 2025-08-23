@@ -1,14 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://cb5lxd7ivfj8c"]
+[gd_scene load_steps=34 format=3 uid="uid://cb5lxd7ivfj8c"]
 
 [ext_resource type="Script" uid="uid://bqt7v2lobk3xu" path="res://scripts/ui/keygen.gd" id="1_4fa5a"]
 [ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_cwmyt"]
 [ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_cwmyt"]
+[ext_resource type="Texture2D" uid="uid://44xta3rwtg" path="res://assets/textures/crankshaft_window_bottombar.png" id="4_dcg0o"]
 [ext_resource type="Texture2D" uid="uid://cla04cojh83by" path="res://assets/textures/ui/9patch_input.png" id="4_m5an3"]
 [ext_resource type="Texture2D" uid="uid://c2wrxduoyrkdg" path="res://assets/textures/ui/Arrow.png" id="5_m5an3"]
-[ext_resource type="FontFile" uid="uid://bwnvea5qn8ygl" path="res://assets/fonts/w95font.woff2" id="6_dcg0o"]
 [ext_resource type="Texture2D" uid="uid://dd0jbfgug0fh5" path="res://assets/textures/ui/crankshaft_scuffed_spritesheet.png" id="6_q66qf"]
-[ext_resource type="FontFile" uid="uid://ds1ulgfji8bei" path="res://assets/fonts/w95font-bold.woff2" id="7_mpl1s"]
-[ext_resource type="Texture2D" uid="uid://btrju8k4v2o7j" path="res://assets/textures/ui/9patch_unclicked.png" id="8_ff2n2"]
+[ext_resource type="Texture2D" uid="uid://d3d87tpa1hahg" path="res://assets/textures/crankshaft_window_topbar.png" id="8_m5an3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q66qf"]
 shader = ExtResource("2_cwmyt")
@@ -18,19 +17,6 @@ shader_parameter/speed = 2.765
 shader_parameter/scale = 40.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/scroll_speed = Vector2(-0.3, -0.3)
-
-[sub_resource type="Gradient" id="Gradient_m5an3"]
-colors = PackedColorArray(0.2838, 0.533487, 0.86, 1, 0.51, 0.787667, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mpl1s"]
-gradient = SubResource("Gradient_m5an3")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mpl1s"]
-texture = ExtResource("8_ff2n2")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfmvx"]
 atlas = ExtResource("6_q66qf")
@@ -217,6 +203,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4fa5a")
 
+[node name="Shadow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 654.0
+offset_bottom = 426.0
+color = Color(0, 0, 0, 1)
+
 [node name="BG" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q66qf")
@@ -229,28 +223,10 @@ texture = ExtResource("3_cwmyt")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="ColorRect2" type="ColorRect" parent="BG"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -190.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.145191, 0.143202, 0.14693, 1)
-
-[node name="ColorRect3" type="TextureRect" parent="BG"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -192.0
-offset_bottom = -170.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("GradientTexture1D_mpl1s")
+[node name="CrankshaftWindowBottombar" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(325, 324)
+texture = ExtResource("4_dcg0o")
 
 [node name="Input" type="ColorRect" parent="."]
 texture_filter = 1
@@ -355,54 +331,14 @@ position = Vector2(448, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_m5an3")
 
-[node name="CopyrightLabel" type="Label" parent="."]
-layout_mode = 2
-offset_left = 507.0
-offset_top = 399.0
-offset_right = 671.0
-offset_bottom = 422.0
-theme_override_fonts/font = ExtResource("6_dcg0o")
-text = "© 1997 Peeler & Sons"
-
-[node name="WarningLabel" type="Label" parent="."]
-layout_mode = 2
-offset_left = 5.0
-offset_top = 399.0
-offset_right = 210.0
-offset_bottom = 422.0
-theme_override_colors/font_color = Color(1, 0.133333, 0, 1)
-theme_override_fonts/font = ExtResource("7_mpl1s")
-text = "FOR INTERNAL USE ONLY"
-
-[node name="Button" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 2
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -55.1675
-offset_top = 359.0
-offset_right = 55.1675
-offset_bottom = 397.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("6_dcg0o")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxTexture_mpl1s")
-text = "Generate"
-
-[node name="SerialLabel" type="Label" parent="."]
-layout_mode = 2
-offset_left = 67.0
-offset_top = 260.0
-offset_right = 135.0
-offset_bottom = 292.0
-theme_override_fonts/font = ExtResource("6_dcg0o")
-theme_override_font_sizes/font_size = 20
-text = "Serial:"
-
 [node name="Logo" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(304, 150.5)
+position = Vector2(304, 159.5)
 scale = Vector2(1.61, 1.61)
 sprite_frames = SubResource("SpriteFrames_mqb7b")
 autoplay = "default"
 frame_progress = 0.902833
+
+[node name="CrankshaftWindowTopbar" type="Sprite2D" parent="."]
+position = Vector2(325, 13)
+texture = ExtResource("8_m5an3")

@@ -57,7 +57,7 @@ func add_input(input: Enums.CheatInput):
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
 			arrow_icons[i].modulate = Color(Color.WHITE, 0.25)
-		await get_tree().create_timer(0.75, false).timeout
+		await get_tree().create_timer(0.25, false).timeout
 		emit_signal("code_accepted", result[0])
 		_on_close_requested()
 
@@ -67,6 +67,6 @@ func add_input(input: Enums.CheatInput):
 		for i in arrow_icons: i.hide()
 		error_msg.show()
 		input_field.color = Color.RED
-		await get_tree().create_timer(0.75, false).timeout
+		await get_tree().create_timer(0.25, false).timeout
 		emit_signal("code_rejected")
 		_on_close_requested()
