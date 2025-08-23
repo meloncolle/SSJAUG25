@@ -155,12 +155,22 @@ func update_gravity(delta) -> void:
 			get_viewport().find_world_3d().space,
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR)
 	
+	#Complicated, and there's gotta be a more performant way, but works fine
+	var delta_x = delta
+	var delta_z = delta
+	if ((current_gravity.x > 0 && player.linear_velocity.x < 0) || (current_gravity.x < 0 && player.linear_velocity.x > 0)):
+		desired_gravity.x *= 2.5
+		delta_x *= 4
+	if ((current_gravity.z > 0 && player.linear_velocity.z < 0) || (current_gravity.z < 0 && player.linear_velocity.z > 0)):
+		desired_gravity.z *= 2.5
+		delta_z *= 4
+		
 	# idk why this is behaving differently than using Vector3.move_toward?? 
 	# but this is what i wanted
 	var new_gravity:= Vector3(
-		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta),
+		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta_x),
 		move_toward(current_gravity.y, desired_gravity.y, tilt_speed * delta),
-		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta)
+		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta_z)
 	)
 	
 	PhysicsServer3D.area_set_param(
