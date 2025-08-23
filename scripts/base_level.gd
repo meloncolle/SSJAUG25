@@ -186,10 +186,10 @@ func _on_code_accepted(code: CheatCode):
 	# itd be ideal to put them in the cheatcode resource but
 	# idk how to do that with scope TODO?
 	match code.name:
-		"Test Code 1":
-			print("this is the first cheat activating")
-		"Test code TWO":
-			print("thsi is the 2nd cheat activating")
+		"tinymode":
+			player.size -= 1
+		"bigmode":
+			player.size += 1
 
 # Read settings from config and update values in game
 func _on_settings_changed():
