@@ -254,46 +254,48 @@ shadow_mesh = SubResource("ArrayMesh_pwdyq")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvOffset = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3n12l"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(0.333333, 0.166667)
+shader_parameter/UvOffset = Vector2(0.666667, 0.166667)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d7tid"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvOffset = Vector2(1, 1.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5elek"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvOffset = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hu0kk"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(0.333333, 0.166667)
+shader_parameter/UvOffset = Vector2(0.666667, 0.166667)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vya4y"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvOffset = Vector2(1, 1.5)
 
 [node name="RacewayBanner" instance=ExtResource("1_8lao2")]
 script = ExtResource("2_le38u")
+frame_delay = 0.16
+frame_count_1 = 2
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(0.289299, 0, 0, 0, 1.8835, 0, 0, 0, 0.289299, 0, 2.28034, 0.0905808)

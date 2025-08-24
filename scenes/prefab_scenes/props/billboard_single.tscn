@@ -7,11 +7,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vm2ma"]
 render_priority = 0
 shader = ExtResource("3_rnmdr")
-shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvOffset = Vector2(1, 1)
 
 [node name="raceway_solo_bilboard" instance=ExtResource("1_vhn3p")]
 script = ExtResource("2_g53qb")
+frame_delay = 0.16
 
 [node name="Cube_002" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_vm2ma")
