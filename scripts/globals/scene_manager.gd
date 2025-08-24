@@ -1,6 +1,6 @@
 extends Node
 
-@export var levels: Array[PackedScene] = []
+@export var starting_level: PackedScene = null
 
 var game_state: Enums.GameState
 var scene_instance: Node = null
@@ -11,7 +11,6 @@ signal game_state_changed
 @onready var start_menu: Control = $Menus/Start
 @onready var pause_menu: Control = $Menus/Pause
 @onready var settings_menu: Control = $Menus/Settings
-@onready var level_select: Control = $Menus/LevelSelect
 
 func _ready():
 	set_state(Enums.GameState.ON_START)
@@ -26,12 +25,6 @@ func _ready():
 	start_menu.connect("visibility_changed", func(): if start_menu.visible: start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus())
 	pause_menu.connect("visibility_changed", func(): if pause_menu.visible: pause_menu.get_node("Panel/VBoxContainer/ResumeButton").grab_focus())
 	start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus()
-	level_select.connect("visibility_changed", func(): if level_select.visible: level_select.buttons[0].grab_focus() else: start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus())
-
-	# Hookup level select buttons
-	for i in range(level_select.buttons.size()):
-		level_select.buttons[i].connect("pressed", func(): self._on_press_level(i))
-	level_select.back_button.connect("pressed", func(): level_select.hide())
 
 	settings_menu.connect("settings_closed", _on_settings_closed)
 
@@ -63,11 +56,7 @@ func set_state(new_state: Enums.GameState):
 			pause_menu.visible = true	
 
 func _on_press_start():
-	level_select.show()
-	
-func _on_press_level(idx: int):
-	level_select.hide()
-	scene_instance = load(levels[idx].resource_path).instantiate()
+	scene_instance = load(starting_level.resource_path).instantiate()
 	self.add_child(scene_instance)
 	set_state(Enums.GameState.IN_GAME)
 	
@@ -79,7 +68,7 @@ func _on_press_resume():
 	
 func _on_press_restart():
 	scene_instance.queue_free()
-	scene_instance = load(levels[0].resource_path).instantiate()
+	scene_instance = load(starting_level.resource_path).instantiate()
 	self.add_child(scene_instance)
 	set_state(Enums.GameState.IN_GAME)
 

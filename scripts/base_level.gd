@@ -1,8 +1,4 @@
 extends Node3D
-class_name BaseLevel
-
-## The name displayed on level select screen, etc.
-@export var level_name: String
 
 var level_state: Enums.LevelState
 signal level_state_changed

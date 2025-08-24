@@ -11,6 +11,7 @@ var reopen_on_resume := false
 var inputs: Array[Enums.CheatInput] = []
 @onready var arrow_icons:= $Input/Arrows.get_children()
 @onready var input_field: ColorRect = $Input
+@onready var error_msg: Label = $Input/ErrorLabel
 
 func _process(_delta):
 	# Moved to _process() because it gets double input in _input()
@@ -32,6 +33,7 @@ func _on_close_requested():
 func _on_open_requested():
 	inputs = []
 	input_enabled = true
+	error_msg.hide()
 	input_field.color = Color.WHITE
 	for i in arrow_icons: 
 		i.hide()
@@ -63,6 +65,8 @@ func add_input(input: Enums.CheatInput):
 	elif inputs.size() >= MAX_INPUTS:
 		$Audio/code_wrong.play()# KYE PUT CHEATCODEWRONG SOUND HERE
 		input_enabled = false
+		for i in arrow_icons: i.hide()
+		error_msg.show()
 		input_field.color = Color.RED
 		await get_tree().create_timer(0.25, false).timeout
 		emit_signal("code_rejected")

@@ -11,6 +11,8 @@ signal finished_respawn
 		max_speed = value
 		emit_signal("max_speed_changed", max_speed)
 
+signal changed_size
+
 var size:
 	set(value):
 		size = clampi(value, 0, 2)
