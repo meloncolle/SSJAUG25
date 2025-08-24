@@ -29,9 +29,9 @@ var current_frame_1: int = 1:
 		
 
 @export var texture_1: Texture2D:
-	set(tex): 
+	set(tex):
 		texture_1 = tex
-		
+		if banners == null: return
 		if texture_1 != null:
 			frame_coords_1 = tex.get_size() / frame_size
 			uv_scale_1 = Vector2(1.0 / frame_coords_1.x, 1.0 / frame_coords_1.y)
@@ -71,7 +71,7 @@ var current_frame_2: int = 1:
 @export var texture_2: Texture2D:
 	set(tex):
 		texture_2 = tex
-		
+		if banners == null: return
 		if texture_2 != null:
 			frame_coords_2 = tex.get_size() / frame_size
 			uv_scale_2 = Vector2(1.0 / frame_coords_2.x, 1.0 / frame_coords_2.y)
@@ -111,7 +111,7 @@ var current_frame_3: int = 1:
 @export var texture_3: Texture2D:
 	set(tex):
 		texture_3 = tex
-		
+		if banners == null: return
 		if texture_3 != null:
 			frame_coords_3 = tex.get_size() / frame_size
 			uv_scale_3 = Vector2(1.0 / frame_coords_3.x, 1.0 / frame_coords_3.y)

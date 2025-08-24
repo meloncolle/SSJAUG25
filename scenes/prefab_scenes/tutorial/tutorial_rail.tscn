@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://7j441du47kda"]
+
+[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="1_3fvcv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1lg6"]
+size = Vector3(9, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_400uf"]
+resource_local_to_scene = true
+size = Vector3(9, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtlrr"]
+albedo_texture = ExtResource("1_3fvcv")
+uv1_scale = Vector3(4.375, 7.205, 0.885)
+texture_filter = 0
+
+[node name="Rail" type="StaticBody3D"]
+transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, 0, 0, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_i1lg6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_400uf")
+surface_material_override/0 = SubResource("StandardMaterial3D_wtlrr")
