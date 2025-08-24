@@ -7,9 +7,9 @@ func _ready():
 
 # ok so this is gonna fire automatically when the menu opens once, gotta find a workaround
 func _on_focused():
-		# KYE PUT UINAVIGATE SOUND HERE (and delete print statement)
-		print("BUTTON FOCUSED")
+	# KYE PUT UINAVIGATE SOUND HERE (and delete pass)
+	pass
 	
 func _on_pressed():
-		# KYE PUT UISELECT SOUND HERE
-	print("BUTTON PRESSED")
+	# KYE PUT UISELECT SOUND HERE (and ddelete pass)
+	pass

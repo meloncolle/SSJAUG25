@@ -17,9 +17,10 @@ _data = {
 point_count = 5
 
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
+level_name = "Kye Level"
 death_height = -270.0
 
-[node name="SpawnPoint" parent="." index="4"]
+[node name="SpawnPoint" parent="." index="3"]
 transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -32.2938, 18.2502, -68.7353)
 
 [node name="RoadPieces" type="Node3D" parent="Track" index="0"]
@@ -59,7 +60,7 @@ curve = SubResource("Curve3D_8d7vd")
 [node name="skybox" parent="Background" index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
 
-[node name="Checkpoints" type="Node3D" parent="." index="8"]
+[node name="Checkpoints" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7635, -5.3142, -59.6102)
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("7_lhibs")]

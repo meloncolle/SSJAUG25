@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://sltc862m5v18"]
+[gd_scene load_steps=21 format=3 uid="uid://sltc862m5v18"]
 
-[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_m3dci"]
-[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="2_vh2hr"]
-[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="3_k3dio"]
-[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="4_vh2hr"]
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_xy6ot"]
+[ext_resource type="Script" uid="uid://c80kr23l5gipi" path="res://scripts/tutorial_level.gd" id="2_0wqkg"]
+[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="3_ttcas"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="4_orkap"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="5_w8jns"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3dio"]
 size = Vector3(10, 1, 10)
@@ -13,7 +14,7 @@ resource_local_to_scene = true
 size = Vector3(10, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4x3k"]
-albedo_texture = ExtResource("2_vh2hr")
+albedo_texture = ExtResource("3_ttcas")
 uv1_scale = Vector3(15, 10, 1)
 texture_filter = 0
 
@@ -25,7 +26,7 @@ resource_local_to_scene = true
 size = Vector3(9, 1, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtlrr"]
-albedo_texture = ExtResource("2_vh2hr")
+albedo_texture = ExtResource("3_ttcas")
 uv1_scale = Vector3(4.375, 7.205, 0.885)
 texture_filter = 0
 
@@ -58,11 +59,13 @@ resource_local_to_scene = true
 size = Vector3(5, 1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dhrr"]
-albedo_texture = ExtResource("2_vh2hr")
+albedo_texture = ExtResource("3_ttcas")
 uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
-[node name="BaseLevel" instance=ExtResource("1_m3dci")]
+[node name="BaseLevel" instance=ExtResource("1_xy6ot")]
+script = ExtResource("2_0wqkg")
+level_name = "Tutorial"
 
 [node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
@@ -276,19 +279,19 @@ shape = SubResource("BoxShape3D_wtlrr")
 mesh = SubResource("BoxMesh_cccyf")
 surface_material_override/0 = SubResource("StandardMaterial3D_6dhrr")
 
-[node name="Checkpoint" parent="Track" index="17" instance=ExtResource("3_k3dio")]
+[node name="Checkpoint" parent="Track" index="17" instance=ExtResource("4_orkap")]
 transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0, -6.19997, -46.2769)
 
 [node name="Goal" parent="Track" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5411, -6.12648, -46.4222)
 
-[node name="banana_whole" parent="." index="7" instance=ExtResource("4_vh2hr")]
+[node name="banana_whole" parent="." index="7" instance=ExtResource("5_w8jns")]
 transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -46.5042)
 
-[node name="banana_whole2" parent="." index="8" instance=ExtResource("4_vh2hr")]
+[node name="banana_whole2" parent="." index="8" instance=ExtResource("5_w8jns")]
 transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -47.8788)
 anim_time_offset = 0.25
 
-[node name="banana_whole3" parent="." index="9" instance=ExtResource("4_vh2hr")]
+[node name="banana_whole3" parent="." index="9" instance=ExtResource("5_w8jns")]
 transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 18.9122, 5.7054, -45.0171)
 anim_time_offset = -0.25
