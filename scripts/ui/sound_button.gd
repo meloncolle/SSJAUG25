@@ -8,10 +8,10 @@ func _ready():
 # ok so this is gonna fire automatically when the menu opens once, gotta find a workaround
 func _on_focused():
 		# KYE PUT UINAVIGATE SOUND HERE (and delete print statement)
-		$Audio/UInavigate.play()
+		#$Audio/UInavigate.play()
 		print("BUTTON FOCUSED")
 	
 func _on_pressed():
 		# KYE PUT UISELECT SOUND HERE
-		$Audio/UIselect.play()
+		#$Audio/UIselect.play()
 		print("BUTTON PRESSED")

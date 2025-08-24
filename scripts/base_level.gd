@@ -222,12 +222,14 @@ func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
 		Enums.GameState.IN_GAME:
 			# KYE PUT UNPAUSE SOUND HERE
+			$Audio/unpause.play()
 			if keygen.reopen_on_resume:
 				keygen.reopen_on_resume = false
 				keygen.show()
 			
 		Enums.GameState.PAUSED:
 			# KYE PUT PAUSE SOUND HERE
+			$Audio/pause.play()
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
@@ -240,8 +242,10 @@ func _on_intro_complete():
 
 func _on_banana_got(time_restored: float):
 	# KYE PUT BANANA PICKUP SOUND HERE
+	#$Audio/pickup_nana.play()
 	timer -= time_restored
 	# KYE PUT BANANA EATING SOUND HERE
+	$Audio/eat_nana.play()
 	# we'll adjust that timer to wait for eating sound
 	await get_tree().create_timer(0.5).timeout
 	throw_banana()
@@ -251,6 +255,7 @@ func throw_banana():
 	self.add_child(banana)
 	banana.position = player.position
 	# KYE PUT BANANA THROWING SOUND HERE
+	$Audio/throw_nana.play()
 	
 func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE

@@ -11,7 +11,7 @@ height = 2.4
 script = ExtResource("2_wcuen")
 
 [node name="Cylinder" parent="." index="0"]
-transform = Transform3D(-9.85875e-09, 0.225542, 0.107847, -0.25, -1.09279e-08, -7.99361e-15, 4.71411e-09, -0.107847, 0.225542, 0, -0.0253061, -0.082)
+transform = Transform3D(1.01585e-08, -0.232401, 0.092141, -0.25, -1.09279e-08, -2.75335e-14, 4.02763e-09, -0.092141, -0.232401, 0, -0.215227, -0.082)
 
 [node name="Area3D" type="Area3D" parent="Cylinder" index="0"]
 collision_layer = 2

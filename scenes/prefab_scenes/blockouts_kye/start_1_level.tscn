@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://b132g3gl88ufv"]
+[gd_scene load_steps=22 format=3 uid="uid://b132g3gl88ufv"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_l31le"]
 [ext_resource type="PackedScene" uid="uid://bhbu8n8xxwgvo" path="res://scenes/art_scenes/instance_placer.tscn" id="2_vfb1a"]
 [ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier[art].tscn" id="3_1kxbn"]
 [ext_resource type="PackedScene" uid="uid://dsvv7bd7s8onj" path="res://scenes/art_scenes/level_terrain/starting_canyon1.tscn" id="4_4xaje"]
 [ext_resource type="Material" uid="uid://cy0ews5fmhyg6" path="res://resources/materials/grass_texture_CSGPolygon.tres" id="4_45lo7"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="4_vuwsu"]
 [ext_resource type="PackedScene" uid="uid://dex2jsdbhiu3p" path="res://scenes/art_scenes/level_terrain/starting_canyon2.tscn" id="5_j3b3w"]
 [ext_resource type="Material" uid="uid://d23fyfqqom4fm" path="res://resources/materials/concrete_texture_CSGPolygon.tres" id="5_oadxp"]
 [ext_resource type="PackedScene" uid="uid://cuc7lily7bn6r" path="res://scenes/prefab_scenes/props/road_support.tscn" id="6_j3b3w"]
@@ -17,11 +18,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_gbb6u"]
 _data = {
-"points": PackedVector3Array(11.0673, -0.529785, 15.6489, -11.0673, 0.529785, -15.6489, -109.744, -5.46216, 24.2922, -21.0536, 0, 3.5762, 21.0536, 0, -3.5762, -89.3963, -6.34663, -18.7846, -8.2211, 0.0645752, 0.344676, 8.2211, -0.0645752, -0.344676, -45.0834, -4.47492, 12.8106, 13.5148, -0.00390625, 17.1493, -13.5148, 0.00390625, -17.1493, 2.13098, -7.81269, -12.2622, 17.8255, -0.0183105, 2.19173, -17.8255, 0.0183105, -2.19173, -37.1119, -14.9555, -38.1531, -11.0453, -0.000244141, 8.06192, 11.0453, 0.000244141, -8.06192, -60.5092, -23.794, -78.1099, -11.2346, 20.9412, -0.717377, 11.2346, -20.9412, 0.717377, -32.6525, -40.7735, -86.977),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(11.0673, -0.529785, 15.6489, -11.0673, 0.529785, -15.6489, -109.744, -5.46216, 24.2922, -21.0536, 0, 3.5762, 21.0536, 0, -3.5762, -89.3963, -6.34663, -18.7846, -8.2211, 0.0645752, 0.344676, 8.2211, -0.0645752, -0.344676, -45.0834, -4.47492, 12.8106, 13.5148, -0.00390625, 17.1493, -13.5148, 0.00390625, -17.1493, 2.13098, -7.49968, -12.2622, 17.8255, -0.0183105, 2.19173, -17.8255, 0.0183105, -2.19173, -37.3456, -15.1734, -38.472, -11.0453, -0.000244141, 8.06192, 11.0453, 0.000244141, -8.06192, -60.5092, -23.794, -78.1099, -11.2346, 20.9412, -0.717377, 11.2346, -20.9412, 0.717377, -32.6525, -40.7735, -86.977),
+"tilts": PackedFloat32Array(0, 0, 0, -0.0201191, -0.234546, 0, 0)
 }
 point_count = 7
-up_vector_enabled = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_884g7"]
 size = Vector3(0.458008, 6.52638, 3.33921)
@@ -128,6 +128,9 @@ transform = Transform3D(0.999794, 0.0200246, 0.00325736, -0.0200924, 0.999552, 0
 use_collision = true
 radius = 1.68408
 height = 5.56403
+
+[node name="banana_whole" parent="Road" instance=ExtResource("4_vuwsu")]
+transform = Transform3D(0.964691, 0, 0.263385, 0, 1, 0, -0.263385, 0, 0.964691, -55.5876, -6.24823, -4.41133)
 
 [node name="Grass" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.96468, -0.263385, -0.00456289, 0.0047299, -5.96046e-08, 0.999989, -0.263382, -0.964691, 0.00124578, 23.6078, -1.06055, 10.7602)
