@@ -120,47 +120,6 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 98.9157, -77.7078, -73.4505)
 [node name="CollisionShape3D" parent="Checkpoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0.5, 0)
 
-[node name="Audio" type="Node" parent="." index="8"]
-
-[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio" index="0"]
-bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]
-
-[node name="fall_off" type="FmodEventEmitter3D" parent="Audio" index="1"]
-event_name = "event:/Player SFX/FallOff"
-event_guid = "{aeacc10d-2f97-40fe-9b8e-6bb9d321d3ba}"
-
-[node name="passed_finish" type="FmodEventEmitter3D" parent="Audio" index="2"]
-event_name = "event:/Level/Finish"
-event_guid = "{cc01fb08-1f8d-48a6-8cd0-d9547e5a7b94}"
-
-[node name="UIselect" type="FmodEventEmitter3D" parent="Audio" index="3"]
-event_name = "event:/UI/UISelect"
-event_guid = "{2c0c909a-b114-4437-a3db-57aa107953ca}"
-
-[node name="UInavigate" type="FmodEventEmitter3D" parent="Audio" index="4"]
-event_name = "event:/UI/UINav"
-event_guid = "{9cda9adc-57f1-4c45-8030-40e65ec593a2}"
-
-[node name="pause" type="FmodEventEmitter3D" parent="Audio" index="5"]
-event_name = "event:/UI/Puase"
-event_guid = "{a9734bd1-fff1-4a69-9e4f-90889b2f7148}"
-
-[node name="unpause" type="FmodEventEmitter3D" parent="Audio" index="6"]
-event_name = "event:/UI/Unpause"
-event_guid = "{71b7362a-7006-4f7c-a825-c79c41432129}"
-
-[node name="throw_nana" type="FmodEventEmitter3D" parent="Audio" index="7"]
-event_name = "event:/Banana/throw_nan"
-event_guid = "{4e2fe6bd-85ca-48e0-9e72-7f0dcd5c29ca}"
-
-[node name="eat_nana" type="FmodEventEmitter3D" parent="Audio" index="8"]
-event_name = "event:/Banana/eat_nan"
-event_guid = "{1f6a3bcc-3845-481c-9d58-8529c2d1b948}"
-
-[node name="pickup_nana" type="FmodEventEmitter3D" parent="Audio" index="9"]
-event_name = "event:/Banana/pickup_nan"
-event_guid = "{c30b6791-8d3c-4bde-8711-0a676c18cbd7}"
-
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]
 [editable path="Track/level_Intsec_Path/Road_to_intsec"]
