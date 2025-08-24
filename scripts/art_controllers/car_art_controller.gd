@@ -25,7 +25,7 @@ func _ready():
 				
 	if set_tracking_on_ready: is_tracking = true
 
-func _process(delta):
+func _process(_delta):
 	if !is_tracking : return
 	
 	global_transform = target.global_transform

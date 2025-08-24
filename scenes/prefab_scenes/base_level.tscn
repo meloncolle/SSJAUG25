@@ -196,3 +196,4 @@ cull_mask = 1048574
 
 [node name="skybox" parent="Background" instance=ExtResource("11_nl1de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -67.151, 0)
+metadata/_edit_lock_ = true
