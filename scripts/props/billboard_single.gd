@@ -27,6 +27,7 @@ var current_frame: int = 1:
 @export var texture: Texture2D:
 	set(tex): 
 		texture = tex
+		if banner == null: return
 		var mat := banner.get_surface_override_material(0)
 		
 		if texture != null:
@@ -39,7 +40,9 @@ var current_frame: int = 1:
 			
 			mat.set_shader_parameter("UvScale", uv_scale)
 		mat.set_shader_parameter("diffuse_tex", tex)
-		
+
+func _ready():
+	texture = texture
 
 func _process(delta):
 	if (frame_size.x * frame_size.y) == 1: pass
