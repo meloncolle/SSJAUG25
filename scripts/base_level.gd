@@ -107,7 +107,6 @@ func _input(event):
 
 	if event.is_action_pressed("toggle_console"):
 		keygen._on_open_requested() if !keygen.visible else keygen._on_close_requested()
-	
 
 func _physics_process(delta):
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
@@ -204,6 +203,7 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.DYING:
 			# KYE PUT FALLOFF SOUND HERE
+			$Audio/fall_off.play()
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
@@ -254,5 +254,6 @@ func throw_banana():
 	
 func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
+	$Audio/passed_finish.play()
 	set_state(Enums.LevelState.END)
 	%EndScreen.show_results(timer)

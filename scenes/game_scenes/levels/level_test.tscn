@@ -28,7 +28,7 @@ point_count = 4
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -22.6848, 18.9323, -75.4729)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 42.7622, 18.9323, 330.778)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
@@ -128,6 +128,20 @@ event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Audio" index="0"]
 bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]
+
+[node name="fall_off" type="FmodEventEmitter3D" parent="Audio" index="1"]
+event_name = "event:/Player SFX/FallOff"
+event_guid = "{aeacc10d-2f97-40fe-9b8e-6bb9d321d3ba}"
+
+[node name="passed_finish" type="FmodEventEmitter3D" parent="Audio" index="2"]
+event_name = "event:/Level/Finish"
+event_guid = "{cc01fb08-1f8d-48a6-8cd0-d9547e5a7b94}"
+
+[node name="UIselect" type="FmodEventEmitter3D" parent="Audio" index="3"]
+event_guid = "{00000000-0000-0000-0200-000000000000}"
+
+[node name="UInavigate" type="FmodEventEmitter3D" parent="Audio" index="4"]
+event_guid = "{00000000-0000-0000-0200-000000000000}"
 
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]

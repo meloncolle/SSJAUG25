@@ -44,6 +44,7 @@ func _ready():
 
 func respawn():
 	# KYE PUT RESPAWN SOUND HERE
+	$respawn.play()
 	size = 1
 	awaiting_respawn = true
 

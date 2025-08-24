@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://37mk8isaf56w"]
+[gd_scene load_steps=13 format=3 uid="uid://37mk8isaf56w"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
 [ext_resource type="PackedScene" uid="uid://cuc7lily7bn6r" path="res://scenes/prefab_scenes/props/road_support.tscn" id="2_lfvha"]
 [ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="3_1q1jh"]
 [ext_resource type="PackedScene" uid="uid://crvnvhxyih5aa" path="res://scenes/art_scenes/halfpipe_deep.tscn" id="3_e0o6l"]
 [ext_resource type="PackedScene" uid="uid://p75rv4p3cw5t" path="res://scenes/art_scenes/rail.tscn" id="4_qn3b6"]
+[ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="6_8o7ax"]
+[ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="7_nbb48"]
 
 [sub_resource type="Curve3D" id="Curve3D_ofuue"]
 _data = {
@@ -105,6 +107,27 @@ transform = Transform3D(0.114694, 0, 0.993401, 0, 1, 0, -0.993401, 0, 0.114694, 
 
 [node name="Path3D" parent="rail/rail3" index="0"]
 curve = SubResource("Curve3D_nlixl")
+
+[node name="maple_tree" parent="." instance=ExtResource("6_8o7ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7583, -60.9177, 115.18)
+
+[node name="maple_tree2" parent="." instance=ExtResource("6_8o7ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37508, -59.8854, 119.319)
+
+[node name="maple_tree3" parent="." instance=ExtResource("6_8o7ax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00426, -74.8179, 143.903)
+
+[node name="maple_tree4" parent="." instance=ExtResource("7_nbb48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.638, -0.472586, -74.2604)
+
+[node name="maple_tree5" parent="." instance=ExtResource("7_nbb48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.1364, -26.043, -33.849)
+
+[node name="maple_tree6" parent="." instance=ExtResource("7_nbb48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.382, -35.0324, -20.3345)
+
+[node name="maple_tree7" parent="." instance=ExtResource("7_nbb48")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.8506, -25.6669, -27.1124)
 
 [editable path="Road_to_canyon"]
 [editable path="Road_to_intsec"]
