@@ -39,7 +39,7 @@ func _on_open_requested():
 		i.hide()
 		i.modulate = Color(Color.WHITE, 1.0)
 		
-	$Audio/keygen_open.play()
+	# KYE PUT KEYGENOPEN SOUND HERE
 	show()
 		
 func add_input(input: Enums.CheatInput):
@@ -52,7 +52,7 @@ func add_input(input: Enums.CheatInput):
 	# Check if current input sequence contains any valid cheat code
 	var result = CheatLib.find_match(inputs)
 	if result[0] != null:
-		$Audio/code_right.play()# KYE PUT CHEATCODERIGHT SOUND HERE
+		# KYE PUT CHEATCODERIGHT SOUND HERE
 		input_enabled = false
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
@@ -62,7 +62,7 @@ func add_input(input: Enums.CheatInput):
 		_on_close_requested()
 
 	elif inputs.size() >= MAX_INPUTS:
-		$Audio/code_wrong.play()# KYE PUT CHEATCODEWRONG SOUND HERE
+		# KYE PUT CHEATCODEWRONG SOUND HERE
 		input_enabled = false
 		for i in arrow_icons: i.hide()
 		error_msg.show()

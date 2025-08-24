@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=10 format=3 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
@@ -6,21 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://jlhisr8heyuo" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_a.tscn" id="4_m1yo0"]
 [ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_b.tscn" id="5_ja7to"]
 [ext_resource type="PackedScene" uid="uid://b4kbw7ahq0y0m" path="res://scenes/prefab_scenes/blockouts_kye/level_finish.tscn" id="6_ja7to"]
-[ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="7_8d7vd"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="7_nqr1n"]
-[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="9_8d7vd"]
 
 [sub_resource type="Curve3D" id="Curve3D_8d7vd"]
 _data = {
-"points": PackedVector3Array(-3.61554, -0.461121, -7.74594, 3.61554, 0.461121, 7.74594, 50.5764, 14.4476, -171.181, -1.47867, -0.639908, -29.1529, 1.47867, 0.639908, 29.1529, 70.2724, 21.1751, -121.91, 7.33521, -3.05176e-05, -9.40347, -7.33521, 3.05176e-05, 9.40347, 23.7811, 11.1041, -53.0627, 70.9933, -15.1715, -81.0391, -70.9933, 15.1715, 81.0391, 82.9991, -5.65039, 185.243, 30.3633, 19.9239, -96.4892, -30.3633, -19.9239, 96.4892, -135.911, 1.00455, 194.749, 17.7665, -3.05176e-05, -28.3062, -17.7665, 3.05176e-05, 28.3062, -392.879, -24.5778, 183.991),
+"points": PackedVector3Array(-3.61554, -0.461121, -7.74594, 3.61554, 0.461121, 7.74594, 50.5764, 14.4476, -171.181, -1.47867, -0.639908, -29.1529, 1.47867, 0.639908, 29.1529, 70.2724, 21.1751, -121.91, 7.33521, -3.05176e-05, -9.40347, -7.33521, 3.05176e-05, 9.40347, 23.7811, 11.1041, -53.0627, 70.9933, -15.1715, -81.0391, -70.9933, 15.1715, 81.0391, 82.9991, -5.65039, 185.243, 30.3633, 19.9239, -96.4892, -30.3633, -19.9239, 96.4892, -135.911, 1.00455, 194.749, -2.87204, 0, 3.84729, 2.87204, 0, -3.84729, -390.226, -24.5778, 220.334),
 "tilts": PackedFloat32Array(0, 0, 0, 0, -0.597257, -0.274329)
 }
 point_count = 6
 
 [sub_resource type="Curve3D" id="Curve3D_lhibs"]
 _data = {
-"points": PackedVector3Array(-38.162, -0.952133, -29.965, 38.162, 0.952133, 29.965, -26.3305, 15.3681, -4.76795, 28.475, 1.84412, 15.5674, -28.475, -1.84412, -15.5674, -2.74744, -5.91535, -55.6516, 20.9466, 10.1736, 21.8767, -20.9466, -10.1736, -21.8767, -70.2668, -22.4825, -69.1113, 0, 0, 0, 0, 0, 0, -72.081, -87.7258, -116.481),
-"tilts": PackedFloat32Array(-0.360787, -1.06886, -0.714792, 0.511567)
+"points": PackedVector3Array(-9.45218, -0.952126, 0.601658, 9.45218, 0.952126, -0.601658, -2.97624, 11.1969, 3.56081, 28.475, 1.84412, 15.5674, -28.475, -1.84412, -15.5674, -2.74744, -5.91535, -55.6516, 20.9466, 10.1736, 21.8767, -20.9466, -10.1736, -21.8767, -70.2668, -22.4825, -69.1113, 0, 0, 0, 0, 0, 0, -72.081, -87.7258, -116.481),
+"tilts": PackedFloat32Array(-0.531539, -0.792776, 0.226699, 0.511567)
 }
 point_count = 4
 
@@ -28,7 +26,7 @@ point_count = 4
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -22.6848, 18.9323, -75.4729)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, 97.3928, 82.1092, -56.8354)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
@@ -38,6 +36,9 @@ transform = Transform3D(-0.0844823, -0.026805, 0.996064, -0.00226537, 0.999641, 
 
 [node name="0Path_a_level" parent="Track" index="2" instance=ExtResource("4_m1yo0")]
 transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
+
+[node name="mountain 2" parent="Track/0Path_a_level/mountain_props" index="4"]
+transform = Transform3D(-0.586241, -0.0529842, -0.808402, -0.114026, 0.993322, 0.0175857, 0.802073, 0.102488, -0.588368, -15.7007, 172.151, -7.1904)
 
 [node name="0PathB2_level" parent="Track" index="3" instance=ExtResource("5_ja7to")]
 transform = Transform3D(-0.45356, 0.146325, -0.879132, 0.0670892, 0.989237, 0.130038, 0.888697, 4.36083e-09, -0.458495, 163.507, -207.81, -214.461)
@@ -50,50 +51,6 @@ transform = Transform3D(0.736617, 0, 0.67631, 0, 1, 0, -0.67631, 0, 0.736617, 21
 
 [node name="Path3D" parent="Track/0path_end_level" index="0"]
 curve = SubResource("Curve3D_8d7vd")
-
-[node name="mountain_props" parent="Track/0path_end_level" index="1" instance=ExtResource("7_8d7vd")]
-transform = Transform3D(-0.243801, 0, 0.969825, 0, 1, 0, -0.969825, 0, -0.243801, 1.70889, -55.974, -6.26688)
-
-[node name="mountain 1" parent="Track/0path_end_level/mountain_props" index="3"]
-visible = false
-
-[node name="StaticBody3D" parent="Track/0path_end_level/mountain_props/mountain 1" index="0"]
-visible = false
-
-[node name="CollisionShape3D" parent="Track/0path_end_level/mountain_props/mountain 1/StaticBody3D" index="0"]
-visible = false
-
-[node name="mountain 3_001" parent="Track/0path_end_level/mountain_props" index="6"]
-transform = Transform3D(1.49977, 0, 0.374451, 0, 1.0012, 0, -0.586213, 0, 0.957997, -16.4137, 33.7632, -27.6597)
-visible = true
-
-[node name="StaticBody3D" parent="Track/0path_end_level/mountain_props/mountain 3_001" index="0"]
-visible = true
-
-[node name="CollisionShape3D" parent="Track/0path_end_level/mountain_props/mountain 3_001/StaticBody3D" index="0"]
-visible = true
-
-[node name="mountain_props2" parent="Track/0path_end_level" index="2" instance=ExtResource("7_8d7vd")]
-transform = Transform3D(-0.243801, 0, 0.969825, 0, 1, 0, -0.969825, 0, -0.243801, 2.08209, -55.974, 472.713)
-
-[node name="mountain 1" parent="Track/0path_end_level/mountain_props2" index="3"]
-visible = false
-
-[node name="StaticBody3D" parent="Track/0path_end_level/mountain_props2/mountain 1" index="0"]
-visible = false
-
-[node name="CollisionShape3D" parent="Track/0path_end_level/mountain_props2/mountain 1/StaticBody3D" index="0"]
-visible = false
-
-[node name="mountain 2" parent="Track/0path_end_level/mountain_props2" index="4"]
-transform = Transform3D(-0.178299, -0.0324375, 0.676134, -0.0798182, 0.695325, 0.0123099, -0.67219, -0.0739614, -0.180807, 301.466, 30.0254, -24.3241)
-visible = true
-
-[node name="StaticBody3D" parent="Track/0path_end_level/mountain_props2/mountain 2" index="0"]
-visible = true
-
-[node name="CollisionShape3D" parent="Track/0path_end_level/mountain_props2/mountain 2/StaticBody3D" index="0"]
-visible = true
 
 [node name="LevelFinish" parent="Track" index="5" instance=ExtResource("6_ja7to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3513, -266.874, 309.746)
@@ -108,22 +65,8 @@ curve = SubResource("Curve3D_lhibs")
 [node name="CSGPolygon3D" parent="Track/Road/Path3D" index="0"]
 polygon = PackedVector2Array(0, -0.35, 0.2, 0, 15, 0.007, 15, -0.35)
 
-[node name="Checkpoint" parent="Track/Road" index="1" instance=ExtResource("9_8d7vd")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -20.7458, -97.6957, -220.628)
-
 [node name="skybox" parent="Background" index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
-
-[node name="Checkpoint" parent="." index="7" instance=ExtResource("9_8d7vd")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 98.9157, -77.7078, -73.4505)
-
-[node name="CollisionShape3D" parent="Checkpoint" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0.5, 0)
-
-[node name="Audio" type="Node" parent="." index="8"]
-
-[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio" index="0"]
-bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]
 
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]
@@ -134,13 +77,14 @@ bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://r
 [editable path="Track/level_Intsec_Path/rail/rail"]
 [editable path="Track/level_Intsec_Path/rail/rail2"]
 [editable path="Track/level_Intsec_Path/rail/rail3"]
+[editable path="Track/level_Intsec_Path/rail/rail4"]
+[editable path="Track/level_Intsec_Path/rail/rail5"]
+[editable path="Track/level_Intsec_Path/rail/rail6"]
+[editable path="Track/level_Intsec_Path/rail/rail7"]
 [editable path="Track/0Path_a_level"]
 [editable path="Track/0Path_a_level/Road"]
 [editable path="Track/0Path_a_level/mountain_props"]
 [editable path="Track/0PathB2_level"]
 [editable path="Track/0PathB2_level/Road"]
 [editable path="Track/0path_end_level"]
-[editable path="Track/0path_end_level/mountain_props"]
-[editable path="Track/0path_end_level/mountain_props2"]
 [editable path="Track/Road"]
-[editable path="Checkpoint"]

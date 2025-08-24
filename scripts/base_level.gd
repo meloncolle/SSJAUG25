@@ -107,7 +107,6 @@ func _input(event):
 
 	if event.is_action_pressed("toggle_console"):
 		keygen._on_open_requested() if !keygen.visible else keygen._on_close_requested()
-	
 
 func _physics_process(delta):
 	if SceneManager.game_state != Enums.GameState.IN_GAME: return
