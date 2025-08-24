@@ -120,6 +120,10 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 98.9157, -77.7078, -73.4505)
 [node name="CollisionShape3D" parent="Checkpoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0.5, 0)
 
+[node name="checkpoint_pass" parent="Checkpoint" index="3"]
+event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
+
 [node name="Audio" type="Node" parent="." index="8"]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="Audio" index="0"]

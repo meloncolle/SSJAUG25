@@ -43,6 +43,7 @@ func _on_open_requested():
 	show()
 		
 func add_input(input: Enums.CheatInput):
+	$Audio/keygen_type.play()
 	# KYE PUT KEYGEN CHARACTER ENTERED SOUND HERE
 	inputs.append(input)
 	

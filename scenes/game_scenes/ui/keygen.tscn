@@ -348,34 +348,19 @@ texture = ExtResource("8_m5an3")
 [node name="keygen_open" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenOpen"
 event_guid = "{ddc6d27b-8cb7-4913-91ea-e0bf044e1eca}"
-fmod_parameters/GlobalMute/id = -7084401214001542851
-fmod_parameters/GlobalMute = "MuteOff"
-fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
-fmod_parameters/GlobalMute/variant_type = 4
 
 [node name="keygen_close" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenClose"
 event_guid = "{840f9c8b-1901-4854-aef9-e69e9616c49d}"
-fmod_parameters/GlobalMute/id = -7084401214001542851
-fmod_parameters/GlobalMute = "MuteOff"
-fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
-fmod_parameters/GlobalMute/variant_type = 4
 
 [node name="code_right" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenCheatRight"
 event_guid = "{e10370c4-1592-4c6a-bf25-bb9faa3dce15}"
-fmod_parameters/GlobalMute/id = -7084401214001542851
-fmod_parameters/GlobalMute = "MuteOff"
-fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
-fmod_parameters/GlobalMute/variant_type = 4
 
 [node name="code_wrong" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenCheatWrong"
 event_guid = "{b44aa4c6-0824-4b1c-b67c-af4475a85bbc}"
-fmod_parameters/GlobalMute/id = -7084401214001542851
-fmod_parameters/GlobalMute = "MuteOff"
-fmod_parameters/GlobalMute/labels = PackedStringArray("MuteOff", "MuteOn")
-fmod_parameters/GlobalMute/variant_type = 4
 
-[node name="keygen_char(empty)" type="FmodEventEmitter2D" parent="Audio"]
-event_guid = "{00000000-0002-0000-0300-000026000000}"
+[node name="keygen_type" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/KeyGen/KeyGenCharEntered"
+event_guid = "{73ac589f-e5b0-48e1-9d96-1567fdb9f3c5}"
