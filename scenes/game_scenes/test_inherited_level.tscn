@@ -67,6 +67,10 @@ texture_filter = 0
 [node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
 
+[node name="Timer" parent="CanvasLayer" index="3"]
+offset_left = 276.0
+offset_right = 451.0
+
 [node name="SpawnPoint" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
 

@@ -20,8 +20,8 @@ func _ready():
 	for c in codes:
 		active_codes[c.name] = false
 
-func set_active(name: String, is_active:= true):
-	active_codes[name] = is_active
+func set_active(cheat_name: String, is_active:= true):
+	active_codes[cheat_name] = is_active
 	emit_signal("active_codes_changed")
 	
 func get_only_active() -> Array[String]:

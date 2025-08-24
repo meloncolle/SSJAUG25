@@ -90,7 +90,6 @@ func DoStartSequence():
 		current_node = state_machine.get_current_node()
 		await get_tree().process_frame
 	
-	var start_dir = -global_basis.z
 	start_pos = global_position
 	var state_time = state_machine.get_current_length()
 	timer = state_time
