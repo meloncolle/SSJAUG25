@@ -22,11 +22,12 @@ extends Marker3D
 
 func _process(_delta):
 	bg_cam.global_position = cam.global_position
-	bg_cam.global_rotation = Vector3(cam.global_rotation.x, cam.global_rotation.y, 0)
+	bg_cam.global_rotation.y = cam.global_rotation.y
 
 var distance: float
 var starting_pitch: float
 
 func _ready():
+	bg_cam.global_rotation.x = cam.global_rotation.x
 	starting_pitch = rotation.x
 	distance = cam.position.z

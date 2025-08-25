@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://37mk8isaf56w"]
+
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
+
+[sub_resource type="Curve3D" id="Curve3D_ofuue"]
+_data = {
+"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -302.888, -29.0203, -118.455, -14.1853, 0, -28.9055, 14.1853, 0, 28.9055, -162.593, -46.6975, -83.1619, 8.35762, 1.64511, -12.7989, -8.35762, -1.64511, 12.7989, -178.558, -47.0723, -39.7584, 9.99155, -15.8136, -1.65031, -9.99155, 15.8136, 1.65031, -252.377, -80.5634, -29.1706),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_61mo2"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 26.0645, 0.756538, 20.5933, 18, 1, 28, -18, -1, -28, 6.93782, -10.1153, -29.923, -9.83139, -2.44893, -7.54425, 9.83139, 2.44893, 7.54425, -1.34226, 0.200497, 25.2642),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_6rd0g"]
+_data = {
+"points": PackedVector3Array(-12.7983, -2.53587, 12.4387, 12.7983, 2.53587, -12.4387, -23.9048, -1.21155, -5.2271, -52.0553, 7.3011, 59.171, 52.0553, -7.3011, -59.171, 53.594, -53.834, 58.4105),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_jpx15"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 15.7042, 16.9053, -5.55031, 33.8345, 0.830275, 12.1383, -33.8345, -0.830275, -12.1383, -18.328, -4.59184, 28.6511, 4.28964, -0.0237312, -13.2579, -4.28964, 0.0237312, 13.2579, -100.693, -34.6474, 18.8653),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="Germantown_Intsec_Path" type="Node3D"]
+
+[node name="Road_to_canyon" parent="." instance=ExtResource("1_mhubp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.759, 3.05176e-05, 135.307)
+
+[node name="Path3D" parent="Road_to_canyon" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.2032, 0, 0)
+curve = SubResource("Curve3D_ofuue")
+
+[node name="Road_Intersection" parent="." instance=ExtResource("1_mhubp")]
+transform = Transform3D(-0.261883, 0.141541, -0.954664, 0.037444, 0.989932, 0.136498, 0.964373, 0, -0.264546, -1.96172, -51.11, 60.587)
+
+[node name="Path3D" parent="Road_Intersection" index="0"]
+curve = SubResource("Curve3D_61mo2")
+
+[node name="Road_to_sb" parent="." instance=ExtResource("1_mhubp")]
+transform = Transform3D(0.989932, 0.141541, 0, -0.141541, 0.989932, 0, 0, 0, 1, 56.6794, -67.9323, 64.2427)
+visible = false
+
+[node name="Path3D" parent="Road_to_sb" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.423599, -0.0605659, 0.106972)
+curve = SubResource("Curve3D_6rd0g")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.8578, -19.3788, 0.0817087, 0.258104, 1.58191, 0.996646, 23.7291, -1.53442, -0.00444363, -19.0973, -52.8807, 66.0083)
+size = Vector3(1.29644, 0.654556, 10.4874)
+
+[node name="Triangle" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-1.21844, -18.6269, 0.292021, -2.57737, 5.77287, 0.949034, 23.6318, -0.330778, 0.118562, -14.0876, -53.4377, 67.9254)
+polygon = PackedVector2Array(-0.744253, 0.66039, 0.806441, 0.687965, 0.479767, -1.87392, -0.121907, -2.75246, -0.680675, -1.80236)
+
+[node name="Road_to_intsec" parent="." instance=ExtResource("1_mhubp")]
+transform = Transform3D(0.982682, -0.0134386, 0.18481, 0.0132071, 0.99991, 0.00248381, -0.184826, 0, 0.982771, 2.62017, 23.1617, 5.01011)
+
+[node name="Path3D" parent="Road_to_intsec" index="0"]
+curve = SubResource("Curve3D_jpx15")
+
+[editable path="Road_to_canyon"]
+[editable path="Road_Intersection"]
+[editable path="Road_to_sb"]
+[editable path="Road_to_intsec"]

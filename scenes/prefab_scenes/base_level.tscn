@@ -1,8 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://df1sc6rf2vba3"]
+[gd_scene load_steps=21 format=3 uid="uid://df1sc6rf2vba3"]
 
 [ext_resource type="Script" uid="uid://dcmtsco3sf04m" path="res://scripts/base_level.gd" id="1_glll8"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="2_x882p"]
 [ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://scripts/cam_rig.gd" id="3_02dr1"]
+[ext_resource type="Script" uid="uid://t6uqp4r4ascv" path="res://scripts/ui/HUD/timer.gd" id="4_02dr1"]
+[ext_resource type="FontFile" uid="uid://co3ndkw1mqlec" path="res://assets/fonts/7segment.woff" id="4_qlic1"]
+[ext_resource type="Texture2D" uid="uid://cb0df7oqui5mu" path="res://assets/textures/ui/speedometer_needle.png" id="7_b6fb3"]
+[ext_resource type="Texture2D" uid="uid://1j0shm70ghmg" path="res://assets/textures/speedometer_full_clean.png" id="7_fl4l2"]
+[ext_resource type="Script" uid="uid://dyd0wvfgk6teb" path="res://scripts/ui/HUD/speedometer.gd" id="7_nl1de"]
+[ext_resource type="Texture2D" uid="uid://dp3ux3a06r5nu" path="res://assets/textures/ui/speedometer_glass.png" id="7_ntve1"]
+[ext_resource type="Texture2D" uid="uid://ca6mcg0crqd2k" path="res://assets/textures/ui/speedometer_brokenglass.png" id="8_b6fb3"]
+[ext_resource type="Texture2D" uid="uid://1qg42sp5xcwd" path="res://assets/textures/speedometer_full_scuffed.png" id="8_yysg2"]
+[ext_resource type="PackedScene" uid="uid://cfvplbvqja0fu" path="res://scenes/prefab_scenes/props/end_goal.tscn" id="11_es0rj"]
+[ext_resource type="PackedScene" uid="uid://dy26raadejapx" path="res://scenes/art_scenes/skybox[art].tscn" id="11_nl1de"]
+[ext_resource type="PackedScene" uid="uid://bvypbeo7dcusu" path="res://scenes/game_scenes/ui/end_screen.tscn" id="12_yysg2"]
+[ext_resource type="Script" uid="uid://dilbk1tkmy3d2" path="res://scripts/ui/HUD/active_code_list.gd" id="13_cccpq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qlic1"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -17,7 +29,19 @@ sky_material = SubResource("ProceduralSkyMaterial_qlic1")
 background_mode = 2
 sky = SubResource("Sky_v6fep")
 
+[sub_resource type="LabelSettings" id="LabelSettings_656bj"]
+font = ExtResource("4_qlic1")
+font_size = 80
+font_color = Color(0.381167, 1, 0.21, 1)
+shadow_color = Color(0.95, 0, 0.4275, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_snxx1"]
+font = ExtResource("4_qlic1")
+font_size = 40
+font_color = Color(0.381167, 1, 0.21, 1)
+
 [node name="BaseLevel" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_glll8")
 tilt_limit_x = 0.349066
 tilt_limit_z = 0.349066
@@ -30,10 +54,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_656bj")
 
-[node name="Keygen" parent="." instance=ExtResource("2_x882p")]
-visible = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Keygen" parent="CanvasLayer" instance=ExtResource("2_x882p")]
+visible = false
+z_index = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -60,6 +85,102 @@ sensitivity = 0.2
 transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 0, -0.291565, 3.16561)
 cull_mask = 1048573
 
+[node name="Speedometer" type="Node2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+position = Vector2(-9, 18)
+script = ExtResource("7_nl1de")
+
+[node name="Base" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+visible = false
+position = Vector2(246.5, 638.5)
+scale = Vector2(0.393, 0.393)
+texture = ExtResource("7_fl4l2")
+
+[node name="BaseBroken" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+position = Vector2(246.5, 638.5)
+scale = Vector2(0.393, 0.393)
+texture = ExtResource("8_yysg2")
+
+[node name="Needle" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+position = Vector2(128, 637)
+rotation = -0.872665
+scale = Vector2(0.393312, 0.393312)
+texture = ExtResource("7_b6fb3")
+offset = Vector2(-101.7, 0)
+
+[node name="GlassBroken" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+position = Vector2(128.5, 630.24)
+scale = Vector2(0.393312, 0.393312)
+texture = ExtResource("8_b6fb3")
+
+[node name="Glass" type="Sprite2D" parent="CanvasLayer/Speedometer"]
+visible = false
+position = Vector2(128.5, 630.24)
+scale = Vector2(0.393312, 0.393312)
+texture = ExtResource("7_ntve1")
+
+[node name="Timer" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 268.0
+offset_top = 667.0
+offset_right = 443.0
+offset_bottom = 750.0
+scale = Vector2(0.882918, 0.850231)
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "00:00"
+label_settings = SubResource("LabelSettings_656bj")
+script = ExtResource("4_02dr1")
+
+[node name="Millisecond" type="Label" parent="CanvasLayer/Timer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.578278
+offset_top = -47.7155
+offset_right = 37.4217
+offset_bottom = -4.71548
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "00"
+label_settings = SubResource("LabelSettings_snxx1")
+
+[node name="EndScreen" parent="CanvasLayer" instance=ExtResource("12_yysg2")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ActiveCodes" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -181.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("13_cccpq")
+
+[node name="Label" type="Label" parent="CanvasLayer/ActiveCodes"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "ACTIVE CODES:
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ActiveCodes"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "babababababababa"
+fit_content = true
+
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43809, 1.80474)
 
@@ -69,4 +190,10 @@ cull_mask = 1048574
 
 [node name="Track" type="Node3D" parent="."]
 
+[node name="Goal" parent="Track" instance=ExtResource("11_es0rj")]
+
 [node name="Background" type="Node3D" parent="."]
+
+[node name="skybox" parent="Background" instance=ExtResource("11_nl1de")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -67.151, 0)
+metadata/_edit_lock_ = true

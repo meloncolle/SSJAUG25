@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://jlhisr8heyuo"]
+
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_od0kw"]
+
+[sub_resource type="Curve3D" id="Curve3D_ofuue"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -6.67157, 0, -20.0146, 6.67157, 0, 20.0146, -85.756, 0, 102.928, 19.2733, 0, 31.1339, -19.2733, 0, -31.1339, -16.243, 0, 41.0697, -7, 9, -9, 7, -9, 9, -104.648, -23.6591, 96.2317, 9.86655, 0, 7.06096, -9.86655, 0, -7.06096, -53.5826, -37.4973, -7.64029, 28.1258, 0, 19.9129, -28.1258, 0, -19.9129, -128.531, -45.4879, 81.5483, 11.3554, 0, 10.1972, -11.3554, 0, -10.1972, -72.4656, -57.0516, -5.03347, 0, 0, 0, 0, 0, 0, -126.283, -69.3922, 45.5731),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="Germantown0Path_a" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_od0kw")]
+
+[node name="Path3D" parent="Road" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 129.763, 0)
+curve = SubResource("Curve3D_ofuue")
+
+[editable path="Road"]

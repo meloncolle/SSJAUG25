@@ -14,8 +14,8 @@ enum LevelState {
 }
 
 enum CheatInput {
-	LEFT,
 	UP,
 	RIGHT,
 	DOWN,
+	LEFT,
 }

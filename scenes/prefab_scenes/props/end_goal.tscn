@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfvplbvqja0fu"]
+
+[ext_resource type="PackedScene" uid="uid://bdgkwd2or40oh" path="res://scenes/prefab_scenes/props/billboard_gate.tscn" id="1_gs7ap"]
+[ext_resource type="Script" uid="uid://bew6ogxsnvcle" path="res://scripts/props/end_goal.gd" id="2_phpc6"]
+[ext_resource type="Texture2D" uid="uid://bcydrab02g5m" path="res://assets/textures/goal.png" id="3_521ny"]
+[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_hpag4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_521ny"]
+albedo_texture = ExtResource("3_hpag4")
+uv1_scale = Vector3(2, 4.5, 3.825)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4gsgn"]
+size = Vector2(2, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3myn"]
+size = Vector3(0.925, 4.175, 6.495)
+
+[node name="RacewayBanner" type="Node3D"]
+script = ExtResource("2_phpc6")
+
+[node name="RacewayBanner" parent="." instance=ExtResource("1_gs7ap")]
+frame_delay = 0.285
+texture_1 = ExtResource("3_521ny")
+texture_2 = ExtResource("3_521ny")
+frame_count_2 = 2
+texture_3 = ExtResource("3_521ny")
+frame_count_3 = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.119504)
+material_override = SubResource("StandardMaterial3D_521ny")
+mesh = SubResource("PlaneMesh_4gsgn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02921, 0.165048)
+shape = SubResource("BoxShape3D_c3myn")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

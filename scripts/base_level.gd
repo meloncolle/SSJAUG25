@@ -1,6 +1,11 @@
 extends Node3D
+class_name BaseLevel
+
+## The name displayed on level select screen, etc.
+@export var level_name: String
 
 var level_state: Enums.LevelState
+signal level_state_changed
 
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
@@ -11,46 +16,98 @@ var desired_gravity:= Vector3.DOWN
 @export var death_height:= -1.0
 
 @onready var cam: Marker3D = $CanvasLayer/SubViewportContainer/SubViewport/CamRig
-@onready var keygen: Window = $Keygen
+@onready var keygen: Control = $CanvasLayer/Keygen
 
 @onready var spawn_point: Marker3D = $SpawnPoint
 var player: RigidBody3D = null
 
+@onready var goal: Node3D = $Track/Goal
+
+var debug_panel = null
+
+# HUD stuff
+#------------------
+
+signal timer_changed
+var timer:= 0.0:
+	set(value):
+		timer = max(value, 0.0)
+		emit_signal("timer_changed", timer)
+
+# For debug panel
+signal speed_changed
+signal gravity_changed
+signal velocity_changed
+
 func _ready():
+	# Make sceneManager aware of level state changes
+	# And this level aware of game state changes
+	SceneManager.connect("game_state_changed", _on_game_state_changed)
+	connect("level_state_changed", SceneManager._on_level_state_changed)
+	
+	# Spawn player and hookup camera follow and listen for intro finished
+	spawn_player()
+	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
+	player.get_node("RacerBen").connect("intro_completed", _on_intro_complete)
+	
+	# Listen for when passing through goalpost
+	goal.connect("goal_reached", _on_goal_reached)
+	
+	# Listen for nana pickups
+	for b in get_tree().get_nodes_in_group("banana"):
+		b.connect("banana_got", _on_banana_got)
+	
+	# Handle when valid code input
 	keygen.connect("code_accepted", _on_code_accepted)
+	# Update game values when settings changed in menu
 	SceneManager.settings_menu.connect("settings_changed", _on_settings_changed)
 	# sync settings with config
 	_on_settings_changed()
 	
+	# Hookup update signals for HUD stuff
+	connect("timer_changed", %Timer._on_timer_changed)
+	connect("speed_changed", %Speedometer._on_speed_changed)
+	player.connect("max_speed_changed", %Speedometer._on_max_speed_changed)
+	player.emit_signal("max_speed_changed", player.max_speed)
+	CheatLib.connect("active_codes_changed", %ActiveCodes._on_active_codes_changed)
+	
 	cam.position = spawn_point.position
 	
-	spawn_player()
-	print(get_path_to(cam))
-	player.get_node("RemoteTransform3D").set_remote_node(cam.get_path())
-	player.get_node("RacerBen").connect("intro_completed", func(): set_state(Enums.LevelState.RACING))
+	# Load debug panel and hookup signals only on debug build
+	if OS.is_debug_build():
+		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
+		$CanvasLayer.add_child(debug_panel)
+		
+		connect("level_state_changed", debug_panel._on_level_state_changed)
+		connect("speed_changed", debug_panel._on_speed_changed)
+		connect("gravity_changed", debug_panel._on_grav_changed)
+		connect("velocity_changed", debug_panel._on_vel_changed)
+		
+	# Connect end screen buttons
+	%EndScreen.get_node("Panel/VBoxContainer/RetryButton").pressed.connect(SceneManager._on_press_restart)
+	%EndScreen.get_node("Panel/VBoxContainer/QuitButton").pressed.connect(SceneManager._on_press_quit)
+	# set focus on button when menu becomes visible, so its compatible with kb/controller
+	%EndScreen.connect("visibility_changed", func(): if %EndScreen.visible: %EndScreen.get_node("Panel/VBoxContainer/RetryButton").grab_focus())
+	
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point
 func spawn_player():
-	print_debug("Spawning player at: " + str(spawn_point.position))
 	if player == null:
 		player = load("res://scenes/prefab_scenes/player.tscn").instantiate()
 		self.add_child(player)
 	
 	player.position = spawn_point.position
+	player.respawn_target = spawn_point
+
+func _process(delta):
+	if (SceneManager.game_state == Enums.GameState.IN_GAME 
+	&& level_state in [Enums.LevelState.RACING, Enums.LevelState.DYING]):
+		timer += delta
 
 # Handle pause and keygen toggle since we don't need to poll for them like movement
 func _input(event):
 	if level_state != Enums.LevelState.RACING: return
-	
-	if event.is_action_pressed("pause"):
-		# if keygen was open while we paused, we want to reopen during unpause
-		if keygen.reopen_on_resume:
-			# not using _on_open_requested bc don't want to reset entry/etc
-			keygen.show()
-			keygen.reopen_on_resume = false
-
-	if SceneManager.game_state != Enums.GameState.IN_GAME: return
 
 	if event.is_action_pressed("toggle_console"):
 		keygen._on_open_requested() if !keygen.visible else keygen._on_close_requested()
@@ -69,7 +126,6 @@ func _physics_process(delta):
 		# Check for death
 		if player.global_position.y <= death_height:
 			set_state(Enums.LevelState.DYING)
-			 
 	
 	if abs(cam_input) > 0.0 || abs(cam_input) > 0.0:
 		cam.yaw -= cam_input * cam.sensitivity
@@ -93,8 +149,10 @@ func _physics_process(delta):
 	elif player.get_colliding_bodies().all(func(b): return !b.is_in_group("track")):
 		desired_gravity.y = -1
 
-	update_gravity(delta)	
-	#update_display({"speed": player.linear_velocity.length()})
+	update_gravity(delta)
+	if OS.is_debug_build():
+		emit_signal("speed_changed", player.linear_velocity.length())
+		emit_signal("velocity_changed", player.linear_velocity)
 
 # lerp current gravity towards desired gravity @ tilt_speed. Update camera rotation to match
 func update_gravity(delta) -> void:
@@ -118,24 +176,18 @@ func update_gravity(delta) -> void:
 	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
 	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
-	#update_display({"gravity": new_gravity})
+	if OS.is_debug_build():
+		emit_signal("gravity_changed", new_gravity)
 
 # triggered when valid code entered in keygen
 func _on_code_accepted(code: CheatCode):
 	code.times_used += 1
-	
-	print("CODE ACCEPTED")
-	print(code.get_string())
-	print("\n")
 
-	# i guess we have to define the effects here?
-	# itd be ideal to put them in the cheatcode resource but
-	# idk how to do that with scope TODO?
 	match code.name:
-		"Test Code 1":
-			print("this is the first cheat activating")
-		"Test code TWO":
-			print("thsi is the 2nd cheat activating")
+		"tinymode":
+			player.size -= 1
+		"bigmode":
+			player.size += 1
 
 # Read settings from config and update values in game
 func _on_settings_changed():
@@ -144,6 +196,7 @@ func _on_settings_changed():
 
 func set_state(new_state: Enums.LevelState):
 	level_state = new_state
+	emit_signal("level_state_changed", new_state)
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
@@ -153,17 +206,56 @@ func set_state(new_state: Enums.LevelState):
 			pass
 			
 		Enums.LevelState.DYING:
+			# KYE PUT FALLOFF SOUND HERE
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
-			player.respawn(spawn_point)
-			cam.yaw = spawn_point.rotation.y
+			player.respawn()
 			tween = Overlay.fade_from_black(0.5)
+			await player.finished_respawn
+			cam.yaw = player.rotation.y
 			await tween.finished
 			Overlay.hide()
 			set_state(Enums.LevelState.RACING)
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
+			
+func _on_game_state_changed(new_state: Enums.GameState):
+	match new_state:
+		Enums.GameState.IN_GAME:
+			# KYE PUT UNPAUSE SOUND HERE
+			if keygen.reopen_on_resume:
+				keygen.reopen_on_resume = false
+				keygen.show()
+			
+		Enums.GameState.PAUSED:
+			# KYE PUT PAUSE SOUND HERE
+			if keygen.visible:
+				keygen.reopen_on_resume = true
+				keygen.hide()
 
-	# print(Enums.LevelState.keys()[new_state])
+func _on_intro_complete():
+	set_state(Enums.LevelState.RACING)
+	# Prevents player from rolling slightly before start
+	# We should be spawning player over pretty flat ground
+	player.can_sleep = false
+
+func _on_banana_got(time_restored: float):
+	# KYE PUT BANANA PICKUP SOUND HERE
+	timer -= time_restored
+	# KYE PUT BANANA EATING SOUND HERE
+	# we'll adjust that timer to wait for eating sound
+	await get_tree().create_timer(0.5).timeout
+	throw_banana()
+
+func throw_banana():
+	var banana: RigidBody3D = load("res://scenes/art_scenes/thrown_banana[art].tscn").instantiate()
+	self.add_child(banana)
+	banana.position = player.position
+	# KYE PUT BANANA THROWING SOUND HERE
+	
+func _on_goal_reached():
+	# KYE PUT PASSEDFINISHLINE SOUND HERE
+	set_state(Enums.LevelState.END)
+	%EndScreen.show_results(timer)

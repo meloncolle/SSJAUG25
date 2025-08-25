@@ -1,6 +1,8 @@
 extends Node
 
 @export var codes: Array[CheatCode]
+var active_codes:= {}
+signal active_codes_changed
 
 func _ready():
 	# We want to make sure no codes in library have inputs as subsets of other codes
@@ -13,6 +15,20 @@ func _ready():
 			if c == d: continue
 			d_string = inputs_to_string(d.sequence)
 			assert(c_string not in (d_string), "Cheat '%s' inputs are subsequence of cheat '%s'" % [c.name, d.name])
+	
+	# Initialize all codes to inactive		
+	for c in codes:
+		active_codes[c.name] = false
+
+func set_active(cheat_name: String, is_active:= true):
+	active_codes[cheat_name] = is_active
+	emit_signal("active_codes_changed")
+	
+func get_only_active() -> Array[String]:
+	var only_active: Array[String] = []
+	for key in active_codes.keys():  
+		if active_codes[key] == true: only_active.append(key)
+	return only_active
 
 # Check if any cheat code sequence is found in input
 # If match found, return CheatCode resource and index in the input string it starts at

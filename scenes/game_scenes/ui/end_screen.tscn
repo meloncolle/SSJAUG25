@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvypbeo7dcusu"]
+
+[ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_f87g8"]
+[ext_resource type="Script" uid="uid://bo2ds5ssm834g" path="res://scripts/ui/end_screen.gd" id="1_n50rr"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="3_nwoug"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n50rr"]
+font_size = 36
+
+[node name="EndScreen" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.862745)
+script = ExtResource("1_n50rr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -134.0
+offset_right = 317.0
+grow_vertical = 0
+theme = ExtResource("1_f87g8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "End!"
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Retry
+"
+script = ExtResource("3_nwoug")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Exit to title"
+script = ExtResource("3_nwoug")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="FinalTime" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -140.0
+offset_right = 192.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="FinalTime"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Final time:"
+label_settings = SubResource("LabelSettings_n50rr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -275.0
+offset_bottom = 101.0
+grow_horizontal = 0
+text = "TODO: 
+- local leaderboard
+- online leaderboard"

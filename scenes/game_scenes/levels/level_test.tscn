@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://mthd8hfvu2ge"]
+
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
+[ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
+[ext_resource type="PackedScene" uid="uid://b132g3gl88ufv" path="res://scenes/prefab_scenes/blockouts_kye/start_1_level.tscn" id="3_m1yo0"]
+[ext_resource type="PackedScene" uid="uid://jlhisr8heyuo" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_a.tscn" id="4_m1yo0"]
+[ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_b.tscn" id="5_ja7to"]
+[ext_resource type="PackedScene" uid="uid://b4kbw7ahq0y0m" path="res://scenes/prefab_scenes/blockouts_kye/level_finish.tscn" id="6_ja7to"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="7_lhibs"]
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="7_nqr1n"]
+
+[sub_resource type="Curve3D" id="Curve3D_8d7vd"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 57.7019, 13.895, -163.192, -8.47415, -0.639923, -23.887, 8.47415, 0.639923, 23.887, 68.2856, 25.5328, -112.001, 81.6047, -18.0955, -61.9184, -81.6047, 18.0955, 61.9184, -14.1508, -5.65039, 54.5651, -10.5966, 19.8998, -87.948, 10.5966, -19.8998, 87.948, -130.681, -16.9001, 371.026, 0, 0, 0, 0, 0, 0, -229.23, -21.2345, 473.513),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="BaseLevel" instance=ExtResource("1_g02b8")]
+level_name = "Kye Level"
+death_height = -270.0
+
+[node name="SpawnPoint" parent="." index="3"]
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -32.2938, 18.2502, -68.7353)
+
+[node name="RoadPieces" type="Node3D" parent="Track" index="0"]
+
+[node name="0intersection_level" parent="Track/RoadPieces" index="0" instance=ExtResource("2_0prje")]
+transform = Transform3D(-0.642747, 0, 0.766078, 0, 1, 0, -0.766078, 0, -0.642747, 63.9869, -69.6438, -46.4564)
+
+[node name="0Path_a_level" parent="Track/RoadPieces" index="1" instance=ExtResource("4_m1yo0")]
+transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
+
+[node name="0path_Rings" type="Node3D" parent="Track/RoadPieces" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.4675, -309.462, -210.187)
+
+[node name="0PathB2_level" parent="Track/RoadPieces/0path_Rings" index="0" instance=ExtResource("5_ja7to")]
+transform = Transform3D(-0.45356, 0.146325, -0.879132, 0.0670892, 0.989237, 0.130038, 0.888697, 0, -0.458495, 80.039, 101.652, -4.27391)
+
+[node name="0PathB3_level" parent="Track/RoadPieces/0path_Rings" index="1" instance=ExtResource("5_ja7to")]
+transform = Transform3D(-0.943784, -0.116708, 0.309275, -0.0916672, 0.99131, 0.0943491, -0.317598, 0.0606948, -0.946281, 35.217, 107.178, -38.4768)
+
+[node name="CSGPolygon3D" parent="Track/RoadPieces/0path_Rings/0PathB3_level/Road/Path3D" index="0"]
+transform = Transform3D(0.99969, -0.0229576, -0.00960851, 0.023582, 0.997204, 0.0709078, 0.00795382, -0.0711125, 0.997437, -23.7188, -2.91498, 7.95752)
+
+[node name="start_level" parent="Track/RoadPieces" index="3" instance=ExtResource("3_m1yo0")]
+transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
+
+[node name="LevelFinish" parent="Track/RoadPieces" index="4" instance=ExtResource("6_ja7to")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 369.865, -266.874, 415.767)
+
+[node name="level_0path_end" parent="Track/RoadPieces" index="5" instance=ExtResource("7_nqr1n")]
+transform = Transform3D(0.736617, 0, 0.67631, 0, 1, 0, -0.67631, 0, 0.736617, 219.392, -238.528, -117.039)
+
+[node name="Path3D" parent="Track/RoadPieces/level_0path_end" index="0"]
+curve = SubResource("Curve3D_8d7vd")
+
+[node name="Environment Pieces" type="Node3D" parent="Track" index="1"]
+
+[node name="skybox" parent="Background" index="0"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
+
+[node name="Checkpoints" type="Node3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7635, -5.3142, -59.6102)
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("7_lhibs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.353718, -1.34716, -3.53431)
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("7_lhibs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.106148, -1.34716, -1.44226)
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("7_lhibs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0240936, -1.34716, 0.258949)
+
+[editable path="Track/RoadPieces/0path_Rings/0PathB3_level"]
+[editable path="Track/RoadPieces/0path_Rings/0PathB3_level/Road"]
+[editable path="Track/RoadPieces/level_0path_end"]
