@@ -31,7 +31,7 @@ var debug_panel = null
 signal timer_changed
 var timer:= 0.0:
 	set(value):
-		timer = value
+		timer = max(value, 0.0)
 		emit_signal("timer_changed", timer)
 
 # For debug panel
