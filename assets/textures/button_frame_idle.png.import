@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1j5np7vt2qdl"
-path.s3tc="res://.godot/imported/Billboard_1A_spritesheet.png-da3d3a4ca0b3452c1e0ccca0b6e6f564.s3tc.ctex"
+uid="uid://bfpf2tvcj4t0t"
+path="res://.godot/imported/button_frame_idle.png-6c5fb4bf2203189b1c017499d2d0b9be.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/ads/Billboard_1A_spritesheet.png"
-dest_files=["res://.godot/imported/Billboard_1A_spritesheet.png-da3d3a4ca0b3452c1e0ccca0b6e6f564.s3tc.ctex"]
+source_file="res://assets/textures/button_frame_idle.png"
+dest_files=["res://.godot/imported/button_frame_idle.png-6c5fb4bf2203189b1c017499d2d0b9be.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

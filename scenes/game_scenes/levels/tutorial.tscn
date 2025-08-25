@@ -1,0 +1,174 @@
+[gd_scene load_steps=11 format=3 uid="uid://sltc862m5v18"]
+
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_xy6ot"]
+[ext_resource type="Script" uid="uid://c80kr23l5gipi" path="res://scripts/tutorial_level.gd" id="2_0wqkg"]
+[ext_resource type="PackedScene" uid="uid://cwq5f08rg2xux" path="res://scenes/prefab_scenes/tutorial/tutorial_gap.tscn" id="3_ttcas"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="4_orkap"]
+[ext_resource type="PackedScene" uid="uid://716uq44fspk0" path="res://scenes/prefab_scenes/tutorial/tutorial_landing.tscn" id="5_0wqkg"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="5_w8jns"]
+[ext_resource type="PackedScene" uid="uid://bkkhlialwjf5j" path="res://scenes/prefab_scenes/tutorial/tutorial_ramp.tscn" id="6_orkap"]
+[ext_resource type="PackedScene" uid="uid://nlw8rfi65qd7" path="res://scenes/prefab_scenes/tutorial/tutorial_flat.tscn" id="6_w8jns"]
+[ext_resource type="PackedScene" uid="uid://tkqwic1ysncl" path="res://scenes/prefab_scenes/props/billboard_single.tscn" id="9_3kesw"]
+[ext_resource type="Texture2D" uid="uid://tnl5i00fc22p" path="res://assets/textures/ui/ads/Billboard_1_spritesheet.png" id="10_na1x4"]
+
+[node name="BaseLevel" instance=ExtResource("1_xy6ot")]
+script = ExtResource("2_0wqkg")
+level_name = "Tutorial"
+
+[node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
+
+[node name="Timer" parent="CanvasLayer" index="3"]
+offset_left = 276.0
+offset_right = 451.0
+
+[node name="SpawnPoint" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
+
+[node name="BGCam" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
+[node name="Track" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
+[node name="Checkpoint" parent="Track" index="0" instance=ExtResource("4_orkap")]
+transform = Transform3D(-0.390699, 0, -0.920518, 0, 1, 0, 0.920518, 0, -0.390699, 0.0418706, -9.13369, -46.4954)
+
+[node name="Landing" parent="Track" index="1" instance=ExtResource("5_0wqkg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42.7002, -9.71158, -45.6516)
+
+[node name="Ramp" parent="Track" index="2" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0.420774, -1.28335, -9.60247)
+
+[node name="Ramp2" parent="Track" index="3" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0.420774, -3.68143, -19.321)
+
+[node name="Ramp3" parent="Track" index="4" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0.420774, -6.07968, -29.0403)
+
+[node name="Ramp4" parent="Track" index="5" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 0.97088, 0.239567, 0, -0.239567, 0.97088, 0.420774, -8.476, -38.7517)
+
+[node name="Ramp5" parent="Track" index="6" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.88876, -9.68365, -46.1749)
+
+[node name="Ramp6" parent="Track" index="7" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.8146, -9.68365, -46.1749)
+
+[node name="Ramp7" parent="Track" index="8" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.8323, -9.68365, -46.1749)
+
+[node name="Landing2" parent="Track" index="9" instance=ExtResource("5_0wqkg")]
+transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, -0.141482, -0.076499, 0.140726)
+
+[node name="Goal" parent="Track" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4153, -9.10149, -46.2706)
+
+[node name="Flat" parent="Track" index="11" instance=ExtResource("6_w8jns")]
+transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, 12.8614, -9.7344, -45.5807)
+
+[node name="Nanas" type="Node3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11262, -0.482377, 0.401987)
+
+[node name="banana_whole3" parent="Nanas" index="0" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 16, 3, -47)
+
+[node name="banana_whole5" parent="Nanas" index="1" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 16, 3, -46)
+
+[node name="banana_whole6" parent="Nanas" index="2" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 16, 3, -45)
+
+[node name="banana_whole7" parent="Nanas" index="3" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 16, 3, -44)
+
+[node name="banana_whole4" parent="Nanas" index="4" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 16, 3, -48)
+
+[node name="banana_whole8" parent="Nanas" index="5" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 15, 3, -46.9917)
+anim_time_offset = 0.25
+
+[node name="banana_whole9" parent="Nanas" index="6" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 15, 3, -45.9917)
+anim_time_offset = 0.25
+
+[node name="banana_whole10" parent="Nanas" index="7" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 15, 3, -45)
+anim_time_offset = 0.25
+
+[node name="banana_whole11" parent="Nanas" index="8" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 15, 3, -43.9917)
+anim_time_offset = 0.25
+
+[node name="banana_whole12" parent="Nanas" index="9" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 15, 3, -47.9917)
+anim_time_offset = 0.25
+
+[node name="banana_whole13" parent="Nanas" index="10" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 14, 3, -47)
+anim_time_offset = 0.5
+
+[node name="banana_whole14" parent="Nanas" index="11" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 14, 3, -46)
+anim_time_offset = 0.5
+
+[node name="banana_whole15" parent="Nanas" index="12" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 14, 3, -45)
+anim_time_offset = 0.5
+
+[node name="banana_whole16" parent="Nanas" index="13" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 14, 3, -44)
+anim_time_offset = 0.5
+
+[node name="banana_whole17" parent="Nanas" index="14" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 14, 3, -48)
+anim_time_offset = 0.5
+
+[node name="banana_whole18" parent="Nanas" index="15" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 13, 3, -47)
+anim_time_offset = 0.75
+
+[node name="banana_whole19" parent="Nanas" index="16" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 13, 3, -46)
+anim_time_offset = 0.75
+
+[node name="banana_whole20" parent="Nanas" index="17" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 13, 3, -45)
+anim_time_offset = 0.75
+
+[node name="banana_whole21" parent="Nanas" index="18" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 13, 3, -44)
+anim_time_offset = 0.75
+
+[node name="banana_whole22" parent="Nanas" index="19" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 13, 3, -48)
+anim_time_offset = 0.75
+
+[node name="banana_whole23" parent="Nanas" index="20" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 12, 3, -47)
+anim_time_offset = 1.0
+
+[node name="banana_whole24" parent="Nanas" index="21" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 12, 3, -46)
+anim_time_offset = 1.0
+
+[node name="banana_whole25" parent="Nanas" index="22" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 12, 3, -45)
+anim_time_offset = 1.0
+
+[node name="banana_whole26" parent="Nanas" index="23" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 12, 3, -44)
+anim_time_offset = 1.0
+
+[node name="banana_whole27" parent="Nanas" index="24" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 12, 3, -48)
+anim_time_offset = 1.0
+
+[node name="SmallGap" parent="." index="8" instance=ExtResource("3_ttcas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1549, 3.86118, -46.1609)
+
+[node name="raceway_solo_bilboard2" parent="SmallGap" index="2" instance=ExtResource("9_3kesw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67234, -2.29696, -3.45859)
+frame_count = 18
+texture = ExtResource("10_na1x4")

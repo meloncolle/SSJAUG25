@@ -1,4 +1,8 @@
 extends Node3D
+class_name BaseLevel
+
+## The name displayed on level select screen, etc.
+@export var level_name: String
 
 var level_state: Enums.LevelState
 signal level_state_changed
@@ -27,7 +31,7 @@ var debug_panel = null
 signal timer_changed
 var timer:= 0.0:
 	set(value):
-		timer = value
+		timer = max(value, 0.0)
 		emit_signal("timer_changed", timer)
 
 # For debug panel
