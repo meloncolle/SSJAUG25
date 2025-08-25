@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://37mk8isaf56w"]
+[gd_scene load_steps=14 format=3 uid="uid://37mk8isaf56w"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
 [ext_resource type="PackedScene" uid="uid://cuc7lily7bn6r" path="res://scenes/prefab_scenes/props/road_support.tscn" id="2_lfvha"]
@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://p75rv4p3cw5t" path="res://scenes/art_scenes/rail.tscn" id="4_qn3b6"]
 [ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="6_8o7ax"]
 [ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="7_nbb48"]
+[ext_resource type="PackedScene" uid="uid://6kntfag47y3f" path="res://scenes/prefab_scenes/blockouts_kye/small_gap.tscn" id="8_nbb48"]
 
 [sub_resource type="Curve3D" id="Curve3D_ofuue"]
 _data = {
-"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -299.351, -29.0203, -113.149, -10.2855, 4.19617e-05, -28.685, 10.2855, -4.19617e-05, 28.685, -118.174, -46.6975, -74.5585, 5.70828, 2, -1.1992, -5.70828, -2, 1.1992, -182.245, -47.0723, -44.8501, 9.99155, -15.8136, -1.65031, -9.99155, 15.8136, 1.65031, -230.32, -89.2201, -28.9423),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+"points": PackedVector3Array(52.0619, 5.97489, -33.5065, -52.0619, -5.97489, 33.5065, -198.103, -14.4544, -85.4542, 31.2781, 0, -30.4794, -31.2781, 0, 30.4794, -299.351, -29.0203, -113.149, -10.2855, 4.19617e-05, -28.685, 10.2855, -4.19617e-05, 28.685, -118.174, -46.6975, -74.5585, 5.70828, 2, -1.1992, -5.70828, -2, 1.1992, -187.102, -48.4679, -44.3466),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 5
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_jpx15"]
 _data = {
@@ -128,6 +129,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.382, -35.0324, -20.3345)
 
 [node name="maple_tree7" parent="." instance=ExtResource("7_nbb48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.8506, -25.6669, -27.1124)
+
+[node name="semicylinder3" parent="." instance=ExtResource("8_nbb48")]
+transform = Transform3D(0.11038, 0.00260511, 0.993886, 0.449402, 0.8918, -0.0522478, -0.886484, 0.452422, 0.0972663, -106.827, -57.9762, 63.8816)
+
+[node name="semicylinder4" parent="." instance=ExtResource("8_nbb48")]
+transform = Transform3D(0.0474137, -0.000475793, 0.998875, 0.803962, 0.593473, -0.037879, -0.592787, 0.804854, 0.0285212, -107.393, -64.3753, 66.4449)
+
+[node name="semicylinder5" parent="." instance=ExtResource("8_nbb48")]
+transform = Transform3D(0.0188695, -0.0463335, 0.998748, 0.995762, 0.0908065, -0.0146004, -0.0900161, 0.99479, 0.0478506, -107.737, -71.6663, 68.8516)
 
 [editable path="Road_to_canyon"]
 [editable path="Road_to_intsec"]
