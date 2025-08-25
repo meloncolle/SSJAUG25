@@ -1,20 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://tkqwic1ysncl"]
+[gd_scene load_steps=8 format=4 uid="uid://tkqwic1ysncl"]
 
-[ext_resource type="PackedScene" uid="uid://b4mn4uehhe0xx" path="res://assets/models/raceway_solo_bilboard.glb" id="1_vhn3p"]
 [ext_resource type="Script" uid="uid://bnhwhffo0prvg" path="res://scripts/props/billboard_single.gd" id="2_g53qb"]
 [ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="3_rnmdr"]
-[ext_resource type="Texture2D" uid="uid://tnl5i00fc22p" path="res://assets/textures/ui/ads/Billboard_1_spritesheet.png" id="4_g53qb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2drp0"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om3nn"]
+resource_name = "billboard trim"
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.904221, 0.175203, 0.0643251, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b1ka4"]
+_surfaces = [{
+"aabb": AABB(-0.409215, 3.00991, 4.20291, 1e-05, 0.870297, 1.69562),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAA=")
+}, {
+"aabb": AABB(-0.409215, 2.94506, 4.13806, 0.118535, 1, 1.82532),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABQAAAAQABQAGAAAABAACAAcACAAGAAUACAAJAAYABwAJAAgABwACAAkAAQAJAAIAAQAKAAkA"),
+"name": "billboard trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 11,
+"vertex_data": PackedByteArray("AAAAAAAAAAD/////AAAAAAAA//8AAAAA//8AAAAAAAAAAJoQGAkAAAAAmhDm9gAAAAAAAP//AAAAAGTvGAkAAAAAZO/m9gAAAAD/////AAD///////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hi2w5"]
+resource_name = "raceway_solo_bilboard_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.409215, 3.00991, 4.20291, 1e-05, 0.870297, 1.69562),
+"attribute_data": PackedByteArray("/////wAAAAD//wAAAAD//w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_2drp0"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/7//f////3////9/////f///")
+}, {
+"aabb": AABB(-0.409215, 2.94506, 4.13806, 0.118535, 1, 1.82532),
+"attribute_data": PackedByteArray("/1//v/+f/3//n/+//1//f/+f/3//3/8//9//f/+f/z8mZLj9/1//vyZkRcL/n/+//1///9ibRcLYm7j9/5///w=="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACgAJAAsACAAMAAkACgALAA0ADgAMAAgADQALAA8ADgAPAAwADQAPAA4A"),
+"material": SubResource("StandardMaterial3D_om3nn"),
+"name": "billboard trim",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAAAA////////AAD//wAA//8AAP////8AAAAA////////AAD//wAA////////AAD//wAA/////////////wAAmhDm9lTVAAAAAAAAVNUAAJoQGAlU1QAA//8AAFTVAAAAAP//VNUAAGTvGAlU1QAAZO/m9lTVAAD/////VNX/v/+//7//v/+//7//v/+//3//v/9//7//f/+//3//v1TVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b1ka4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vhn3p"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_rnmdr")
 shader_parameter/UvScale = Vector2(0.333333, 0.166667)
-shader_parameter/UvOffset = Vector2(0.666667, 0.833333)
-shader_parameter/diffuse_tex = ExtResource("4_g53qb")
+shader_parameter/UvOffset = Vector2(1, 2)
 
-[node name="raceway_solo_bilboard" instance=ExtResource("1_vhn3p")]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("2_g53qb")
-frame_delay = 0.16
 
-[node name="Cube_002" parent="." index="0"]
+[node name="Cube_002" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347098, -3.36686, -5.01611)
+mesh = SubResource("ArrayMesh_hi2w5")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_vhn3p")

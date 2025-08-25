@@ -34,7 +34,6 @@ var current_frame: int = 1:
 			frame_coords = tex.get_size() / frame_size
 			uv_scale = Vector2(1.0 / frame_coords.x, 1.0 / frame_coords.y)
 			frame_count = frame_coords.x * frame_coords.y
-			print(uv_scale)
 			assert(frame_coords == Vector2(floor(frame_coords.x), (frame_coords.y)), 
 			"Bad texture size! Expected multiple of %v. Got %v." % [frame_size, tex.get_size()])
 			

@@ -254,42 +254,42 @@ shadow_mesh = SubResource("ArrayMesh_pwdyq")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3n12l"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(0.333333, 0.166667)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d7tid"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5elek"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hu0kk"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(0.333333, 0.166667)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vya4y"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
-shader_parameter/UvScale = Vector2(1, 0.5)
+shader_parameter/UvScale = Vector2(1, 1)
 shader_parameter/UvOffset = Vector2(1, 2)
 
 [node name="RacewayBanner" instance=ExtResource("1_8lao2")]
