@@ -80,6 +80,7 @@ shader_parameter/UvOffset = Vector2(1, 2)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("2_g53qb")
+frame_delay = 0.16
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347098, -3.36686, -5.01611)

@@ -276,7 +276,7 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_3e40w")
 shader_parameter/UvScale = Vector2(1, 1)
-shader_parameter/UvOffset = Vector2(1, 2)
+shader_parameter/UvOffset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hu0kk"]
 resource_local_to_scene = true

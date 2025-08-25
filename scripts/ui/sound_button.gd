@@ -9,9 +9,9 @@ func _ready():
 func _on_focused():
 		# KYE PUT UINAVIGATE SOUND HERE (and delete print statement)
 		#$Audio/UInavigate.play()
-		print("BUTTON FOCUSED")
+	pass
 	
 func _on_pressed():
 		# KYE PUT UISELECT SOUND HERE
 		#$Audio/UIselect.play()
-		print("BUTTON PRESSED")
+	pass

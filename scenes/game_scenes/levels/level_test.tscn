@@ -25,6 +25,7 @@ _data = {
 point_count = 4
 
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
+level_name = "Kye name your level pls"
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]

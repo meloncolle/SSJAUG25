@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ds1ulgfji8bei"
-path="res://.godot/imported/w95font-bold.woff2-0ed460b144dc70bc170d3da74eb3c9ce.fontdata"
+uid="uid://5tudcx1xixnt"
+path="res://.godot/imported/Players-Italic.woff-ca0a4874fbd4705850bb123507e16027.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/w95font-bold.woff2"
-dest_files=["res://.godot/imported/w95font-bold.woff2-0ed460b144dc70bc170d3da74eb3c9ce.fontdata"]
+source_file="res://assets/fonts/Players-Italic.woff"
+dest_files=["res://.godot/imported/Players-Italic.woff-ca0a4874fbd4705850bb123507e16027.fontdata"]
 
 [params]
 
