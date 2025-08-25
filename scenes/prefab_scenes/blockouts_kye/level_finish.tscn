@@ -35,6 +35,7 @@ visible = true
 visible = true
 
 [node name="RacewayBanner" parent="." instance=ExtResource("4_hq464")]
-transform = Transform3D(-3.80289e-07, 0, 8.7, 0, 8.7, 0, -8.7, 0, -3.80289e-07, 2.1342, 3.97173, -16.4184)
+transform = Transform3D(-3.80289e-07, 0, 8.7, 0, 8.7, 0, -8.7, 0, -3.80289e-07, -237.903, 3.97167, 423.656)
+visible = false
 
 [editable path="mountain_props"]

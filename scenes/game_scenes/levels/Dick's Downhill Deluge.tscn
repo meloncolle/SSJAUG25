@@ -99,6 +99,9 @@ visible = true
 [node name="LevelFinish" parent="Track" index="5" instance=ExtResource("6_ja7to")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3513, -266.874, 309.746)
 
+[node name="Goal" parent="Track" index="6"]
+transform = Transform3D(-3.80289e-07, 0, 8.7, 0, 8.7, 0, -8.7, 0, -3.80289e-07, 50.1466, -262.895, 293.144)
+
 [node name="Road" parent="Track" index="7" instance=ExtResource("7_nqr1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.334, -123.234, -48.0071)
 
