@@ -1,3 +1,56 @@
-[gd_scene format=3 uid="uid://whp3cckxfph6"]
+[gd_scene load_steps=3 format=3 uid="uid://whp3cckxfph6"]
 
-[node name="Level2Path" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="1_l4ygj"]
+[ext_resource type="PackedScene" uid="uid://6kntfag47y3f" path="res://scenes/art_scenes/level_terrain/small_gap.tscn" id="2_4jhex"]
+
+[node name="Level1Path" type="Node3D"]
+
+[node name="mountain_props" parent="." instance=ExtResource("1_l4ygj")]
+transform = Transform3D(1, 0, 0, 0, 0.335, 0, 0, 0, 1, -0.196926, -25.2821, -1.13949)
+
+[node name="mountain 1" parent="mountain_props" index="3"]
+visible = false
+
+[node name="StaticBody3D" parent="mountain_props/mountain 1" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="mountain_props/mountain 1/StaticBody3D" index="0"]
+visible = false
+
+[node name="mountain 2_001" parent="mountain_props" index="13"]
+transform = Transform3D(0.141605, 0.0280195, -0.385998, -0.0775377, 0.675459, 0.00694634, 0.660557, 0.0732803, 0.0835625, 49.1968, 35.7468, 3.99784)
+visible = true
+
+[node name="StaticBody3D" parent="mountain_props/mountain 2_001" index="0"]
+visible = true
+
+[node name="CollisionShape3D" parent="mountain_props/mountain 2_001/StaticBody3D" index="0"]
+visible = true
+
+[node name="mountain_props2" parent="." instance=ExtResource("1_l4ygj")]
+transform = Transform3D(0.457207, 0, 0.889361, 0, 0.335, 0, -0.889361, 0, 0.457207, 60.1745, -25.2821, -39.4072)
+
+[node name="mountain 1" parent="mountain_props2" index="3"]
+visible = false
+
+[node name="StaticBody3D" parent="mountain_props2/mountain 1" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="mountain_props2/mountain 1/StaticBody3D" index="0"]
+visible = false
+
+[node name="mountain 2_001" parent="mountain_props2" index="13"]
+transform = Transform3D(0.356427, 0.0309911, 0.379325, -0.0758273, 0.660559, 0.00791354, -0.556269, -0.0701861, 0.241972, 2.06343, 6.62347, -34.5197)
+visible = true
+
+[node name="StaticBody3D" parent="mountain_props2/mountain 2_001" index="0"]
+visible = true
+
+[node name="CollisionShape3D" parent="mountain_props2/mountain 2_001/StaticBody3D" index="0"]
+visible = true
+
+[node name="semicylinder" parent="." instance=ExtResource("2_4jhex")]
+transform = Transform3D(-0.432309, 0.0705891, -0.898958, 0.10666, 0.993936, 0.0267541, 0.895395, -0.0843171, -0.437216, 13.693, -15.2173, -76.7922)
+
+[editable path="mountain_props"]
+[editable path="mountain_props2"]

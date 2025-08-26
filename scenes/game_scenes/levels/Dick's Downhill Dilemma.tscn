@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=14 format=3 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
@@ -9,11 +9,20 @@
 [ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="7_8d7vd"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="7_nqr1n"]
 [ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="9_8d7vd"]
+[ext_resource type="PackedScene" uid="uid://whp3cckxfph6" path="res://scenes/prefab_scenes/blockouts_kye/level_1path.tscn" id="10_u43gj"]
+[ext_resource type="PackedScene" uid="uid://bnqsffnvxo4ch" path="res://scenes/prefab_scenes/blockouts_kye/level_2path.tscn" id="11_i6rmq"]
+
+[sub_resource type="Curve3D" id="Curve3D_gw66b"]
+_data = {
+"points": PackedVector3Array(6.55778, 5.34058e-05, -8.61677, -6.55778, -5.34058e-05, 8.61677, -0.693623, -2.28558, 8.72152, 9.28893, 6.19426, -14.0739, -9.28893, -6.19426, 14.0739, -4.88343, -71.3717, 54.7311, 0, 0, 0, 0, 0, 0, 18.0451, -101.52, 87.371),
+"tilts": PackedFloat32Array(-0.420974, -0.73869, 0.382503)
+}
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_8d7vd"]
 _data = {
-"points": PackedVector3Array(-3.61554, -0.461121, -7.74594, 3.61554, 0.461121, 7.74594, 50.5764, 14.4476, -171.181, -1.47867, -0.639908, -29.1529, 1.47867, 0.639908, 29.1529, 70.2724, 21.1751, -121.91, 7.33521, -3.05176e-05, -9.40347, -7.33521, 3.05176e-05, 9.40347, 23.7811, 11.1041, -53.0627, 70.9933, -15.1715, -81.0391, -70.9933, 15.1715, 81.0391, 82.9991, -5.65039, 185.243, 30.3633, 19.9239, -96.4892, -30.3633, -19.9239, 96.4892, -135.911, 1.00455, 194.749, 17.7665, -3.05176e-05, -28.3062, -17.7665, 3.05176e-05, 28.3062, -392.879, -24.5778, 183.991),
-"tilts": PackedFloat32Array(0, 0, 0, 0, -0.597257, -0.274329)
+"points": PackedVector3Array(-3.61554, -0.461121, -7.74594, 3.61554, 0.461121, 7.74594, 50.5764, 14.4476, -171.181, -1.47867, -0.639908, -29.1529, 1.47867, 0.639908, 29.1529, 70.2724, 21.1751, -121.91, -9.46136, 0.258392, -33.0235, 9.46136, -0.258392, 33.0235, 16.0487, 11.104, 8.39554, 11.84, -16.1576, -37.1576, -11.84, 16.1576, 37.1576, 64.3488, -5.3488, 101.277, 30.3633, 19.9239, -96.4892, -30.3633, -19.9239, 96.4892, -140.924, -9.40103, 194.92, 17.7665, -3.05176e-05, -28.3062, -17.7665, 3.05176e-05, 28.3062, -392.879, -24.5778, 183.991),
+"tilts": PackedFloat32Array(0, 0, 0, -0.301944, -0.778315, -0.274329)
 }
 point_count = 6
 
@@ -29,6 +38,9 @@ transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.10
 
 [node name="level_Intsec_Path" parent="Track" index="1" instance=ExtResource("2_0prje")]
 transform = Transform3D(-0.0844823, -0.026805, 0.996064, -0.00226537, 0.999641, 0.0267091, -0.996422, 0, -0.0845127, 31.8077, -32.4425, -47.6838)
+
+[node name="Path3D" parent="Track/level_Intsec_Path/s_halfpipe" index="0"]
+curve = SubResource("Curve3D_gw66b")
 
 [node name="0Path_a_level" parent="Track" index="2" instance=ExtResource("4_m1yo0")]
 transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
@@ -104,18 +116,23 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 98.9157, -77.7078, -73.4505)
 [node name="CollisionShape3D" parent="Checkpoint" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0.5, 0)
 
+[node name="Level1Path" parent="." index="10" instance=ExtResource("10_u43gj")]
+transform = Transform3D(0.426598, 0.176095, 0.887133, -0.092499, 0.984214, -0.150886, -0.899699, -0.0176915, 0.436152, 231.136, -88.999, 86.6953)
+
+[node name="Level2Path" parent="." index="11" instance=ExtResource("11_i6rmq")]
+transform = Transform3D(0.69349, 0, -0.398839, 0, 0.8, 0, 0.398839, 0, 0.69349, 180.872, -185.475, 115.968)
+
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]
-[editable path="Track/level_Intsec_Path/Road_to_intsec"]
-[editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_1"]
-[editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_2"]
-[editable path="Track/level_Intsec_Path/Road_to_intsec/rail/rail2"]
-[editable path="Track/level_Intsec_Path/Road_to_intsec/rail/rail3"]
 [editable path="Track/level_Intsec_Path/Halfpipe"]
 [editable path="Track/level_Intsec_Path/road_to_rails/rail9"]
 [editable path="Track/level_Intsec_Path/road_to_rails/rail"]
 [editable path="Track/level_Intsec_Path/s_halfpipe"]
 [editable path="Track/level_Intsec_Path/s_halfpipe/Path3D/Road"]
+[editable path="Track/level_Intsec_Path/mountain_1"]
+[editable path="Track/level_Intsec_Path/mountain_2"]
+[editable path="Track/level_Intsec_Path/rail3"]
+[editable path="Track/level_Intsec_Path/rail/rail2"]
 [editable path="Track/0Path_a_level"]
 [editable path="Track/0Path_a_level/Road"]
 [editable path="Track/0Path_a_level/mountain_props"]
