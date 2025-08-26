@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=11 format=3 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
 [ext_resource type="PackedScene" uid="uid://b132g3gl88ufv" path="res://scenes/prefab_scenes/blockouts_kye/start_1_level.tscn" id="3_m1yo0"]
-[ext_resource type="PackedScene" uid="uid://jlhisr8heyuo" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_a.tscn" id="4_m1yo0"]
-[ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/level_0path_b.tscn" id="5_ja7to"]
+[ext_resource type="PackedScene" uid="uid://jlhisr8heyuo" path="res://scenes/prefab_scenes/blockouts_kye/0path/level_0path_a.tscn" id="4_m1yo0"]
+[ext_resource type="PackedScene" uid="uid://vspk66fo0j8k" path="res://scenes/prefab_scenes/blockouts_kye/0path/level_0path_b.tscn" id="5_ja7to"]
 [ext_resource type="PackedScene" uid="uid://b4kbw7ahq0y0m" path="res://scenes/prefab_scenes/blockouts_kye/level_finish.tscn" id="6_ja7to"]
 [ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="7_8d7vd"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="7_nqr1n"]
@@ -17,19 +17,12 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="Curve3D" id="Curve3D_lhibs"]
-_data = {
-"points": PackedVector3Array(-38.162, -0.952133, -29.965, 38.162, 0.952133, 29.965, -26.3305, 15.3681, -4.76795, 28.475, 1.84412, 15.5674, -28.475, -1.84412, -15.5674, -2.74744, -5.91535, -55.6516, 20.9466, 10.1736, 21.8767, -20.9466, -10.1736, -21.8767, -70.2668, -22.4825, -69.1113, 0, 0, 0, 0, 0, 0, -72.081, -87.7258, -116.481),
-"tilts": PackedFloat32Array(-0.360787, -1.06886, -0.714792, 0.511567)
-}
-point_count = 4
-
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
 level_name = "Kye name your level pls"
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -26.6232, 18.9323, -73.0953)
+transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -30.6066, 18.8679, -68.1539)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
@@ -102,19 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3513, -266.874, 309.746)
 [node name="Goal" parent="Track" index="6"]
 transform = Transform3D(-3.80289e-07, 0, 8.7, 0, 8.7, 0, -8.7, 0, -3.80289e-07, 50.1466, -262.895, 293.144)
 
-[node name="Road" parent="Track" index="7" instance=ExtResource("7_nqr1n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.334, -123.234, -48.0071)
-
-[node name="Path3D" parent="Track/Road" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.342026, 0.279861, 4.02523)
-curve = SubResource("Curve3D_lhibs")
-
-[node name="CSGPolygon3D" parent="Track/Road/Path3D" index="0"]
-polygon = PackedVector2Array(0, -0.35, 0.2, 0, 15, 0.007, 15, -0.35)
-
-[node name="Checkpoint" parent="Track/Road" index="1" instance=ExtResource("9_8d7vd")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -20.7458, -97.6957, -220.628)
-
 [node name="skybox" parent="Background" index="0"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -602.776, 0)
 
@@ -129,10 +109,13 @@ transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0
 [editable path="Track/level_Intsec_Path/Road_to_intsec"]
 [editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_1"]
 [editable path="Track/level_Intsec_Path/Road_to_intsec/Path3D/mountain_2"]
+[editable path="Track/level_Intsec_Path/Road_to_intsec/rail/rail2"]
+[editable path="Track/level_Intsec_Path/Road_to_intsec/rail/rail3"]
 [editable path="Track/level_Intsec_Path/Halfpipe"]
-[editable path="Track/level_Intsec_Path/rail/rail"]
-[editable path="Track/level_Intsec_Path/rail/rail2"]
-[editable path="Track/level_Intsec_Path/rail/rail3"]
+[editable path="Track/level_Intsec_Path/road_to_rails/rail9"]
+[editable path="Track/level_Intsec_Path/road_to_rails/rail"]
+[editable path="Track/level_Intsec_Path/s_halfpipe"]
+[editable path="Track/level_Intsec_Path/s_halfpipe/Path3D/Road"]
 [editable path="Track/0Path_a_level"]
 [editable path="Track/0Path_a_level/Road"]
 [editable path="Track/0Path_a_level/mountain_props"]
@@ -141,5 +124,4 @@ transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0
 [editable path="Track/0path_end_level"]
 [editable path="Track/0path_end_level/mountain_props"]
 [editable path="Track/0path_end_level/mountain_props2"]
-[editable path="Track/Road"]
 [editable path="Checkpoint"]

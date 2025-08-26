@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://brhevhymi1ov2"]
 
-[ext_resource type="Script" uid="uid://cqn3gs1x228bx" path="res://scripts/ui/level_select.gd" id="1_a3f31"]
-[ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_3yiil"]
-[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_r0blf"]
-[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="4_3yiil"]
+[ext_resource type="Script" uid="uid://cqn3gs1x228bx" path="res://scripts/ui/level_select.gd" id="1_3yiil"]
+[ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_r0blf"]
+[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_2urjy"]
+[ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="4_wfh0f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2urjy"]
-shader = ExtResource("2_3yiil")
+shader = ExtResource("2_r0blf")
 shader_parameter/amplitude = 2.465
 shader_parameter/frequency = 0.06
 shader_parameter/speed = 2.0
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a3f31")
+script = ExtResource("1_3yiil")
 
 [node name="BG" type="TextureRect" parent="."]
 texture_filter = 1
@@ -60,7 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_r0blf")
+texture = ExtResource("3_2urjy")
 expand_mode = 1
 stretch_mode = 1
 metadata/_edit_lock_ = true
@@ -107,5 +107,5 @@ theme_override_font_sizes/font_size = 29
 theme_override_styles/focus = SubResource("StyleBoxFlat_r0blf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3yiil")
 text = "Back"
-script = ExtResource("4_3yiil")
+script = ExtResource("4_wfh0f")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"

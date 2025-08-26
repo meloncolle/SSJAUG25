@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b132g3gl88ufv"]
+[gd_scene load_steps=22 format=3 uid="uid://b132g3gl88ufv"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_l31le"]
 [ext_resource type="PackedScene" uid="uid://bhbu8n8xxwgvo" path="res://scenes/art_scenes/instance_placer.tscn" id="2_vfb1a"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="11_q8h3t"]
 [ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="13_yptii"]
 [ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="14_dqcp5"]
-[ext_resource type="PackedScene" uid="uid://6kntfag47y3f" path="res://scenes/prefab_scenes/blockouts_kye/small_gap.tscn" id="16_p7xjq"]
 
 [sub_resource type="Curve3D" id="Curve3D_gbb6u"]
 _data = {
@@ -304,9 +303,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.2495, -15.9153, -67.1399)
 [node name="CollisionShape3D" parent="Checkpoints/Checkpoint" index="0"]
 transform = Transform3D(0.0693716, 0.96469, 0.254085, -0.964691, 2.73188e-08, 0.263385, 0.254085, -0.263385, 0.930628, 0.192317, 0.5, -0.0528679)
 shape = SubResource("CapsuleShape3D_dqcp5")
-
-[node name="semicylinder" parent="." instance=ExtResource("16_p7xjq")]
-transform = Transform3D(0.964691, 0, 0.263385, 0, 1, 0, -0.263385, 0, 0.964691, -3.81538, 2.83735, -0.102145)
 
 [editable path="Road"]
 [editable path="Grass/Ramp/Ramp"]

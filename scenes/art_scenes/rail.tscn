@@ -4,10 +4,10 @@
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.91398, 0, 0.395271, 0, 0, 0, 0, 0, 0, 15, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.1573, 18.9082, 18.2469, 0, 0, 0, 0, 0, 0, 8.41718, 15.5205, 9.88625, 0, 0, 0, 0, 0, 0, -1.27375, 10.7903, 10.524, 0.921349, 0, -0.527306, -0.921349, 0, 0.527306, -10.5571, 8.96413, 9.07412, 0, 0, 0, 0, 0, 0, -14.1674, 7.52527, 16.8566, 0, 0, 0, 0, 0, 0, -22.0509, 1.86383, 24.7579, 0.591362, 1.90735e-05, -6.35822, -0.591362, -1.90735e-05, 6.35822, -17.134, -3.91589, 53.5823),
+"tilts": PackedFloat32Array(-0.843758, -1.07154, -0.579742, 0.295132, 0.243535, 0.229455, 0.242638)
 }
-point_count = 2
+point_count = 7
 
 [node name="rail" type="Node3D"]
 
@@ -17,7 +17,7 @@ curve = SubResource("Curve3D_b5klm")
 [node name="rail1" type="CSGPolygon3D" parent="Path3D"]
 calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(0.193188, -0.273774, 0.0480832, 0.0225095, 0.159547, 0.346722, 0.471378, 0.502536, 0.746962, 0.338417, 0.912276, 0.0271628, 0.777786, -0.262557, 0.519847, -0.404197)
+polygon = PackedVector2Array(-0.108945, -0.121474, -0.211236, 0.112198, -0.0963137, 0.332884, 0.107007, 0.424002, 0.347229, 0.339053, 0.43687, 0.114605, 0.361211, -0.111808, 0.112859, -0.213774)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -34,7 +34,7 @@ material = ExtResource("1_067ig")
 [node name="rail2" type="CSGPolygon3D" parent="Path3D"]
 calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(1.82037, -0.300964, 1.65642, 0.00157516, 1.80648, 0.366406, 2.20661, 0.510516, 2.55273, 0.356119, 2.75984, 0.065256, 2.56682, -0.292332, 2.20788, -0.475465)
+polygon = PackedVector2Array(1.86246, -0.124503, 1.75815, 0.0804758, 1.83711, 0.325742, 2.11564, 0.425698, 2.37639, 0.297793, 2.47145, 0.0834079, 2.37154, -0.12258, 2.11242, -0.211176)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2pnj083n28r6"]
+[gd_scene load_steps=5 format=3 uid="uid://c2pnj083n28r6"]
 
 [ext_resource type="Script" uid="uid://dlq4powwfiw1t" path="res://scripts/globals/scene_manager.gd" id="1_ljucs"]
-[ext_resource type="PackedScene" uid="uid://mthd8hfvu2ge" path="res://scenes/game_scenes/levels/Dick's Downhill Deluge.tscn" id="2_afxrd"]
 [ext_resource type="PackedScene" uid="uid://cccvsiorwsaq2" path="res://scenes/game_scenes/ui/start_menu.tscn" id="3_1gs03"]
 [ext_resource type="PackedScene" uid="uid://bmlhgvnxyd87" path="res://scenes/game_scenes/ui/pause_menu.tscn" id="4_qu60c"]
 [ext_resource type="PackedScene" uid="uid://c82tul4b1lqlu" path="res://scenes/game_scenes/ui/settings_menu.tscn" id="5_xoony"]
@@ -9,7 +8,6 @@
 [node name="Main" type="Node"]
 process_mode = 3
 script = ExtResource("1_ljucs")
-starting_level = ExtResource("2_afxrd")
 
 [node name="Menus" type="CanvasLayer" parent="."]
 process_mode = 3
