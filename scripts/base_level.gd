@@ -6,6 +6,7 @@ signal level_state_changed
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
+@export var camera_smoothing := 5.0
 
 var desired_gravity:= Vector3.DOWN
 
@@ -20,6 +21,9 @@ var player: RigidBody3D = null
 @onready var goal: Node3D = $Track/Goal
 
 var debug_panel = null
+
+var input_vec := Vector2.ZERO
+var cam_vec := Vector3.UP
 
 # HUD stuff
 #------------------
@@ -115,6 +119,7 @@ func _physics_process(delta):
 	
 	if level_state == Enums.LevelState.RACING:
 		input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		input_vec = input
 		# Disable cam while keygen input accepted
 		if !keygen.visible: cam_input = Input.get_axis("cam_left", "cam_right")
 		
@@ -178,8 +183,12 @@ func update_gravity(delta) -> void:
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR,
 			new_gravity)
 	
-	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
-	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
+	var target_cam_vec = Vector3.UP.rotated(Vector3.FORWARD, input_vec.x * tilt_limit_x)
+	target_cam_vec = target_cam_vec.rotated(Vector3.RIGHT, input_vec.y * tilt_limit_z)
+	cam_vec = cam_vec.lerp(target_cam_vec, camera_smoothing * delta).normalized()
+	
+	cam.pitch = -cam_vec.z #-cam_vec.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
+	cam.roll = cam_vec.x #cam_vec.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
 	if OS.is_debug_build():
 		emit_signal("gravity_changed", new_gravity)
