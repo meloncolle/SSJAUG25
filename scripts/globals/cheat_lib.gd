@@ -24,6 +24,9 @@ func set_active(cheat_name: String, is_active:= true):
 	active_codes[cheat_name] = is_active
 	emit_signal("active_codes_changed")
 	
+func is_active(cheat_name: String) -> bool:
+	return cheat_name in get_only_active()
+	
 func get_only_active() -> Array[String]:
 	var only_active: Array[String] = []
 	for key in active_codes.keys():  

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://sltc862m5v18"]
+[gd_scene load_steps=12 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_xy6ot"]
 [ext_resource type="Script" uid="uid://c80kr23l5gipi" path="res://scripts/tutorial_level.gd" id="2_0wqkg"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="5_w8jns"]
 [ext_resource type="PackedScene" uid="uid://bkkhlialwjf5j" path="res://scenes/prefab_scenes/tutorial/tutorial_ramp.tscn" id="6_orkap"]
 [ext_resource type="PackedScene" uid="uid://nlw8rfi65qd7" path="res://scenes/prefab_scenes/tutorial/tutorial_flat.tscn" id="6_w8jns"]
+[ext_resource type="PackedScene" uid="uid://c28xf6edlraif" path="res://_debug/toggle_a.tscn" id="7_na1x4"]
+[ext_resource type="PackedScene" uid="uid://bn4obd3fhk5or" path="res://_debug/toggle_b.tscn" id="8_pq5yj"]
 [ext_resource type="PackedScene" uid="uid://dsi2287jpdo4b" path="res://scenes/prefab_scenes/props/input_change_billboard.tscn" id="9_w8jns"]
 
 [node name="BaseLevel" instance=ExtResource("1_xy6ot")]
@@ -65,6 +67,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4153, -9.10149, -46.2706)
 
 [node name="Flat" parent="Track" index="11" instance=ExtResource("6_w8jns")]
 transform = Transform3D(0.999967, 0, -0.00813329, 0, 1, 0, 0.00813329, 0, 0.999967, 12.8614, -9.7344, -45.5807)
+
+[node name="ToggleA" parent="Track" index="12" instance=ExtResource("7_na1x4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02052, 1.25834, 0)
+
+[node name="ToggleB" parent="Track" index="13" instance=ExtResource("8_pq5yj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02052, 1.25834, -1.89558)
 
 [node name="Nanas" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11262, -0.482377, 0.401987)

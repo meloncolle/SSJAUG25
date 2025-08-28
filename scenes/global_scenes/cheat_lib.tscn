@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://chj616bjx5s4f"]
+[gd_scene load_steps=6 format=3 uid="uid://chj616bjx5s4f"]
 
 [ext_resource type="Script" uid="uid://beavwtt16eyt0" path="res://scripts/globals/cheat_lib.gd" id="1_obrj6"]
 [ext_resource type="Script" uid="uid://b5xooxphpdft2" path="res://scripts/custom_resources/cheat_code.gd" id="2_avy1l"]
@@ -21,6 +21,15 @@ duration = 0.0
 cooldown = 0.0
 metadata/_custom_type_script = "uid://b5xooxphpdft2"
 
+[sub_resource type="Resource" id="Resource_7p75v"]
+script = ExtResource("2_avy1l")
+name = "toggler"
+sequence = Array[int]([3, 1, 3, 1])
+description = "the togglerrrr"
+duration = 0.0
+cooldown = 0.0
+metadata/_custom_type_script = "uid://b5xooxphpdft2"
+
 [node name="CheatLib" type="Node"]
 script = ExtResource("1_obrj6")
-codes = Array[ExtResource("2_avy1l")]([SubResource("Resource_717j6"), SubResource("Resource_avy1l")])
+codes = Array[ExtResource("2_avy1l")]([SubResource("Resource_717j6"), SubResource("Resource_avy1l"), SubResource("Resource_7p75v")])
