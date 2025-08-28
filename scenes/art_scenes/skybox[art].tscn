@@ -1,10 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy26raadejapx"]
+[gd_scene load_steps=12 format=3 uid="uid://dy26raadejapx"]
 
 [ext_resource type="PackedScene" uid="uid://jkdm70e0no1k" path="res://assets/models/skybox.glb" id="1_drite"]
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="2_3qd40"]
 [ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="2_cao5t"]
+[ext_resource type="Texture2D" uid="uid://bb0ipvnymol3m" path="res://assets/models/skybox_grasstile_faded.png" id="3_3pqbx"]
 [ext_resource type="Texture2D" uid="uid://dypyvl6qm2dbb" path="res://assets/models/skybox_treeline.png" id="3_cao5t"]
 [ext_resource type="Texture2D" uid="uid://cjyblrjbuydxy" path="res://assets/models/skybox_red maple.png" id="4_23x41"]
-[ext_resource type="Texture2D" uid="uid://cqrmlln4irx4l" path="res://assets/models/skybox_green maple.png" id="5_ygqqr"]
+[ext_resource type="Texture2D" uid="uid://gxpu6kqeoewa" path="res://assets/models/skybox_green maple.png" id="5_ygqqr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcnqw"]
+render_priority = 0
+shader = ExtResource("2_3qd40")
+shader_parameter/UvScale = Vector2(15, 15)
+shader_parameter/UvOffset = Vector2(0, 0)
+shader_parameter/diffuse_tex = ExtResource("3_3pqbx")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gji28"]
 resource_local_to_scene = true
@@ -40,6 +51,7 @@ layers = 2
 
 [node name="ground" parent="." index="2"]
 layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_gcnqw")
 
 [node name="mountain 1" parent="." index="3"]
 layers = 2

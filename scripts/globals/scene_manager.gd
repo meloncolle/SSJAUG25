@@ -5,6 +5,7 @@ extends Node
 var game_state: Enums.GameState
 var scene_instance: Node = null
 var can_pause:= false
+var level_idx:= 0
 
 signal game_state_changed
 
@@ -34,6 +35,11 @@ func _ready():
 	level_select.back_button.connect("pressed", func(): level_select.hide())
 
 	settings_menu.connect("settings_closed", _on_settings_closed)
+	
+	if OS.is_debug_build():
+		if 0 <= Config.SKIP_TO_LEVEL && Config.SKIP_TO_LEVEL < level_select.buttons.size():
+			_on_press_level(Config.SKIP_TO_LEVEL)
+
 
 func _input (event: InputEvent):
 	if(game_state != Enums.GameState.ON_START && can_pause && event.is_action_pressed("pause")):
@@ -66,6 +72,7 @@ func _on_press_start():
 	level_select.show()
 	
 func _on_press_level(idx: int):
+	level_idx = idx
 	level_select.hide()
 	scene_instance = load(levels[idx].resource_path).instantiate()
 	self.add_child(scene_instance)
@@ -79,7 +86,7 @@ func _on_press_resume():
 	
 func _on_press_restart():
 	scene_instance.queue_free()
-	scene_instance = load(levels[0].resource_path).instantiate()
+	scene_instance = load(levels[level_idx].resource_path).instantiate()
 	self.add_child(scene_instance)
 	set_state(Enums.GameState.IN_GAME)
 
