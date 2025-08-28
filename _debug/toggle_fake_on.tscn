@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c28xf6edlraif"]
+[gd_scene load_steps=4 format=3 uid="uid://waurh76wk4mf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_na1x4"]
 
@@ -8,12 +8,14 @@ albedo_color = Color(0, 0.72, 0.672, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3kesw"]
 
-[node name="ToggleA" type="StaticBody3D" groups=["toggle_A"]]
+[node name="toggle_fake_on" type="Node3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_na1x4")
 surface_material_override/0 = SubResource("StandardMaterial3D_pq5yj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_3kesw")
