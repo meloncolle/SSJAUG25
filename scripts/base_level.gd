@@ -188,6 +188,26 @@ func _on_code_accepted(code: CheatCode):
 			player.size -= 1
 		"bigmode":
 			player.size += 1
+		"toggler":
+			var is_active: bool = CheatLib.is_active("toggler")
+			CheatLib.set_active("toggler", !is_active)
+			
+			var mat: Material
+			var color: Color
+			
+			for i in get_tree().get_nodes_in_group("toggle_A"):
+				i.set_collision_layer_value(1, is_active)
+				mat = i.get_child(0).get_surface_override_material(0)
+				color = mat.albedo_color
+				color.a = 1.0 if is_active else 0.5
+				mat.albedo_color = color
+				
+			for i in get_tree().get_nodes_in_group("toggle_B"):
+				i.set_collision_layer_value(1, !is_active)
+				mat = i.get_child(0).get_surface_override_material(0)
+				color = mat.albedo_color
+				color.a = 0.5 if is_active else 1.0
+				mat.albedo_color = color
 
 # Read settings from config and update values in game
 func _on_settings_changed():

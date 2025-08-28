@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var text_box: RichTextLabel = $RichTextLabel
+@onready var text_box: RichTextLabel = $VBoxContainer/RichTextLabel
 
 func _on_active_codes_changed():
 	var active_codes: Array[String] = CheatLib.get_only_active()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://tkqwic1ysncl"]
+[gd_scene load_steps=6 format=4 uid="uid://tkqwic1ysncl"]
 
 [ext_resource type="Script" uid="uid://bnhwhffo0prvg" path="res://scripts/props/billboard_single.gd" id="2_g53qb"]
-[ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="3_rnmdr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2drp0"]
 resource_name = "Material"
@@ -71,13 +70,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b1ka4")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhn3p"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_rnmdr")
-shader_parameter/UvScale = Vector2(0.333333, 0.166667)
-shader_parameter/UvOffset = Vector2(1, 2)
-
 [node name="Node3D" type="Node3D"]
 script = ExtResource("2_g53qb")
 frame_delay = 0.16
@@ -86,4 +78,3 @@ frame_delay = 0.16
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.347098, -3.36686, -5.01611)
 mesh = SubResource("ArrayMesh_hi2w5")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_vhn3p")
