@@ -1,5 +1,14 @@
 extends Node
 
+# DEVELOPER DEBUG THINGS (don't commit if you change these)
+
+# Lets you skip the opening/start menu and go straight to level
+# Set to the index of level to skip to
+# Set to -1 to ignore
+const SKIP_TO_LEVEL: int = -1
+
+#----------------------------------------------
+
 const SAVE_PATH: String = "user://settings.cfg"
 const DEFAULTS = {
 	"cam_sensitivity": 0.05,

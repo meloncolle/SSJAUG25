@@ -35,6 +35,11 @@ func _ready():
 	level_select.back_button.connect("pressed", func(): level_select.hide())
 
 	settings_menu.connect("settings_closed", _on_settings_closed)
+	
+	if OS.is_debug_build():
+		if 0 <= Config.SKIP_TO_LEVEL && Config.SKIP_TO_LEVEL < level_select.buttons.size():
+			_on_press_level(Config.SKIP_TO_LEVEL)
+
 
 func _input (event: InputEvent):
 	if(game_state != Enums.GameState.ON_START && can_pause && event.is_action_pressed("pause")):
