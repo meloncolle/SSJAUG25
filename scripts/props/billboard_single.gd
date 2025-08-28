@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+
 @export var frame_delay: float = 1.0
 @onready var banner: MeshInstance3D = $Cube_002
 @export var frame_count: int = 1:

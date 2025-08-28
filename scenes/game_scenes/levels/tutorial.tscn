@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sltc862m5v18"]
+[gd_scene load_steps=10 format=3 uid="uid://sltc862m5v18"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_xy6ot"]
 [ext_resource type="Script" uid="uid://c80kr23l5gipi" path="res://scripts/tutorial_level.gd" id="2_0wqkg"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="5_w8jns"]
 [ext_resource type="PackedScene" uid="uid://bkkhlialwjf5j" path="res://scenes/prefab_scenes/tutorial/tutorial_ramp.tscn" id="6_orkap"]
 [ext_resource type="PackedScene" uid="uid://nlw8rfi65qd7" path="res://scenes/prefab_scenes/tutorial/tutorial_flat.tscn" id="6_w8jns"]
-[ext_resource type="PackedScene" uid="uid://tkqwic1ysncl" path="res://scenes/prefab_scenes/props/billboard_single.tscn" id="9_3kesw"]
-[ext_resource type="Texture2D" uid="uid://tnl5i00fc22p" path="res://assets/textures/ui/ads/Billboard_1_spritesheet.png" id="10_na1x4"]
+[ext_resource type="PackedScene" uid="uid://dsi2287jpdo4b" path="res://scenes/prefab_scenes/props/input_change_billboard.tscn" id="9_w8jns"]
 
 [node name="BaseLevel" instance=ExtResource("1_xy6ot")]
 script = ExtResource("2_0wqkg")
@@ -168,7 +167,5 @@ anim_time_offset = 1.0
 [node name="SmallGap" parent="." index="8" instance=ExtResource("3_ttcas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1549, 3.86118, -46.1609)
 
-[node name="raceway_solo_bilboard2" parent="SmallGap" index="2" instance=ExtResource("9_3kesw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67234, -2.29696, -3.45859)
-frame_count = 18
-texture = ExtResource("10_na1x4")
+[node name="Node3D" parent="SmallGap" index="2" instance=ExtResource("9_w8jns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07256, -1.01806, -1.65201)
