@@ -239,7 +239,7 @@ level_name = "Kye name your level pls"
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
-transform = Transform3D(0.994981, 0, 0.100067, 0, 1, 0, -0.100067, 0, 0.994981, -29.168, 18.0232, -70.4244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0586, 18.0232, -70.5028)
 
 [node name="start_level" parent="Track" index="0" instance=ExtResource("3_m1yo0")]
 transform = Transform3D(-0.000960097, 0, -1, 0, 1, 0, 1, 0, -0.000960097, -29.1027, 17.0138, -50.8492)
