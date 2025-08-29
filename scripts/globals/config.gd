@@ -6,6 +6,7 @@ extends Node
 # Set to the index of level to skip to
 # Set to -1 to ignore
 const SKIP_TO_LEVEL: int = -1
+const DEBUG_PANEL: bool = false
 
 #----------------------------------------------
 
@@ -21,7 +22,6 @@ func _init():
 
 	# If the file didn't load, set defaults and save
 	if err != OK:
-		print("file didnt load")
 		for k in DEFAULTS.keys():
 			data.set_value("settings", k, DEFAULTS[k])
 			

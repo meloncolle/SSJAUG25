@@ -28,15 +28,13 @@ update_scale = false
 [node name="Car" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_0lqrc")]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.0699809, -1.79892, 0.13639)
 target = NodePath("..")
-set_tracking_on_ready = true
 
 [node name="RacerBen" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_bhlyf")]
 transform = Transform3D(-0.433013, 0, -0.25, 0, 0.5, 0, 0.25, 0, -0.433013, 0.05888, -1.6704, 0.0942081)
 target = NodePath("..")
 target_radius = 0.5
 idle_thresh = 0.5
-eject = true
-eject_range = 2.0
+eject_range = 1.5
 override_velocity_length = 10.495
 
 [node name="FmodListener3D" type="FmodListener3D" parent="."]

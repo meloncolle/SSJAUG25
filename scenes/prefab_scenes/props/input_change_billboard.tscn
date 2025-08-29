@@ -24,19 +24,20 @@ func _on_input_type_changed():
 		texture = keyboard_texture
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_omqfj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0gjj"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_yd6o7")
 shader_parameter/UvScale = Vector2(0.333333, 0.166667)
-shader_parameter/UvOffset = Vector2(1, 2)
+shader_parameter/UvOffset = Vector2(0.333333, 1)
 shader_parameter/diffuse_tex = ExtResource("3_omqfj")
 
-[node name="Node3D" instance=ExtResource("1_fsypb")]
+[node name="Billboard" instance=ExtResource("1_fsypb")]
 script = SubResource("GDScript_t0gjj")
 gamepad_texture = ExtResource("2_t0gjj")
 keyboard_texture = ExtResource("3_omqfj")
+frame_count = 18
 texture = ExtResource("3_omqfj")
 
 [node name="Cube_002" parent="." index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_omqfj")
+surface_material_override/0 = SubResource("ShaderMaterial_t0gjj")

@@ -22,6 +22,7 @@ script = ExtResource("2_phpc6")
 [node name="RacewayBanner" parent="." instance=ExtResource("1_gs7ap")]
 frame_delay = 0.285
 texture_1 = ExtResource("3_521ny")
+frame_count_1 = 2
 texture_2 = ExtResource("3_521ny")
 frame_count_2 = 2
 texture_3 = ExtResource("3_521ny")

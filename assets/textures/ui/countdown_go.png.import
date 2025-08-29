@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce70l7ly4m76m"
-path="res://.godot/imported/billboard_tinymode.png-4829f1f0b92375f2ec46ca0b7e2745fe.ctex"
+uid="uid://o5i4bj8h7ly"
+path="res://.godot/imported/countdown_go.png-a37191f02156e0ff752c16c95021a994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/billboard_tinymode.png"
-dest_files=["res://.godot/imported/billboard_tinymode.png-4829f1f0b92375f2ec46ca0b7e2745fe.ctex"]
+source_file="res://assets/textures/ui/countdown_go.png"
+dest_files=["res://.godot/imported/countdown_go.png-a37191f02156e0ff752c16c95021a994.ctex"]
 
 [params]
 

@@ -8,8 +8,8 @@ var level_state: Enums.LevelState
 signal level_state_changed
 
 @export var tilt_speed:= 2.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = deg_to_rad(20)
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = deg_to_rad(20)
 @export var camera_smoothing := 5.0
 
 var desired_gravity:= Vector3.DOWN
@@ -28,6 +28,8 @@ var debug_panel = null
 
 var input_vec := Vector2.ZERO
 var cam_vec := Vector3.UP
+
+@onready var countdown_player: AnimationPlayer = $CanvasLayer/Countdown/AnimationPlayer
 
 # HUD stuff
 #------------------
@@ -78,7 +80,7 @@ func _ready():
 	cam.position = spawn_point.position
 	
 	# Load debug panel and hookup signals only on debug build
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
 		$CanvasLayer.add_child(debug_panel)
 		
@@ -155,7 +157,7 @@ func _physics_process(delta):
 		desired_gravity.y = -1
 
 	update_gravity(delta)
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("speed_changed", player.linear_velocity.length())
 		emit_signal("velocity_changed", player.linear_velocity)
 
@@ -195,7 +197,7 @@ func update_gravity(delta) -> void:
 	cam.pitch = -cam_vec.z #-cam_vec.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
 	cam.roll = cam_vec.x #cam_vec.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("gravity_changed", new_gravity)
 
 # triggered when valid code entered in keygen
@@ -239,7 +241,17 @@ func set_state(new_state: Enums.LevelState):
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
-			pass
+			# todo: make this better and also do the HUD breaking anim thing
+			# KYE LEVEL COUNTDOWN STARTS HERE
+			countdown_player.play("3")
+			await countdown_player.animation_finished
+			countdown_player.play("2")
+			await countdown_player.animation_finished
+			countdown_player.play("1")
+			await countdown_player.animation_finished
+			countdown_player.play("go")
+			await get_tree().create_timer(0.1).timeout
+			player.do_intro()
 			
 		Enums.LevelState.RACING:
 			pass
@@ -260,6 +272,8 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
+			player.stop()
+			cam.do_spin = true
 			
 func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
@@ -282,6 +296,7 @@ func _on_intro_complete():
 	# Prevents player from rolling slightly before start
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
+	# KYE YOU GAIn CONTROL OF PLAYER HERE
 
 func _on_banana_got(time_restored: float):
 	# KYE PUT BANANA PICKUP SOUND HERE
@@ -304,4 +319,8 @@ func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	$Audio/passed_finish.play()
 	set_state(Enums.LevelState.END)
+	await get_tree().create_timer(3.0).timeout
 	%EndScreen.show_results(timer)
+	var new_hi_score: int = Save.add_new_score(level_name, timer)
+	#var hi_scores = Save.data.get_value("Scores", level_name, [])
+	#print(hi_scores)

@@ -8,7 +8,5 @@ func _on_active_codes_changed():
 	for c in active_codes:
 		txt += c + "\n"
 	text_box.text = txt
-	if active_codes.size() == 0:
-		hide()
-	else:
+	if active_codes.size() > 0:
 		show()

@@ -11,7 +11,8 @@ size = Vector3(4, 4, 2.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtlrr"]
 albedo_texture = ExtResource("1_hxlft")
-uv1_scale = Vector3(4.375, 7.205, 0.885)
+uv1_scale = Vector3(5.085, 5.99, 1)
+uv1_offset = Vector3(-0.84, 0.01, 0)
 texture_filter = 0
 
 [node name="SmallGap" type="Node3D"]

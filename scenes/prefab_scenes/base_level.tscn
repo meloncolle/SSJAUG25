@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://df1sc6rf2vba3"]
+[gd_scene load_steps=31 format=3 uid="uid://df1sc6rf2vba3"]
 
 [ext_resource type="Script" uid="uid://dcmtsco3sf04m" path="res://scripts/base_level.gd" id="1_glll8"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="2_x882p"]
@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dy26raadejapx" path="res://scenes/art_scenes/skybox[art].tscn" id="11_nl1de"]
 [ext_resource type="PackedScene" uid="uid://bvypbeo7dcusu" path="res://scenes/game_scenes/ui/end_screen.tscn" id="12_yysg2"]
 [ext_resource type="Script" uid="uid://dilbk1tkmy3d2" path="res://scripts/ui/HUD/active_code_list.gd" id="13_cccpq"]
+[ext_resource type="Texture2D" uid="uid://b7h2q7hyxlcqs" path="res://assets/textures/ui/countdown_3.png" id="14_64qp6"]
+[ext_resource type="Texture2D" uid="uid://d3wmrn0nxkhea" path="res://assets/textures/ui/countdown_2.png" id="15_c55dt"]
+[ext_resource type="Texture2D" uid="uid://dhvt4fq2jkrf2" path="res://assets/textures/ui/countdown_1.png" id="16_fil76"]
+[ext_resource type="Texture2D" uid="uid://o5i4bj8h7ly" path="res://assets/textures/ui/countdown_go.png" id="17_nai4x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qlic1"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
@@ -40,11 +44,249 @@ font = ExtResource("4_qlic1")
 font_size = 40
 font_color = Color(0.381167, 1, 0.21, 1)
 
+[sub_resource type="Animation" id="Animation_nai4x"]
+resource_name = "1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.36358, 1),
+"update": 0,
+"values": [Vector2(-650, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fil76"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.36358, 1),
+"update": 0,
+"values": [Vector2(-650, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_64qp6"]
+resource_name = "3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.36358, 1),
+"update": 0,
+"values": [Vector2(-650, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_c55dt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-650, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Go:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wtifx"]
+resource_name = "go"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Go:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.36358, 1),
+"update": 0,
+"values": [Vector2(-755, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Go:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Go:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c55dt"]
+_data = {
+&"1": SubResource("Animation_nai4x"),
+&"2": SubResource("Animation_fil76"),
+&"3": SubResource("Animation_64qp6"),
+&"RESET": SubResource("Animation_c55dt"),
+&"go": SubResource("Animation_wtifx")
+}
+
 [node name="BaseLevel" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_glll8")
-tilt_limit_x = 0.349066
-tilt_limit_z = 0.349066
 
 [node name="OmniLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -157,12 +399,15 @@ visible = false
 [node name="ActiveCodes" type="PanelContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -181.0
-offset_bottom = 40.0
+offset_top = -40.0
 grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("13_cccpq")
@@ -181,6 +426,41 @@ size_flags_vertical = 8
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 fit_content = true
+
+[node name="Countdown" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3" type="Sprite2D" parent="CanvasLayer/Countdown"]
+position = Vector2(-650, 0)
+texture = ExtResource("14_64qp6")
+
+[node name="2" type="Sprite2D" parent="CanvasLayer/Countdown"]
+position = Vector2(-650, 0)
+texture = ExtResource("15_c55dt")
+
+[node name="1" type="Sprite2D" parent="CanvasLayer/Countdown"]
+position = Vector2(-650, 0)
+texture = ExtResource("16_fil76")
+
+[node name="Go" type="Sprite2D" parent="CanvasLayer/Countdown"]
+position = Vector2(-755, 0)
+texture = ExtResource("17_nai4x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Countdown"]
+libraries = {
+&"": SubResource("AnimationLibrary_c55dt")
+}
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43809, 1.80474)
