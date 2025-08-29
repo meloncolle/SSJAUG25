@@ -43,8 +43,6 @@ font_color = Color(0.381167, 1, 0.21, 1)
 [node name="BaseLevel" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_glll8")
-tilt_limit_x = 0.349066
-tilt_limit_z = 0.349066
 
 [node name="OmniLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

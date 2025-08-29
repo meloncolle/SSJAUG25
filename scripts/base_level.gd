@@ -8,8 +8,8 @@ var level_state: Enums.LevelState
 signal level_state_changed
 
 @export var tilt_speed:= 2.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = deg_to_rad(20)
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = deg_to_rad(20)
 
 var desired_gravity:= Vector3.DOWN
 
