@@ -239,6 +239,6 @@ event_guid = "{1f6a3bcc-3845-481c-9d58-8529c2d1b948}"
 event_name = "event:/Banana/pickup_nan"
 event_guid = "{c30b6791-8d3c-4bde-8711-0a676c18cbd7}"
 
-[node name="COUNTDOWN" type="FmodEventEmitter3D" parent="."]
+[node name="COUNTDOWN" type="FmodEventEmitter3D" parent="Audio"]
 event_name = "event:/Level/StartingCountDown"
 event_guid = "{34f8d974-4368-4686-b33c-573b8c2ab3e1}"
