@@ -78,7 +78,7 @@ func _ready():
 	cam.position = spawn_point.position
 	
 	# Load debug panel and hookup signals only on debug build
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
 		$CanvasLayer.add_child(debug_panel)
 		
@@ -155,7 +155,7 @@ func _physics_process(delta):
 		desired_gravity.y = -1
 
 	update_gravity(delta)
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("speed_changed", player.linear_velocity.length())
 		emit_signal("velocity_changed", player.linear_velocity)
 
@@ -195,7 +195,7 @@ func update_gravity(delta) -> void:
 	cam.pitch = -cam_vec.z #-cam_vec.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
 	cam.roll = cam_vec.x #cam_vec.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("gravity_changed", new_gravity)
 
 # triggered when valid code entered in keygen
