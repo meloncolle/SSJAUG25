@@ -298,3 +298,6 @@ func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	set_state(Enums.LevelState.END)
 	%EndScreen.show_results(timer)
+	var new_hi_score: int = Save.add_new_score(level_name, timer)
+	#var hi_scores = Save.data.get_value("Scores", level_name, [])
+	#print(hi_scores)

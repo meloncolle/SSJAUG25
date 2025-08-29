@@ -21,7 +21,6 @@ func _init():
 
 	# If the file didn't load, set defaults and save
 	if err != OK:
-		print("file didnt load")
 		for k in DEFAULTS.keys():
 			data.set_value("settings", k, DEFAULTS[k])
 			
