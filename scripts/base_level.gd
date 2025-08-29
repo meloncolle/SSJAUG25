@@ -10,6 +10,7 @@ signal level_state_changed
 @export var tilt_speed:= 2.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
 @export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
+@export var camera_smoothing := 5.0
 
 var desired_gravity:= Vector3.DOWN
 
@@ -24,6 +25,9 @@ var player: RigidBody3D = null
 @onready var goal: Node3D = $Track/Goal
 
 var debug_panel = null
+
+var input_vec := Vector2.ZERO
+var cam_vec := Vector3.UP
 
 # HUD stuff
 #------------------
@@ -120,6 +124,7 @@ func _physics_process(delta):
 	
 	if level_state == Enums.LevelState.RACING:
 		input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		input_vec = input
 		# Disable cam while keygen input accepted
 		if !keygen.visible: cam_input = Input.get_axis("cam_left", "cam_right")
 		
@@ -160,12 +165,22 @@ func update_gravity(delta) -> void:
 			get_viewport().find_world_3d().space,
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR)
 	
+	#Complicated, and there's gotta be a more performant way, but works fine
+	var delta_x = delta
+	var delta_z = delta
+	if ((current_gravity.x > 0 && player.linear_velocity.x < 0) || (current_gravity.x < 0 && player.linear_velocity.x > 0)):
+		desired_gravity.x *= 2.5
+		delta_x *= 4
+	if ((current_gravity.z > 0 && player.linear_velocity.z < 0) || (current_gravity.z < 0 && player.linear_velocity.z > 0)):
+		desired_gravity.z *= 2.5
+		delta_z *= 4
+		
 	# idk why this is behaving differently than using Vector3.move_toward?? 
 	# but this is what i wanted
 	var new_gravity:= Vector3(
-		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta),
+		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta_x),
 		move_toward(current_gravity.y, desired_gravity.y, tilt_speed * delta),
-		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta)
+		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta_z)
 	)
 	
 	PhysicsServer3D.area_set_param(
@@ -173,8 +188,12 @@ func update_gravity(delta) -> void:
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR,
 			new_gravity)
 	
-	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
-	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
+	var target_cam_vec = Vector3.UP.rotated(Vector3.FORWARD, input_vec.x * tilt_limit_x)
+	target_cam_vec = target_cam_vec.rotated(Vector3.RIGHT, input_vec.y * tilt_limit_z)
+	cam_vec = cam_vec.lerp(target_cam_vec, camera_smoothing * delta).normalized()
+	
+	cam.pitch = -cam_vec.z #-cam_vec.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
+	cam.roll = cam_vec.x #cam_vec.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
 	
 	if OS.is_debug_build():
 		emit_signal("gravity_changed", new_gravity)
