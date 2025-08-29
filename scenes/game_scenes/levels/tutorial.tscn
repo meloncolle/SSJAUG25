@@ -172,6 +172,12 @@ layout_mode = 2
 texture = ExtResource("3_pq5yj")
 expand_mode = 3
 
+[node name="1" parent="CanvasLayer/Countdown" index="2"]
+visible = true
+
+[node name="Go" parent="CanvasLayer/Countdown" index="3"]
+visible = true
+
 [node name="SpawnPoint" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
 

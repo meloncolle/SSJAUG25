@@ -3,7 +3,8 @@ class_name Player
 
 signal finished_respawn
 
-@onready var car: Node3D = $"Car/car_scuffed[art]"
+@onready var car: Node3D = $Car
+@onready var car_model: Node3D = $"Car/car_scuffed[art]"
 @onready var col_shape: CollisionShape3D = $CollisionShape3D
 @onready var racer: Node3D = $RacerBen
 
@@ -23,18 +24,18 @@ var size:
 			0:
 				# tinymode
 				col_shape.shape.radius = 0.25
-				car.scale = Vector3.ONE * 0.25
+				car_model.scale = Vector3.ONE * 0.25
 				CheatLib.set_active("tinymode")
 			1:
 				# default
 				col_shape.shape.radius = 0.5
-				car.scale = Vector3.ONE * 0.5
+				car_model.scale = Vector3.ONE * 0.5
 				CheatLib.set_active("tinymode", false)
 				CheatLib.set_active("bigmode", false)
 			2:
 				# bigmode
 				col_shape.shape.radius = 0.75
-				car.scale = Vector3.ONE * 0.75
+				car_model.scale = Vector3.ONE * 0.75
 				CheatLib.set_active("bigmode")
 				
 signal max_speed_changed
@@ -48,6 +49,11 @@ func _ready():
 func _process(delta):
 	if stopping:
 		desired_speed = move_toward(linear_velocity.length(), 0.0, delta * stop_speed)
+
+func do_intro():
+	racer.eject = true
+	car.is_tracking = true
+	apply_central_impulse(Vector3.UP * 500)
 
 func respawn():
 	# KYE PUT RESPAWN SOUND HERE

@@ -29,6 +29,8 @@ var debug_panel = null
 var input_vec := Vector2.ZERO
 var cam_vec := Vector3.UP
 
+@onready var countdown_player: AnimationPlayer = $CanvasLayer/Countdown/AnimationPlayer
+
 # HUD stuff
 #------------------
 
@@ -239,7 +241,16 @@ func set_state(new_state: Enums.LevelState):
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
-			pass
+			# todo: make this better and also do the HUD breaking anim thing
+			countdown_player.play("3")
+			await countdown_player.animation_finished
+			countdown_player.play("2")
+			await countdown_player.animation_finished
+			countdown_player.play("1")
+			await countdown_player.animation_finished
+			countdown_player.play("go")
+			await get_tree().create_timer(0.1).timeout
+			player.do_intro()
 			
 		Enums.LevelState.RACING:
 			pass
