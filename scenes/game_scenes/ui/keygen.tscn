@@ -335,6 +335,10 @@ event_guid = "{ddc6d27b-8cb7-4913-91ea-e0bf044e1eca}"
 [node name="keygen_close" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenClose"
 event_guid = "{840f9c8b-1901-4854-aef9-e69e9616c49d}"
+fmod_parameters/keygen_mute/id = 9022166878639555734
+fmod_parameters/keygen_mute = "disabled"
+fmod_parameters/keygen_mute/labels = PackedStringArray("enabled", "disabled")
+fmod_parameters/keygen_mute/variant_type = 4
 
 [node name="code_right" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/KeyGen/KeyGenCheatRight"

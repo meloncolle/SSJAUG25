@@ -42,3 +42,11 @@ override_velocity_length = 10.495
 [node name="respawn" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/Player SFX/Respawn"
 event_guid = "{f7261938-ddb0-4a0f-bd9b-c97f731c19de}"
+
+[node name="engine" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Player SFX/RollingSHIFTS"
+event_guid = "{930f0a10-8127-4039-9b01-b86420bd47ba}"
+autoplay = true
+fmod_parameters/speed/id = -3863908321610580022
+fmod_parameters/speed = 0.0
+fmod_parameters/speed/variant_type = 3

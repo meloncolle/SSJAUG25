@@ -21,3 +21,7 @@ visible = false
 
 [node name="Settings" parent="Menus" instance=ExtResource("5_xoony")]
 visible = false
+
+[node name="ben_callout" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Ben_callout"
+event_guid = "{cab7aedb-619f-4391-82a0-2716b66fbe06}"

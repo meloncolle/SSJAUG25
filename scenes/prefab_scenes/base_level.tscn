@@ -480,9 +480,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -67.151, 0)
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio"]
-bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]
-
 [node name="fall_off" type="FmodEventEmitter3D" parent="Audio"]
 event_name = "event:/Player SFX/FallOff"
 event_guid = "{aeacc10d-2f97-40fe-9b8e-6bb9d321d3ba}"
@@ -500,11 +497,11 @@ event_name = "event:/UI/UINav"
 event_guid = "{9cda9adc-57f1-4c45-8030-40e65ec593a2}"
 
 [node name="pause" type="FmodEventEmitter3D" parent="Audio"]
-event_name = "event:/UI/Puase"
+event_name = "event:/UI/open ui"
 event_guid = "{a9734bd1-fff1-4a69-9e4f-90889b2f7148}"
 
 [node name="unpause" type="FmodEventEmitter3D" parent="Audio"]
-event_name = "event:/UI/Unpause"
+event_name = "event:/UI/close ui"
 event_guid = "{71b7362a-7006-4f7c-a825-c79c41432129}"
 
 [node name="throw_nana" type="FmodEventEmitter3D" parent="Audio"]
@@ -522,3 +519,17 @@ event_guid = "{c30b6791-8d3c-4bde-8711-0a676c18cbd7}"
 [node name="COUNTDOWN" type="FmodEventEmitter3D" parent="Audio"]
 event_name = "event:/Level/StartingCountDown"
 event_guid = "{34f8d974-4368-4686-b33c-573b8c2ab3e1}"
+
+[node name="music_pause" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/Pause Music"
+event_guid = "{fa379cc4-08fd-4d4c-a94e-aca7abc09a01}"
+autoplay = true
+
+[node name="music_main" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/game_music"
+event_guid = "{70b670b6-ad6a-4ea0-9370-ede6c6952bed}"
+autoplay = true
+
+[node name="car_explosion" type="FmodEventEmitter3D" parent="Audio"]
+event_name = "event:/Player SFX/carExplosion"
+event_guid = "{968245c4-533b-444d-8e38-741b56e131c0}"

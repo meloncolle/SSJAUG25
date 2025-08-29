@@ -27,6 +27,7 @@ func _process(_delta):
 func _on_close_requested():
 	
 	# KYE PUT KEYGEN CLOSE SOUND HERE
+	$Audio/keygen_close.play()
 	hide()
 
 func _on_open_requested():
@@ -41,8 +42,8 @@ func _on_open_requested():
 	show()
 		
 func add_input(input: Enums.CheatInput):
-	$Audio/keygen_type.play()
 	# KYE PUT KEYGEN CHARACTER ENTERED SOUND HERE
+	$Audio/keygen_type.play()
 	inputs.append(input)
 	
 	arrow_icons[inputs.size() -1 ].rotation = 0.5 * PI * input

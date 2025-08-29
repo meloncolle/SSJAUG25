@@ -296,6 +296,7 @@ visible = true
 [node name="CollisionShape3D" parent="Track/0path_end_level/mountain_props/mountain 3_001/StaticBody3D" index="0"]
 visible = true
 shape = SubResource("ConcavePolygonShape3D_3i32w")
+disabled = false
 
 [node name="mountain 3_003" type="MeshInstance3D" parent="Track/0path_end_level/mountain_props" index="7"]
 transform = Transform3D(0.526484, 0, 0.972046, 0, 1.0012, 0, -1.52177, 0, 0.336298, -62.4098, 33.7632, -99.0718)
@@ -306,7 +307,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/0path_end_level/mountain_props/mountain 3_003/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3i32w")
-disabled = true
 
 [node name="mountain 3_004" type="MeshInstance3D" parent="Track/0path_end_level/mountain_props" index="8"]
 transform = Transform3D(-0.427704, 0, 0.577604, 0, 0.622, 0, -0.903919, 0, -0.273303, -124.71, 20.8842, -202.208)
@@ -317,7 +317,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/0path_end_level/mountain_props/mountain 3_004/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_3i32w")
-disabled = true
 
 [node name="mountain_props2" parent="Track/0path_end_level" index="2" instance=ExtResource("7_8d7vd")]
 transform = Transform3D(-0.243801, 0, 0.969825, 0, 1, 0, -0.969825, 0, -0.243801, 2.08209, -55.974, 472.713)
@@ -432,37 +431,37 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 128.939, -58.2154, 119.631)
 [node name="CollisionShape3D" parent="Checkpoint7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.10116, 0.99487, 0, -0.99487, 0.10116, 0, 0.5, 0)
 
-[node name="Level2Path" parent="." index="16" instance=ExtResource("11_i6rmq")]
+[node name="Level2Path" parent="." index="15" instance=ExtResource("11_i6rmq")]
 transform = Transform3D(0.69349, 0, -0.398839, 0, 0.8, 0, 0.398839, 0, 0.69349, 180.872, -185.475, 115.968)
 
-[node name="Level1Path" type="Node3D" parent="." index="17"]
+[node name="Level1Path" type="Node3D" parent="." index="16"]
 
-[node name="Road" parent="." index="18" instance=ExtResource("15_folrb")]
+[node name="Road" parent="." index="17" instance=ExtResource("15_folrb")]
 transform = Transform3D(0.857751, 0, 0.514065, 0, 1, 0, -0.514065, 0, 0.857751, 173.453, -196.522, -81.9941)
 
-[node name="Level1Path2" parent="." index="19" instance=ExtResource("10_u43gj")]
+[node name="Level1Path2" parent="." index="18" instance=ExtResource("10_u43gj")]
 transform = Transform3D(-0.372275, 0, 0.928122, 0, 1, 0, -0.928122, 0, -0.372275, -24.5104, -76.9444, -90.994)
 
-[node name="rail" parent="." index="20" instance=ExtResource("16_g5gpe")]
+[node name="rail" parent="." index="19" instance=ExtResource("16_g5gpe")]
 transform = Transform3D(0.596645, 0, -0.802505, 0, 1, 0, 0.802505, 0, 0.596645, 48.2453, -226.633, 239.074)
 
-[node name="rail2" parent="." index="21" instance=ExtResource("16_g5gpe")]
+[node name="rail2" parent="." index="20" instance=ExtResource("16_g5gpe")]
 transform = Transform3D(0.711807, -0.645671, 0.276478, 0.601864, 0.763616, 0.233774, -0.362064, 0, 0.932153, 50.6066, -243.782, 259.977)
 
 [node name="Path3D" parent="rail2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -2.98023e-08, 0, 1, 1.97275, -0.45311, -3.59883)
 
-[node name="rail3" parent="." index="22" instance=ExtResource("16_g5gpe")]
+[node name="rail3" parent="." index="21" instance=ExtResource("16_g5gpe")]
 transform = Transform3D(0.711807, -0.645671, 0.276478, 0.601864, 0.763616, 0.233774, -0.362064, 0, 0.932153, 72.3826, -243.782, 253.467)
 
 [node name="Path3D" parent="rail3" index="0"]
 transform = Transform3D(0.434894, -0.698721, 0.56803, 0.898057, 0.382817, -0.216673, -0.0660582, 0.604352, 0.793974, -12.0886, -8.10071, -0.0643616)
 curve = SubResource("Curve3D_g5gpe")
 
-[node name="maple_tree2" parent="." index="23" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree2" parent="." index="22" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.772, -228.382, 30.9604)
 
-[node name="maple_tree20" parent="." index="24" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree20" parent="." index="23" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 216.373, -228.382, 127.31)
 
 [node name="maple_tree20" parent="maple_tree20" index="2" instance=ExtResource("17_ojnd0")]
@@ -564,88 +563,88 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.0053, 3.27847, -64.7232)
 [node name="maple_tree55" parent="maple_tree20" index="34" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.6657, 3.77383, -70.9652)
 
-[node name="maple_tree3" parent="." index="25" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree3" parent="." index="24" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.93, -230.485, 15.466)
 
-[node name="maple_tree4" parent="." index="26" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree4" parent="." index="25" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.482, -225.207, 11.309)
 
-[node name="maple_tree5" parent="." index="27" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree5" parent="." index="26" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.255, -222.954, 22.6464)
 
-[node name="maple_tree6" parent="." index="28" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree6" parent="." index="27" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.074, -223.519, 0.727495)
 
-[node name="maple_tree7" parent="." index="29" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree7" parent="." index="28" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.889, -229.332, -13.6332)
 
-[node name="maple_tree8" parent="." index="30" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree8" parent="." index="29" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.895, -230.473, 0.727488)
 
-[node name="maple_tree9" parent="." index="31" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree9" parent="." index="30" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.767, -216.477, 22.7787)
 
-[node name="maple_tree10" parent="." index="32" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree10" parent="." index="31" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.296, -217.505, 43.0536)
 
-[node name="maple_tree11" parent="." index="33" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree11" parent="." index="32" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225.308, -215.993, 12.8207)
 
-[node name="maple_tree12" parent="." index="34" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree12" parent="." index="33" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.442, -216.009, 6.01826)
 
-[node name="maple_tree13" parent="." index="35" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree13" parent="." index="34" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 232.111, -215.881, 10.9311)
 
-[node name="maple_tree14" parent="." index="36" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree14" parent="." index="35" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 239.291, -219.306, -10.9878)
 
-[node name="maple_tree15" parent="." index="37" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree15" parent="." index="36" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225.25, -217.636, -5.84692)
 
-[node name="maple_tree16" parent="." index="38" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree16" parent="." index="37" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230.599, -232.766, -31.7729)
 
-[node name="maple_tree17" parent="." index="39" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree17" parent="." index="38" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.785, -233.367, -44.244)
 
-[node name="maple_tree18" parent="." index="40" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree18" parent="." index="39" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 273.681, -224.356, -26.4822)
 
-[node name="maple_tree19" parent="." index="41" instance=ExtResource("17_ojnd0")]
+[node name="maple_tree19" parent="." index="40" instance=ExtResource("17_ojnd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 274.638, -224.718, -31.2272)
 
-[node name="maple_tree" parent="." index="42" instance=ExtResource("18_vxm53")]
+[node name="maple_tree" parent="." index="41" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.592, -218.361, -53.8697)
 
-[node name="maple_tree21" parent="." index="43" instance=ExtResource("18_vxm53")]
+[node name="maple_tree21" parent="." index="42" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 292.597, -231.56, -63.0848)
 
-[node name="maple_tree22" parent="." index="44" instance=ExtResource("18_vxm53")]
+[node name="maple_tree22" parent="." index="43" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 231.006, -226.233, -21.5577)
 
-[node name="maple_tree23" parent="." index="45" instance=ExtResource("18_vxm53")]
+[node name="maple_tree23" parent="." index="44" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.747, -226.828, -17.4993)
 
-[node name="maple_tree24" parent="." index="46" instance=ExtResource("18_vxm53")]
+[node name="maple_tree24" parent="." index="45" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.196, -215.529, -87.0138)
 
-[node name="maple_tree25" parent="." index="47" instance=ExtResource("18_vxm53")]
+[node name="maple_tree25" parent="." index="46" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.292, -221.813, -140.034)
 
-[node name="maple_tree26" parent="." index="48" instance=ExtResource("18_vxm53")]
+[node name="maple_tree26" parent="." index="47" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.525, -228.618, -113.862)
 
-[node name="maple_tree27" parent="." index="49" instance=ExtResource("18_vxm53")]
+[node name="maple_tree27" parent="." index="48" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.359, -218.145, -80.7327)
 
-[node name="maple_tree28" parent="." index="50" instance=ExtResource("18_vxm53")]
+[node name="maple_tree28" parent="." index="49" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.065, -215.385, -69.9711)
 
-[node name="maple_tree29" parent="." index="51" instance=ExtResource("18_vxm53")]
+[node name="maple_tree29" parent="." index="50" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.045, -220.926, -63.9417)
 
-[node name="maple_tree30" parent="." index="52" instance=ExtResource("18_vxm53")]
+[node name="maple_tree30" parent="." index="51" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5009, -146.464, -303.342)
 
 [editable path="Track/level_Intsec_Path"]

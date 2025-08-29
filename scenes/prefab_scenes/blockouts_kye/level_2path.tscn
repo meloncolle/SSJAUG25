@@ -210,6 +210,7 @@ visible = true
 
 [node name="CollisionShape3D" parent="mountain_props/Cube_005/StaticBody3D" index="0"]
 visible = true
+disabled = false
 
 [node name="Cube_006" parent="mountain_props" index="11"]
 transform = Transform3D(14.5647, 0, 12.2872, 0, 19.0553, 0, -12.2872, 0, 14.5647, -28.5513, 95.3732, 64.138)
@@ -220,6 +221,7 @@ visible = true
 
 [node name="CollisionShape3D" parent="mountain_props/Cube_006/StaticBody3D" index="0"]
 visible = true
+disabled = false
 
 [node name="Cube_007" parent="mountain_props" index="12"]
 transform = Transform3D(15.9548, 0, -10.4187, 0, 19.0553, 0, 10.4187, 0, 15.9548, 33.9517, 9.87219, 105.306)
@@ -230,6 +232,7 @@ visible = true
 
 [node name="CollisionShape3D" parent="mountain_props/Cube_007/StaticBody3D" index="0"]
 visible = true
+disabled = false
 
 [node name="Cube_014" type="MeshInstance3D" parent="mountain_props"]
 transform = Transform3D(17.0397, 0, 0, 0, 17.0397, 0, 0, 0, 17.0397, 20.1314, 89.1437, 155.414)
@@ -240,7 +243,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mountain_props/Cube_014/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hkgkk")
-disabled = true
 
 [node name="Cube_017" type="MeshInstance3D" parent="mountain_props"]
 transform = Transform3D(17.0397, 0, 0, 0, 17.0397, 0, 0, 0, 17.0397, 82.8805, 49.2003, 73.7529)
@@ -251,7 +253,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mountain_props/Cube_017/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hkgkk")
-disabled = true
 
 [node name="Cube_015" type="MeshInstance3D" parent="mountain_props"]
 transform = Transform3D(17.0397, 0, 0, 0, 17.0397, 0, 0, 0, 17.0397, 11.5294, 27.5342, 234.11)
@@ -262,7 +263,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mountain_props/Cube_015/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hkgkk")
-disabled = true
 
 [node name="Cube_016" type="MeshInstance3D" parent="mountain_props"]
 transform = Transform3D(17.0397, 0, 0, 0, 17.0397, 0, 0, 0, 17.0397, -31.8275, 27.5342, 299.129)
@@ -273,7 +273,6 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mountain_props/Cube_016/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hkgkk")
-disabled = true
 
 [node name="rail" parent="." instance=ExtResource("5_4kvse")]
 transform = Transform3D(0.731354, 0, -0.681998, 0, 1, 0, 0.681998, 0, 0.731354, -34.3737, 104.443, 64.1435)

@@ -1,6 +1,7 @@
 extends Node
 
 @export var levels: Array[PackedScene] = []
+@export var music: FmodEventEmitter2D
 
 var game_state: Enums.GameState
 var scene_instance: Node = null
@@ -70,15 +71,17 @@ func set_state(new_state: Enums.GameState):
 
 func _on_press_start():
 	# KYE PUT BEN CALLOUT THING HERE
+	$ben_callout.play()
+	$menu_music.stop()
 	level_select.show()
-	
+
 func _on_press_level(idx: int):
 	level_idx = idx
 	level_select.hide()
 	scene_instance = load(levels[idx].resource_path).instantiate()
 	self.add_child(scene_instance)
 	set_state(Enums.GameState.IN_GAME)
-	
+
 func _on_press_exit():
 	get_tree().quit()
 	

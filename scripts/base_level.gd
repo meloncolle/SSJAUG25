@@ -243,6 +243,7 @@ func set_state(new_state: Enums.LevelState):
 		Enums.LevelState.WAIT_START:
 			# todo: make this better and also do the HUD breaking anim thing
 			# KYE LEVEL COUNTDOWN STARTS HERE
+			$Audio/COUNTDOWN.play()
 			countdown_player.play("3")
 			await countdown_player.animation_finished
 			countdown_player.play("2")
@@ -280,6 +281,7 @@ func _on_game_state_changed(new_state: Enums.GameState):
 		Enums.GameState.IN_GAME:
 			# KYE PUT UNPAUSE SOUND HERE
 			$Audio/unpause.play()
+			
 			if keygen.reopen_on_resume:
 				keygen.reopen_on_resume = false
 				keygen.show()
@@ -287,6 +289,7 @@ func _on_game_state_changed(new_state: Enums.GameState):
 		Enums.GameState.PAUSED:
 			# KYE PUT PAUSE SOUND HERE
 			$Audio/pause.play()
+			
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
@@ -297,6 +300,7 @@ func _on_intro_complete():
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
 	# KYE YOU GAIn CONTROL OF PLAYER HERE
+
 
 func _on_banana_got(time_restored: float):
 	# KYE PUT BANANA PICKUP SOUND HERE
@@ -318,6 +322,7 @@ func throw_banana():
 func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	$Audio/passed_finish.play()
+	$Audio/music_main.stop()
 	set_state(Enums.LevelState.END)
 	await get_tree().create_timer(3.0).timeout
 	%EndScreen.show_results(timer)

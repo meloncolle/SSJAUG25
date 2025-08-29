@@ -66,6 +66,7 @@ func stop():
 	racer.PlayFinishAnimation()
 
 func _integrate_forces(_state):
+	$engine.set_parameter("speed", linear_velocity.length())
 	if awaiting_respawn && respawn_target != null:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO
