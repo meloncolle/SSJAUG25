@@ -15,7 +15,6 @@ uv1_scale = Vector3(7.5, 10, 1)
 texture_filter = 0
 
 [node name="Ramp" type="StaticBody3D" groups=["track"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

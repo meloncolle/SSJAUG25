@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btrju8k4v2o7j"
-path="res://.godot/imported/9patch_unclicked.png-439745bf03512d934db6e0bb06b1e25e.ctex"
+uid="uid://lxnei2r3lii8"
+path="res://.godot/imported/billboard_bigmode.png-ea05c9e33696127cc71b4d5717cfb767.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/9patch_unclicked.png"
-dest_files=["res://.godot/imported/9patch_unclicked.png-439745bf03512d934db6e0bb06b1e25e.ctex"]
+source_file="res://assets/textures/ui/ads/billboard_bigmode.png"
+dest_files=["res://.godot/imported/billboard_bigmode.png-ea05c9e33696127cc71b4d5717cfb767.ctex"]
 
 [params]
 
