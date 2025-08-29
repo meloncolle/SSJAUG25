@@ -82,4 +82,6 @@ func _integrate_forces(_state):
 	
 	else:
 		if linear_velocity.length() > max_speed:
+			# KYE linear_velocity.length() is the speed, calculated every physics frame. let me know if u need something else
+			# you can access player.linear_velocity.length() from base_level.gd if thats easier too
 			linear_velocity = linear_velocity.normalized() * max_speed

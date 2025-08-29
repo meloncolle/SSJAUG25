@@ -242,6 +242,7 @@ func set_state(new_state: Enums.LevelState):
 	match new_state:
 		Enums.LevelState.WAIT_START:
 			# todo: make this better and also do the HUD breaking anim thing
+			# KYE LEVEL COUNTDOWN STARTS HERE
 			countdown_player.play("3")
 			await countdown_player.animation_finished
 			countdown_player.play("2")
@@ -292,6 +293,7 @@ func _on_intro_complete():
 	# Prevents player from rolling slightly before start
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
+	# KYE YOU GAIn CONTROL OF PLAYER HERE
 
 func _on_banana_got(time_restored: float):
 	# KYE PUT BANANA PICKUP SOUND HERE
