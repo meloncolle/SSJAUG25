@@ -5,6 +5,11 @@ signal finished_respawn
 
 @onready var car: Node3D = $"Car/car_scuffed[art]"
 @onready var col_shape: CollisionShape3D = $CollisionShape3D
+@onready var racer: Node3D = $RacerBen
+
+var stopping: bool = false
+var desired_speed: float
+var stop_speed:= 15.0
 
 @export var max_speed:= 15.0:
 	set(value):
@@ -39,11 +44,19 @@ var respawn_target: Node3D = null
 
 func _ready():
 	size = 1
+	
+func _process(delta):
+	if stopping:
+		desired_speed = move_toward(linear_velocity.length(), 0.0, delta * stop_speed)
 
 func respawn():
 	# KYE PUT RESPAWN SOUND HERE
 	size = 1
 	awaiting_respawn = true
+
+func stop():
+	stopping = true
+	racer.PlayFinishAnimation()
 
 func _integrate_forces(_state):
 	if awaiting_respawn && respawn_target != null:
@@ -53,6 +66,13 @@ func _integrate_forces(_state):
 		global_rotation = respawn_target.global_rotation
 		awaiting_respawn = false
 		emit_signal("finished_respawn")
+		
+	elif stopping && desired_speed:
+		linear_velocity = linear_velocity.normalized() * desired_speed
+		if linear_velocity.length() < 0.1:
+			can_sleep = true
+			sleeping = true
+			stopping = false
 	
 	else:
 		if linear_velocity.length() > max_speed:

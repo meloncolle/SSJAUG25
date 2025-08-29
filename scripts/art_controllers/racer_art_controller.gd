@@ -209,7 +209,7 @@ func FlattenV3(vec : Vector3) -> Vector3:
 func ProjectV3(vec, normal) -> Vector3:
 	return vec - (normal * normal.dot(vec))
 
-func PlayFinishAnimation(has_won : bool):
+func PlayFinishAnimation(has_won : bool = true):
 	if has_won:
 		state_machine.travel("win-start")
 	else:

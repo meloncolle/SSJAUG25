@@ -259,6 +259,8 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
+			player.stop()
+			cam.do_spin = true
 			
 func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
@@ -297,6 +299,7 @@ func throw_banana():
 func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	set_state(Enums.LevelState.END)
+	await get_tree().create_timer(3.0).timeout
 	%EndScreen.show_results(timer)
 	var new_hi_score: int = Save.add_new_score(level_name, timer)
 	#var hi_scores = Save.data.get_value("Scores", level_name, [])
