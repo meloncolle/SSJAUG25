@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3d87tpa1hahg"
-path="res://.godot/imported/crankshaft_window_topbar.png-56d739383730f50cb14fd131b437b958.ctex"
+uid="uid://62pc4rnk4h5e"
+path="res://.godot/imported/level_select_menu_bg_1.png-0befc679158a200c9b0c17ed70ef4866.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/crankshaft_window_topbar.png"
-dest_files=["res://.godot/imported/crankshaft_window_topbar.png-56d739383730f50cb14fd131b437b958.ctex"]
+source_file="res://assets/textures/ui/level_select_menu_bg_1.png"
+dest_files=["res://.godot/imported/level_select_menu_bg_1.png-0befc679158a200c9b0c17ed70ef4866.ctex"]
 
 [params]
 
