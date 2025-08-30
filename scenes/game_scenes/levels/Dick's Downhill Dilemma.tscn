@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://tkqwic1ysncl" path="res://scenes/prefab_scenes/props/billboard_single.tscn" id="20_awxro"]
 [ext_resource type="Texture2D" uid="uid://lxnei2r3lii8" path="res://assets/textures/ui/ads/billboard_bigmode.png" id="21_qsu7j"]
 [ext_resource type="Texture2D" uid="uid://ce70l7ly4m76m" path="res://assets/textures/ui/ads/billboard_tinymode.png" id="22_ujry6"]
-[ext_resource type="Texture2D" uid="uid://c4tnbasr1bbm1" path="res://assets/textures/collision_billboard.png" id="23_3ym72"]
+[ext_resource type="Texture2D" uid="uid://dmg5m0qd6v7e2" path="res://assets/textures/collision_billboard.png" id="23_3ym72"]
 [ext_resource type="Texture2D" uid="uid://by3l7uxhpyuin" path="res://assets/textures/Hand.png" id="24_ujry6"]
 [ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="25_3ym72"]
 
