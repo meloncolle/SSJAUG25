@@ -7,16 +7,16 @@ transparency = 4
 albedo_color = Color(0, 0.72, 0.672, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3kesw"]
-size = Vector3(1, 1, 11.5093)
+size = Vector3(2.1571, 1, 11.5093)
 
 [node name="ToggleALong" type="StaticBody3D" groups=["toggle_A"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 11.32, 0, 0, 5.26407)
+transform = Transform3D(2.13, 0, 0, 0, 1, 0, 0, 0, 11.32, 0, 0, 5.26407)
 mesh = SubResource("BoxMesh_na1x4")
 surface_material_override/0 = SubResource("StandardMaterial3D_pq5yj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.25465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00543213, 0, 5.25465)
 shape = SubResource("BoxShape3D_3kesw")

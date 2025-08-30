@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=43 format=4 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
@@ -19,6 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="17_ojnd0"]
 [ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="18_vxm53"]
 [ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="19_imd7t"]
+[ext_resource type="PackedScene" uid="uid://tkqwic1ysncl" path="res://scenes/prefab_scenes/props/billboard_single.tscn" id="20_awxro"]
+[ext_resource type="Texture2D" uid="uid://lxnei2r3lii8" path="res://assets/textures/ui/ads/billboard_bigmode.png" id="21_qsu7j"]
+[ext_resource type="Texture2D" uid="uid://ce70l7ly4m76m" path="res://assets/textures/ui/ads/billboard_tinymode.png" id="22_ujry6"]
+[ext_resource type="Texture2D" uid="uid://c4tnbasr1bbm1" path="res://assets/textures/collision_billboard.png" id="23_3ym72"]
+[ext_resource type="Texture2D" uid="uid://by3l7uxhpyuin" path="res://assets/textures/Hand.png" id="24_ujry6"]
+[ext_resource type="Shader" uid="uid://dgyq5cmuywwyq" path="res://resources/shaders/visual_shaders/unlit_no_cull_transparent.tres" id="25_3ym72"]
 
 [sub_resource type="Curve3D" id="Curve3D_gw66b"]
 _data = {
@@ -235,6 +241,17 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5jj3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("25_3ym72")
+shader_parameter/UvScale = Vector2(1, 1)
+shader_parameter/UvOffset = Vector2(1, 2)
+shader_parameter/diffuse_tex = ExtResource("24_ujry6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqtt4"]
+size = Vector3(0.224609, 1.00494, 1.87305)
+
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
 level_name = "Kye name your level pls"
 death_height = -270.0
@@ -253,9 +270,6 @@ curve = SubResource("Curve3D_gw66b")
 
 [node name="banana_whole48" parent="Track/level_Intsec_Path/banana_whole24" index="26" instance=ExtResource("19_imd7t")]
 transform = Transform3D(1, 0, 0, 9.04668e-10, 1, -1.05462e-08, -4.47035e-08, 0, 1, 12.7204, -112.302, 88.1573)
-
-[node name="banana_whole49" parent="Track/level_Intsec_Path/banana_whole24" index="27" instance=ExtResource("19_imd7t")]
-transform = Transform3D(1, 0, 0, 1.60316e-09, 1, -1.98594e-08, -8.19564e-08, 0, 1, 117.362, -121.331, 49.8167)
 
 [node name="0Path_a_level" parent="Track" index="2" instance=ExtResource("4_m1yo0")]
 transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
@@ -798,6 +812,182 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
 [node name="banana_whole47" parent="banana_whole23" index="25" instance=ExtResource("19_imd7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
 
+[node name="Big Up" parent="." index="75" instance=ExtResource("20_awxro")]
+transform = Transform3D(9.82326, 0, -1.87176, 0, 10, 0, 1.87176, 0, 9.82326, -11.5533, 25.1688, -56.1233)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up2" parent="." index="76" instance=ExtResource("20_awxro")]
+transform = Transform3D(-6.82509, 0, 7.30877, 0, 10, 0, -7.30877, 0, -6.82509, 82.0905, -71.3463, -82.7872)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up6" parent="." index="77" instance=ExtResource("20_awxro")]
+transform = Transform3D(-22.3406, 0, -11.2205, 0, 25, 0, 11.2205, 0, -22.3406, 104.393, -71.3463, 49.7099)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up7" parent="." index="78" instance=ExtResource("20_awxro")]
+transform = Transform3D(14.2643, 0, -20.5312, 0, 25, 0, 20.5312, 0, 14.2643, 219.11, -257.48, 204.726)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up3" parent="." index="79" instance=ExtResource("20_awxro")]
+transform = Transform3D(8.09304, 0, -5.8739, 0, 10, 0, 5.8739, 0, 8.09304, 208.461, -91.5454, -50.7812)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up4" parent="." index="80" instance=ExtResource("20_awxro")]
+transform = Transform3D(9.30539, 0, 3.66193, 0, 10, 0, -3.66193, 0, 9.30539, 202.517, -94.4419, -87.277)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Up5" parent="." index="81" instance=ExtResource("20_awxro")]
+transform = Transform3D(5.184, 0, 8.55138, 0, 10, 0, -8.55138, 0, 5.184, 175.914, -89.9852, -110.888)
+texture = ExtResource("21_qsu7j")
+
+[node name="Big Small" parent="." index="82" instance=ExtResource("20_awxro")]
+transform = Transform3D(-8.50012, 0, -5.26763, 0, 10, 0, 5.26763, 0, -8.50012, 26.0834, -23.3008, -1.72941)
+texture = ExtResource("22_ujry6")
+
+[node name="Big Small2" parent="." index="83" instance=ExtResource("20_awxro")]
+transform = Transform3D(-7.78835, 0, -6.27229, 0, 10, 0, 6.27229, 0, -7.78835, 39.4038, -23.3008, 16.52)
+texture = ExtResource("22_ujry6")
+
+[node name="Big Small3" parent="." index="84" instance=ExtResource("20_awxro")]
+transform = Transform3D(-7.78835, 0, -6.27229, 0, 10, 0, 6.27229, 0, -7.78835, 52.2005, -23.3008, 33.2635)
+texture = ExtResource("22_ujry6")
+
+[node name="Big Small4" parent="." index="85" instance=ExtResource("20_awxro")]
+transform = Transform3D(33.6616, 0, -36.9716, 0, 50, 0, 36.9716, 0, 33.6616, 173.379, -143.571, 281.696)
+texture = ExtResource("22_ujry6")
+
+[node name="toggle" parent="." index="86" instance=ExtResource("20_awxro")]
+transform = Transform3D(27.5507, 0, 11.8726, 0, 30, 0, -11.8726, 0, 27.5507, 343.351, -198.798, -72.7894)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle2" parent="." index="87" instance=ExtResource("20_awxro")]
+transform = Transform3D(21.5467, 0, 20.8744, 0, 30, 0, -20.8744, 0, 21.5467, 300.238, -205.28, -148.05)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle4" parent="." index="88" instance=ExtResource("20_awxro")]
+transform = Transform3D(3.66751, 0, 29.775, 0, 30, 0, -29.775, 0, 3.66751, 25.5399, -145.888, -411.505)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle5" parent="." index="89" instance=ExtResource("20_awxro")]
+transform = Transform3D(3.66751, 0, 29.775, 0, 30, 0, -29.775, 0, 3.66751, 25.5399, -111.971, -411.505)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle6" parent="." index="90" instance=ExtResource("20_awxro")]
+transform = Transform3D(3.66751, 0, 29.775, 0, 30, 0, -29.775, 0, 3.66751, 88.4038, -111.971, -401.505)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle7" parent="." index="91" instance=ExtResource("20_awxro")]
+transform = Transform3D(3.66751, 0, 29.775, 0, 30, 0, -29.775, 0, 3.66751, 88.4038, -147.145, -401.505)
+texture = ExtResource("23_3ym72")
+
+[node name="toggle3" parent="." index="92" instance=ExtResource("20_awxro")]
+transform = Transform3D(-1.82101, 0, -29.9447, 0, 30, 0, 29.9447, 0, -1.82101, 253.122, -216.207, -65.4547)
+texture = ExtResource("23_3ym72")
+
+[node name="Billboard" parent="." index="93" instance=ExtResource("20_awxro")]
+transform = Transform3D(18.3475, 0, 23.7354, 0, 30, 0, -23.7354, 0, 18.3475, 128.685, 17.0543, -187.409)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard2" parent="." index="94" instance=ExtResource("20_awxro")]
+transform = Transform3D(10.3281, 8.71957, 26.7824, -24.0756, 17.5382, 3.57432, -14.6184, -22.724, 13.0355, 62.4594, -54.4403, -79.4001)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard2" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard2/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard3" parent="." index="95" instance=ExtResource("20_awxro")]
+transform = Transform3D(-27.1247, 0.426731, 12.8088, 0.212372, 29.9942, -0.549521, -12.8141, -0.406193, -27.1225, 99.6521, -113.174, 144.647)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard3" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard3" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard3/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard4" parent="." index="96" instance=ExtResource("20_awxro")]
+transform = Transform3D(27.6428, -0.409155, -11.6492, 0.212372, 29.9942, -0.549521, 11.6545, 0.423892, 27.6404, 99.6521, -113.174, 144.647)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard4" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard4" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard4/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard5" parent="." index="97" instance=ExtResource("20_awxro")]
+transform = Transform3D(-24.4619, 0.581004, 17.3574, 0.207397, 29.9908, -0.711581, -17.3659, -0.460236, -24.4584, 73.3171, -146.823, 190.322)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard5" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard5" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard5/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard6" parent="." index="98" instance=ExtResource("20_awxro")]
+transform = Transform3D(25.1762, -0.387286, -16.3097, 0.210476, 29.9967, -0.38738, 16.3129, 0.210678, 25.1762, 73.3171, -146.823, 190.322)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard6" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard6" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard6/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard7" parent="." index="99" instance=ExtResource("20_awxro")]
+transform = Transform3D(-29.3298, 1.36522, -6.15609, 1.22742, 29.9643, 0.797239, 6.18504, 0.527544, -29.3507, -8.44058, -224, 270.302)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard7" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard7" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard7/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
+[node name="Billboard8" parent="." index="100" instance=ExtResource("20_awxro")]
+transform = Transform3D(29.062, 1.19915, 7.34574, -0.745465, 29.9281, -1.9363, -7.40554, 1.69325, 29.0222, -8.44058, -224, 270.302)
+texture = ExtResource("24_ujry6")
+
+[node name="Cube_002" parent="Billboard8" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_f5jj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Billboard8" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Billboard8/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00488281, 0.089447, 0.0468745)
+shape = SubResource("BoxShape3D_wqtt4")
+
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]
 [editable path="Track/level_Intsec_Path/Halfpipe"]
@@ -830,3 +1020,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
 [editable path="rail"]
 [editable path="rail2"]
 [editable path="rail3"]
+[editable path="Billboard"]
+[editable path="Billboard2"]
+[editable path="Billboard3"]
+[editable path="Billboard4"]
+[editable path="Billboard5"]
+[editable path="Billboard6"]
+[editable path="Billboard7"]
+[editable path="Billboard8"]

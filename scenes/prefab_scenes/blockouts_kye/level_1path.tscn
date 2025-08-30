@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=4 uid="uid://whp3cckxfph6"]
 
-[ext_resource type="PackedScene" uid="uid://c28xf6edlraif" path="res://_debug/toggle_a.tscn" id="1_4jhex"]
-[ext_resource type="PackedScene" uid="uid://bn4obd3fhk5or" path="res://_debug/toggle_b.tscn" id="2_dsrtm"]
+[ext_resource type="PackedScene" uid="uid://c28xf6edlraif" path="res://assets/models/toggle_a.tscn" id="1_4jhex"]
+[ext_resource type="PackedScene" uid="uid://bn4obd3fhk5or" path="res://assets/models/toggle_b.tscn" id="2_dsrtm"]
 [ext_resource type="Texture2D" uid="uid://dlvi6uuy63ynp" path="res://assets/models/skybox_dirt.png" id="3_c1equ"]
 [ext_resource type="Texture2D" uid="uid://c5e3f4vkm2ibt" path="res://assets/models/skybox_grasstile.png" id="4_s4i84"]
 [ext_resource type="Texture2D" uid="uid://bwcl2vp1h68el" path="res://assets/models/skybox_grasstile_S.png" id="5_m82to"]
-[ext_resource type="PackedScene" uid="uid://dlvxx8oqvlx0q" path="res://_debug/toggle_a_long.tscn" id="6_s4i84"]
-[ext_resource type="PackedScene" uid="uid://b6irq71edinjs" path="res://_debug/toggle_b_long.tscn" id="7_m82to"]
+[ext_resource type="PackedScene" uid="uid://dlvxx8oqvlx0q" path="res://assets/models/toggle_a_long.tscn" id="6_s4i84"]
+[ext_resource type="PackedScene" uid="uid://b6irq71edinjs" path="res://assets/models/toggle_b_long.tscn" id="7_m82to"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sd71"]
 resource_name = "grasstile_dirt.002"
@@ -178,23 +178,11 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_3i32w")
 disabled = true
 
-[node name="ToggleALong" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -7.08599, -48.0274, 20.271)
-
-[node name="ToggleALong6" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -7.08599, -36.504, 41.4056)
-
-[node name="ToggleALong7" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -37.4732, -56.9391, 26.0767)
-
 [node name="ToggleALong10" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -43.9778, -79.7382, 26.0767)
+transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -43.9778, -51.0027, 26.0767)
 
 [node name="ToggleALong25" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -96.0389, -89.6897, 11.6817)
-
-[node name="ToggleALong11" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -57.1222, -97.5182, 21.1148)
+transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -96.0389, -78.1233, 11.6817)
 
 [node name="ToggleALong12" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -127.196, -95.2734, 0.914267)
@@ -208,6 +196,9 @@ transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -108.4
 [node name="ToggleALong15" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -30.4656, -201.695, -21.3588)
 
+[node name="ToggleALong18" parent="." instance=ExtResource("6_s4i84")]
+transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -30.4656, -201.695, -21.3588)
+
 [node name="ToggleALong16" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -79.9143, -155.362, 68.1599)
 
@@ -216,21 +207,6 @@ transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -110.8
 
 [node name="ToggleALong8" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -66.6268, -100.239, 38.2565)
-
-[node name="ToggleALong9" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -57.8317, -111.032, 9.21757)
-
-[node name="ToggleALong2" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 5.61472, -34.3308, 2.26776)
-
-[node name="ToggleALong3" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -8.25931, -56.9764, -20.6518)
-
-[node name="ToggleALong4" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -30.5222, -61.6996, 2.17025)
-
-[node name="ToggleALong18" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -30.5222, -95.5748, -27.0313)
 
 [node name="ToggleALong19" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -116.702, -95.5748, -27.0313)
@@ -256,65 +232,29 @@ transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -246.4
 [node name="ToggleALong28" parent="." instance=ExtResource("6_s4i84")]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -292.568, -156.72, 34.6509)
 
-[node name="ToggleALong20" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -78.5608, -105.115, -6.96333)
-
-[node name="ToggleALong21" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -78.5608, -127.989, -53.372)
-
-[node name="ToggleALong22" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -22.3548, -127.989, -53.372)
-
-[node name="ToggleALong5" parent="." instance=ExtResource("6_s4i84")]
-transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -22.1452, -86.569, 2.17025)
-
-[node name="ToggleBLong" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.7082, -32.3167, -34.7323)
-
-[node name="ToggleBLong2" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -21.1809, -42.1827, -52.6191)
-
-[node name="ToggleBLong3" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -30.9754, -51.198, 0.854221)
-
-[node name="ToggleBLong5" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -52.0175, -69.3667, 0.854221)
-
-[node name="ToggleBLong8" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -82.0143, -122.675, -13.0182)
-
 [node name="ToggleBLong9" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -107.923, -122.675, 9.1973)
 
 [node name="ToggleBLong10" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -87.2331, -69.254, 9.1973)
 
-[node name="ToggleBLong12" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -87.2331, -136.029, -60.1538)
-
-[node name="ToggleBLong13" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -47.5538, -136.029, -56.4634)
-
-[node name="ToggleBLong14" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -81.3332, -91.501, -56.4634)
-
 [node name="ToggleBLong15" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -122.894, -115.486, -56.4634)
 
-[node name="ToggleBLong16" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -122.894, -74.8059, 17.0831)
-
 [node name="ToggleBLong23" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.8845, -80.5005, -14.7329)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.8845, -70.8594, -14.7329)
 
 [node name="ToggleBLong24" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -143.14, -92.4435, -14.7329)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -143.14, -86.5151, -31.3449)
 
 [node name="ToggleBLong25" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -180.973, -100.404, -26.0385)
 
 [node name="ToggleBLong26" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -252.251, -124.005, -26.0385)
+
+[node name="ToggleBLong31" parent="." instance=ExtResource("7_m82to")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -216.903, -124.005, -26.0385)
 
 [node name="ToggleBLong28" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -287.937, -153.163, -44.5081)
@@ -328,32 +268,5 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -362.215, -222.09, -26.0385)
 [node name="ToggleBLong27" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -256.403, -140.312, 16.9306)
 
-[node name="ToggleBLong17" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -122.894, -50.0608, -24.3042)
-
-[node name="ToggleBLong18" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -84.129, -39.7391, -37.2082)
-
-[node name="ToggleBLong19" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -84.129, -82.9068, -37.2082)
-
-[node name="ToggleBLong21" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -63.089, -77.6118, -37.2082)
-
-[node name="ToggleBLong22" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -93.0261, -56.8812, -17.3228)
-
-[node name="ToggleBLong20" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -69.3565, -105.193, -37.2082)
-
-[node name="ToggleBLong11" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -34.9866, -69.254, -48.054)
-
 [node name="ToggleBLong6" parent="." instance=ExtResource("7_m82to")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -70.7541, -90.4662, 0.854221)
-
-[node name="ToggleBLong7" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -43.9283, -38.2001, 0.854221)
-
-[node name="ToggleBLong4" parent="." instance=ExtResource("7_m82to")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1.42779, -51.198, -13.5772)

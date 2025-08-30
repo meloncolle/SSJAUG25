@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lxnei2r3lii8"
-path.s3tc="res://.godot/imported/billboard_bigmode.png-ea05c9e33696127cc71b4d5717cfb767.s3tc.ctex"
+uid="uid://c4tnbasr1bbm1"
+path.s3tc="res://.godot/imported/collision_billboard.png-5c8fe4887bcc7b27a274b0eebc025e34.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/ui/ads/billboard_bigmode.png"
-dest_files=["res://.godot/imported/billboard_bigmode.png-ea05c9e33696127cc71b4d5717cfb767.s3tc.ctex"]
+source_file="res://assets/textures/collision_billboard.png"
+dest_files=["res://.godot/imported/collision_billboard.png-5c8fe4887bcc7b27a274b0eebc025e34.s3tc.ctex"]
 
 [params]
 
