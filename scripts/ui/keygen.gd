@@ -27,6 +27,7 @@ func _process(_delta):
 func _on_close_requested():
 	
 	# KYE PUT KEYGEN CLOSE SOUND HERE
+	$Audio/keygen_close.play()
 	hide()
 
 func _on_open_requested():
@@ -37,11 +38,12 @@ func _on_open_requested():
 		i.hide()
 		i.modulate = Color(Color.WHITE, 1.0)
 		
-	# KYE PUT KEYGENOPEN SOUND HERE
+	$Audio/keygen_open.play()
 	show()
 		
 func add_input(input: Enums.CheatInput):
 	# KYE PUT KEYGEN CHARACTER ENTERED SOUND HERE
+	$Audio/keygen_type.play()
 	inputs.append(input)
 	
 	arrow_icons[inputs.size() -1 ].rotation = 0.5 * PI * input
@@ -50,7 +52,7 @@ func add_input(input: Enums.CheatInput):
 	# Check if current input sequence contains any valid cheat code
 	var result = CheatLib.find_match(inputs)
 	if result[0] != null:
-		# KYE PUT CHEATCODERIGHT SOUND HERE
+		$Audio/code_right.play()# KYE PUT CHEATCODERIGHT SOUND HERE
 		input_enabled = false
 		input_field.color = Color.LIGHT_GREEN
 		for i in range(result[1]):
@@ -60,7 +62,7 @@ func add_input(input: Enums.CheatInput):
 		_on_close_requested()
 
 	elif inputs.size() >= MAX_INPUTS:
-		# KYE PUT CHEATCODEWRONG SOUND HERE
+		$Audio/code_wrong.play()# KYE PUT CHEATCODEWRONG SOUND HERE
 		input_enabled = false
 		input_field.color = Color.RED
 		await get_tree().create_timer(0.25, false).timeout

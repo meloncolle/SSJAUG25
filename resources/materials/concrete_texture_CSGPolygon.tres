@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d23fyfqqom4fm"]
 
-[ext_resource type="Texture2D" uid="uid://c5mq72kbr8bwc" path="res://assets/textures/starting_line_concrete tile_64x64.png" id="1_mq1y8"]
+[ext_resource type="Texture2D" uid="uid://dkwdlibvcge02" path="res://assets/textures/starting_line_concrete tile_64x64.png" id="1_mq1y8"]
 
 [resource]
 albedo_texture = ExtResource("1_mq1y8")
-uv1_scale = Vector3(28.915, 36.535, 35.94)
+uv1_scale = Vector3(2.98, 2.98, 2.98)

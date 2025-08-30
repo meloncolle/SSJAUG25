@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://c82tul4b1lqlu"]
+[gd_scene load_steps=10 format=3 uid="uid://c82tul4b1lqlu"]
 
 [ext_resource type="Script" uid="uid://jeycota2uk8n" path="res://scripts/ui/settings_menu.gd" id="1_8ykqg"]
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_0701v"]
 [ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="3_et38n"]
+[ext_resource type="Texture2D" uid="uid://u8v7xnucalrq" path="res://assets/textures/ui/button_frame_idle.png" id="3_iwlx3"]
+[ext_resource type="Texture2D" uid="uid://d1or17ctw5rfo" path="res://assets/textures/ui/button_hover_spritesheet.png" id="4_shxyj"]
+[ext_resource type="FontFile" uid="uid://5tudcx1xixnt" path="res://assets/fonts/Players-Italic.woff" id="6_lglw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e0el"]
+atlas = ExtResource("4_shxyj")
+region = Rect2(0, 0, 300, 75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hf0e7"]
+resource_local_to_scene = true
+font = ExtResource("6_lglw8")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pms53"]
+resource_local_to_scene = true
+font = ExtResource("6_lglw8")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SettingsMenu" type="Control"]
 process_mode = 2
@@ -21,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.305882)
+color = Color(0, 0, 0, 0.541176)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -47,39 +70,88 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="ConfirmButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_iwlx3")
+texture_focused = SubResource("AtlasTexture_8e0el")
+script = ExtResource("3_et38n")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ConfirmButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONFIRM"
+label_settings = SubResource("LabelSettings_hf0e7")
 horizontal_alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="CancelButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Confirm"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_iwlx3")
+texture_focused = SubResource("AtlasTexture_8e0el")
 script = ExtResource("3_et38n")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="CancelButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-text = "Cancel"
-script = ExtResource("3_et38n")
-metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+[node name="Label" type="Label" parent="Panel/VBoxContainer/CancelButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CANCEL"
+label_settings = SubResource("LabelSettings_pms53")
+horizontal_alignment = 1
 
 [node name="Settings" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CamSensitivity" type="Control" parent="Settings"]
 anchors_preset = 0
-offset_left = 97.0
-offset_top = 228.0
-offset_right = 137.0
-offset_bottom = 295.0
+offset_right = 40.0
+offset_bottom = 67.0
 
 [node name="HSlider" type="HSlider" parent="Settings/CamSensitivity"]
-layout_mode = 0
-offset_right = 303.0
-offset_bottom = 47.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -23.5
+offset_right = 151.5
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
 min_value = 0.01
 max_value = 0.2
 step = 0.01
@@ -87,23 +159,15 @@ value = 0.01
 
 [node name="Label" type="Label" parent="Settings/CamSensitivity"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 144.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -46.5
+offset_right = -9.0
+offset_bottom = -23.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Camera Sensitivity"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 519.0
-offset_top = 16.0
-offset_right = 1131.0
-offset_bottom = 441.0
-text = "TODO:
--Volume (SFX / BGM)
-- Gyro enable (with warning)?
-- Gyro tilt sensitivity
-
-style this so it doesnt fucking suckk"

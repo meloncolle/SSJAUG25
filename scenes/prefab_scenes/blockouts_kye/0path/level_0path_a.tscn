@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://jlhisr8heyuo"]
+
+[ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_od0kw"]
+[ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="2_do3v4"]
+
+[sub_resource type="Curve3D" id="Curve3D_ofuue"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0198013, 10.5947, 0.000556012, -6.67157, 0, -20.0146, 6.67157, 0, 20.0146, -85.756, 0, 102.928, 19.2733, 0, 31.1339, -19.2733, 0, -31.1339, -16.243, 0, 41.0697, 6.09265, 6.94581, -3.81181, -6.09265, -6.94581, 3.81181, -104.624, -11.4927, 81.3579, -7, 9, -9, 7, -9, 9, -105.372, -22.8505, 96.2845, 0, 0, 0, 0, 0, 0, -86.0598, -34.6713, 103.531, 9.86655, 0, 7.06096, -9.86655, 0, -7.06096, -54.3801, -37.2374, -7.04496, 28.1258, 0, 19.9129, -28.1258, 0, -19.9129, -128.531, -45.4879, 81.5483, 11.3554, 0, 10.1972, -11.3554, 0, -10.1972, -72.4656, -57.0516, -5.03347, 0, 0, 0, 0, 0, 0, -118.648, -78.7508, -14.6271),
+"tilts": PackedFloat32Array(0, 0, 0, -0.310049, -1.56338, -1.96745, -1.7068, -1.41271, -1.68578, -1.72501)
+}
+point_count = 10
+
+[node name="Germantown0Path_a" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_od0kw")]
+
+[node name="Path3D" parent="Road" index="0"]
+transform = Transform3D(0.999998, 0.00186893, 0.00108997, -0.00186899, 0.999998, 5.24953e-05, -0.00108987, -5.45172e-05, 0.999999, 0, 129.763, 0)
+curve = SubResource("Curve3D_ofuue")
+
+[node name="mountain_props" parent="." instance=ExtResource("2_do3v4")]
+transform = Transform3D(-0.985868, 0, 0.167526, 0, 1, 0, -0.167526, 0, -0.985868, -147.109, -88.4281, 141.783)
+
+[node name="mountain 1" parent="mountain_props" index="3"]
+visible = false
+
+[node name="mountain 2" parent="mountain_props" index="4"]
+transform = Transform3D(-0.586241, -0.0529842, -0.808402, -0.114026, 0.993322, 0.0175857, 0.802073, 0.102488, -0.588368, -15.7007, 172.151, -7.1904)
+visible = true
+
+[editable path="Road"]
+[editable path="mountain_props"]

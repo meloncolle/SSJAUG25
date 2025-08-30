@@ -8,8 +8,9 @@ var level_state: Enums.LevelState
 signal level_state_changed
 
 @export var tilt_speed:= 2.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = PI / 4.0
-@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = PI / 4.0
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_x: float = deg_to_rad(20)
+@export_range(0, 90, 0.1, "radians_as_degrees") var tilt_limit_z: float = deg_to_rad(20)
+@export var camera_smoothing := 5.0
 
 var desired_gravity:= Vector3.DOWN
 
@@ -24,6 +25,11 @@ var player: RigidBody3D = null
 @onready var goal: Node3D = $Track/Goal
 
 var debug_panel = null
+
+var input_vec := Vector2.ZERO
+var cam_vec := Vector3.UP
+
+@onready var countdown_player: AnimationPlayer = $CanvasLayer/Countdown/AnimationPlayer
 
 # HUD stuff
 #------------------
@@ -74,7 +80,7 @@ func _ready():
 	cam.position = spawn_point.position
 	
 	# Load debug panel and hookup signals only on debug build
-	if OS.is_debug_build():
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		debug_panel = load("res://_debug/debug_panel.tscn").instantiate()
 		$CanvasLayer.add_child(debug_panel)
 		
@@ -120,6 +126,7 @@ func _physics_process(delta):
 	
 	if level_state == Enums.LevelState.RACING:
 		input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		input_vec = input
 		# Disable cam while keygen input accepted
 		if !keygen.visible: cam_input = Input.get_axis("cam_left", "cam_right")
 		
@@ -150,8 +157,9 @@ func _physics_process(delta):
 		desired_gravity.y = -1
 
 	update_gravity(delta)
-	if OS.is_debug_build():
-		emit_signal("speed_changed", player.linear_velocity.length())
+	emit_signal("speed_changed", player.linear_velocity.length())
+	
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("velocity_changed", player.linear_velocity)
 
 # lerp current gravity towards desired gravity @ tilt_speed. Update camera rotation to match
@@ -160,12 +168,22 @@ func update_gravity(delta) -> void:
 			get_viewport().find_world_3d().space,
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR)
 	
+	#Complicated, and there's gotta be a more performant way, but works fine
+	var delta_x = delta
+	var delta_z = delta
+	if ((current_gravity.x > 0 && player.linear_velocity.x < 0) || (current_gravity.x < 0 && player.linear_velocity.x > 0)):
+		desired_gravity.x *= 2.5
+		delta_x *= 4
+	if ((current_gravity.z > 0 && player.linear_velocity.z < 0) || (current_gravity.z < 0 && player.linear_velocity.z > 0)):
+		desired_gravity.z *= 2.5
+		delta_z *= 4
+		
 	# idk why this is behaving differently than using Vector3.move_toward?? 
 	# but this is what i wanted
 	var new_gravity:= Vector3(
-		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta),
+		move_toward(current_gravity.x, desired_gravity.x, tilt_speed * delta_x),
 		move_toward(current_gravity.y, desired_gravity.y, tilt_speed * delta),
-		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta)
+		move_toward(current_gravity.z, desired_gravity.z, tilt_speed * delta_z)
 	)
 	
 	PhysicsServer3D.area_set_param(
@@ -173,10 +191,14 @@ func update_gravity(delta) -> void:
 			PhysicsServer3D.AREA_PARAM_GRAVITY_VECTOR,
 			new_gravity)
 	
-	cam.pitch = -new_gravity.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
-	cam.roll = new_gravity.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
+	var target_cam_vec = Vector3.UP.rotated(Vector3.FORWARD, input_vec.x * tilt_limit_x)
+	target_cam_vec = target_cam_vec.rotated(Vector3.RIGHT, input_vec.y * tilt_limit_z)
+	cam_vec = cam_vec.lerp(target_cam_vec, camera_smoothing * delta).normalized()
 	
-	if OS.is_debug_build():
+	cam.pitch = -cam_vec.z #-cam_vec.rotated(Vector3.UP, cam.yaw).z * PI * 0.5
+	cam.roll = cam_vec.x #cam_vec.rotated(Vector3.UP, -cam.yaw).x * PI * 0.5
+	
+	if OS.is_debug_build() && Config.DEBUG_PANEL:
 		emit_signal("gravity_changed", new_gravity)
 
 # triggered when valid code entered in keygen
@@ -188,6 +210,26 @@ func _on_code_accepted(code: CheatCode):
 			player.size -= 1
 		"bigmode":
 			player.size += 1
+		"toggler":
+			var is_active: bool = CheatLib.is_active("toggler")
+			CheatLib.set_active("toggler", !is_active)
+			
+			var mat: Material
+			var color: Color
+			
+			for i in get_tree().get_nodes_in_group("toggle_A"):
+				i.set_collision_layer_value(1, is_active)
+				mat = i.get_child(0).get_surface_override_material(0)
+				color = mat.albedo_color
+				color.a = 1.0 if is_active else 0.5
+				mat.albedo_color = color
+				
+			for i in get_tree().get_nodes_in_group("toggle_B"):
+				i.set_collision_layer_value(1, !is_active)
+				mat = i.get_child(0).get_surface_override_material(0)
+				color = mat.albedo_color
+				color.a = 0.5 if is_active else 1.0
+				mat.albedo_color = color
 
 # Read settings from config and update values in game
 func _on_settings_changed():
@@ -200,13 +242,25 @@ func set_state(new_state: Enums.LevelState):
 	
 	match new_state:
 		Enums.LevelState.WAIT_START:
-			pass
+			# todo: make this better and also do the HUD breaking anim thing
+			# KYE LEVEL COUNTDOWN STARTS HERE
+			$Audio/COUNTDOWN.play()
+			countdown_player.play("3")
+			await countdown_player.animation_finished
+			countdown_player.play("2")
+			await countdown_player.animation_finished
+			countdown_player.play("1")
+			await countdown_player.animation_finished
+			countdown_player.play("go")
+			await get_tree().create_timer(0.1).timeout
+			player.do_intro()
 			
 		Enums.LevelState.RACING:
 			pass
 			
 		Enums.LevelState.DYING:
 			# KYE PUT FALLOFF SOUND HERE
+			$Audio/fall_off.play()
 			keygen._on_close_requested()
 			var tween: Tween = Overlay.fade_to_black(1.0)
 			await tween.finished
@@ -220,17 +274,23 @@ func set_state(new_state: Enums.LevelState):
 			
 		Enums.LevelState.END:
 			keygen._on_close_requested()
+			player.stop()
+			cam.do_spin = true
 			
 func _on_game_state_changed(new_state: Enums.GameState):
 	match new_state:
 		Enums.GameState.IN_GAME:
 			# KYE PUT UNPAUSE SOUND HERE
+			$Audio/unpause.play()
+			
 			if keygen.reopen_on_resume:
 				keygen.reopen_on_resume = false
 				keygen.show()
 			
 		Enums.GameState.PAUSED:
 			# KYE PUT PAUSE SOUND HERE
+			$Audio/pause.play()
+			
 			if keygen.visible:
 				keygen.reopen_on_resume = true
 				keygen.hide()
@@ -240,11 +300,15 @@ func _on_intro_complete():
 	# Prevents player from rolling slightly before start
 	# We should be spawning player over pretty flat ground
 	player.can_sleep = false
+	# KYE YOU GAIn CONTROL OF PLAYER HERE
+
 
 func _on_banana_got(time_restored: float):
 	# KYE PUT BANANA PICKUP SOUND HERE
+	#$Audio/pickup_nana.play()
 	timer -= time_restored
 	# KYE PUT BANANA EATING SOUND HERE
+	$Audio/eat_nana.play()
 	# we'll adjust that timer to wait for eating sound
 	await get_tree().create_timer(0.5).timeout
 	throw_banana()
@@ -254,8 +318,15 @@ func throw_banana():
 	self.add_child(banana)
 	banana.position = player.position
 	# KYE PUT BANANA THROWING SOUND HERE
+	$Audio/throw_nana.play()
 	
 func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
+	$Audio/passed_finish.play()
+	$Audio/music_main.stop()
 	set_state(Enums.LevelState.END)
+	await get_tree().create_timer(3.0).timeout
 	%EndScreen.show_results(timer)
+	var new_hi_score: int = Save.add_new_score(level_name, timer)
+	#var hi_scores = Save.data.get_value("Scores", level_name, [])
+	#print(hi_scores)

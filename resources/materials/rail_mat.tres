@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bixvnpfgr64q1"]
+
+[ext_resource type="Texture2D" uid="uid://fb7o4vikm206" path="res://assets/textures/MetalCorrodedHeavy001/MetalCorrodedHeavy001_DISP_2K_METALNESS.jpg" id="1_5mhry"]
+[ext_resource type="Texture2D" uid="uid://w05tg3878j1b" path="res://assets/textures/MetalCorrodedHeavy001/MetalCorrodedHeavy001_NRM_2K_METALNESS.jpg" id="2_bvmc2"]
+
+[resource]
+albedo_texture = ExtResource("1_5mhry")
+metallic = 0.54
+metallic_specular = 0.62
+metallic_texture = ExtResource("2_bvmc2")
+uv1_scale = Vector3(-0.43, 6.865, 1)
+uv1_offset = Vector3(0.6, -0.155, 0)

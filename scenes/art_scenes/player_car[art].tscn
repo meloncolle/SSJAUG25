@@ -12,11 +12,11 @@ car_crushed = NodePath("car_scuffed[art]")
 particles = NodePath("ExplodeParticles[art]")
 
 [node name="car_scuffed[art]" parent="." instance=ExtResource("1_wiw4p")]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+transform = Transform3D(0.153147, 0, -0.475969, 0.091561, 0.490661, 0.0294605, 0.467079, -0.0961839, 0.150286, 0, 0, 0)
 visible = false
 
 [node name="car_solo[art]" parent="." instance=ExtResource("2_ssd4o")]
-transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0.287248, 0)
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0, 0, 0)
 
 [node name="ExplodeParticles[art]" parent="." instance=ExtResource("4_ik243")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.165338, 0)

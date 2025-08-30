@@ -68,10 +68,7 @@ func DoStartSequence():
 	eject = false
 	var start_pos = global_position
 	
-	var random_offset = Vector3(
-			randf_range(-eject_range, eject_range),
-			0.0,
-			randf_range(-eject_range, eject_range))
+	var random_offset = Vector3(eject_range, 0.0, eject_range).rotated(Vector3.UP, randf_range(0, 1.25 * PI))
 	var land_position = global_position + random_offset
 	look_at(global_position - random_offset, Vector3.UP)
 	
@@ -209,7 +206,7 @@ func FlattenV3(vec : Vector3) -> Vector3:
 func ProjectV3(vec, normal) -> Vector3:
 	return vec - (normal * normal.dot(vec))
 
-func PlayFinishAnimation(has_won : bool):
+func PlayFinishAnimation(has_won : bool = true):
 	if has_won:
 		state_machine.travel("win-start")
 	else:

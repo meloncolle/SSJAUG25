@@ -1,7 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://cccvsiorwsaq2"]
+[gd_scene load_steps=16 format=3 uid="uid://cccvsiorwsaq2"]
 
+[ext_resource type="PackedScene" uid="uid://bkk62r7c2in4o" path="res://scenes/art_scenes/start_menu_scene.tscn" id="1_6in8r"]
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_peq1g"]
+[ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="1_ua7ul"]
 [ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="2_1n352"]
+[ext_resource type="Texture2D" uid="uid://u8v7xnucalrq" path="res://assets/textures/ui/button_frame_idle.png" id="2_purv8"]
+[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="2_w3lfl"]
+[ext_resource type="Texture2D" uid="uid://d1or17ctw5rfo" path="res://assets/textures/ui/button_hover_spritesheet.png" id="2_ymcff"]
+[ext_resource type="FontFile" uid="uid://5tudcx1xixnt" path="res://assets/fonts/Players-Italic.woff" id="5_acja7"]
+[ext_resource type="Texture2D" uid="uid://plf2k212eww2" path="res://assets/textures/Peel Out Logo.png" id="9_rjiyv"]
+[ext_resource type="Texture2D" uid="uid://cx7cn6hqa0xo1" path="res://assets/textures/dealership_logo.png" id="10_tytj7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmb6o"]
+shader = ExtResource("1_ua7ul")
+shader_parameter/amplitude = 2.465
+shader_parameter/frequency = 0.06
+shader_parameter/speed = 2.765
+shader_parameter/scale = 40.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(-0.3, -0.3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_purv8"]
+atlas = ExtResource("2_ymcff")
+region = Rect2(0, 0, 300, 75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_acja7"]
+resource_local_to_scene = true
+font = ExtResource("5_acja7")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lpa1"]
+resource_local_to_scene = true
+font = ExtResource("5_acja7")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6in8r"]
+resource_local_to_scene = true
+font = ExtResource("5_acja7")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -11,28 +56,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hmb6o")
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 487.0
+grow_vertical = 2
+texture = ExtResource("2_w3lfl")
+expand_mode = 1
+stretch_mode = 1
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -52.0
-offset_right = 159.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -269.0
+offset_right = 397.0
+offset_bottom = -162.0
+grow_vertical = 0
 theme = ExtResource("1_peq1g")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 2
-offset_top = -86.5
-offset_right = 317.0
-offset_bottom = -60.5
-text = "TITLE"
-horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -45,14 +91,94 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Start"
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_purv8")
+texture_focused = SubResource("AtlasTexture_purv8")
 script = ExtResource("2_1n352")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="ExitButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+label_settings = SubResource("LabelSettings_acja7")
+horizontal_alignment = 1
+
+[node name="CreditsButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_purv8")
+texture_focused = SubResource("AtlasTexture_purv8")
 script = ExtResource("2_1n352")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/CreditsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_7lpa1")
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_purv8")
+texture_focused = SubResource("AtlasTexture_purv8")
+script = ExtResource("2_1n352")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_6in8r")
+horizontal_alignment = 1
+
+[node name="menu_music" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/music_menu"
+event_guid = "{cbdfa9a5-5292-4c83-8c27-d16fe3abe836}"
+position = Vector2(516, 315)
+
+[node name="StartMenuScene" parent="." instance=ExtResource("1_6in8r")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(359, 201)
+scale = Vector2(0.759298, 0.759298)
+texture = ExtResource("9_rjiyv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-170, 170)
+scale = Vector2(0.396825, 0.396825)
+texture = ExtResource("10_tytj7")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://fmefyrptatf2"]
+
+[ext_resource type="PackedScene" uid="uid://clfjq5p4mfhfd" path="res://scenes/art_scenes/halfpipe_shallow.tscn" id="1_qmaqe"]
+
+[node name="Level2Path" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_qmaqe")]
+
+[editable path="Road"]

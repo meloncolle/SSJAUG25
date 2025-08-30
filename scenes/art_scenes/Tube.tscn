@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://crho0vr6haiap"]
+
+[ext_resource type="Shader" uid="uid://bvk41t5ip7prr" path="res://resources/shaders/visual_shaders/base_lit.tres" id="1_iyqcx"]
+[ext_resource type="Texture2D" uid="uid://b41syod0tfwi" path="res://assets/textures/road_tile.png" id="2_rpx3c"]
+
+[sub_resource type="Curve3D" id="Curve3D_mduqr"]
+_data = {
+"points": PackedVector3Array(4.57458, -0.730728, -16.0892, -4.57458, 0.730728, 16.0892, -0.297852, -1.6431, -0.271261, 0, 0, 0, 0, 0, 0, 0.0216179, 0, 46.0497),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choar"]
+render_priority = 0
+shader = ExtResource("1_iyqcx")
+shader_parameter/UvScale = Vector2(1.03, 4.485)
+shader_parameter/UvOffset = Vector2(0, -0.62)
+shader_parameter/diffuse_tex = ExtResource("2_rpx3c")
+shader_parameter/VertexColorAmt = 0.0
+shader_parameter/Tint = Color(1, 1, 1, 1)
+
+[node name="Tube" type="Node3D"]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_mduqr")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0356271, 0)
+calculate_tangents = false
+use_collision = true
+polygon = PackedVector2Array(3.07455, -1.06951, 1.39054, -0.573095, 0.307631, 0.332612, -0.193221, 1.85072, -0.428557, 3.65457, -0.175454, 4.94187, 0.501916, 5.97487, 1.51592, 6.53434, 3.2253, 6.82217, 3.23413, 5.95359, 1.82808, 5.65781, 0.740055, 4.8455, 0.627838, 3.62834, 0.869184, 1.97491, 1.77704, 0.401365, 3.22245, -0.257946, 5.47698, 0.0948503, 6.58801, 0.848124, 7.1617, 2.07644, 7.56252, 3.62816, 6.80012, 5.15278, 5.89174, 5.705, 4.30993, 5.95409, 4.23876, 6.84487, 6.15062, 6.49297, 7.68861, 5.31952, 8.27264, 3.7978, 8.16107, 1.97201, 7.47456, 0.212746, 5.72348, -0.749652)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 2.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = true
+path_continuous_u = true
+path_u_distance = 4.0
+path_joined = false
+material = SubResource("ShaderMaterial_choar")

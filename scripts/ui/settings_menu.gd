@@ -4,8 +4,8 @@ extends Control
 signal settings_closed
 signal settings_changed
 
-@onready var confirm_button: Button = $Panel/VBoxContainer/ConfirmButton
-@onready var cancel_button: Button = $Panel/VBoxContainer/CancelButton
+@onready var confirm_button: SoundButton = $Panel/VBoxContainer/ConfirmButton
+@onready var cancel_button: SoundButton = $Panel/VBoxContainer/CancelButton
 
 @onready var cam_sensitivity: HSlider = $Settings/CamSensitivity/HSlider
 

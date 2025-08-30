@@ -24,11 +24,13 @@ func _ready():
 				p_systems.append(i)
 				
 	if set_tracking_on_ready: is_tracking = true
+	global_transform = target.global_transform
 
 func _process(_delta):
-	if !is_tracking : return
-	
-	global_transform = target.global_transform
+	if !is_tracking:
+		car_default.position = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)) * 0.005
+	else:
+		global_transform = target.global_transform
 
 func SwapModels():
 	if car_default : car_default.visible = false

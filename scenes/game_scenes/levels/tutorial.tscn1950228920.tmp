@@ -1,0 +1,371 @@
+[gd_scene load_steps=21 format=3 uid="uid://sltc862m5v18"]
+
+[ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_xy6ot"]
+[ext_resource type="Texture2D" uid="uid://cx7cn6hqa0xo1" path="res://assets/textures/dealership_logo.png" id="3_pq5yj"]
+[ext_resource type="PackedScene" uid="uid://cwq5f08rg2xux" path="res://scenes/prefab_scenes/tutorial/tutorial_gap.tscn" id="3_ttcas"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="4_orkap"]
+[ext_resource type="PackedScene" uid="uid://716uq44fspk0" path="res://scenes/prefab_scenes/tutorial/tutorial_landing.tscn" id="5_0wqkg"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="5_w8jns"]
+[ext_resource type="PackedScene" uid="uid://bkkhlialwjf5j" path="res://scenes/prefab_scenes/tutorial/tutorial_ramp.tscn" id="6_orkap"]
+[ext_resource type="PackedScene" uid="uid://nlw8rfi65qd7" path="res://scenes/prefab_scenes/tutorial/tutorial_flat.tscn" id="6_w8jns"]
+[ext_resource type="PackedScene" uid="uid://tkqwic1ysncl" path="res://scenes/prefab_scenes/props/billboard_single.tscn" id="9_na1x4"]
+[ext_resource type="PackedScene" uid="uid://dsi2287jpdo4b" path="res://scenes/prefab_scenes/props/input_change_billboard.tscn" id="9_w8jns"]
+[ext_resource type="Texture2D" uid="uid://ce70l7ly4m76m" path="res://assets/textures/ui/ads/billboard_tinymode.png" id="10_pq5yj"]
+
+[sub_resource type="GDScript" id="GDScript_na1x4"]
+resource_name = "tutorial_message"
+script/source = "extends CenterContainer
+
+@onready var panel: PanelContainer = $PanelContainer
+@onready var text_box: RichTextLabel = $PanelContainer/RichTextLabel
+@onready var sponsor_message: HBoxContainer = $PanelContainer/SponsorMessage
+@onready var font: Font = text_box.get_theme_default_font()
+@onready var style: StyleBox = text_box.get_theme_stylebox(\"normal\")
+
+@onready var box_tween: Tween
+
+var strip_bbcode_regex: RegEx
+
+var msg1 = \"\"\"Welcome to [b][i][color=yellow]Dick Peeler's Peel Out!![/color][/i][/b]  All you gotta do is reach the goal as fast as possible!!
+
+[font_size=14]
+[table=2]
+[cell border=white padding=2,2,2,2][b]L Stick / WASD[/b][/cell][cell border=white padding=2,2,2,2]Move character[/cell][cell border=white padding=2,2,2,2][b]R Stick / 🠉🠈🠋🠊[/b][/cell][cell border=white padding=2,2,2,2]Move camera[/cell][cell border=white padding=2,2,2,2][b]Start / ESC[/b][/cell][cell border=white padding=2,2,2,2]Pause[/cell]
+[/table]
+[/font_size]\"\"\"
+
+var msg2 = \"If you fall off-course, you'll respawn at the last checkpoint flag!\"
+var msg3 = \"Eat nutritious banana peels to restore your timer!\"
+var msg4 = \"Some paths might seem impossible... but there's always a way!\"
+var msg5 = \"The goal is just ahead!! Can you make the jump?\"
+
+
+func _ready():
+	strip_bbcode_regex = RegEx.new()
+	strip_bbcode_regex.compile(\"\\\\[.*?\\\\]\")
+		
+func show_message(msg: String):
+	if box_tween:
+		box_tween.kill()
+	box_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	var full_width: float = size.x - style.content_margin_left - style.content_margin_right
+	var full_height: float = font.get_multiline_string_size(strip_bbcode_regex.sub(msg, \"\", true), 0, full_width).y + style.content_margin_top + style.content_margin_bottom + sponsor_message.size.y
+	size.y = full_height
+	box_tween.tween_property(panel, \"custom_minimum_size\", Vector2(size.x, full_height), 0.25)
+	
+	text_box.text = msg
+	text_box.show()
+	await box_tween.finished
+	sponsor_message.show()
+	
+func hide_message():
+	if box_tween:
+		box_tween.kill()
+	box_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	box_tween.tween_property(panel, \"custom_minimum_size\", Vector2(size.x, 0), 0.1)
+	text_box.hide()
+	sponsor_message.hide()
+	
+func _on_area_1_body_entered(body: Node3D) -> void:
+	if body is Player:
+		show_message(msg1)
+
+func _on_area_2_body_entered(body: Node3D) -> void:
+	if body is Player:
+		show_message(msg2)
+		
+func _on_area_3_body_entered(body: Node3D) -> void:
+	if body is Player:
+		show_message(msg3)
+		
+func _on_area_4_body_entered(body: Node3D) -> void:
+	if body is Player:
+		show_message(msg4)
+		
+func _on_area_5_body_entered(body: Node3D) -> void:
+	if body is Player:
+		show_message(msg5)
+		
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body is Player:
+		hide_message()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na1x4"]
+bg_color = Color(0, 0, 0, 0.509804)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_na1x4"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="FontVariation" id="FontVariation_8egxt"]
+spacing_top = 3
+spacing_bottom = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_na1x4"]
+size = Vector3(10, 3, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pq5yj"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8egxt"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85c7o"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n8taq"]
+size = Vector3(5, 5, 5)
+
+[node name="BaseLevel" instance=ExtResource("1_xy6ot")]
+level_name = "Tutorial"
+
+[node name="CamRig" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 13.3417, 0.0180929)
+
+[node name="Timer" parent="CanvasLayer" index="3"]
+offset_left = 276.0
+offset_right = 451.0
+
+[node name="TutorialMessage" type="CenterContainer" parent="CanvasLayer" index="6"]
+offset_left = 639.0
+offset_right = 1024.0
+offset_bottom = 285.0
+script = SubResource("GDScript_na1x4")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TutorialMessage" index="0"]
+custom_minimum_size = Vector2(385, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_na1x4")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TutorialMessage/PanelContainer" index="0"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_na1x4")
+bbcode_enabled = true
+text = "
+"
+scroll_active = false
+
+[node name="SponsorMessage" type="HBoxContainer" parent="CanvasLayer/TutorialMessage/PanelContainer" index="1"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/TutorialMessage/PanelContainer/SponsorMessage" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/italics_font = SubResource("FontVariation_8egxt")
+theme_override_font_sizes/italics_font_size = 10
+bbcode_enabled = true
+text = "[i]Brought to you[/i]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="PanelContainer" type="TextureRect" parent="CanvasLayer/TutorialMessage/PanelContainer/SponsorMessage" index="1"]
+layout_mode = 2
+texture = ExtResource("3_pq5yj")
+expand_mode = 3
+
+[node name="SpawnPoint" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.4888, 1.80474)
+
+[node name="BGCam" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
+[node name="Track" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0507, 0)
+
+[node name="Landing" parent="Track" index="0" instance=ExtResource("5_0wqkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141482, -0.076499, 0.140726)
+
+[node name="Ramps" type="Node3D" parent="Track" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.636, -1.358, -9.559)
+
+[node name="Ramp" parent="Track/Ramps" index="0" instance=ExtResource("6_orkap")]
+
+[node name="Ramp2" parent="Track/Ramps" index="1" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Ramp3" parent="Track/Ramps" index="2" instance=ExtResource("6_orkap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="Ramp4" parent="Track" index="2" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.86988, -7.83726, -36.3367)
+
+[node name="Checkpoint" parent="Track" index="3" instance=ExtResource("4_orkap")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.14295, -7.34641, -36.3134)
+
+[node name="Checkpoint2" parent="Track" index="4" instance=ExtResource("4_orkap")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.5389, -7.34641, -56.598)
+
+[node name="Flat" parent="Track" index="5" instance=ExtResource("6_w8jns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.87, -7.837, -36.796)
+
+[node name="Nanas" type="Node3D" parent="Track" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.008, -7.82359, -49.2257)
+
+[node name="banana_whole3" parent="Track/Nanas" index="0" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.8796, 0.980349, 11.4929)
+
+[node name="banana_whole5" parent="Track/Nanas" index="1" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.8796, 0.980349, 12.4929)
+
+[node name="banana_whole6" parent="Track/Nanas" index="2" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.8796, 0.980349, 13.4929)
+
+[node name="banana_whole7" parent="Track/Nanas" index="3" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.8796, 0.980349, 14.4929)
+
+[node name="banana_whole4" parent="Track/Nanas" index="4" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.8796, 0.980349, 10.4929)
+
+[node name="banana_whole11" parent="Track/Nanas" index="5" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 0.8796, 0.980349, 14.5012)
+anim_time_offset = 0.25
+
+[node name="banana_whole12" parent="Track/Nanas" index="6" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 0.8796, 0.980349, 10.5012)
+anim_time_offset = 0.25
+
+[node name="banana_whole14" parent="Track/Nanas" index="7" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -0.1204, 0.980349, 12.4929)
+anim_time_offset = 0.5
+
+[node name="banana_whole16" parent="Track/Nanas" index="8" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -0.1204, 0.980349, 14.4929)
+anim_time_offset = 0.5
+
+[node name="banana_whole17" parent="Track/Nanas" index="9" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -0.1204, 0.980349, 10.4929)
+anim_time_offset = 0.5
+
+[node name="banana_whole21" parent="Track/Nanas" index="10" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -1.1204, 0.980349, 14.4929)
+anim_time_offset = 0.75
+
+[node name="banana_whole22" parent="Track/Nanas" index="11" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -1.1204, 0.980349, 10.4929)
+anim_time_offset = 0.75
+
+[node name="banana_whole23" parent="Track/Nanas" index="12" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -2.1204, 0.980349, 11.4929)
+anim_time_offset = 1.0
+
+[node name="banana_whole24" parent="Track/Nanas" index="13" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -2.1204, 0.980349, 12.4929)
+anim_time_offset = 1.0
+
+[node name="banana_whole25" parent="Track/Nanas" index="14" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -2.1204, 0.980349, 13.4929)
+anim_time_offset = 1.0
+
+[node name="banana_whole26" parent="Track/Nanas" index="15" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -2.1204, 0.980349, 14.4929)
+anim_time_offset = 1.0
+
+[node name="banana_whole27" parent="Track/Nanas" index="16" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -2.1204, 0.980349, 10.4929)
+anim_time_offset = 1.0
+
+[node name="Ramp5" parent="Track" index="7" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.87, -7.837, -36.265)
+
+[node name="Ramp6" parent="Track" index="8" instance=ExtResource("6_orkap")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.3294, -7.83726, -38.7661)
+
+[node name="Ramp7" parent="Track" index="9" instance=ExtResource("6_orkap")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 28.3294, -7.837, -48.7657)
+
+[node name="SmallGap" parent="Track" index="10" instance=ExtResource("3_ttcas")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.3674, 1.27509, -46.9756)
+
+[node name="banana_whole2" parent="Track/SmallGap" index="2" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 0, -1.44652, 0)
+anim_time_offset = 0.25
+
+[node name="banana_whole3" parent="Track/SmallGap" index="3" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, 1.5, -1.44652, 0)
+anim_time_offset = 0.5
+
+[node name="banana_whole" parent="Track/SmallGap" index="4" instance=ExtResource("5_w8jns")]
+transform = Transform3D(0.999521, -0.0309572, 0, 0.0309572, 0.999521, 0, 0, 0, 1, -1.5, -1.44652, 0)
+
+[node name="Billboard2" parent="Track/SmallGap" index="5" instance=ExtResource("9_na1x4")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -2.05, -0.984058, 1.5)
+texture = ExtResource("10_pq5yj")
+
+[node name="Billboard" parent="Track/SmallGap" index="6" instance=ExtResource("9_w8jns")]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -2.05, -0.984058, -1.5)
+frame_delay = 1.0
+frame_count = 1
+
+[node name="Ramp8" parent="Track" index="11" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.8273, -7.837, -56.2716)
+
+[node name="Ramp9" parent="Track" index="12" instance=ExtResource("6_orkap")]
+transform = Transform3D(-4.37114e-08, 0.34202, -0.939693, 0, 0.939693, 0.34202, 1, 1.49502e-08, -4.10753e-08, 15.987, -6.09982, -56.2746)
+
+[node name="Landing2" parent="Track" index="13" instance=ExtResource("5_0wqkg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.52112, -6.23722, -56.4425)
+
+[node name="Goal" parent="Track" index="14"]
+transform = Transform3D(1.225, 0, 0, 0, 1.225, 0, 0, 0, 1.225, -1.17265, -5.73575, -56.6482)
+
+[node name="TutorialMessages" type="Node3D" parent="Track" index="15"]
+
+[node name="Area3D" type="Area3D" parent="Track/TutorialMessages" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TutorialMessages/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92629, -0.0411787)
+shape = SubResource("BoxShape3D_na1x4")
+
+[node name="Area3D2" type="Area3D" parent="Track/TutorialMessages" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TutorialMessages/Area3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39721, -8.67903, -38.9951)
+shape = SubResource("BoxShape3D_pq5yj")
+
+[node name="Area3D3" type="Area3D" parent="Track/TutorialMessages" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7798, -7.87744, -36.796)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TutorialMessages/Area3D3" index="0"]
+shape = SubResource("BoxShape3D_8egxt")
+
+[node name="Area3D4" type="Area3D" parent="Track/TutorialMessages" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1347, -8.02932, -41.8542)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TutorialMessages/Area3D4" index="0"]
+shape = SubResource("BoxShape3D_85c7o")
+
+[node name="Area3D5" type="Area3D" parent="Track/TutorialMessages" index="4"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TutorialMessages/Area3D5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5117, -6.08386, -56.3262)
+shape = SubResource("BoxShape3D_n8taq")
+
+[connection signal="body_entered" from="Track/TutorialMessages/Area3D" to="CanvasLayer/TutorialMessage" method="_on_area_1_body_entered"]
+[connection signal="body_exited" from="Track/TutorialMessages/Area3D" to="CanvasLayer/TutorialMessage" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Track/TutorialMessages/Area3D2" to="CanvasLayer/TutorialMessage" method="_on_area_2_body_entered"]
+[connection signal="body_exited" from="Track/TutorialMessages/Area3D2" to="CanvasLayer/TutorialMessage" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Track/TutorialMessages/Area3D3" to="CanvasLayer/TutorialMessage" method="_on_area_3_body_entered"]
+[connection signal="body_exited" from="Track/TutorialMessages/Area3D3" to="CanvasLayer/TutorialMessage" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Track/TutorialMessages/Area3D4" to="CanvasLayer/TutorialMessage" method="_on_area_4_body_entered"]
+[connection signal="body_exited" from="Track/TutorialMessages/Area3D4" to="CanvasLayer/TutorialMessage" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Track/TutorialMessages/Area3D5" to="CanvasLayer/TutorialMessage" method="_on_area_5_body_entered"]
+[connection signal="body_exited" from="Track/TutorialMessages/Area3D5" to="CanvasLayer/TutorialMessage" method="_on_area_3d_body_exited"]

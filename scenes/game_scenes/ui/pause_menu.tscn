@@ -1,7 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmlhgvnxyd87"]
+[gd_scene load_steps=12 format=3 uid="uid://bmlhgvnxyd87"]
 
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_b0yqk"]
 [ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="2_paxla"]
+[ext_resource type="Texture2D" uid="uid://dkxld1fx8htb2" path="res://assets/textures/ui/pause_screen_frame_1.png" id="2_wac7y"]
+[ext_resource type="Texture2D" uid="uid://d1or17ctw5rfo" path="res://assets/textures/ui/button_hover_spritesheet.png" id="3_don2k"]
+[ext_resource type="Texture2D" uid="uid://u8v7xnucalrq" path="res://assets/textures/ui/button_frame_idle.png" id="3_jp8hn"]
+[ext_resource type="FontFile" uid="uid://5tudcx1xixnt" path="res://assets/fonts/Players-Italic.woff" id="6_4i7bo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m68a"]
+atlas = ExtResource("3_don2k")
+region = Rect2(0, 0, 300, 75)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jp8hn"]
+resource_local_to_scene = true
+font = ExtResource("6_4i7bo")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4i7bo"]
+resource_local_to_scene = true
+font = ExtResource("6_4i7bo")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6m68a"]
+resource_local_to_scene = true
+font = ExtResource("6_4i7bo")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nvi0"]
+resource_local_to_scene = true
+font = ExtResource("6_4i7bo")
+font_size = 64
+font_color = Color(0.411765, 0.411765, 0.411765, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -11,6 +51,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.541176)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -27,69 +76,132 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_b0yqk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -109.0
-offset_bottom = 109.0
+offset_left = -176.0
+offset_top = -225.5
+offset_right = 176.0
+offset_bottom = 225.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_wac7y")
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -140.0
+offset_right = 150.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Paused"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_jp8hn")
+texture_focused = SubResource("AtlasTexture_6m68a")
+script = ExtResource("2_paxla")
+metadata/_custom_type_script = "uid://diyfhfbpyeoim"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ResumeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME"
+label_settings = SubResource("LabelSettings_jp8hn")
 horizontal_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="RestartButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Resume
-"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_jp8hn")
+texture_focused = SubResource("AtlasTexture_6m68a")
 script = ExtResource("2_paxla")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="RestartButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/RestartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART"
+label_settings = SubResource("LabelSettings_4i7bo")
+horizontal_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Restart
-"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_jp8hn")
+texture_focused = SubResource("AtlasTexture_6m68a")
 script = ExtResource("2_paxla")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_6m68a")
+horizontal_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Settings
-"
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_jp8hn")
+texture_focused = SubResource("AtlasTexture_6m68a")
 script = ExtResource("2_paxla")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
-script = ExtResource("2_paxla")
-metadata/_custom_type_script = "uid://diyfhfbpyeoim"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 546.0
-offset_top = 14.0
-offset_right = 1014.0
-offset_bottom = 257.0
-color = Color(0, 0, 0, 0.486275)
-
-[node name="Controls" type="RichTextLabel" parent="ColorRect"]
-layout_mode = 0
-offset_left = 5.0
-offset_right = 479.0
-offset_bottom = 637.0
-text = "CONTROLS:
-
- Action 				| Keyboard		| Controller
-----------------------------------------------------------------
- Movement		| WASD				| Left Stick
- Camera				| Right/Left		| Right Stick
- Keygen Toggle	| SHIFT				| L/R
- Cheat Input		| Arrow Keys 	| Right Stick OR Face buttons
- Pause Toggle	| ESC					| START
- UI Accept			| ENTER				| Right face button"
+[node name="Label" type="Label" parent="Panel/VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -32.0
+offset_right = 81.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT"
+label_settings = SubResource("LabelSettings_3nvi0")
+horizontal_alignment = 1
