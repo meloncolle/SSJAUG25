@@ -26,12 +26,12 @@ sky_horizon_color = Color(0.570372, 0.896429, 0.952946, 1)
 ground_bottom_color = Color(0.598402, 0.779306, 0.31347, 1)
 ground_horizon_color = Color(0.710443, 0.877264, 0.834224, 1)
 
-[sub_resource type="Sky" id="Sky_v6fep"]
+[sub_resource type="Sky" id="Sky_64qp6"]
 sky_material = SubResource("ProceduralSkyMaterial_qlic1")
 
 [sub_resource type="Environment" id="Environment_656bj"]
 background_mode = 2
-sky = SubResource("Sky_v6fep")
+sky = SubResource("Sky_64qp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_656bj"]
 font = ExtResource("4_qlic1")

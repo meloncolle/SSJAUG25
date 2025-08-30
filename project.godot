@@ -29,6 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="Peel Out"
+config/version="1.0"
 run/main_scene="uid://b0c6576vnl8pp"
 config/features=PackedStringArray("4.4", "Mobile")
 run/max_fps=60
