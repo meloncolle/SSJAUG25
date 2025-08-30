@@ -44,7 +44,6 @@ func _ready():
 	if OS.is_debug_build():
 		if 0 <= Config.SKIP_TO_LEVEL && Config.SKIP_TO_LEVEL < level_select.buttons.size():
 			_on_press_level(Config.SKIP_TO_LEVEL)
-	start_menu.get_node("menu_music").play()
 
 
 func _input (event: InputEvent):
@@ -66,6 +65,7 @@ func set_state(new_state: Enums.GameState):
 			start_scene.cam.cam.current = true
 			start_scene.visible = true
 			pause_menu.visible = false
+			start_menu.get_node("menu_music").play()
 			
 		Enums.GameState.IN_GAME:
 			get_tree().paused = false
