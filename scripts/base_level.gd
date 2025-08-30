@@ -99,6 +99,7 @@ func _ready():
 	
 	bg_cam.current = true
 	set_state(Enums.LevelState.WAIT_START)
+	$Audio/music_main.play()
 
 # Load in player scene if not present, and set position to spawn_point
 func spawn_player():

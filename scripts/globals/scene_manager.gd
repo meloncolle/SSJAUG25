@@ -15,6 +15,8 @@ signal game_state_changed
 @onready var settings_menu: Control = $Menus/Settings
 @onready var level_select: Control = $Menus/LevelSelect
 
+@onready var start_scene: Node3D = start_menu.get_node("StartMenuScene")
+
 func _ready():
 	set_state(Enums.GameState.ON_START)
 	start_menu.get_node("Panel/VBoxContainer/StartButton").pressed.connect(self._on_press_start)
@@ -28,7 +30,9 @@ func _ready():
 	start_menu.connect("visibility_changed", func(): if start_menu.visible: start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus())
 	pause_menu.connect("visibility_changed", func(): if pause_menu.visible: pause_menu.get_node("Panel/VBoxContainer/ResumeButton").grab_focus())
 	start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus()
-	level_select.connect("visibility_changed", func(): if level_select.visible: level_select.buttons[0].grab_focus() else: start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus())
+	level_select.connect("visibility_changed", _on_level_select_toggle)
+
+	start_scene.connect("ad_finished", _on_ad_finished)
 
 	# Hookup level select buttons
 	for i in range(level_select.buttons.size()):
@@ -59,12 +63,15 @@ func set_state(new_state: Enums.GameState):
 		Enums.GameState.ON_START:
 			get_tree().paused = false
 			start_menu.visible = true
-			start_menu.get_node("StartMenuScene").cam.cam.current = true
+			start_scene.cam.cam.current = true
+			start_scene.visible = true
 			pause_menu.visible = false
 			
 		Enums.GameState.IN_GAME:
 			get_tree().paused = false
 			start_menu.visible = false
+			start_menu.get_node("menu_music").stop()
+			start_scene.visible = false
 			pause_menu.visible = false
 			
 		Enums.GameState.PAUSED:
@@ -72,10 +79,29 @@ func set_state(new_state: Enums.GameState):
 			pause_menu.visible = true	
 
 func _on_press_start():
-	# KYE PUT BEN CALLOUT THING HERE
-	$ben_callout.play()
+	start_scene.play_ad()
 	start_menu.get_node("menu_music").stop()
+	for b in start_menu.get_node("Panel/VBoxContainer").get_children():
+		b.disabled = true
+		b.focus_mode = 0
+	start_menu.get_node("AnimationPlayer").play("hide")
+
+func _on_ad_finished():
+	start_scene.get_node("AnimationPlayer").play("RESET")
+	start_scene.ad_emitter.stop()
 	level_select.show()
+
+func _on_level_select_toggle():
+	if level_select.visible:
+		level_select.buttons[0].grab_focus()
+	else:
+		start_menu.get_node("AnimationPlayer").play("RESET")
+		for b in start_menu.get_node("Panel/VBoxContainer").get_children():
+			b.disabled = false
+			b.focus_mode = 2
+		start_menu.get_node("Panel/VBoxContainer/StartButton").grab_focus()
+		start_menu.get_node("menu_music").play()
+		
 
 func _on_press_level(idx: int):
 	level_idx = idx
