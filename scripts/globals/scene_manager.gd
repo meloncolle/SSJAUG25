@@ -59,6 +59,7 @@ func set_state(new_state: Enums.GameState):
 		Enums.GameState.ON_START:
 			get_tree().paused = false
 			start_menu.visible = true
+			start_menu.get_node("StartMenuScene").cam.cam.current = true
 			pause_menu.visible = false
 			
 		Enums.GameState.IN_GAME:
