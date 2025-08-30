@@ -26,13 +26,14 @@ var do_spin: bool = false
 @export var sensitivity:= 0.05
 
 func _process(delta):
-	bg_cam.global_position = cam.global_position
-	bg_cam.global_rotation.y = cam.global_rotation.y
+	if bg_cam:
+		bg_cam.global_position = cam.global_position
+		bg_cam.global_rotation.y = cam.global_rotation.y
 	
 	if do_spin:
 		yaw += 2.0 * delta
 
 func _ready():
-	bg_cam.global_rotation.x = cam.global_rotation.x
+	if bg_cam: bg_cam.global_rotation.x = cam.global_rotation.x
 	starting_pitch = rotation.x
 	distance = cam.position.z

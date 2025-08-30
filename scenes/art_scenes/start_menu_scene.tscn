@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkk62r7c2in4o"]
+
+[ext_resource type="Script" uid="uid://dm6ruavmc6vit" path="res://scripts/start_menu_scene.gd" id="1_2lrcc"]
+[ext_resource type="Script" uid="uid://tde7i7v0b2lx" path="res://scripts/cam_rig.gd" id="1_3x8bj"]
+[ext_resource type="PackedScene" uid="uid://clxmyq2gganal" path="res://scenes/art_scenes/car_solo[art].tscn" id="2_2lrcc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_an3dk"]
+sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)
+sky_horizon_color = Color(0.570372, 0.896429, 0.952946, 1)
+ground_bottom_color = Color(0.598402, 0.779306, 0.31347, 1)
+ground_horizon_color = Color(0.710443, 0.877264, 0.834224, 1)
+
+[sub_resource type="Sky" id="Sky_v6fep"]
+sky_material = SubResource("ProceduralSkyMaterial_an3dk")
+
+[sub_resource type="Environment" id="Environment_3x8bj"]
+background_mode = 2
+sky = SubResource("Sky_v6fep")
+
+[node name="StartMenuScene" type="Node3D"]
+script = ExtResource("1_2lrcc")
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3x8bj")
+
+[node name="CamRig" type="Marker3D" parent="." node_paths=PackedStringArray("bg_cam")]
+transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 2.29103, 0.0180929)
+script = ExtResource("1_3x8bj")
+bg_cam = NodePath("")
+sensitivity = 0.2
+
+[node name="PlayerCam" type="Camera3D" parent="CamRig"]
+transform = Transform3D(1, 0, 0, 0, 0.977427, -0.211273, 0, 0.211273, 0.977427, 0, -0.291565, 3.16561)
+cull_mask = 1048573
+
+[node name="car_solo[art]" parent="." instance=ExtResource("2_2lrcc")]
+transform = Transform3D(0.911468, 0, 0.411371, -2.98023e-08, 1, -2.98023e-08, -0.411371, 0, 0.911468, 3.5001, -4.76837e-07, -3.87641)
