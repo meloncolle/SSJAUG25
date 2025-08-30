@@ -240,9 +240,7 @@ material = SubResource("ShaderMaterial_oefos")
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 774.0
 offset_right = 397.0
-offset_bottom = 774.0
 grow_vertical = 2
 texture = ExtResource("3_t2krv")
 expand_mode = 1
@@ -267,9 +265,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1028.0
 offset_top = 21.0
-offset_right = 1028.0
 offset_bottom = -496.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -391,9 +387,9 @@ horizontal_alignment = 1
 
 [node name="ScoreList" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -206.0
+offset_left = 96.0
 offset_top = 280.0
-offset_right = -6.0
+offset_right = 296.0
 offset_bottom = 766.0
 
 [node name="RichTextLabel" type="Label" parent="ScoreList"]
