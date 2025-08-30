@@ -16,7 +16,7 @@ func _on_body_entered(body: Node3D) -> void:
 		is_activated = true
 		body.respawn_target = self
 		#KYE PUT PASSCHECKPOINT SOUND HERE
-		
+		$checkpoint_pass.play()
 		# Turn off any other checkpoints
 		for cp in get_tree().get_nodes_in_group("checkpoint"):
 			if cp != self:

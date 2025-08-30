@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bxbjvo5ay5n7n" path="res://assets/textures/checkpoint_flag_still.png" id="3_vqccl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3dio"]
-radius = 0.75
-height = 3.0
+radius = 0.451006
+height = 1.44599
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_665q5"]
 atlas = ExtResource("2_ovbyd")
@@ -106,22 +106,24 @@ collision_mask = 2
 script = ExtResource("1_dyn5u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08809, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_k3dio")
 
 [node name="FlagOn" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.895, 0, 0, 0, 1.895, 0, 0, 0, 1.895, 0.000812292, 1.20257, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000812292, 0.65, 0)
 visible = false
 billboard = 2
-texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8krq5")
 autoplay = "default"
 frame_progress = 0.953335
 
 [node name="FlagOff" type="Sprite3D" parent="."]
-transform = Transform3D(1.895, 0, 0, 0, 1.895, 0, 0, 0, 1.895, 0.000812292, 1.20257, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000812292, 0.65, 0)
 billboard = 2
-texture_filter = 0
 texture = ExtResource("3_vqccl")
+
+[node name="checkpoint_pass" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Level/Checkpoint"
+event_guid = "{f56f546e-2669-4b74-aa8d-87070875423b}"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

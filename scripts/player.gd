@@ -57,6 +57,7 @@ func do_intro():
 
 func respawn():
 	# KYE PUT RESPAWN SOUND HERE
+	$respawn.play()
 	size = 1
 	awaiting_respawn = true
 
@@ -65,6 +66,7 @@ func stop():
 	racer.PlayFinishAnimation()
 
 func _integrate_forces(_state):
+	$engine.set_parameter("speed", linear_velocity.length())
 	if awaiting_respawn && respawn_target != null:
 		linear_velocity = Vector3.ZERO
 		angular_velocity = Vector3.ZERO

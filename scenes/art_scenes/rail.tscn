@@ -1,44 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://crxtpaqmc6fnt"]
+[gd_scene load_steps=3 format=3 uid="uid://p75rv4p3cw5t"]
+
+[ext_resource type="Material" uid="uid://bixvnpfgr64q1" path="res://resources/materials/rail_mat.tres" id="1_067ig"]
 
 [sub_resource type="Curve3D" id="Curve3D_b5klm"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -43.2555, -3.32183, 39.011, 0, 0, 0, 0, 0, 0, -25.1658, -1.90038, 8.84482, 7.86755, -0.0335388, 2.7409, -7.86755, 0.0335388, -2.7409, -24.3046, -1.20668, -2.54753, 0, 0, 0, 0, 0, 0, -39.0179, -2.08401, 11.3495),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.9711, 0.0367928, 0.0190752, 0, 0, 0, 0, 0, 0, 16.052, -0.0562878, 0.0549986),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 4
+point_count = 2
 
-[node name="Rail" type="Node3D"]
+[node name="rail" type="Node3D"]
 
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_b5klm")
 
-[node name="RailA" type="CSGPolygon3D" parent="Path3D"]
+[node name="rail1" type="CSGPolygon3D" parent="Path3D"]
+calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(0.5, 0, 0.354, 0.354, 0, 0.5, -0.354, 0.354, -0.5, 0, -0.354, -0.354, 0, -0.5, 0.354, -0.354)
+polygon = PackedVector2Array(-0.108945, -0.121474, -0.211236, 0.112198, -0.0963137, 0.332884, 0.107007, 0.424002, 0.347229, 0.339053, 0.43687, 0.114605, 0.361211, -0.111808, 0.112859, -0.213774)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 1.0
+path_interval = 2.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
 path_local = true
 path_continuous_u = true
-path_u_distance = 1.0
+path_u_distance = 4.0
 path_joined = false
+material = ExtResource("1_067ig")
 
-[node name="RailB" type="CSGPolygon3D" parent="Path3D"]
-physics_interpolation_mode = 2
+[node name="rail2" type="CSGPolygon3D" parent="Path3D"]
+calculate_tangents = false
 use_collision = true
-polygon = PackedVector2Array(1.92, 0, 1.754, 0.354, 1.3, 0.5, 1.046, 0.354, 0.9, 0, 1.046, -0.354, 1.4, -0.5, 1.754, -0.354)
+polygon = PackedVector2Array(1.86246, -0.124503, 1.75815, 0.0804758, 1.83711, 0.325742, 2.11564, 0.425698, 2.37639, 0.297793, 2.47145, 0.0834079, 2.37154, -0.12258, 2.11242, -0.211176)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 1.0
+path_interval = 2.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
 path_local = true
 path_continuous_u = true
-path_u_distance = 1.0
+path_u_distance = 4.0
 path_joined = false
+material = ExtResource("1_067ig")

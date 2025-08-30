@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="5_yfyfv"]
 [ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="6_v6fep"]
 [ext_resource type="PackedScene" uid="uid://cb5lxd7ivfj8c" path="res://scenes/game_scenes/ui/keygen.tscn" id="7_goep6"]
-[ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rail.tscn" id="9_hc0pj"]
+[ext_resource type="PackedScene" uid="uid://crxtpaqmc6fnt" path="res://scenes/art_scenes/rails.tscn" id="9_hc0pj"]
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="10_3oeui"]
 [ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier[art].tscn" id="11_3oeui"]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://b132g3gl88ufv"]
+[gd_scene load_steps=23 format=3 uid="uid://b132g3gl88ufv"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_l31le"]
 [ext_resource type="PackedScene" uid="uid://bhbu8n8xxwgvo" path="res://scenes/art_scenes/instance_placer.tscn" id="2_vfb1a"]
 [ext_resource type="PackedScene" uid="uid://ccynrkwm7ix4s" path="res://scenes/art_scenes/barrier[art].tscn" id="3_1kxbn"]
 [ext_resource type="PackedScene" uid="uid://dsvv7bd7s8onj" path="res://scenes/art_scenes/level_terrain/starting_canyon1.tscn" id="4_4xaje"]
 [ext_resource type="Material" uid="uid://cy0ews5fmhyg6" path="res://resources/materials/grass_texture_CSGPolygon.tres" id="4_45lo7"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="4_vuwsu"]
 [ext_resource type="PackedScene" uid="uid://dex2jsdbhiu3p" path="res://scenes/art_scenes/level_terrain/starting_canyon2.tscn" id="5_j3b3w"]
 [ext_resource type="Material" uid="uid://d23fyfqqom4fm" path="res://resources/materials/concrete_texture_CSGPolygon.tres" id="5_oadxp"]
 [ext_resource type="PackedScene" uid="uid://cuc7lily7bn6r" path="res://scenes/prefab_scenes/props/road_support.tscn" id="6_j3b3w"]
@@ -13,13 +14,22 @@
 [ext_resource type="PackedScene" uid="uid://dt023ciwdr1nf" path="res://scenes/art_scenes/barrier_ramp[art].tscn" id="7_sgwos"]
 [ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="11_q8h3t"]
 [ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="13_yptii"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="14_dqcp5"]
 
 [sub_resource type="Curve3D" id="Curve3D_gbb6u"]
 _data = {
-"points": PackedVector3Array(11.0673, -0.529785, 15.6489, -11.0673, 0.529785, -15.6489, -109.744, -5.46216, 24.2922, -21.0536, 0, 3.5762, 21.0536, 0, -3.5762, -89.3963, -6.34663, -18.7846, -8.2211, 0.0645752, 0.344676, 8.2211, -0.0645752, -0.344676, -45.0834, -4.47492, 12.8106, 13.5148, -0.00390625, 17.1493, -13.5148, 0.00390625, -17.1493, 2.13098, -7.81269, -12.2622, 17.8255, -0.0183105, 2.19173, -17.8255, 0.0183105, -2.19173, -35.4504, -14.9555, -38.0559, -25.6325, -0.000244141, 26.0065, 25.6325, 0.000244141, -26.0065, -49.5254, -34.8313, -82.0437),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(11.0673, -0.529785, 15.6489, -11.0673, 0.529785, -15.6489, -109.744, -5.46216, 24.2922, -21.0536, 0, 3.5762, 21.0536, 0, -3.5762, -89.3963, -6.34663, -18.7846, -8.2211, 0.0645752, 0.344676, 8.2211, -0.0645752, -0.344676, -45.0833, -6.35176, 12.8106, 13.5148, -0.00390625, 17.1493, -13.5148, 0.00390625, -17.1493, 2.13098, -7.49968, -12.2622, 17.8255, -0.0183105, 2.19173, -17.8255, 0.0183105, -2.19173, -37.3456, -15.1734, -38.472, -10.0537, -0.000230789, 11.5226, 10.0537, 0.000230789, -11.5226, -60.5092, -23.794, -78.1099, -13.708, 20.9412, 1.35443, 13.708, -20.9412, -1.35443, -18.5265, -40.7735, -88.4897),
+"tilts": PackedFloat32Array(0, 0, 0, -0.0201191, -0.234546, 0, 0)
 }
-point_count = 6
+point_count = 7
+up_vector_enabled = false
+
+[sub_resource type="Curve3D" id="Curve3D_vuwsu"]
+_data = {
+"points": PackedVector3Array(2.07619, 0.104706, -3.01558, -2.07619, -0.104706, 3.01558, 17.9255, 0.99629, -3.40699, 33.8345, 0.830275, 12.1383, -33.8345, -0.830275, -12.1383, -15.4706, -3.41077, 20.3986, 4.28964, -0.0237312, -13.2579, -4.28964, 0.0237312, 13.2579, -95.3386, -33.848, 38.5204),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_884g7"]
 size = Vector3(0.458008, 6.52638, 3.33921)
@@ -37,6 +47,9 @@ uv1_scale = Vector3(11.02, 11.37, 11.37)
 albedo_texture = ExtResource("6_q8h3t")
 uv1_scale = Vector3(59.838, 30.925, 59.838)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dqcp5"]
+height = 2.6765
+
 [node name="Germantown_start_1" type="Node3D"]
 transform = Transform3D(0.964691, 0, -0.263385, 0, 1, 0, 0.263385, 0, 0.964691, 0, 0, 0)
 
@@ -46,6 +59,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8289, 5.73249, 0.0788231)
 [node name="Path3D" parent="Road" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297775, 0.128418, 0.0203609)
 curve = SubResource("Curve3D_gbb6u")
+
+[node name="CSGPolygon3D" parent="Road/Path3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109444, 0, 0.177734)
 
 [node name="InPlcr_RoadSupports" parent="Road/Path3D" index="1" node_paths=PackedStringArray("path_parent") instance=ExtResource("2_vfb1a")]
 original = ExtResource("6_j3b3w")
@@ -68,16 +84,16 @@ transform = Transform3D(-0.515473, -0.0932784, 0.851813, 0, 0.994058, 0.108855, 
 transform = Transform3D(0.116874, -0.109792, 0.987059, 0, 0.993871, 0.11055, -0.993147, -0.0129203, 0.116157, -82.3137, -14.4096, -14.4924)
 
 [node name="@Node3D@131539" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.712754, -0.0842008, 0.696342, 3.4587e-09, 0.992769, 0.120044, -0.701414, -0.0855621, 0.7076, -67.8859, -13.6655, -3.67837)
+transform = Transform3D(0.712754, -0.0842008, 0.696342, 3.4587e-09, 0.992769, 0.120044, -0.701414, -0.0855621, 0.7076, -67.8859, -14.7014, -3.67837)
 
 [node name="@Node3D@131603" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.737804, -0.0899861, 0.66899, 3.52771e-09, 0.991074, 0.13331, -0.675015, -0.0983565, 0.731219, -54.8402, -12.8053, 12.0456)
+transform = Transform3D(0.737804, -0.0899861, 0.66899, 3.52771e-09, 0.991074, 0.13331, -0.675015, -0.0983565, 0.731219, -54.8402, -14.6623, 12.0456)
 
 [node name="@Node3D@131604" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(-0.209014, -0.134353, 0.96864, 0, 0.990517, 0.137387, -0.977913, 0.0287158, -0.207032, -32.8771, -13.1799, 15.7462)
+transform = Transform3D(-0.209014, -0.134353, 0.96864, 0, 0.990517, 0.137387, -0.977913, 0.0287158, -0.207032, -32.8771, -14.8137, 15.7462)
 
 [node name="@Node3D@131605" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(-0.288266, -0.127712, 0.948995, 5.31845e-05, 0.991064, 0.133389, -0.95755, 0.0385021, -0.285683, -12.8028, -14.3237, 10.5193)
+transform = Transform3D(-0.288266, -0.127712, 0.948995, 5.31845e-05, 0.991064, 0.133389, -0.95755, 0.0385021, -0.285683, -12.8028, -15.0447, 10.5193)
 
 [node name="@Node3D@131606" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
 transform = Transform3D(-0.837666, -0.0673695, 0.542013, 0.00064417, 0.992241, 0.124326, -0.546183, 0.104493, -0.831123, 8.55838, -16.1796, -6.18017)
@@ -89,13 +105,13 @@ radius = 1.68408
 height = 2.88428
 
 [node name="@Node3D@131607" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.735216, -0.0767792, 0.673471, 0, 0.993564, 0.113272, -0.677833, -0.083279, 0.730484, -0.0546731, -16.5994, -23.85)
+transform = Transform3D(0.735216, -0.0767792, 0.673471, 0, 0.993564, 0.113272, -0.677833, -0.083279, 0.730484, -1.92009, -16.7118, -22.561)
 
 [node name="@Node3D@131608" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.502504, -0.0922773, 0.859636, 9.26133e-10, 0.994288, 0.106731, -0.864575, -0.053633, 0.499634, -15.2682, -20.581, -36.8424)
+transform = Transform3D(0.502504, -0.0922773, 0.859636, 9.26133e-10, 0.994288, 0.106731, -0.864575, -0.053633, 0.499634, -15.9713, -20.3832, -35.7511)
 
 [node name="@Node3D@131609" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.204047, -0.101397, 0.973696, 2.84364e-10, 0.994621, 0.103576, -0.978961, -0.0211344, 0.20295, -33.6838, -23.1858, -41.9618)
+transform = Transform3D(0.204047, -0.101397, 0.973696, 2.84364e-10, 0.994621, 0.103576, -0.978961, -0.0211344, 0.20295, -33.6207, -23.204, -41.5216)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Road/Path3D/InPlcr_RoadSupports/@Node3D@131609"]
 transform = Transform3D(1, 3.53903e-08, -5.96046e-08, -2.12342e-07, 0.991595, -0.129384, -1.49012e-07, 0.129384, 0.991595, -0.134602, -3.1398, -0.707623)
@@ -104,26 +120,45 @@ radius = 1.68408
 height = 10.171
 
 [node name="@Node3D@131610" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(0.769481, -0.0772181, 0.633984, 0.0198174, 0.995073, 0.0971453, -0.638361, -0.0621876, 0.767221, -51.8085, -30.276, -48.5882)
+transform = Transform3D(0.464378, -0.0952087, 0.880505, 0.0198174, 0.995073, 0.0971453, -0.885414, -0.0276629, 0.463978, -45.2108, -24.4154, -45.9592)
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Road/Path3D/InPlcr_RoadSupports/@Node3D@131610"]
-transform = Transform3D(1, 3.07336e-08, -1.49012e-07, -3.46452e-07, 0.991595, -0.129384, -2.98023e-08, 0.129384, 0.991595, -0.134605, -0.855667, -0.409584)
+transform = Transform3D(0.999998, 5.21541e-08, -4.52995e-06, -1.86265e-07, 0.991592, -0.129383, -5.96046e-08, 0.129383, 0.99159, -0.134605, -2.66895, -0.646179)
+use_collision = true
+radius = 1.68408
+height = 9.22133
+
+[node name="@Node3D@131611" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
+transform = Transform3D(-0.922193, 0.023852, -0.385994, 0.0296995, 0.999517, -0.00919223, 0.385588, -0.0199407, -0.922455, -56.954, -29.6075, -57.6931)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Road/Path3D/InPlcr_RoadSupports/@Node3D@131611"]
+transform = Transform3D(0.999794, 0.0200246, 0.00325736, -0.0200924, 0.999552, 0.0221993, -0.00281163, -0.0222601, 0.999749, 0.0492821, -1.12885, -0.106003)
 use_collision = true
 radius = 1.68408
 height = 5.56403
 
-[node name="@Node3D@131611" parent="Road/Path3D/InPlcr_RoadSupports" instance=ExtResource("6_j3b3w")]
-transform = Transform3D(-0.994366, 0.0286077, -0.102067, 0.0296995, 0.999517, -0.00919223, 0.101755, -0.0121717, -0.994735, -56.633, -35.4614, -54.8344)
+[node name="Road_to_intsec" parent="Road/Path3D" index="2" instance=ExtResource("1_l31le")]
+transform = Transform3D(-0.915374, -0.00158182, -0.402601, -0.0361046, 0.996286, 0.0781752, 0.400981, 0.0860954, -0.912031, -48.3184, -31.2856, -68.4523)
+
+[node name="Path3D" parent="Road/Path3D/Road_to_intsec" index="0"]
+transform = Transform3D(1, 0, -1.49012e-08, -7.03938e-10, 1, -1.52431e-10, -1.49012e-08, 0, 1, -0.0137864, 0.000402451, -0.0671902)
+curve = SubResource("Curve3D_vuwsu")
+
+[node name="CSGPolygon3D" parent="Road/Path3D/Road_to_intsec/Path3D" index="0"]
+polygon = PackedVector2Array(-0.0562973, -0.353674, 0.307974, 0.0142574, 8, -0.024, 8.34358, -0.377039)
+
+[node name="banana_whole" parent="Road" instance=ExtResource("4_vuwsu")]
+transform = Transform3D(0.964691, 0, 0.263385, 0, 1, 0, -0.263385, 0, 0.964691, -55.5876, -6.24823, -4.41133)
 
 [node name="Grass" type="CSGPolygon3D" parent="."]
 transform = Transform3D(0.96468, -0.263385, -0.00456289, 0.0047299, -5.96046e-08, 0.999989, -0.263382, -0.964691, 0.00124578, 23.6078, -1.06055, 10.7602)
 use_collision = true
-polygon = PackedVector2Array(-9.62821, -32.5001, -37.1489, -30.2484, -59.6657, -13.486, -62.4178, -2.47788, -72.9257, 18.7878, -83.6838, 46.058, -52.5545, 67.6781, -26.0922, 44.1591, -0.883183, 27.8036, 9.57625, 8.5234, 8.56193, -7.00214)
+polygon = PackedVector2Array(-9.62821, -32.5001, -37.1489, -30.2484, -59.6657, -13.486, -62.4178, -2.47788, -72.9257, 18.7878, -83.6838, 46.058, -52.5545, 67.6781, -26.0922, 44.1591, -0.883183, 27.8036, 6.96246, 8.45347, 5.65851, -6.452)
 depth = 15.0
 material = ExtResource("4_45lo7")
 
 [node name="Ramp" type="Node3D" parent="Grass"]
-transform = Transform3D(0.177254, -1.46665, 0.259835, -0.0292203, 0.258192, 1.47733, -1.4892, -0.179636, 0.00194022, 6.46535, 10.2334, 0.48728)
+transform = Transform3D(0.177254, -1.46665, 0.259835, -0.0292203, 0.258192, 1.47733, -1.4892, -0.179636, 0.00194022, 6.46287, 10.2334, -0.0360624)
 
 [node name="Ramp" parent="Grass/Ramp" instance=ExtResource("3_1kxbn")]
 transform = Transform3D(-1.30613, 0.234509, -0.12969, -0.0930339, 0.208333, 1.31367, 0.251314, 1.29591, -0.187719, -0.395743, 1.86432, -6.12279)
@@ -231,8 +266,8 @@ transform = Transform3D(0.96468, 0.0047299, -0.263382, -0.263385, -4.07449e-09, 
 [node name="Conc2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(21.1894, -0.263385, -0.106061, 0.103893, -4.37114e-08, 23.2449, -5.78524, -0.964691, 0.0289564, 31.0443, -9.88579, 9.28029)
 use_collision = true
-polygon = PackedVector2Array(-0.182571, -8.16265, -0.180451, 13.4551, 0.107921, 42.4314, 0.696893, 52.367, 1.08355, 41.6271, 1.4075, 22.7062, 1.4664, 11.7094, 1.87861, 2.61271, 1.26175, -4.07384)
-depth = 0.27
+polygon = PackedVector2Array(-0.196941, -9.74644, -0.180451, 13.4551, 0.107921, 42.4314, 0.797814, 53.7268, 1.26375, 43.0997, 1.67615, 24.6327, 1.75706, 13.6842, 1.87861, 2.61271, 1.26894, -6.26603)
+depth = 0.71
 material = ExtResource("5_oadxp")
 
 [node name="Dirt_hill" type="CSGPolygon3D" parent="."]
@@ -255,7 +290,7 @@ material = SubResource("StandardMaterial3D_ja8gj")
 transform = Transform3D(-3.25429, 0, 1.28826, 0, 3.5, 0, -1.28826, 0, -3.25429, -14.4671, -3.83337, 44.4231)
 
 [node name="starting_canyon_left2" parent="Cliffs" instance=ExtResource("4_4xaje")]
-transform = Transform3D(3.82999, -0.0963032, -1.82707, 0.0187773, 5.98042, -0.0846126, 2.33242, 0.109991, 3.00085, 45.9928, -24.1072, -64.9304)
+transform = Transform3D(3.82999, -0.0963032, -1.82707, 0.0187773, 5.98042, -0.0846126, 2.33242, 0.109991, 3.00085, 45.9928, -26.7715, -64.9304)
 
 [node name="starting_canyon_right" parent="Cliffs" instance=ExtResource("5_j3b3w")]
 transform = Transform3D(2.87699, 0, -0.850237, 0, 8.09134, 0, 0.850237, 0, 2.87699, 7.88373, -29.4402, -27.3166)
@@ -278,6 +313,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26672, -2.9126, -0.5888)
 [node name="maple_tree6" parent="Props/Trees" instance=ExtResource("13_yptii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7036, -16.7876, -42.7436)
 
+[node name="Checkpoints" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.2495, -15.9153, -67.1399)
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("14_dqcp5")]
+
+[node name="CollisionShape3D" parent="Checkpoints/Checkpoint" index="0"]
+transform = Transform3D(0.0693716, 0.96469, 0.254085, -0.964691, 2.73188e-08, 0.263385, 0.254085, -0.263385, 0.930628, 0.192317, 0.5, -0.0528679)
+shape = SubResource("CapsuleShape3D_dqcp5")
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("14_dqcp5")]
+transform = Transform3D(1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, -0.237871, -3.15107, 0.0649452)
+
+[node name="CollisionShape3D" parent="Checkpoints/Checkpoint2" index="0"]
+transform = Transform3D(0.0693716, 0.96469, 0.254085, -0.964691, 2.73188e-08, 0.263385, 0.254085, -0.263385, 0.930628, 0.192317, 0.5, -0.0528679)
+shape = SubResource("CapsuleShape3D_dqcp5")
+
 [editable path="Road"]
+[editable path="Road/Path3D/Road_to_intsec"]
 [editable path="Grass/Ramp/Ramp"]
 [editable path="Grass/Ramp/Ramp2"]
+[editable path="Checkpoints/Checkpoint"]
+[editable path="Checkpoints/Checkpoint2"]

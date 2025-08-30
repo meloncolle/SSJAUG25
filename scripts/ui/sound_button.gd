@@ -33,13 +33,14 @@ func _process(delta):
 
 # ok so this is gonna fire automatically when the menu opens once, gotta find a workaround
 func _on_focused():
-	if label: label.label_settings.font_color = Color.WHITE
-	# KYE PUT UINAVIGATE SOUND HERE (and delete pass)
-	pass
+		# KYE PUT UINAVIGATE SOUND HERE (and delete print statement)
+		#$Audio/UInavigate.play()
+	  if label: label.label_settings.font_color = Color.WHITE
 	
 func _on_unfocused():
 	if label: label.label_settings.font_color = Color.DIM_GRAY
 	
 func _on_pressed():
-	# KYE PUT UISELECT SOUND HERE (and ddelete pass)
+		# KYE PUT UISELECT SOUND HERE
+		#$Audio/UIselect.play()
 	pass

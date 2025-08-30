@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmf2av1c5a7jg"]
+
+[ext_resource type="PackedScene" uid="uid://clfjq5p4mfhfd" path="res://scenes/art_scenes/halfpipe_shallow.tscn" id="1_lonbf"]
+[ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="2_dl4gf"]
+
+[sub_resource type="Curve3D" id="Curve3D_lonbf"]
+_data = {
+"points": PackedVector3Array(-11.0272, 6.15256, -1.01979, 11.0272, -6.15256, 1.01979, 57.7166, -1.90499, -9.9284, -13.8248, 3.78822, -17.0816, 13.8248, -3.78822, 17.0816, 84.512, -42.2675, 31.7341, 23.6497, -0.154518, -3.79029, -23.6497, 0.154518, 3.79029, 59.3055, -54.4924, 115.475, 16.7881, 1.41038, 25.7799, -16.7881, -1.41038, -25.7799, -6.9018, -77.6599, 84.3785, 0, 0, 0, 0, 0, 0, -23.2385, -98.2161, 25.7811),
+"tilts": PackedFloat32Array(0.265704, 1.51808, 1.31292, 1.19619, 1.25291)
+}
+point_count = 5
+
+[node name="Level0PathB" type="Node3D"]
+
+[node name="Road" parent="." instance=ExtResource("1_lonbf")]
+
+[node name="Path3D" parent="Road" index="0"]
+curve = SubResource("Curve3D_lonbf")
+
+[node name="mountain_props" parent="." instance=ExtResource("2_dl4gf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.322, -122.617, 55.535)
+
+[editable path="Road"]

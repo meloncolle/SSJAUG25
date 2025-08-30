@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ulqy5hdjy7fi" path="res://assets/textures/ui/crankshaft_window_topbar_big.png" id="9_dd7et"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2urjy"]
-shader = ExtResource("2_3yiil")
+shader = ExtResource("2_r0blf")
 shader_parameter/amplitude = 2.465
 shader_parameter/frequency = 0.06
 shader_parameter/speed = 2.0
@@ -38,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a3f31")
+script = ExtResource("1_3yiil")
 
 [node name="BG" type="TextureRect" parent="."]
 texture_filter = 1
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_r0blf")
+texture = ExtResource("3_2urjy")
 expand_mode = 1
 stretch_mode = 1
 metadata/_edit_lock_ = true
