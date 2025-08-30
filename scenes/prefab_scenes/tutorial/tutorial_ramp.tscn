@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkkhlialwjf5j"]
 
-[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="1_lvvfh"]
+[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://assets/textures/track_tex.png" id="1_lvvfh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wtlrr"]
 size = Vector3(5, 1, 10)

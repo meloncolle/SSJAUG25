@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bbnmptm6xl3py" path="res://scripts/player.gd" id="4_by1ef"]
 [ext_resource type="PackedScene" uid="uid://dag8rxu5kmtaq" path="res://scenes/art_scenes/racer_ben[art].tscn" id="6_mry85"]
 [ext_resource type="PackedScene" uid="uid://13tw3g2yqp2w" path="res://scenes/art_scenes/player_car[art].tscn" id="7_sfyoe"]
-[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://_debug/test_lvl_3d/track_tex.png" id="8_x1n0j"]
+[ext_resource type="Texture2D" uid="uid://ma71uhkqcsq5" path="res://assets/textures/track_tex.png" id="8_x1n0j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfyfv"]
 sky_top_color = Color(0.0637553, 0.618238, 0.883874, 1)

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ma71uhkqcsq5"
-path="res://.godot/imported/track_tex.png-35266ed5bcd65085c21cc51d1f251277.ctex"
+path="res://.godot/imported/track_tex.png-4514edc2af548c287e0b83575eb6650c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_debug/test_lvl_3d/track_tex.png"
-dest_files=["res://.godot/imported/track_tex.png-35266ed5bcd65085c21cc51d1f251277.ctex"]
+source_file="res://assets/textures/track_tex.png"
+dest_files=["res://.godot/imported/track_tex.png-4514edc2af548c287e0b83575eb6650c.ctex"]
 
 [params]
 
