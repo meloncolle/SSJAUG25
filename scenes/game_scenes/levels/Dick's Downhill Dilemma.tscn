@@ -253,7 +253,7 @@ shader_parameter/diffuse_tex = ExtResource("24_ujry6")
 size = Vector3(0.224609, 1.00494, 1.87305)
 
 [node name="BaseLevel" instance=ExtResource("1_g02b8")]
-level_name = "Kye name your level pls"
+level_name = "Dick's Downhill Dilemma"
 death_height = -270.0
 
 [node name="SpawnPoint" parent="." index="3"]
