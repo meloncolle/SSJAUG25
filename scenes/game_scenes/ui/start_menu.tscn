@@ -134,11 +134,6 @@ texture_focused = SubResource("AtlasTexture_purv8")
 script = ExtResource("2_1n352")
 metadata/_custom_type_script = "uid://diyfhfbpyeoim"
 
-[node name="menu_music" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/music_menu"
-event_guid = "{cbdfa9a5-5292-4c83-8c27-d16fe3abe836}"
-position = Vector2(516, 315)
-
 [node name="Label" type="Label" parent="Panel/VBoxContainer/ExitButton"]
 layout_mode = 1
 anchors_preset = 8
@@ -155,3 +150,8 @@ grow_vertical = 2
 text = "EXIT"
 label_settings = SubResource("LabelSettings_6in8r")
 horizontal_alignment = 1
+
+[node name="menu_music" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/music_menu"
+event_guid = "{cbdfa9a5-5292-4c83-8c27-d16fe3abe836}"
+position = Vector2(516, 315)
