@@ -17,6 +17,7 @@ var desired_gravity:= Vector3.DOWN
 @export var death_height:= -1.0
 
 @onready var cam: Marker3D = $CanvasLayer/SubViewportContainer/SubViewport/CamRig
+@onready var bg_cam: Camera3D = $BGCam
 @onready var keygen: Control = $CanvasLayer/Keygen
 
 @onready var spawn_point: Marker3D = $SpawnPoint
@@ -95,6 +96,8 @@ func _ready():
 	# set focus on button when menu becomes visible, so its compatible with kb/controller
 	%EndScreen.connect("visibility_changed", func(): if %EndScreen.visible: %EndScreen.get_node("Panel/VBoxContainer/RetryButton").grab_focus())
 	
+	
+	bg_cam.current = true
 	set_state(Enums.LevelState.WAIT_START)
 
 # Load in player scene if not present, and set position to spawn_point

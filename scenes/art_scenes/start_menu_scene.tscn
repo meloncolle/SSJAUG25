@@ -28,10 +28,9 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3x8bj")
 
-[node name="CamRig" type="Marker3D" parent="." node_paths=PackedStringArray("bg_cam")]
+[node name="CamRig" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.689038, 0.724725, 0, -0.724725, 0.689038, 0, 2.29103, 0.0180929)
 script = ExtResource("1_3x8bj")
-bg_cam = NodePath("")
 sensitivity = 0.2
 
 [node name="PlayerCam" type="Camera3D" parent="CamRig"]
