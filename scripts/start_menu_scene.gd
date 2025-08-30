@@ -56,3 +56,4 @@ func add_input(new_input: Enums.CheatInput):
 	
 	if CheatLib.inputs_to_string(inputs) == CheatLib.inputs_to_string(skip_code):
 		emit_signal("ad_finished")
+		$code_right.play()

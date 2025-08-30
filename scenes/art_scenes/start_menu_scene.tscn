@@ -207,8 +207,17 @@ event_guid = "{cab7aedb-619f-4391-82a0-2716b66fbe06}"
 event_name = "event:/KeyGen/KeyGenCharEntered"
 event_guid = "{73ac589f-e5b0-48e1-9d96-1567fdb9f3c5}"
 
+[node name="code_right" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/KeyGen/KeyGenCheatRight"
+event_guid = "{e10370c4-1592-4c6a-bf25-bb9faa3dce15}"
+fmod_parameters/keygen_mute/id = 9022166878639555734
+fmod_parameters/keygen_mute = "disabled"
+fmod_parameters/keygen_mute/labels = PackedStringArray("enabled", "disabled")
+fmod_parameters/keygen_mute/variant_type = 4
+
 [node name="Subtitle" type="PanelContainer" parent="."]
 visible = false
+z_as_relative = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

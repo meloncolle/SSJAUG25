@@ -87,9 +87,14 @@ func _on_press_start():
 	start_menu.get_node("AnimationPlayer").play("hide")
 
 func _on_ad_finished():
+	var tween: Tween = Overlay.fade_to_black(0.75)
+	await tween.finished
 	start_scene.get_node("AnimationPlayer").play("RESET")
 	start_scene.ad_emitter.stop()
 	level_select.show()
+	tween = Overlay.fade_from_black(0.5)
+	await tween.finished
+	Overlay.hide()
 
 func _on_level_select_toggle():
 	if level_select.visible:

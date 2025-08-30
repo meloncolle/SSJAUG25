@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://de7fus2hfrr3x" path="res://scripts/globals/overlay.gd" id="1_rr2nn"]
 
-[node name="Overlay" type="CanvasLayer"]
-layer = 2
+[node name="Black" type="ColorRect"]
 visible = false
-script = ExtResource("1_rr2nn")
-
-[node name="Black" type="ColorRect" parent="."]
+top_level = true
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,3 +14,4 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
+script = ExtResource("1_rr2nn")
