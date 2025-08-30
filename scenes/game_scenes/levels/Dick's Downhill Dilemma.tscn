@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://mthd8hfvu2ge"]
+[gd_scene load_steps=35 format=4 uid="uid://mthd8hfvu2ge"]
 
 [ext_resource type="PackedScene" uid="uid://df1sc6rf2vba3" path="res://scenes/prefab_scenes/base_level.tscn" id="1_g02b8"]
 [ext_resource type="PackedScene" uid="uid://37mk8isaf56w" path="res://scenes/prefab_scenes/blockouts_kye/level_intsec_Path.tscn" id="2_0prje"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://p75rv4p3cw5t" path="res://scenes/art_scenes/rail.tscn" id="16_g5gpe"]
 [ext_resource type="PackedScene" uid="uid://d2tvvwavqsl10" path="res://scenes/prefab_scenes/props/maple_tree.tscn" id="17_ojnd0"]
 [ext_resource type="PackedScene" uid="uid://dl7mo2qaapmto" path="res://scenes/prefab_scenes/props/maple_tree_tall.tscn" id="18_vxm53"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="19_imd7t"]
 
 [sub_resource type="Curve3D" id="Curve3D_gw66b"]
 _data = {
@@ -249,6 +250,12 @@ transform = Transform3D(-0.0844823, -0.026805, 0.996064, -0.00226537, 0.999641, 
 
 [node name="Path3D" parent="Track/level_Intsec_Path/s_halfpipe" index="0"]
 curve = SubResource("Curve3D_gw66b")
+
+[node name="banana_whole48" parent="Track/level_Intsec_Path/banana_whole24" index="26" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 9.04668e-10, 1, -1.05462e-08, -4.47035e-08, 0, 1, 12.7204, -112.302, 88.1573)
+
+[node name="banana_whole49" parent="Track/level_Intsec_Path/banana_whole24" index="27" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 1.60316e-09, 1, -1.98594e-08, -8.19564e-08, 0, 1, 117.362, -121.331, 49.8167)
 
 [node name="0Path_a_level" parent="Track" index="2" instance=ExtResource("4_m1yo0")]
 transform = Transform3D(-0.429219, 0, -0.9032, 0, 1, 0, 0.9032, 0, -0.429219, 94.0097, -267.162, -120.214)
@@ -647,6 +654,150 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 191.045, -220.926, -63.9417)
 [node name="maple_tree30" parent="." index="51" instance=ExtResource("18_vxm53")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5009, -146.464, -303.342)
 
+[node name="banana_whole" parent="." index="52" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0079, 8.44162, -37.0646)
+
+[node name="banana_whole2" parent="." index="53" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1798, 7.93846, -47.0858)
+
+[node name="banana_whole3" parent="." index="54" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4969, 7.54948, -52.9143)
+
+[node name="banana_whole4" parent="." index="55" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9945, 6.54477, -56.2106)
+
+[node name="banana_whole5" parent="." index="56" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.156, 6.19418, -58.4839)
+
+[node name="banana_whole6" parent="." index="57" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.159, 4.00695, -60.8583)
+
+[node name="banana_whole7" parent="." index="58" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5067, 2.76873, -62.5982)
+
+[node name="banana_whole8" parent="." index="59" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.9131, 1.12059, -64.2796)
+
+[node name="banana_whole9" parent="." index="60" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4637, 0.00767922, -63.5574)
+
+[node name="banana_whole10" parent="." index="61" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5859, -0.405192, -61.487)
+
+[node name="banana_whole11" parent="." index="62" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.1352, -0.290486, -58.7956)
+
+[node name="banana_whole12" parent="." index="63" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5084, -0.275687, -54.7932)
+
+[node name="banana_whole13" parent="." index="64" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2425, -0.477579, -48.9151)
+
+[node name="banana_whole14" parent="." index="65" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.8294, -7.48419, -43.658)
+
+[node name="banana_whole20" parent="." index="66" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.5021, -7.48419, -38.312)
+
+[node name="banana_whole21" parent="." index="67" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.9024, -7.48419, -29.6928)
+
+[node name="banana_whole22" parent="." index="68" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2846, -7.48419, -21.9465)
+
+[node name="banana_whole15" parent="." index="69" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4124, -4.20323, -37.1213)
+
+[node name="banana_whole16" parent="." index="70" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.792, -8.68971, -31.4254)
+
+[node name="banana_whole17" parent="." index="71" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.792, -13.3806, -27.0327)
+
+[node name="banana_whole18" parent="." index="72" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.968, -13.3806, -59.3583)
+
+[node name="banana_whole19" parent="." index="73" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.968, -13.3806, -52.3583)
+
+[node name="banana_whole23" parent="." index="74" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1993, -31.3435, 14.7046)
+
+[node name="banana_whole23" parent="banana_whole23" index="1" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -1.61491)
+
+[node name="banana_whole24" parent="banana_whole23" index="2" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -1.61491)
+
+[node name="banana_whole25" parent="banana_whole23" index="3" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -1.61491)
+
+[node name="banana_whole26" parent="banana_whole23" index="4" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -1.61491)
+
+[node name="banana_whole27" parent="banana_whole23" index="5" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -1.61491)
+
+[node name="banana_whole28" parent="banana_whole23" index="6" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.998525)
+
+[node name="banana_whole29" parent="banana_whole23" index="7" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.998525)
+
+[node name="banana_whole30" parent="banana_whole23" index="8" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.998525)
+
+[node name="banana_whole31" parent="banana_whole23" index="9" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.998525)
+
+[node name="banana_whole32" parent="banana_whole23" index="10" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.998525)
+
+[node name="banana_whole33" parent="banana_whole23" index="11" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.371858)
+
+[node name="banana_whole34" parent="banana_whole23" index="12" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.371858)
+
+[node name="banana_whole35" parent="banana_whole23" index="13" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.371858)
+
+[node name="banana_whole36" parent="banana_whole23" index="14" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.371858)
+
+[node name="banana_whole37" parent="banana_whole23" index="15" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.371858)
+
+[node name="banana_whole38" parent="banana_whole23" index="16" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.116923)
+
+[node name="banana_whole39" parent="banana_whole23" index="17" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.116923)
+
+[node name="banana_whole40" parent="banana_whole23" index="18" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.116923)
+
+[node name="banana_whole41" parent="banana_whole23" index="19" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.116923)
+
+[node name="banana_whole42" parent="banana_whole23" index="20" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.116923)
+
+[node name="banana_whole43" parent="banana_whole23" index="21" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.557824)
+
+[node name="banana_whole44" parent="banana_whole23" index="22" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.557824)
+
+[node name="banana_whole45" parent="banana_whole23" index="23" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.557824)
+
+[node name="banana_whole46" parent="banana_whole23" index="24" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
+
+[node name="banana_whole47" parent="banana_whole23" index="25" instance=ExtResource("19_imd7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
+
 [editable path="Track/level_Intsec_Path"]
 [editable path="Track/level_Intsec_Path/Road_to_canyon"]
 [editable path="Track/level_Intsec_Path/Halfpipe"]
@@ -658,6 +809,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5009, -146.464, -303.342)
 [editable path="Track/level_Intsec_Path/mountain_2"]
 [editable path="Track/level_Intsec_Path/rail3"]
 [editable path="Track/level_Intsec_Path/rail/rail2"]
+[editable path="Track/level_Intsec_Path/Checkpoint"]
+[editable path="Track/level_Intsec_Path/Checkpoint2"]
 [editable path="Track/0Path_a_level"]
 [editable path="Track/0Path_a_level/Road"]
 [editable path="Track/0Path_a_level/mountain_props"]

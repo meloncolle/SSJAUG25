@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://37mk8isaf56w"]
+[gd_scene load_steps=31 format=4 uid="uid://37mk8isaf56w"]
 
 [ext_resource type="PackedScene" uid="uid://d2chxchtnk1h0" path="res://scenes/art_scenes/road.tscn" id="1_mhubp"]
 [ext_resource type="PackedScene" uid="uid://pj1j1g11i2sh" path="res://scenes/art_scenes/mountain_props.tscn" id="3_1q1jh"]
@@ -12,11 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://dlvi6uuy63ynp" path="res://assets/models/skybox_dirt.png" id="9_cxben"]
 [ext_resource type="Texture2D" uid="uid://bwcl2vp1h68el" path="res://assets/models/skybox_grasstile_S.png" id="10_gnu2c"]
 [ext_resource type="PackedScene" uid="uid://clfjq5p4mfhfd" path="res://scenes/art_scenes/halfpipe_shallow.tscn" id="11_cxben"]
+[ext_resource type="PackedScene" uid="uid://c7f88rigtygli" path="res://scenes/prefab_scenes/props/checkpoint.tscn" id="13_pcbyv"]
+[ext_resource type="PackedScene" uid="uid://dca05ay0rrhlr" path="res://scenes/prefab_scenes/props/banana_pickup.tscn" id="14_frgru"]
 
 [sub_resource type="Curve3D" id="Curve3D_cxben"]
 _data = {
 "points": PackedVector3Array(-6.77998, 5.96546, -99.7815, 6.77998, -5.96546, 99.7815, -165.324, 8.34793, -126.728, 27.6273, 3.33786e-05, -31.3288, -27.6273, -3.33786e-05, 31.3288, -162.693, 4.79651, -146.874, 12.1375, -0.014616, -36.3241, -12.1375, 0.014616, 36.3241, -311.531, -29.0248, -54.6292, -10.2855, 4.19617e-05, -28.685, 10.2855, -4.19617e-05, 28.685, -118.174, -46.6975, -74.5585, 5.70828, 2, -1.1992, -5.70828, -2, 1.1992, -199.073, -48.4679, -12.069),
-"tilts": PackedFloat32Array(0, -0.40575, -0.398378, -0.281511, -0.620465)
+"tilts": PackedFloat32Array(0, -0.40575, -0.398378, -0.481811, -0.620465)
 }
 point_count = 5
 
@@ -164,6 +166,10 @@ _data = {
 "tilts": PackedFloat32Array(0, -0.377006, 0.484766, 0)
 }
 point_count = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_frgru"]
+radius = 2.38058
+height = 6.40827
 
 [node name="level_Intsec_Path" type="Node3D"]
 
@@ -333,6 +339,342 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.252, -40.6143, 78.5875)
 [node name="maple_tree5" parent="." instance=ExtResource("7_nbb48")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.311, -36.2146, 80.8469)
 
+[node name="Checkpoint" parent="." instance=ExtResource("13_pcbyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3738, -47.593, 64.2503)
+
+[node name="CollisionShape3D" parent="Checkpoint" index="0"]
+shape = SubResource("CapsuleShape3D_frgru")
+
+[node name="FlagOn" parent="Checkpoint" index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.000812531, 2.134, 0)
+
+[node name="FlagOff" parent="Checkpoint" index="2"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.000812531, 2.134, 0)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("13_pcbyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2823, -75.2407, 145.633)
+
+[node name="CollisionShape3D" parent="Checkpoint2" index="0"]
+shape = SubResource("CapsuleShape3D_frgru")
+
+[node name="FlagOn" parent="Checkpoint2" index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.000812531, 2.134, 0)
+
+[node name="FlagOff" parent="Checkpoint2" index="2"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.000812531, 2.134, 0)
+
+[node name="banana_whole24" parent="." instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1993, -31.3435, 14.7046)
+
+[node name="banana_whole23" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -1.61491)
+
+[node name="banana_whole24" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -1.61491)
+
+[node name="banana_whole25" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -1.61491)
+
+[node name="banana_whole26" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -1.61491)
+
+[node name="banana_whole27" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -1.61491)
+
+[node name="banana_whole28" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.998525)
+
+[node name="banana_whole29" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.998525)
+
+[node name="banana_whole30" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.998525)
+
+[node name="banana_whole31" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.998525)
+
+[node name="banana_whole32" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.998525)
+
+[node name="banana_whole33" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.371858)
+
+[node name="banana_whole34" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.371858)
+
+[node name="banana_whole35" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.371858)
+
+[node name="banana_whole36" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.371858)
+
+[node name="banana_whole37" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.371858)
+
+[node name="banana_whole38" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.116923)
+
+[node name="banana_whole39" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.116923)
+
+[node name="banana_whole40" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.116923)
+
+[node name="banana_whole41" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.116923)
+
+[node name="banana_whole42" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.116923)
+
+[node name="banana_whole43" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.557824)
+
+[node name="banana_whole44" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.557824)
+
+[node name="banana_whole45" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.557824)
+
+[node name="banana_whole46" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
+
+[node name="banana_whole47" parent="banana_whole24" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
+
+[node name="banana_whole25" parent="." instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5416, 3.76871, 7.70733)
+
+[node name="banana_whole23" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -1.61491)
+
+[node name="banana_whole24" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -1.61491)
+
+[node name="banana_whole25" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -1.61491)
+
+[node name="banana_whole26" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -1.61491)
+
+[node name="banana_whole27" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -1.61491)
+
+[node name="banana_whole28" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.998525)
+
+[node name="banana_whole29" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.998525)
+
+[node name="banana_whole30" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.998525)
+
+[node name="banana_whole31" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.998525)
+
+[node name="banana_whole32" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.998525)
+
+[node name="banana_whole33" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.371858)
+
+[node name="banana_whole34" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.371858)
+
+[node name="banana_whole35" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.371858)
+
+[node name="banana_whole36" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.371858)
+
+[node name="banana_whole37" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.371858)
+
+[node name="banana_whole38" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.116923)
+
+[node name="banana_whole39" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.116923)
+
+[node name="banana_whole40" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.116923)
+
+[node name="banana_whole41" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.116923)
+
+[node name="banana_whole42" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.116923)
+
+[node name="banana_whole43" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.557824)
+
+[node name="banana_whole44" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.557824)
+
+[node name="banana_whole45" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.557824)
+
+[node name="banana_whole46" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
+
+[node name="banana_whole47" parent="banana_whole25" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
+
+[node name="banana_whole26" parent="." instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54161, -46.7978, 94.8664)
+
+[node name="banana_whole23" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -1.61491)
+
+[node name="banana_whole24" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -1.61491)
+
+[node name="banana_whole25" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -1.61491)
+
+[node name="banana_whole26" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -1.61491)
+
+[node name="banana_whole27" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -1.61491)
+
+[node name="banana_whole28" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.998525)
+
+[node name="banana_whole29" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.998525)
+
+[node name="banana_whole30" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.998525)
+
+[node name="banana_whole31" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.998525)
+
+[node name="banana_whole32" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.998525)
+
+[node name="banana_whole33" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.371858)
+
+[node name="banana_whole34" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.371858)
+
+[node name="banana_whole35" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.371858)
+
+[node name="banana_whole36" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.371858)
+
+[node name="banana_whole37" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.371858)
+
+[node name="banana_whole38" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.116923)
+
+[node name="banana_whole39" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.116923)
+
+[node name="banana_whole40" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.116923)
+
+[node name="banana_whole41" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.116923)
+
+[node name="banana_whole42" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.116923)
+
+[node name="banana_whole43" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.557824)
+
+[node name="banana_whole44" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.557824)
+
+[node name="banana_whole45" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.557824)
+
+[node name="banana_whole46" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
+
+[node name="banana_whole47" parent="banana_whole26" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
+
+[node name="banana_whole27" parent="." instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7459, -55.7018, 125.691)
+
+[node name="banana_whole23" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -1.61491)
+
+[node name="banana_whole24" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -1.61491)
+
+[node name="banana_whole25" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -1.61491)
+
+[node name="banana_whole26" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -1.61491)
+
+[node name="banana_whole27" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -1.61491)
+
+[node name="banana_whole28" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.998525)
+
+[node name="banana_whole29" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.998525)
+
+[node name="banana_whole30" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.998525)
+
+[node name="banana_whole31" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.998525)
+
+[node name="banana_whole32" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.998525)
+
+[node name="banana_whole33" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, -0.371858)
+
+[node name="banana_whole34" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, -0.371858)
+
+[node name="banana_whole35" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, -0.371858)
+
+[node name="banana_whole36" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, -0.371858)
+
+[node name="banana_whole37" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, -0.371858)
+
+[node name="banana_whole38" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.116923)
+
+[node name="banana_whole39" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.116923)
+
+[node name="banana_whole40" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.116923)
+
+[node name="banana_whole41" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.116923)
+
+[node name="banana_whole42" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.116923)
+
+[node name="banana_whole43" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15205, 0.684668, 0.557824)
+
+[node name="banana_whole44" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74703, 0.684668, 0.557824)
+
+[node name="banana_whole45" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36674, 0.684668, 0.557824)
+
+[node name="banana_whole46" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95321, 0.684668, 0.557824)
+
+[node name="banana_whole47" parent="banana_whole27" instance=ExtResource("14_frgru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45468, 0.684668, 0.557824)
+
 [editable path="Road_to_canyon"]
 [editable path="Halfpipe"]
 [editable path="road_to_rails/rail9"]
@@ -343,3 +685,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.311, -36.2146, 80.8469)
 [editable path="mountain_2"]
 [editable path="rail3"]
 [editable path="rail/rail2"]
+[editable path="Checkpoint"]
+[editable path="Checkpoint2"]
