@@ -23,6 +23,12 @@ func _ready():
 		current_button.add_sibling(new_button)
 		current_button = new_button
 		current_button.get_node("Label").text = lvl_name
+		
+		# TODO: temp fix cuz kye's level too longggg
+		if i == 1:
+			new_button.get_node("Label").autowrap_mode = 2
+			new_button.get_node("Label").label_settings.font_size = 32
+		
 		buttons.append(current_button)
 		
 	back_button.get_parent().move_child(back_button, buttons.size())

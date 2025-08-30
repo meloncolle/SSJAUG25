@@ -99,6 +99,7 @@ func _ready():
 	
 	bg_cam.current = true
 	set_state(Enums.LevelState.WAIT_START)
+	$Audio/music_main.play()
 
 # Load in player scene if not present, and set position to spawn_point
 func spawn_player():
@@ -327,9 +328,9 @@ func _on_goal_reached():
 	# KYE PUT PASSEDFINISHLINE SOUND HERE
 	$Audio/passed_finish.play()
 	$Audio/music_main.stop()
+	%Speedometer.hide()
+	%Timer.hide()
+	%ActiveCodes.hide()
 	set_state(Enums.LevelState.END)
 	await get_tree().create_timer(3.0).timeout
-	%EndScreen.show_results(timer)
-	var new_hi_score: int = Save.add_new_score(level_name, timer)
-	#var hi_scores = Save.data.get_value("Scores", level_name, [])
-	#print(hi_scores)
+	%EndScreen.show_results(timer, level_name)

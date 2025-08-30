@@ -40,9 +40,9 @@ config/icon="res://icon.svg"
 Config="*res://scripts/globals/config.gd"
 Save="*res://scripts/globals/save.gd"
 Globals="*res://scripts/globals/globals.gd"
+Overlay="*res://scenes/global_scenes/overlay.tscn"
 SceneManager="*res://scenes/global_scenes/scene_manager.tscn"
 CheatLib="*res://scenes/global_scenes/cheat_lib.tscn"
-Overlay="*res://scenes/global_scenes/overlay.tscn"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]

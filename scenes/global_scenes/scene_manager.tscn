@@ -29,9 +29,5 @@ visible = false
 [node name="LevelSelect" parent="Menus" instance=ExtResource("7_775ok")]
 visible = false
 
-[node name="ben_callout" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/Ben_callout"
-event_guid = "{cab7aedb-619f-4391-82a0-2716b66fbe06}"
-
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://resources/fmod_banks/Desktop/Master.strings.bank", "res://resources/fmod_banks/Desktop/Master.bank"]

@@ -1,11 +1,65 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvypbeo7dcusu"]
+[gd_scene load_steps=27 format=3 uid="uid://bvypbeo7dcusu"]
 
 [ext_resource type="Theme" uid="uid://biksopsiahq0c" path="res://resources/themes/menu_theme.tres" id="1_f87g8"]
 [ext_resource type="Script" uid="uid://bo2ds5ssm834g" path="res://scripts/ui/end_screen.gd" id="1_n50rr"]
+[ext_resource type="Shader" uid="uid://bff5gu5hyh5vq" path="res://resources/shaders/wavy_scroll.gdshader" id="2_tqamq"]
 [ext_resource type="Texture2D" uid="uid://u8v7xnucalrq" path="res://assets/textures/ui/button_frame_idle.png" id="3_fu6wn"]
 [ext_resource type="Script" uid="uid://diyfhfbpyeoim" path="res://scripts/ui/sound_button.gd" id="3_nwoug"]
+[ext_resource type="Texture2D" uid="uid://cpmv4jk72gki1" path="res://assets/textures/checker.bmp" id="3_t2krv"]
+[ext_resource type="FontFile" uid="uid://co3ndkw1mqlec" path="res://assets/fonts/7segment.woff" id="4_7knox"]
 [ext_resource type="Texture2D" uid="uid://d1or17ctw5rfo" path="res://assets/textures/ui/button_hover_spritesheet.png" id="4_ejeyh"]
+[ext_resource type="Script" uid="uid://t6uqp4r4ascv" path="res://scripts/ui/HUD/timer.gd" id="5_gksad"]
 [ext_resource type="FontFile" uid="uid://5tudcx1xixnt" path="res://assets/fonts/Players-Italic.woff" id="6_y7wa4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oefos"]
+shader = ExtResource("2_tqamq")
+shader_parameter/amplitude = 2.465
+shader_parameter/frequency = 0.06
+shader_parameter/speed = 2.765
+shader_parameter/scale = 40.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/scroll_speed = Vector2(-0.3, -0.3)
+
+[sub_resource type="Gradient" id="Gradient_tqamq"]
+offsets = PackedFloat32Array(0.00423729, 1)
+colors = PackedColorArray(1, 0.517647, 0, 0.717647, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t2krv"]
+gradient = SubResource("Gradient_tqamq")
+
+[sub_resource type="Gradient" id="Gradient_7knox"]
+offsets = PackedFloat32Array(0, 0.995763)
+colors = PackedColorArray(1, 0.517647, 0, 0.909804, 1, 0.517647, 0, 0.0745098)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gksad"]
+gradient = SubResource("Gradient_7knox")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bndf3"]
+font = ExtResource("4_7knox")
+font_size = 255
+font_color = Color(0, 0.262093, 0.632713, 1)
+outline_size = 28
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(15, 15)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p26mj"]
+font = ExtResource("4_7knox")
+font_size = 140
+font_color = Color(0, 0.262093, 0.632713, 1)
+outline_size = 16
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(12, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n50rr"]
+font = ExtResource("6_y7wa4")
+font_size = 61
+font_color = Color(0, 0, 0, 1)
+outline_size = 13
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs2xc"]
 atlas = ExtResource("4_ejeyh")
@@ -27,8 +81,149 @@ font_color = Color(0.411765, 0.411765, 0.411765, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_n50rr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqamq"]
+content_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7knox"]
+font = ExtResource("6_y7wa4")
 font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_size = 13
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_211yy"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.358038),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.358038),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.501961)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667, 0.5),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(1028, 21), Vector2(0, 21)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector2(0, 774), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScoreList:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-206, 280), Vector2(96, 280)]
+}
+
+[sub_resource type="Animation" id="Animation_4usgx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1028, 21)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 774)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScoreList:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-206, 280)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_keh5f"]
+_data = {
+&"RESET": SubResource("Animation_4usgx"),
+&"show": SubResource("Animation_211yy")
+}
 
 [node name="EndScreen" type="ColorRect"]
 anchors_preset = 15
@@ -36,16 +231,97 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.541176)
+color = Color(0, 0, 0, 0)
 script = ExtResource("1_n50rr")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="VBar" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_oefos")
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
+offset_right = 397.0
+grow_vertical = 2
+texture = ExtResource("3_t2krv")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBar"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.87
+offset_right = 695.13
+offset_bottom = -512.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_t2krv")
+
+[node name="HBar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 21.0
+offset_bottom = -496.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_gksad")
+
+[node name="FinalTime" type="Label" parent="HBar"]
+unique_name_in_owner = true
+offset_left = 388.0
+offset_top = 34.0
+offset_right = 911.0
+offset_bottom = 298.0
+scale = Vector2(0.882918, 0.850231)
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "00:00"
+label_settings = SubResource("LabelSettings_bndf3")
+script = ExtResource("5_gksad")
+
+[node name="Millisecond" type="Label" parent="HBar/FinalTime"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.3455
+offset_top = -147.187
+offset_right = 156.346
+offset_bottom = -1.18704
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 8
+text = "00"
+label_settings = SubResource("LabelSettings_p26mj")
+
+[node name="Label" type="Label" parent="HBar"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 10.0
+offset_right = 352.0
+offset_bottom = 72.0
+text = "Final time:"
+label_settings = SubResource("LabelSettings_n50rr")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -317.0
 offset_top = -134.0
-offset_right = 317.0
+grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_f87g8")
 
@@ -109,25 +385,42 @@ text = "QUIT"
 label_settings = SubResource("LabelSettings_t2krv")
 horizontal_alignment = 1
 
-[node name="FinalTime" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -140.0
-offset_right = 192.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="FinalTime"]
+[node name="ScoreList" type="VBoxContainer" parent="."]
 layout_mode = 0
+offset_left = 96.0
+offset_top = 280.0
+offset_right = 296.0
+offset_bottom = 766.0
+
+[node name="RichTextLabel" type="Label" parent="ScoreList"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tqamq")
+text = "BEST TIMES:"
+label_settings = SubResource("LabelSettings_7knox")
+horizontal_alignment = 1
+
+[node name="Score" type="RichTextLabel" parent="ScoreList"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/normal_font = ExtResource("4_7knox")
+theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
+text = "--:-- .--"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="ScoreList/Score"]
+layout_mode = 0
+offset_top = 2.0
 offset_right = 40.0
-offset_bottom = 23.0
-text = "Final time:"
-label_settings = SubResource("LabelSettings_n50rr")
+offset_bottom = 38.0
+text = "1."
+label_settings = SubResource("LabelSettings_7knox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_keh5f")
+}
