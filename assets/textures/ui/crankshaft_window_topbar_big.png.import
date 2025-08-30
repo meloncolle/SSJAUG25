@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmg5m0qd6v7e2"
-path="res://.godot/imported/collision_billboard.png-5c8fe4887bcc7b27a274b0eebc025e34.ctex"
+uid="uid://ulqy5hdjy7fi"
+path="res://.godot/imported/crankshaft_window_topbar_big.png-d9cabeebc18f214262dd367e78f18a50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/collision_billboard.png"
-dest_files=["res://.godot/imported/collision_billboard.png-5c8fe4887bcc7b27a274b0eebc025e34.ctex"]
+source_file="res://assets/textures/ui/crankshaft_window_topbar_big.png"
+dest_files=["res://.godot/imported/crankshaft_window_topbar_big.png-d9cabeebc18f214262dd367e78f18a50.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

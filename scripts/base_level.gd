@@ -157,8 +157,9 @@ func _physics_process(delta):
 		desired_gravity.y = -1
 
 	update_gravity(delta)
+	emit_signal("speed_changed", player.linear_velocity.length())
+	
 	if OS.is_debug_build() && Config.DEBUG_PANEL:
-		emit_signal("speed_changed", player.linear_velocity.length())
 		emit_signal("velocity_changed", player.linear_velocity)
 
 # lerp current gravity towards desired gravity @ tilt_speed. Update camera rotation to match

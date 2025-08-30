@@ -19,9 +19,10 @@ func _ready():
 				break
 		
 		var new_button: SoundButton = current_button.duplicate()
+		new_button.get_node("Label").label_settings = new_button.get_node("Label").label_settings.duplicate()
 		current_button.add_sibling(new_button)
 		current_button = new_button
-		current_button.text = lvl_name
+		current_button.get_node("Label").text = lvl_name
 		buttons.append(current_button)
 		
 	back_button.get_parent().move_child(back_button, buttons.size())
