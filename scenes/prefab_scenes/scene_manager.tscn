@@ -25,3 +25,9 @@ visible = false
 [node name="ben_callout" type="FmodEventEmitter2D" parent="."]
 event_name = "event:/Ben_callout"
 event_guid = "{cab7aedb-619f-4391-82a0-2716b66fbe06}"
+
+[node name="menu_music" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/music_menu"
+event_guid = "{cbdfa9a5-5292-4c83-8c27-d16fe3abe836}"
+autoplay = true
+position = Vector2(516, 315)
